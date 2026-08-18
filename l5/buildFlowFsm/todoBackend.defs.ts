@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l5/buildFlowFsm/todoBackend.defs.ts" enhancement="_blank"/>
 
-import type { Ns4L5TodoBackendArtifact } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4L5TodoBackendArtifact } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const buildFlowFsmTodoBackend = {
   "schemaVersion": "2026-08-13-ns4-todo-backend-v1",

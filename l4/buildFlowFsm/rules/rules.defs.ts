@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/rules/rules.defs.ts" enhancement="_blank"/>
 
-import type { Ns4RulesArtifact } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4RulesArtifact } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const buildFlowFsmRules = {
   "schemaVersion": "2026-08-09-ns4-rules-v2",

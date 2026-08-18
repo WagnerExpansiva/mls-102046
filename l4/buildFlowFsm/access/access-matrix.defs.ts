@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/access/access-matrix.defs.ts" enhancement="_blank"/>
 
-import type { Ns4AccessMatrixArtifact } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4AccessMatrixArtifact } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const buildFlowFsmAccessMatrix = {
   "schemaVersion": "2026-08-10-ns4-access-matrix-v3",

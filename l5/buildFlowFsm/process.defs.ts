@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l5/buildFlowFsm/process.defs.ts" enhancement="_blank"/>
 
-import type { Ns4L5ProcessArtifact } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4L5ProcessArtifact } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const buildFlowFsmProcess = {
   "schemaVersion": "2026-08-13-ns4-process-v1",

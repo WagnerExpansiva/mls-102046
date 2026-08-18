@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2026-08-06-ns4-pipeline-v5",
-  "flowId": "agentNewSolution4",
+  "flowId": "agentNewSolution",
   "flowVersion": "2026-08-14-ns4-flow-v40",
   "moduleName": "buildFlowFsm",
   "sourcePrompt": "Gere um aplicativo profissional chamado buildFlowFsm para empresas de construção, reforma e serviços de campo nos EUA. Entidades principais: Project (nome, cliente, endereço, status, orçamento, datas de início/fim), WorkTask (projeto, assigned_to, descrição, status, prazo), uso de Material/Inventory, TimeLog (trabalhador, tarefa, horas), ChangeOrder, Invoice. Telas principais: Dashboard (projetos ativos, orçamento vs real, tarefas próximas), lista de projetos + detalhe (timeline tipo Gantt ou lista de tarefas), atribuição de tarefas e registro diário, rastreamento de materiais por projeto, resumo de faturamento do cliente. Recurso LLM: Na tela de detalhe do projeto, botão \"Generate Status Report\" que cria um resumo profissional a partir de tarefas, time logs e materiais. Também sugere \"tarefas em risco de atraso\". Foco: custeio de obras, coordenação da equipe de campo e comunicação com o cliente — específico para construção/serviços de campo. linguagem: pt, en, es",

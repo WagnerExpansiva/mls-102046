@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/journeys/index.defs.ts" enhancement="_blank"/>
 
-import type { Ns4JourneyIndex } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4JourneyIndex } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const buildFlowFsmJourneyIndex = {
   "schemaVersion": "2026-08-15-ns4-journey-index-v7",

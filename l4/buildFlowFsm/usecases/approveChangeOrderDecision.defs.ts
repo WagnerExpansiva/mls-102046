@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/usecases/approveChangeOrderDecision.defs.ts" enhancement="_blank"/>
 
-import type { Ns4UseCaseArtifactV3 } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4UseCaseArtifactV3 } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const approveChangeOrderDecisionUseCase = {
   "schemaVersion": "2026-08-10-ns4-usecase-v3",

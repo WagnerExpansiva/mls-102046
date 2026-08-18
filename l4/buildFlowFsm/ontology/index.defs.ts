@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/ontology/index.defs.ts" enhancement="_blank"/>
 
-import type { Ns4OntologyIndexArtifact } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4OntologyIndexArtifact } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const buildFlowFsmOntologyIndex = {
   "schemaVersion": "2026-08-11-ns4-ontology-v6",

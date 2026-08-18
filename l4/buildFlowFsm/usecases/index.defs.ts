@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/usecases/index.defs.ts" enhancement="_blank"/>
 
-import type { Ns4UseCaseIndexArtifactV3 } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4UseCaseIndexArtifactV3 } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const buildFlowFsmUseCaseIndex = {
   "schemaVersion": "2026-08-10-ns4-usecase-index-v3",

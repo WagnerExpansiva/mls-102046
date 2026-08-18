@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/ontology/ProjectExecutionOverview.defs.ts" enhancement="_blank"/>
 
-import type { Ns4OntologyEntityArtifact } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4OntologyEntityArtifact } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const buildFlowFsmEntityProjectExecutionOverview = {
   "schemaVersion": "2026-08-11-ns4-ontology-v6",

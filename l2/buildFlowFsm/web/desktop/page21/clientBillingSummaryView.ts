@@ -24,7 +24,7 @@ export class BuildFlowFsmDesktopPage21ClientBillingSummaryViewPage extends Build
                 ${msg['organism.clientBillingSummaryView.qryClientBillingSummaryView.title']}
               </h2>
               ${hasClient
-                ? html`<p class="mt-1 text-sm text-[var(--text-muted,#64748b)]">${msg['intent.clientBillingSummaryView.qryClientBillingSummaryView.list.column.clientId.label]}</p>`
+                ? html`<p class="mt-1 text-sm text-[var(--text-muted,#64748b)]">${msg['intent.clientBillingSummaryView.qryClientBillingSummaryView.list.column.clientId.label']}</p>`
                 : nothing}
             </div>
             <button

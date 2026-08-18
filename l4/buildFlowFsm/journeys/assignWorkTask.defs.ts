@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/journeys/assignWorkTask.defs.ts" enhancement="_blank"/>
 
-import type { Ns4JourneyArtifact } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4JourneyArtifact } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const assignWorkTaskJourney = {
   "schemaVersion": "2026-08-14-ns4-journey-realized-v5",

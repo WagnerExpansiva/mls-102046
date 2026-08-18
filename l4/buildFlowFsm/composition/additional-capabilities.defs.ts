@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/composition/additional-capabilities.defs.ts" enhancement="_blank"/>
 
-import type { Ns4CompositionArtifact } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4CompositionArtifact } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const buildFlowFsmAdditionalCapabilities = {
   "schemaVersion": "2026-08-09-ns4-composition-v1",

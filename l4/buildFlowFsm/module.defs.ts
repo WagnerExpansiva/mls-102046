@@ -1,6 +1,6 @@
 /// <mls fileReference="_102046_/l4/buildFlowFsm/module.defs.ts" enhancement="_blank"/>
 
-import type { Ns4ModuleArtifact } from '/_102020_/l2/agentNewSolution4/types.js';
+import type { Ns4ModuleArtifact } from '/_102020_/l2/agentNewSolution/types.js';
 
 export const buildFlowFsmModule = {
   "schemaVersion": "2026-08-06-ns4-module-v4",
@@ -141,7 +141,7 @@ export const buildFlowFsmModule = {
     "criticalNotes": ""
   },
   "specStatus": {
-    "flowId": "agentNewSolution4",
+    "flowId": "agentNewSolution",
     "flowVersion": "2026-08-14-ns4-flow-v40",
     "state": "complete",
     "artifactCompleteness": "full",
