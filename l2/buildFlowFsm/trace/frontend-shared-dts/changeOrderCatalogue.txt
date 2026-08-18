@@ -1,0 +1,238 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListChangeOrderOutput, CmdCreateChangeOrderOutput, CmdUpdateChangeOrderOutput, CmdDeleteChangeOrderOutput, QryClientPickerOutput, QryProjectPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/changeOrderCatalogue.js';
+export type { QryListChangeOrderInput, QryListChangeOrderOutput, CmdCreateChangeOrderInput, CmdCreateChangeOrderOutput, CmdUpdateChangeOrderInput, CmdUpdateChangeOrderOutput, CmdDeleteChangeOrderInput, CmdDeleteChangeOrderOutput, QryClientPickerInput, QryClientPickerOutput, QryProjectPickerInput, QryProjectPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/changeOrderCatalogue.js';
+declare const message_pt: {
+    'section.changeOrderCatalogue.recordList.title': string;
+    'organism.changeOrderCatalogue.qryListChangeOrder.title': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.title': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.empty': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.column.changeOrderId.label': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.column.clientRef.label': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.column.projectRef.label': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.column.description.label': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.column.scopeImpact.label': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.column.scheduleImpact.label': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.column.changeAmount.label': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.column.submittedAt.label': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.column.forwardedForClientApprovalAt.label': string;
+    'intent.changeOrderCatalogue.qryListChangeOrder.list.column.status.label': string;
+    'organism.changeOrderCatalogue.cmdDeleteChangeOrder.title': string;
+    'intent.changeOrderCatalogue.cmdDeleteChangeOrder.form.title': string;
+    'intent.changeOrderCatalogue.cmdDeleteChangeOrder.form.action.cmdDeleteChangeOrder': string;
+    'section.changeOrderCatalogue.recordForm.title': string;
+    'organism.changeOrderCatalogue.cmdCreateChangeOrder.title': string;
+    'intent.changeOrderCatalogue.cmdCreateChangeOrder.form.title': string;
+    'intent.changeOrderCatalogue.cmdCreateChangeOrder.form.action.cmdCreateChangeOrder': string;
+    'intent.changeOrderCatalogue.cmdCreateChangeOrder.form.field.description.label': string;
+    'intent.changeOrderCatalogue.cmdCreateChangeOrder.form.field.scopeImpact.label': string;
+    'intent.changeOrderCatalogue.cmdCreateChangeOrder.form.field.scheduleImpact.label': string;
+    'intent.changeOrderCatalogue.cmdCreateChangeOrder.form.field.changeAmount.label': string;
+    'organism.changeOrderCatalogue.cmdUpdateChangeOrder.title': string;
+    'intent.changeOrderCatalogue.cmdUpdateChangeOrder.form.title': string;
+    'intent.changeOrderCatalogue.cmdUpdateChangeOrder.form.action.cmdUpdateChangeOrder': string;
+    'intent.changeOrderCatalogue.cmdUpdateChangeOrder.form.field.description.label': string;
+    'intent.changeOrderCatalogue.cmdUpdateChangeOrder.form.field.scopeImpact.label': string;
+    'intent.changeOrderCatalogue.cmdUpdateChangeOrder.form.field.scheduleImpact.label': string;
+    'intent.changeOrderCatalogue.cmdUpdateChangeOrder.form.field.changeAmount.label': string;
+    'intent.changeOrderCatalogue.cmdUpdateChangeOrder.form.field.submittedAt.label': string;
+    'intent.changeOrderCatalogue.cmdUpdateChangeOrder.form.field.forwardedForClientApprovalAt.label': string;
+    'intent.changeOrderCatalogue.cmdUpdateChangeOrder.form.field.status.label': string;
+    'organism.changeOrderCatalogue.qryClientPicker.title': string;
+    'intent.changeOrderCatalogue.qryClientPicker.list.title': string;
+    'intent.changeOrderCatalogue.qryClientPicker.list.empty': string;
+    'intent.changeOrderCatalogue.qryClientPicker.list.column.clientId.label': string;
+    'intent.changeOrderCatalogue.qryClientPicker.list.column.clientName.label': string;
+    'intent.changeOrderCatalogue.qryClientPicker.list.column.contactEmail.label': string;
+    'intent.changeOrderCatalogue.qryClientPicker.list.column.contactPhone.label': string;
+    'organism.changeOrderCatalogue.qryProjectPicker.title': string;
+    'intent.changeOrderCatalogue.qryProjectPicker.list.title': string;
+    'intent.changeOrderCatalogue.qryProjectPicker.list.empty': string;
+    'intent.changeOrderCatalogue.qryProjectPicker.list.column.projectId.label': string;
+    'intent.changeOrderCatalogue.qryProjectPicker.list.column.clientId.label': string;
+    'intent.changeOrderCatalogue.qryProjectPicker.list.column.name.label': string;
+    'intent.changeOrderCatalogue.qryProjectPicker.list.column.address.label': string;
+    'intent.changeOrderCatalogue.qryProjectPicker.list.column.status.label': string;
+    'intent.changeOrderCatalogue.qryProjectPicker.list.column.authorizedBudget.label': string;
+    'intent.changeOrderCatalogue.qryProjectPicker.list.column.plannedStartDate.label': string;
+    'intent.changeOrderCatalogue.qryProjectPicker.list.column.plannedEndDate.label': string;
+    'action.cmdCreateChangeOrder.success': string;
+    'action.cmdCreateChangeOrder.error': string;
+    'action.cmdUpdateChangeOrder.success': string;
+    'action.cmdUpdateChangeOrder.error': string;
+    'action.cmdDeleteChangeOrder.success': string;
+    'action.cmdDeleteChangeOrder.error': string;
+    'section.changeOrderCatalogue.changeOrderWorkspace.title': string;
+    'section.changeOrderCatalogue.changeOrderCreation.title': string;
+    'section.changeOrderCatalogue.changeOrderRegistration.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmChangeOrderCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListChangeOrderState — actionStatus, values: idle|loading|success|error */
+    qryListChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListChangeOrderData — queryResult, outputShape: array */
+    qryListChangeOrderData: QryListChangeOrderOutput[];
+    /** state cmdCreateChangeOrderState — actionStatus, values: idle|loading|success|error */
+    cmdCreateChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateChangeOrderClientClientId — input */
+    cmdCreateChangeOrderClientClientId: string;
+    /** state cmdCreateChangeOrderProjectProjectId — input */
+    cmdCreateChangeOrderProjectProjectId: string;
+    /** state cmdCreateChangeOrderDescription — input */
+    cmdCreateChangeOrderDescription: string;
+    /** state cmdCreateChangeOrderScopeImpact — input */
+    cmdCreateChangeOrderScopeImpact: string;
+    /** state cmdCreateChangeOrderScheduleImpact — input */
+    cmdCreateChangeOrderScheduleImpact: string;
+    /** state cmdCreateChangeOrderChangeAmount — input */
+    cmdCreateChangeOrderChangeAmount: string;
+    /** state cmdCreateChangeOrderOutput — commandOutput */
+    cmdCreateChangeOrderOutput: CmdCreateChangeOrderOutput | null;
+    /** state cmdCreateChangeOrderError — actionError */
+    cmdCreateChangeOrderError: string;
+    /** state cmdUpdateChangeOrderState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateChangeOrderChangeOrderId — input */
+    cmdUpdateChangeOrderChangeOrderId: string;
+    /** state cmdUpdateChangeOrderClientRef — input */
+    cmdUpdateChangeOrderClientRef: string;
+    /** state cmdUpdateChangeOrderProjectRef — input */
+    cmdUpdateChangeOrderProjectRef: string;
+    /** state cmdUpdateChangeOrderDescription — input */
+    cmdUpdateChangeOrderDescription: string;
+    /** state cmdUpdateChangeOrderScopeImpact — input */
+    cmdUpdateChangeOrderScopeImpact: string;
+    /** state cmdUpdateChangeOrderScheduleImpact — input */
+    cmdUpdateChangeOrderScheduleImpact: string;
+    /** state cmdUpdateChangeOrderChangeAmount — input */
+    cmdUpdateChangeOrderChangeAmount: string;
+    /** state cmdUpdateChangeOrderSubmittedAt — input */
+    cmdUpdateChangeOrderSubmittedAt: string;
+    /** state cmdUpdateChangeOrderForwardedForClientApprovalAt — input */
+    cmdUpdateChangeOrderForwardedForClientApprovalAt: string;
+    /** state cmdUpdateChangeOrderStatus — input */
+    cmdUpdateChangeOrderStatus: string;
+    /** state cmdUpdateChangeOrderOutput — commandOutput */
+    cmdUpdateChangeOrderOutput: CmdUpdateChangeOrderOutput | null;
+    /** state cmdUpdateChangeOrderError — actionError */
+    cmdUpdateChangeOrderError: string;
+    /** state cmdDeleteChangeOrderState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteChangeOrderChangeOrderId — input */
+    cmdDeleteChangeOrderChangeOrderId: string;
+    /** state cmdDeleteChangeOrderOutput — commandOutput */
+    cmdDeleteChangeOrderOutput: CmdDeleteChangeOrderOutput | null;
+    /** state cmdDeleteChangeOrderError — actionError */
+    cmdDeleteChangeOrderError: string;
+    /** state qryClientPickerState — actionStatus, values: idle|loading|success|error */
+    qryClientPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryClientPickerData — queryResult, outputShape: array */
+    qryClientPickerData: QryClientPickerOutput[];
+    /** state qryProjectPickerState — actionStatus, values: idle|loading|success|error */
+    qryProjectPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectPickerData — queryResult, outputShape: array */
+    qryProjectPickerData: QryProjectPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryListChangeOrder (query) — route buildFlowFsm.changeOrderCatalogue.qryListChangeOrder; inputs: (none); writes ui.changeOrderCatalogue.data.qryListChangeOrder; status ui.changeOrderCatalogue.action.qryListChangeOrder.status */
+    loadQryListChangeOrder(): Promise<void>;
+    /** handler for action qryListChangeOrder — bind UI events here */
+    handleQryListChangeOrderClick(event?: Event): void;
+    /** action cmdCreateChangeOrder (command) — route buildFlowFsm.changeOrderCatalogue.cmdCreateChangeOrder; inputs: clientClientId, projectProjectId, description, scopeImpact, scheduleImpact, changeAmount; writes ui.changeOrderCatalogue.output.cmdCreateChangeOrder; status ui.changeOrderCatalogue.action.cmdCreateChangeOrder.status; feedback keys action.cmdCreateChangeOrder.success / action.cmdCreateChangeOrder.error */
+    cmdCreateChangeOrder(): Promise<void>;
+    /** handler for action cmdCreateChangeOrder — bind UI events here */
+    handleCmdCreateChangeOrderClick(event?: Event): void;
+    /** action cmdUpdateChangeOrder (command) — route buildFlowFsm.changeOrderCatalogue.cmdUpdateChangeOrder; inputs: changeOrderId, clientRef, projectRef, description, scopeImpact, scheduleImpact, changeAmount, submittedAt, forwardedForClientApprovalAt, status; writes ui.changeOrderCatalogue.output.cmdUpdateChangeOrder; status ui.changeOrderCatalogue.action.cmdUpdateChangeOrder.status; feedback keys action.cmdUpdateChangeOrder.success / action.cmdUpdateChangeOrder.error */
+    cmdUpdateChangeOrder(): Promise<void>;
+    /** handler for action cmdUpdateChangeOrder — bind UI events here */
+    handleCmdUpdateChangeOrderClick(event?: Event): void;
+    /** action cmdDeleteChangeOrder (command) — route buildFlowFsm.changeOrderCatalogue.cmdDeleteChangeOrder; inputs: changeOrderId; writes ui.changeOrderCatalogue.output.cmdDeleteChangeOrder; status ui.changeOrderCatalogue.action.cmdDeleteChangeOrder.status; feedback keys action.cmdDeleteChangeOrder.success / action.cmdDeleteChangeOrder.error */
+    cmdDeleteChangeOrder(): Promise<void>;
+    /** handler for action cmdDeleteChangeOrder — bind UI events here */
+    handleCmdDeleteChangeOrderClick(event?: Event): void;
+    /** action qryClientPicker (query) — route buildFlowFsm.changeOrderCatalogue.qryClientPicker; inputs: (none); writes ui.changeOrderCatalogue.data.qryClientPicker; status ui.changeOrderCatalogue.action.qryClientPicker.status */
+    loadQryClientPicker(): Promise<void>;
+    /** handler for action qryClientPicker — bind UI events here */
+    handleQryClientPickerClick(event?: Event): void;
+    /** action qryProjectPicker (query) — route buildFlowFsm.changeOrderCatalogue.qryProjectPicker; inputs: (none); writes ui.changeOrderCatalogue.data.qryProjectPicker; status ui.changeOrderCatalogue.action.qryProjectPicker.status */
+    loadQryProjectPicker(): Promise<void>;
+    /** handler for action qryProjectPicker — bind UI events here */
+    handleQryProjectPickerClick(event?: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdCreateChangeOrder.clientClientId */
+    setCmdCreateChangeOrderClientClientId(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderClientClientId — bind UI events here */
+    handleCmdCreateChangeOrderClientClientIdChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdCreateChangeOrder.projectProjectId */
+    setCmdCreateChangeOrderProjectProjectId(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderProjectProjectId — bind UI events here */
+    handleCmdCreateChangeOrderProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdCreateChangeOrder.description */
+    setCmdCreateChangeOrderDescription(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderDescription — bind UI events here */
+    handleCmdCreateChangeOrderDescriptionChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdCreateChangeOrder.scopeImpact */
+    setCmdCreateChangeOrderScopeImpact(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderScopeImpact — bind UI events here */
+    handleCmdCreateChangeOrderScopeImpactChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdCreateChangeOrder.scheduleImpact */
+    setCmdCreateChangeOrderScheduleImpact(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderScheduleImpact — bind UI events here */
+    handleCmdCreateChangeOrderScheduleImpactChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdCreateChangeOrder.changeAmount */
+    setCmdCreateChangeOrderChangeAmount(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderChangeAmount — bind UI events here */
+    handleCmdCreateChangeOrderChangeAmountChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdUpdateChangeOrder.changeOrderId */
+    setCmdUpdateChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderChangeOrderId — bind UI events here */
+    handleCmdUpdateChangeOrderChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdUpdateChangeOrder.clientRef */
+    setCmdUpdateChangeOrderClientRef(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderClientRef — bind UI events here */
+    handleCmdUpdateChangeOrderClientRefChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdUpdateChangeOrder.projectRef */
+    setCmdUpdateChangeOrderProjectRef(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderProjectRef — bind UI events here */
+    handleCmdUpdateChangeOrderProjectRefChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdUpdateChangeOrder.description */
+    setCmdUpdateChangeOrderDescription(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderDescription — bind UI events here */
+    handleCmdUpdateChangeOrderDescriptionChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdUpdateChangeOrder.scopeImpact */
+    setCmdUpdateChangeOrderScopeImpact(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderScopeImpact — bind UI events here */
+    handleCmdUpdateChangeOrderScopeImpactChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdUpdateChangeOrder.scheduleImpact */
+    setCmdUpdateChangeOrderScheduleImpact(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderScheduleImpact — bind UI events here */
+    handleCmdUpdateChangeOrderScheduleImpactChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdUpdateChangeOrder.changeAmount */
+    setCmdUpdateChangeOrderChangeAmount(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderChangeAmount — bind UI events here */
+    handleCmdUpdateChangeOrderChangeAmountChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdUpdateChangeOrder.submittedAt */
+    setCmdUpdateChangeOrderSubmittedAt(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderSubmittedAt — bind UI events here */
+    handleCmdUpdateChangeOrderSubmittedAtChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdUpdateChangeOrder.forwardedForClientApprovalAt */
+    setCmdUpdateChangeOrderForwardedForClientApprovalAt(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderForwardedForClientApprovalAt — bind UI events here */
+    handleCmdUpdateChangeOrderForwardedForClientApprovalAtChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdUpdateChangeOrder.status */
+    setCmdUpdateChangeOrderStatus(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderStatus — bind UI events here */
+    handleCmdUpdateChangeOrderStatusChange(event: Event): void;
+    /** setter for state ui.changeOrderCatalogue.input.cmdDeleteChangeOrder.changeOrderId */
+    setCmdDeleteChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.cmdDeleteChangeOrderChangeOrderId — bind UI events here */
+    handleCmdDeleteChangeOrderChangeOrderIdChange(event: Event): void;
+}

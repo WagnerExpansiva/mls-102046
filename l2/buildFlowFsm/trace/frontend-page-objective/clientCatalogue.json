@@ -1,0 +1,51 @@
+{
+  "savedAt": "2026-08-18T14:51:10.090Z",
+  "pageId": "clientCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Pessoa responsável pelo cadastro e manutenção de clientes.",
+    "jobToBeDone": "Localizar rapidamente um cliente e, no mesmo espaço de trabalho, corrigir, excluir ou cadastrar seus dados.",
+    "primaryDecision": "Decidir qual cliente selecionar para editar ou excluir, ou iniciar o cadastro de um novo cliente.",
+    "decisiveInfo": [
+      "clientName",
+      "contactEmail",
+      "contactPhone",
+      "clientId"
+    ],
+    "usageFrequency": "Ocasional e recorrente em rotinas administrativas de cadastro.",
+    "informationHierarchy": [
+      "Lista pesquisável e escaneável de clientes",
+      "Dados do cliente selecionado",
+      "Ações contextuais de atualizar e excluir",
+      "Ação e campos mínimos para criar um novo cliente",
+      "Feedback de sucesso ou erro das operações"
+    ],
+    "successCriteria": "O usuário encontra um registro sem esforço, reconhece o contexto selecionado, edita ou exclui com segurança e consegue criar um novo cliente com poucos passos.",
+    "antiPatterns": [
+      "id digitado manualmente",
+      "formulário separado para exclusão",
+      "expor clientId como campo editável",
+      "status como campo selecionável",
+      "duplicar a lista em várias seções",
+      "exclusão sem confirmação"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar cliente para obter contexto de edição ou exclusão",
+        "presentation": "master-detail"
+      },
+      {
+        "action": "Atualizar dados do cliente selecionado",
+        "presentation": "contextual-transition-actions"
+      },
+      {
+        "action": "Excluir cliente selecionado",
+        "presentation": "inline-row-command com confirmação destrutiva"
+      },
+      {
+        "action": "Criar novo cliente",
+        "presentation": "primary-button abrindo formulário contextual"
+      }
+    ]
+  }
+}

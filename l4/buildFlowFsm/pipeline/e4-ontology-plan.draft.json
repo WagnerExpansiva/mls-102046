@@ -1,0 +1,1457 @@
+{
+  "planId": "e4-ontology-plan",
+  "moduleName": "buildFlowFsm",
+  "userLanguage": "pt-BR",
+  "title": "Ontologia de negócios do BuildFlow FSM",
+  "reviewRound": 1,
+  "solutionMode": "new",
+  "businessDomain": "Operações de construção, reforma e serviços de campo nos Estados Unidos",
+  "entities": [
+    {
+      "entityId": "PlatformUser",
+      "title": "Usuário da plataforma",
+      "description": "Referência externa ao usuário autenticado da plataforma, reutilizada para vincular identidades de trabalhadores, coordenadores, gestores e contatos de clientes sem duplicar o cadastro de usuários.",
+      "kind": "core",
+      "ownership": "external",
+      "sourceRefs": {
+        "journeyIds": [],
+        "featureIds": [
+          "fieldTaskCoordination",
+          "dailyFieldLogging",
+          "changeOrderControl",
+          "aiStatusReporting",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldwork",
+          "buildflowfsm:fieldlogs",
+          "buildflowfsm:changemanage",
+          "buildflowfsm:statuspublish",
+          "buildflowfsm:clientapproval",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "external",
+        "scope": "platform",
+        "notes": "A autenticação, os usuários, as funções e o contexto organizacional são fornecidos pela plataforma."
+      }
+    },
+    {
+      "entityId": "Client",
+      "title": "Cliente",
+      "description": "Cadastro organizacional reutilizável do cliente responsável por uma ou mais obras e pelo respectivo relacionamento de faturamento e comunicação.",
+      "kind": "mdm",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "submitChangeOrder",
+          "issueProjectInvoice",
+          "consultClientProjectUpdates",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "changeOrderControl",
+          "clientBilling",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldchange",
+          "buildflowfsm:billing",
+          "buildflowfsm:changemanage",
+          "buildflowfsm:clientapproval",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "mdm",
+        "scope": "organization",
+        "idField": "clientId",
+        "mdmType": "buildFlowFsm.Client",
+        "notes": "Cadastro mestre de cliente compartilhado por projetos, ordens de mudança, faturas e resumos."
+      }
+    },
+    {
+      "entityId": "ClientPortalAccess",
+      "title": "Vínculo de acesso do cliente",
+      "description": "Associação durável entre um cliente e um usuário externo da plataforma, usada para comprovar quais obras e comunicações publicadas pertencem ao cliente autenticado.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "approveChangeOrder",
+          "consultClientProjectUpdates",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "changeOrderControl",
+          "clientBilling",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:clientapproval",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "lifecycleStates": [
+        "active",
+        "revoked"
+      ],
+      "statusEnum": [
+        "active",
+        "revoked"
+      ],
+      "initialState": "active",
+      "terminalStates": [
+        "revoked"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "activeClientPortalAccess",
+          "description": "O vínculo concede associação de cliente enquanto estiver ativo.",
+          "stateIds": [
+            "active"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "clientPortalAccessId",
+        "notes": "Registro operacional de associação externa; não recria autenticação nem usuários da plataforma."
+      }
+    },
+    {
+      "entityId": "FieldWorker",
+      "title": "Trabalhador de campo",
+      "description": "Referência externa ao membro da organização elegível para receber tarefas e registrar os próprios apontamentos de execução.",
+      "kind": "core",
+      "ownership": "external",
+      "sourceRefs": {
+        "journeyIds": [
+          "assignWorkTask",
+          "updateWorkTaskProgress",
+          "recordWorkTime"
+        ],
+        "featureIds": [
+          "fieldTaskCoordination",
+          "dailyFieldLogging"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldwork",
+          "buildflowfsm:fieldlogs"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "external",
+        "scope": "platform",
+        "notes": "Representa um usuário organizacional da plataforma qualificado para trabalho de campo, sem manter um cadastro de pessoal paralelo."
+      }
+    },
+    {
+      "entityId": "FieldCoordinator",
+      "title": "Coordenador de campo",
+      "description": "Referência externa ao membro da organização que recebe obras para acompanhamento, planeja tarefas e trata os apontamentos de campo.",
+      "kind": "core",
+      "ownership": "external",
+      "sourceRefs": {
+        "journeyIds": [
+          "reviewProjectPortfolio",
+          "assignWorkTask",
+          "updateWorkTaskProgress",
+          "recordWorkTime",
+          "recordProjectMaterialUsage",
+          "submitChangeOrder",
+          "declineChangeOrder",
+          "monitorDailyProjectRecords"
+        ],
+        "featureIds": [
+          "projectPortfolioMonitoring",
+          "fieldTaskCoordination",
+          "dailyFieldLogging",
+          "projectMaterialTracking",
+          "changeOrderControl"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:portfolio",
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldchange"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "external",
+        "scope": "platform",
+        "notes": "Representa um usuário organizacional da plataforma que exerce a função de coordenação de campo."
+      }
+    },
+    {
+      "entityId": "Project",
+      "title": "Obra",
+      "description": "Registro mestre da obra que concentra cliente, endereço, orçamento autorizado, datas planejadas e contexto de custo, execução, cronograma, alteração e faturamento.",
+      "kind": "mdm",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "reviewProjectPortfolio",
+          "assignWorkTask",
+          "recordProjectMaterialUsage",
+          "submitChangeOrder",
+          "issueProjectInvoice",
+          "generateAndPublishProjectStatusReport",
+          "consultClientProjectUpdates",
+          "monitorDailyProjectRecords",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "projectPortfolioMonitoring",
+          "projectScheduleVisibility",
+          "fieldTaskCoordination",
+          "projectMaterialTracking",
+          "jobCostTracking",
+          "changeOrderControl",
+          "clientBilling",
+          "aiStatusReporting",
+          "clientCommunication",
+          "dailyFieldLogging"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:portfolio",
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldchange",
+          "buildflowfsm:fieldlogs",
+          "buildflowfsm:changemanage",
+          "buildflowfsm:statuspublish",
+          "buildflowfsm:billing",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "lifecycleStates": [
+        "planned",
+        "active",
+        "completed",
+        "cancelled"
+      ],
+      "statusEnum": [
+        "planned",
+        "active",
+        "completed",
+        "cancelled"
+      ],
+      "initialState": "planned",
+      "terminalStates": [
+        "completed",
+        "cancelled"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "activeProject",
+          "description": "Uma obra aceita novas tarefas e consumos de material somente enquanto estiver em execução ativa.",
+          "stateIds": [
+            "active"
+          ],
+          "source": "journey"
+        },
+        {
+          "predicateId": "ongoingProject",
+          "description": "Uma obra integra o acompanhamento operacional enquanto estiver planejada ou ativa.",
+          "stateIds": [
+            "planned",
+            "active"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "storage": {
+        "target": "mdm",
+        "scope": "organization",
+        "idField": "projectId",
+        "mdmType": "buildFlowFsm.Project",
+        "notes": "Cadastro mestre organizacional da obra, reutilizado pelos registros transacionais e pelas projeções de acompanhamento."
+      }
+    },
+    {
+      "entityId": "ProjectCoordinationAssignment",
+      "title": "Atribuição de coordenação da obra",
+      "description": "Registro operacional que formaliza o encaminhamento de uma obra a um coordenador de campo e sustenta o escopo de obras acompanhadas pelo coordenador.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "reviewProjectPortfolio",
+          "assignWorkTask",
+          "monitorDailyProjectRecords",
+          "submitChangeOrder",
+          "declineChangeOrder"
+        ],
+        "featureIds": [
+          "projectPortfolioMonitoring",
+          "fieldTaskCoordination",
+          "dailyFieldLogging",
+          "projectMaterialTracking",
+          "changeOrderControl"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:portfolio",
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldchange"
+        ]
+      },
+      "lifecycleStates": [
+        "active",
+        "closed",
+        "revoked"
+      ],
+      "statusEnum": [
+        "active",
+        "closed",
+        "revoked"
+      ],
+      "initialState": "active",
+      "terminalStates": [
+        "closed",
+        "revoked"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "activeProjectCoordination",
+          "description": "A atribuição autoriza o coordenador a acompanhar e coordenar a obra enquanto estiver ativa.",
+          "stateIds": [
+            "active"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "projectCoordinationAssignmentId",
+        "notes": "O encaminhamento é um fato operacional auditável e não altera o cadastro mestre da obra."
+      }
+    },
+    {
+      "entityId": "InventoryItem",
+      "title": "Item de estoque",
+      "description": "Catálogo mestre de material identificável e consumível em obras, com unidade de uso e referência de custo para os apontamentos.",
+      "kind": "mdm",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "recordProjectMaterialUsage"
+        ],
+        "featureIds": [
+          "projectMaterialTracking",
+          "jobCostTracking"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldlogs"
+        ]
+      },
+      "lifecycleStates": [
+        "active",
+        "retired"
+      ],
+      "statusEnum": [
+        "active",
+        "retired"
+      ],
+      "initialState": "active",
+      "terminalStates": [
+        "retired"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "selectableInventoryItem",
+          "description": "Um item pode ser selecionado para consumo quando estiver ativo.",
+          "stateIds": [
+            "active"
+          ],
+          "source": "journey"
+        }
+      ],
+      "storage": {
+        "target": "mdm",
+        "scope": "organization",
+        "idField": "inventoryItemId",
+        "mdmType": "buildFlowFsm.InventoryItem",
+        "notes": "Catálogo mestre de materiais; saldos e histórico de consumo permanecem em registros operacionais."
+      }
+    },
+    {
+      "entityId": "InventoryBalance",
+      "title": "Saldo de estoque",
+      "description": "Posição operacional atual de disponibilidade de um item de estoque para consumo, incluindo o saldo físico e o custo aplicável ao apontamento.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "recordProjectMaterialUsage"
+        ],
+        "featureIds": [
+          "projectMaterialTracking",
+          "jobCostTracking"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldlogs"
+        ]
+      },
+      "lifecycleStates": [
+        "available",
+        "depleted",
+        "retired"
+      ],
+      "statusEnum": [
+        "available",
+        "depleted",
+        "retired"
+      ],
+      "initialState": "available",
+      "terminalStates": [
+        "retired"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "availableInventoryBalance",
+          "description": "Um saldo pode atender consumo quando estiver disponível; a quantidade física positiva é verificada no detalhamento do registro.",
+          "stateIds": [
+            "available"
+          ],
+          "source": "journey"
+        }
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "inventoryBalanceId",
+        "notes": "Saldo operacional separado do catálogo MDM para não armazenar balanços ou histórico transacional em dados mestres."
+      }
+    },
+    {
+      "entityId": "WorkTask",
+      "title": "Tarefa de trabalho",
+      "description": "Unidade planejada de execução vinculada a uma obra, com responsável de campo, descrição, prazo, andamento e informações necessárias para o cronograma e a análise de risco.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "assignWorkTask",
+          "updateWorkTaskProgress",
+          "recordWorkTime",
+          "generateAndPublishProjectStatusReport",
+          "monitorDailyProjectRecords"
+        ],
+        "featureIds": [
+          "projectScheduleVisibility",
+          "fieldTaskCoordination",
+          "dailyFieldLogging",
+          "jobCostTracking",
+          "aiStatusReporting"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldwork",
+          "buildflowfsm:fieldlogs",
+          "buildflowfsm:statuspublish"
+        ]
+      },
+      "lifecycleStates": [
+        "planned",
+        "inProgress",
+        "completed",
+        "cancelled"
+      ],
+      "statusEnum": [
+        "planned",
+        "inProgress",
+        "completed",
+        "cancelled"
+      ],
+      "initialState": "planned",
+      "terminalStates": [
+        "completed",
+        "cancelled"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "unfinishedWorkTask",
+          "description": "Uma tarefa permanece pendente para fins de cronograma e risco enquanto estiver planejada ou em execução.",
+          "stateIds": [
+            "planned",
+            "inProgress"
+          ],
+          "source": "inferred"
+        },
+        {
+          "predicateId": "activeWorkTask",
+          "description": "Uma tarefa pode receber apontamentos de horas enquanto estiver planejada ou em execução.",
+          "stateIds": [
+            "planned",
+            "inProgress"
+          ],
+          "source": "journey"
+        }
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "workTaskId",
+        "notes": "Registro operacional de planejamento e execução; seus custos realizados são formados por apontamentos associados."
+      }
+    },
+    {
+      "entityId": "TimeLog",
+      "title": "Registro de horas",
+      "description": "Apontamento diário de horas de um trabalhador contra uma tarefa, preservando a base de custo de mão de obra aplicável para compor o realizado da obra.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "recordWorkTime",
+          "generateAndPublishProjectStatusReport",
+          "monitorDailyProjectRecords"
+        ],
+        "featureIds": [
+          "dailyFieldLogging",
+          "jobCostTracking",
+          "aiStatusReporting"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldlogs",
+          "buildflowfsm:statuspublish"
+        ]
+      },
+      "lifecycleStates": [
+        "recorded",
+        "voided"
+      ],
+      "statusEnum": [
+        "recorded",
+        "voided"
+      ],
+      "initialState": "recorded",
+      "terminalStates": [
+        "voided"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "costEligibleTimeLog",
+          "description": "Somente apontamentos registrados compõem o custo realizado e os indicadores de execução.",
+          "stateIds": [
+            "recorded"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "timeLogId",
+        "notes": "Fato transacional de execução; mantém a atribuição ao trabalhador e à tarefa e a base de custo histórica necessária ao custeio."
+      }
+    },
+    {
+      "entityId": "MaterialUsage",
+      "title": "Consumo de material",
+      "description": "Apontamento de material efetivamente consumido em uma obra, vinculado ao item e ao saldo de estoque que suporta disponibilidade e custo realizado.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "recordProjectMaterialUsage",
+          "generateAndPublishProjectStatusReport",
+          "monitorDailyProjectRecords"
+        ],
+        "featureIds": [
+          "projectMaterialTracking",
+          "jobCostTracking",
+          "aiStatusReporting"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldlogs",
+          "buildflowfsm:statuspublish"
+        ]
+      },
+      "lifecycleStates": [
+        "recorded",
+        "voided"
+      ],
+      "statusEnum": [
+        "recorded",
+        "voided"
+      ],
+      "initialState": "recorded",
+      "terminalStates": [
+        "voided"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "costEligibleMaterialUsage",
+          "description": "Somente consumos registrados compõem o custo realizado e a execução consolidada da obra.",
+          "stateIds": [
+            "recorded"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "materialUsageId",
+        "notes": "Fato transacional de consumo que preserva quantidade, item, obra e base de custo usada no custeio."
+      }
+    },
+    {
+      "entityId": "ChangeOrder",
+      "title": "Ordem de mudança",
+      "description": "Proposta formal de alteração vinculada ao cliente e à obra, contendo impacto de escopo, prazo e valor para tratamento gerencial, aprovação do cliente, custeio e faturamento.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "submitChangeOrder",
+          "forwardChangeOrderForClientApproval",
+          "approveChangeOrder",
+          "declineChangeOrder",
+          "issueProjectInvoice",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "changeOrderControl",
+          "jobCostTracking",
+          "clientBilling",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldchange",
+          "buildflowfsm:changemanage",
+          "buildflowfsm:billing",
+          "buildflowfsm:clientapproval",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "lifecycleStates": [
+        "submitted",
+        "pendingClientApproval",
+        "approved",
+        "declined"
+      ],
+      "statusEnum": [
+        "submitted",
+        "pendingClientApproval",
+        "approved",
+        "declined"
+      ],
+      "initialState": "submitted",
+      "terminalStates": [
+        "approved",
+        "declined"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "managerActionableChangeOrder",
+          "description": "Uma ordem submetida pode ser encaminhada ao cliente ou recusada pelo gerente.",
+          "stateIds": [
+            "submitted"
+          ],
+          "source": "journey"
+        },
+        {
+          "predicateId": "clientApprovableChangeOrder",
+          "description": "Uma ordem pode ser decidida pelo cliente somente quando estiver pendente de sua aprovação.",
+          "stateIds": [
+            "pendingClientApproval"
+          ],
+          "source": "journey"
+        },
+        {
+          "predicateId": "approvedBillableChangeOrder",
+          "description": "Uma ordem integra custo autorizado e pode ser incluída no faturamento somente após aprovação.",
+          "stateIds": [
+            "approved"
+          ],
+          "source": "journey"
+        },
+        {
+          "predicateId": "clientVisibleApprovedChangeOrder",
+          "description": "A consulta do cliente mostra somente ordens de mudança aprovadas.",
+          "stateIds": [
+            "approved"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "changeOrderId",
+        "notes": "Registro transacional que mantém o ciclo de decisão comercial e os impactos autorizados da alteração."
+      }
+    },
+    {
+      "entityId": "ChangeOrderDecision",
+      "title": "Decisão sobre ordem de mudança",
+      "description": "Evidência durável de uma decisão de aprovação do cliente ou de recusa do gerente, incluindo o usuário responsável e o momento da decisão.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "approveChangeOrder",
+          "declineChangeOrder"
+        ],
+        "featureIds": [
+          "changeOrderControl",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:changemanage",
+          "buildflowfsm:clientapproval"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "changeOrderDecisionId",
+        "notes": "Preserva a autoria e a rastreabilidade da decisão sem depender apenas da mudança de estado da ordem."
+      }
+    },
+    {
+      "entityId": "Invoice",
+      "title": "Fatura",
+      "description": "Documento de faturamento emitido para um cliente e uma obra, com valor, referência comercial e disponibilidade controlada para consulta externa.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "issueProjectInvoice",
+          "consultClientProjectUpdates",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "clientBilling",
+          "changeOrderControl",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:billing",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "lifecycleStates": [
+        "issued",
+        "availableToClient",
+        "cancelled"
+      ],
+      "statusEnum": [
+        "issued",
+        "availableToClient",
+        "cancelled"
+      ],
+      "initialState": "issued",
+      "terminalStates": [
+        "cancelled"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "clientVisibleInvoice",
+          "description": "Uma fatura é exibida ao cliente somente depois de disponibilizada para ele.",
+          "stateIds": [
+            "availableToClient"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "invoiceId",
+        "notes": "Documento comercial transacional; pagamentos e contabilidade geral permanecem fora do escopo."
+      }
+    },
+    {
+      "entityId": "InvoiceChangeOrder",
+      "title": "Aplicação de ordem de mudança na fatura",
+      "description": "Vínculo durável que identifica cada ordem de mudança aprovada incorporada a uma fatura e o valor efetivamente faturado dessa alteração.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "issueProjectInvoice",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "clientBilling",
+          "changeOrderControl"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:billing",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "invoiceChangeOrderId",
+        "notes": "Associação transacional de faturamento que evita inferir, sem registro, quais alterações aprovadas foram incluídas em cada fatura."
+      }
+    },
+    {
+      "entityId": "StatusReport",
+      "title": "Relatório de status",
+      "description": "Comunicação profissional durável da situação da obra, gerada com apoio do proxy LLM a partir da execução e dos riscos, revisada e publicada pelo gerente antes de ser entregue ao cliente.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "generateAndPublishProjectStatusReport",
+          "consultClientProjectUpdates"
+        ],
+        "featureIds": [
+          "aiStatusReporting",
+          "clientCommunication",
+          "jobCostTracking"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:statuspublish",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "lifecycleStates": [
+        "draft",
+        "published",
+        "withdrawn"
+      ],
+      "statusEnum": [
+        "draft",
+        "published",
+        "withdrawn"
+      ],
+      "initialState": "draft",
+      "terminalStates": [
+        "withdrawn"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "clientVisibleStatusReport",
+          "description": "Um relatório é comunicável e consultável pelo cliente somente quando publicado.",
+          "stateIds": [
+            "published"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "statusReportId",
+        "notes": "O conteúdo publicado e sua autoria são registros do módulo; a geração de IA utiliza o proxy LLM fornecido pela plataforma."
+      }
+    },
+    {
+      "entityId": "ProjectDashboard",
+      "title": "Painel de portfólio de obras",
+      "description": "Projeção organizacional que consolida obras ativas, orçamento versus realizado, atenção de custo e tarefas próximas para monitoramento gerencial.",
+      "kind": "projection",
+      "ownership": "derived",
+      "sourceRefs": {
+        "journeyIds": [
+          "reviewProjectPortfolio"
+        ],
+        "featureIds": [
+          "projectPortfolioMonitoring",
+          "jobCostTracking",
+          "projectScheduleVisibility"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:portfolio"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "derived",
+        "scope": "none",
+        "notes": "Projeção calculada a partir de obras, tarefas, apontamentos, consumos e alterações; não possui persistência própria."
+      }
+    },
+    {
+      "entityId": "ProjectTimeline",
+      "title": "Cronograma da obra",
+      "description": "Projeção do sequenciamento das tarefas e prazos de uma obra para planejamento, atribuição e acompanhamento de campo.",
+      "kind": "projection",
+      "ownership": "derived",
+      "sourceRefs": {
+        "journeyIds": [
+          "assignWorkTask"
+        ],
+        "featureIds": [
+          "projectScheduleVisibility",
+          "fieldTaskCoordination"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "derived",
+        "scope": "none",
+        "notes": "Projeção derivada da obra e de suas tarefas, adequada para lista sequenciada ou visualização tipo Gantt."
+      }
+    },
+    {
+      "entityId": "ProjectExecutionOverview",
+      "title": "Visão consolidada de execução da obra",
+      "description": "Projeção por obra que reúne andamento de tarefas, próximos compromissos, horas, materiais, custos realizados e impactos de alterações para acompanhamento e comunicação.",
+      "kind": "projection",
+      "ownership": "derived",
+      "sourceRefs": {
+        "journeyIds": [
+          "reviewProjectPortfolio",
+          "generateAndPublishProjectStatusReport",
+          "monitorDailyProjectRecords"
+        ],
+        "featureIds": [
+          "projectPortfolioMonitoring",
+          "dailyFieldLogging",
+          "projectMaterialTracking",
+          "jobCostTracking",
+          "aiStatusReporting"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:portfolio",
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:statuspublish"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "derived",
+        "scope": "none",
+        "notes": "Projeção calculada de fatos operacionais da obra; não armazena saldos ou totais independentes."
+      }
+    },
+    {
+      "entityId": "ScheduleRiskAssessment",
+      "title": "Avaliação de risco de atraso",
+      "description": "Projeção que identifica tarefas não concluídas com risco de atraso e os indicadores que explicam o risco para a obra e o relatório de status.",
+      "kind": "projection",
+      "ownership": "derived",
+      "sourceRefs": {
+        "journeyIds": [
+          "generateAndPublishProjectStatusReport"
+        ],
+        "featureIds": [
+          "aiStatusReporting",
+          "projectScheduleVisibility"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:statuspublish"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "derived",
+        "scope": "none",
+        "notes": "Avaliação derivada de prazo, estado, andamento e contexto de execução das tarefas; não é uma tarefa nem um registro manual de campo."
+      }
+    },
+    {
+      "entityId": "ClientBillingSummary",
+      "title": "Resumo de faturamento do cliente",
+      "description": "Projeção comercial por cliente e obra que consolida alterações aprovadas, valores faturáveis, faturas emitidas e valores disponibilizados ao cliente.",
+      "kind": "projection",
+      "ownership": "derived",
+      "sourceRefs": {
+        "journeyIds": [
+          "issueProjectInvoice",
+          "consultClientProjectUpdates",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "clientBilling",
+          "changeOrderControl",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:billing",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "storage": {
+        "target": "derived",
+        "scope": "none",
+        "notes": "Projeção derivada de cliente, obra, ordens aprovadas, aplicações em fatura e faturas; respeita a visibilidade externa publicada."
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipId": "clientPortalAccessBelongsToClient",
+      "fromEntity": "ClientPortalAccess",
+      "toEntity": "Client",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada vínculo externo identifica o cliente ao qual o usuário autenticado está associado.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "clientPortalAccessMapsToPlatformUser",
+      "fromEntity": "ClientPortalAccess",
+      "toEntity": "PlatformUser",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada vínculo de cliente é associado a um usuário externo fornecido pela plataforma.",
+      "persistence": {
+        "mode": "externalReference"
+      }
+    },
+    {
+      "relationshipId": "fieldWorkerMapsToPlatformUser",
+      "fromEntity": "FieldWorker",
+      "toEntity": "PlatformUser",
+      "type": "oneToOne",
+      "required": true,
+      "description": "O trabalhador de campo é uma referência qualificada a um usuário da plataforma.",
+      "persistence": {
+        "mode": "externalReference"
+      }
+    },
+    {
+      "relationshipId": "fieldCoordinatorMapsToPlatformUser",
+      "fromEntity": "FieldCoordinator",
+      "toEntity": "PlatformUser",
+      "type": "oneToOne",
+      "required": true,
+      "description": "O coordenador de campo é uma referência qualificada a um usuário da plataforma.",
+      "persistence": {
+        "mode": "externalReference"
+      }
+    },
+    {
+      "relationshipId": "projectBelongsToClient",
+      "fromEntity": "Project",
+      "toEntity": "Client",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada obra pertence a um cliente cadastrado.",
+      "persistence": {
+        "mode": "mdmRelationship"
+      }
+    },
+    {
+      "relationshipId": "projectCoordinationAssignmentForProject",
+      "fromEntity": "ProjectCoordinationAssignment",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "O encaminhamento operacional sempre se refere a uma obra específica.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "projectCoordinationAssignmentAssignedToCoordinator",
+      "fromEntity": "ProjectCoordinationAssignment",
+      "toEntity": "FieldCoordinator",
+      "type": "manyToOne",
+      "required": true,
+      "description": "O encaminhamento torna um coordenador específico responsável pelo acompanhamento de campo.",
+      "persistence": {
+        "mode": "externalReference"
+      }
+    },
+    {
+      "relationshipId": "inventoryBalanceForInventoryItem",
+      "fromEntity": "InventoryBalance",
+      "toEntity": "InventoryItem",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada saldo operacional corresponde a um item do catálogo de materiais.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "workTaskBelongsToProject",
+      "fromEntity": "WorkTask",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada tarefa é planejada e executada no contexto de uma obra.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "workTaskAssignedToFieldWorker",
+      "fromEntity": "WorkTask",
+      "toEntity": "FieldWorker",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada tarefa registrada já possui um trabalhador responsável para execução e atualização.",
+      "persistence": {
+        "mode": "externalReference"
+      }
+    },
+    {
+      "relationshipId": "timeLogForWorkTask",
+      "fromEntity": "TimeLog",
+      "toEntity": "WorkTask",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada apontamento de horas é atribuído a uma tarefa, que disponibiliza o contexto da obra.",
+      "persistence": {
+        "mode": "moduleReference"
+      }
+    },
+    {
+      "relationshipId": "timeLogRecordedByFieldWorker",
+      "fromEntity": "TimeLog",
+      "toEntity": "FieldWorker",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada apontamento identifica o trabalhador que realizou as horas.",
+      "persistence": {
+        "mode": "externalReference"
+      }
+    },
+    {
+      "relationshipId": "materialUsageForProject",
+      "fromEntity": "MaterialUsage",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada consumo é registrado diretamente contra uma obra.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "materialUsageForInventoryItem",
+      "fromEntity": "MaterialUsage",
+      "toEntity": "InventoryItem",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada consumo identifica o item de material efetivamente utilizado.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "materialUsageDrawsFromInventoryBalance",
+      "fromEntity": "MaterialUsage",
+      "toEntity": "InventoryBalance",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada consumo é suportado por um saldo operacional disponível, preservando a rastreabilidade do estoque e do custo.",
+      "persistence": {
+        "mode": "moduleReference"
+      }
+    },
+    {
+      "relationshipId": "changeOrderForClient",
+      "fromEntity": "ChangeOrder",
+      "toEntity": "Client",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada ordem de mudança é proposta para um cliente específico.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "changeOrderForProject",
+      "fromEntity": "ChangeOrder",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada ordem de mudança está vinculada à obra do cliente selecionado.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "changeOrderDecisionForChangeOrder",
+      "fromEntity": "ChangeOrderDecision",
+      "toEntity": "ChangeOrder",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada decisão registrada trata uma ordem de mudança específica.",
+      "persistence": {
+        "mode": "moduleReference"
+      }
+    },
+    {
+      "relationshipId": "changeOrderDecisionMadeByPlatformUser",
+      "fromEntity": "ChangeOrderDecision",
+      "toEntity": "PlatformUser",
+      "type": "manyToOne",
+      "required": true,
+      "description": "A decisão mantém o usuário que a tomou para evidenciar aprovação do cliente ou recusa do gerente.",
+      "persistence": {
+        "mode": "externalReference"
+      }
+    },
+    {
+      "relationshipId": "invoiceForClient",
+      "fromEntity": "Invoice",
+      "toEntity": "Client",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada fatura é emitida para um cliente específico.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "invoiceForProject",
+      "fromEntity": "Invoice",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada fatura é emitida no contexto de uma obra do cliente.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "invoiceChangeOrderForInvoice",
+      "fromEntity": "InvoiceChangeOrder",
+      "toEntity": "Invoice",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada aplicação comercial pertence a uma fatura emitida.",
+      "persistence": {
+        "mode": "moduleReference"
+      }
+    },
+    {
+      "relationshipId": "invoiceChangeOrderForChangeOrder",
+      "fromEntity": "InvoiceChangeOrder",
+      "toEntity": "ChangeOrder",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada aplicação vincula uma ordem de mudança aprovada à fatura que a incorpora.",
+      "persistence": {
+        "mode": "moduleReference"
+      }
+    },
+    {
+      "relationshipId": "statusReportForProject",
+      "fromEntity": "StatusReport",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada relatório comunica o status de uma obra específica.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      }
+    },
+    {
+      "relationshipId": "projectDashboardIncludesProjects",
+      "fromEntity": "ProjectDashboard",
+      "toEntity": "Project",
+      "type": "manyToMany",
+      "required": false,
+      "description": "O painel de portfólio apresenta as obras que satisfazem seus filtros organizacionais.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "projectTimelineForProject",
+      "fromEntity": "ProjectTimeline",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada cronograma é apresentado no contexto de uma obra selecionada.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "projectTimelineIncludesWorkTasks",
+      "fromEntity": "ProjectTimeline",
+      "toEntity": "WorkTask",
+      "type": "manyToMany",
+      "required": false,
+      "description": "O cronograma organiza as tarefas da obra por sequência e prazo.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewForProject",
+      "fromEntity": "ProjectExecutionOverview",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "A visão consolidada é calculada para uma obra específica.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesWorkTasks",
+      "fromEntity": "ProjectExecutionOverview",
+      "toEntity": "WorkTask",
+      "type": "manyToMany",
+      "required": false,
+      "description": "A visão de execução consolida andamento e prazos das tarefas da obra.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesTimeLogs",
+      "fromEntity": "ProjectExecutionOverview",
+      "toEntity": "TimeLog",
+      "type": "manyToMany",
+      "required": false,
+      "description": "A visão de execução incorpora os apontamentos de horas que compõem custo e progresso.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesMaterialUsages",
+      "fromEntity": "ProjectExecutionOverview",
+      "toEntity": "MaterialUsage",
+      "type": "manyToMany",
+      "required": false,
+      "description": "A visão de execução incorpora os consumos de material da obra.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesChangeOrders",
+      "fromEntity": "ProjectExecutionOverview",
+      "toEntity": "ChangeOrder",
+      "type": "manyToMany",
+      "required": false,
+      "description": "A visão de execução considera impactos de ordens de mudança conforme seu estado.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "scheduleRiskAssessmentForProject",
+      "fromEntity": "ScheduleRiskAssessment",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada avaliação de risco é apresentada no contexto de uma obra.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "scheduleRiskAssessmentForWorkTask",
+      "fromEntity": "ScheduleRiskAssessment",
+      "toEntity": "WorkTask",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada avaliação identifica a tarefa não concluída à qual o risco se refere.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryForClient",
+      "fromEntity": "ClientBillingSummary",
+      "toEntity": "Client",
+      "type": "manyToOne",
+      "required": true,
+      "description": "O resumo de faturamento é calculado para o cliente selecionado.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryForProject",
+      "fromEntity": "ClientBillingSummary",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "O resumo de faturamento é segmentado pela obra faturável do cliente.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryIncludesInvoices",
+      "fromEntity": "ClientBillingSummary",
+      "toEntity": "Invoice",
+      "type": "manyToMany",
+      "required": false,
+      "description": "O resumo consolida faturas da obra e seus valores disponibilizados.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryIncludesChangeOrders",
+      "fromEntity": "ClientBillingSummary",
+      "toEntity": "ChangeOrder",
+      "type": "manyToMany",
+      "required": false,
+      "description": "O resumo consolida apenas ordens de mudança aprovadas e seus reflexos comerciais.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "statusReportBasedOnProjectExecutionOverview",
+      "fromEntity": "StatusReport",
+      "toEntity": "ProjectExecutionOverview",
+      "type": "manyToOne",
+      "required": true,
+      "description": "O relatório é gerado a partir da visão consolidada de execução da obra.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    },
+    {
+      "relationshipId": "statusReportCommunicatesScheduleRiskAssessment",
+      "fromEntity": "StatusReport",
+      "toEntity": "ScheduleRiskAssessment",
+      "type": "manyToMany",
+      "required": false,
+      "description": "O relatório pode comunicar avaliações de risco de atraso relevantes para o cliente.",
+      "persistence": {
+        "mode": "derivedJoin"
+      }
+    }
+  ],
+  "changeSummary": [
+    "Primeira versão completa da ontologia para uma solução nova, sem pressupostos de esquema ou persistência legados.",
+    "Separação definida entre cadastros mestres organizacionais, fatos operacionais transacionais, referências externas de usuários e projeções calculadas.",
+    "Foram formalizados vínculos duráveis para coordenação de obras, acesso de clientes, decisões sobre ordens de mudança e aplicação de alterações em faturas.",
+    "Predicados de ciclo de vida foram congelados para obra ativa, tarefa não concluída, disponibilidade de estoque, custos elegíveis, ordens aprovadas e conteúdo visível ao cliente.",
+    "As projeções de portfólio, cronograma, execução, risco de atraso e faturamento foram incluídas para suportar todas as jornadas, funcionalidades atuais e autoridades aprovadas."
+  ]
+}

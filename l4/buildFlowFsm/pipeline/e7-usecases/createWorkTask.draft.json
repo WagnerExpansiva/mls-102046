@@ -1,0 +1,30 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "createWorkTask",
+  "title": "Registrar a tarefa atribuída",
+  "kind": "command",
+  "compiledFrom": [
+    "assignWorkTask.createWorkTask"
+  ],
+  "description": "Registra uma nova tarefa de trabalho atribuída para a obra selecionada.",
+  "contexts": {
+    "requires": [
+      "selectedProject"
+    ],
+    "provides": [
+      "selectedWorkTask"
+    ]
+  },
+  "entityRefs": [
+    "FieldWorker",
+    "Project",
+    "WorkTask"
+  ],
+  "useRules": [
+    "workTaskRequiresActiveProject",
+    "workTaskRequiresAssigneeAndDueDate"
+  ],
+  "transitions": []
+}

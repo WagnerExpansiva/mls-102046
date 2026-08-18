@@ -1,0 +1,171 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListInvoiceChangeOrderOutput, CmdCreateInvoiceChangeOrderOutput, CmdUpdateInvoiceChangeOrderOutput, CmdDeleteInvoiceChangeOrderOutput, QryInvoicePickerOutput, QryChangeOrderPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/invoiceChangeOrderCatalogue.js';
+export type { QryListInvoiceChangeOrderInput, QryListInvoiceChangeOrderOutput, CmdCreateInvoiceChangeOrderInput, CmdCreateInvoiceChangeOrderOutput, CmdUpdateInvoiceChangeOrderInput, CmdUpdateInvoiceChangeOrderOutput, CmdDeleteInvoiceChangeOrderInput, CmdDeleteInvoiceChangeOrderOutput, QryInvoicePickerInput, QryInvoicePickerOutput, QryChangeOrderPickerInput, QryChangeOrderPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/invoiceChangeOrderCatalogue.js';
+declare const message_pt: {
+    'section.invoiceChangeOrderCatalogue.recordList.title': string;
+    'organism.invoiceChangeOrderCatalogue.qryListInvoiceChangeOrder.title': string;
+    'intent.invoiceChangeOrderCatalogue.qryListInvoiceChangeOrder.list.title': string;
+    'intent.invoiceChangeOrderCatalogue.qryListInvoiceChangeOrder.list.empty': string;
+    'intent.invoiceChangeOrderCatalogue.qryListInvoiceChangeOrder.list.column.invoiceChangeOrderId.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryListInvoiceChangeOrder.list.column.invoiceId.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryListInvoiceChangeOrder.list.column.changeOrderId.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryListInvoiceChangeOrder.list.column.billedAmount.label': string;
+    'organism.invoiceChangeOrderCatalogue.cmdDeleteInvoiceChangeOrder.title': string;
+    'intent.invoiceChangeOrderCatalogue.cmdDeleteInvoiceChangeOrder.form.title': string;
+    'intent.invoiceChangeOrderCatalogue.cmdDeleteInvoiceChangeOrder.form.action.cmdDeleteInvoiceChangeOrder': string;
+    'section.invoiceChangeOrderCatalogue.recordForm.title': string;
+    'organism.invoiceChangeOrderCatalogue.qryInvoicePicker.title': string;
+    'intent.invoiceChangeOrderCatalogue.qryInvoicePicker.list.title': string;
+    'intent.invoiceChangeOrderCatalogue.qryInvoicePicker.list.empty': string;
+    'intent.invoiceChangeOrderCatalogue.qryInvoicePicker.list.column.invoiceId.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryInvoicePicker.list.column.clientId.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryInvoicePicker.list.column.projectId.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryInvoicePicker.list.column.commercialReference.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryInvoicePicker.list.column.amount.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryInvoicePicker.list.column.status.label': string;
+    'organism.invoiceChangeOrderCatalogue.qryChangeOrderPicker.title': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.title': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.empty': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.column.changeOrderId.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.column.clientRef.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.column.projectRef.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.column.description.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.column.scopeImpact.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.column.scheduleImpact.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.column.changeAmount.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.column.submittedAt.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.column.forwardedForClientApprovalAt.label': string;
+    'intent.invoiceChangeOrderCatalogue.qryChangeOrderPicker.list.column.status.label': string;
+    'organism.invoiceChangeOrderCatalogue.cmdCreateInvoiceChangeOrder.title': string;
+    'intent.invoiceChangeOrderCatalogue.cmdCreateInvoiceChangeOrder.form.title': string;
+    'intent.invoiceChangeOrderCatalogue.cmdCreateInvoiceChangeOrder.form.action.cmdCreateInvoiceChangeOrder': string;
+    'intent.invoiceChangeOrderCatalogue.cmdCreateInvoiceChangeOrder.form.field.billedAmount.label': string;
+    'organism.invoiceChangeOrderCatalogue.cmdUpdateInvoiceChangeOrder.title': string;
+    'intent.invoiceChangeOrderCatalogue.cmdUpdateInvoiceChangeOrder.form.title': string;
+    'intent.invoiceChangeOrderCatalogue.cmdUpdateInvoiceChangeOrder.form.action.cmdUpdateInvoiceChangeOrder': string;
+    'intent.invoiceChangeOrderCatalogue.cmdUpdateInvoiceChangeOrder.form.field.billedAmount.label': string;
+    'action.cmdCreateInvoiceChangeOrder.success': string;
+    'action.cmdCreateInvoiceChangeOrder.error': string;
+    'action.cmdUpdateInvoiceChangeOrder.success': string;
+    'action.cmdUpdateInvoiceChangeOrder.error': string;
+    'action.cmdDeleteInvoiceChangeOrder.success': string;
+    'action.cmdDeleteInvoiceChangeOrder.error': string;
+    'section.invoiceChangeOrderCatalogue.recordWorkbench.title': string;
+    'section.invoiceChangeOrderCatalogue.newAssociation.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmInvoiceChangeOrderCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListInvoiceChangeOrderState — actionStatus, values: idle|loading|success|error */
+    qryListInvoiceChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListInvoiceChangeOrderData — queryResult, outputShape: array */
+    qryListInvoiceChangeOrderData: QryListInvoiceChangeOrderOutput[];
+    /** state cmdCreateInvoiceChangeOrderState — actionStatus, values: idle|loading|success|error */
+    cmdCreateInvoiceChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateInvoiceChangeOrderInvoiceId — input */
+    cmdCreateInvoiceChangeOrderInvoiceId: string;
+    /** state cmdCreateInvoiceChangeOrderChangeOrderId — input */
+    cmdCreateInvoiceChangeOrderChangeOrderId: string;
+    /** state cmdCreateInvoiceChangeOrderBilledAmount — input */
+    cmdCreateInvoiceChangeOrderBilledAmount: string;
+    /** state cmdCreateInvoiceChangeOrderOutput — commandOutput */
+    cmdCreateInvoiceChangeOrderOutput: CmdCreateInvoiceChangeOrderOutput | null;
+    /** state cmdCreateInvoiceChangeOrderError — actionError */
+    cmdCreateInvoiceChangeOrderError: string;
+    /** state cmdUpdateInvoiceChangeOrderState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateInvoiceChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateInvoiceChangeOrderInvoiceChangeOrderId — input */
+    cmdUpdateInvoiceChangeOrderInvoiceChangeOrderId: string;
+    /** state cmdUpdateInvoiceChangeOrderInvoiceId — input */
+    cmdUpdateInvoiceChangeOrderInvoiceId: string;
+    /** state cmdUpdateInvoiceChangeOrderChangeOrderId — input */
+    cmdUpdateInvoiceChangeOrderChangeOrderId: string;
+    /** state cmdUpdateInvoiceChangeOrderBilledAmount — input */
+    cmdUpdateInvoiceChangeOrderBilledAmount: string;
+    /** state cmdUpdateInvoiceChangeOrderOutput — commandOutput */
+    cmdUpdateInvoiceChangeOrderOutput: CmdUpdateInvoiceChangeOrderOutput | null;
+    /** state cmdUpdateInvoiceChangeOrderError — actionError */
+    cmdUpdateInvoiceChangeOrderError: string;
+    /** state cmdDeleteInvoiceChangeOrderState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteInvoiceChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteInvoiceChangeOrderInvoiceChangeOrderId — input */
+    cmdDeleteInvoiceChangeOrderInvoiceChangeOrderId: string;
+    /** state cmdDeleteInvoiceChangeOrderOutput — commandOutput */
+    cmdDeleteInvoiceChangeOrderOutput: CmdDeleteInvoiceChangeOrderOutput | null;
+    /** state cmdDeleteInvoiceChangeOrderError — actionError */
+    cmdDeleteInvoiceChangeOrderError: string;
+    /** state qryInvoicePickerState — actionStatus, values: idle|loading|success|error */
+    qryInvoicePickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInvoicePickerData — queryResult, outputShape: array */
+    qryInvoicePickerData: QryInvoicePickerOutput[];
+    /** state qryChangeOrderPickerState — actionStatus, values: idle|loading|success|error */
+    qryChangeOrderPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryChangeOrderPickerData — queryResult, outputShape: array */
+    qryChangeOrderPickerData: QryChangeOrderPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryListInvoiceChangeOrder (query) — route buildFlowFsm.invoiceChangeOrderCatalogue.qryListInvoiceChangeOrder; inputs: (none); writes ui.invoiceChangeOrderCatalogue.data.qryListInvoiceChangeOrder; status ui.invoiceChangeOrderCatalogue.action.qryListInvoiceChangeOrder.status */
+    loadQryListInvoiceChangeOrder(): Promise<void>;
+    /** handler for action qryListInvoiceChangeOrder — bind UI events here */
+    handleQryListInvoiceChangeOrderClick(event?: Event): void;
+    /** action cmdCreateInvoiceChangeOrder (command) — route buildFlowFsm.invoiceChangeOrderCatalogue.cmdCreateInvoiceChangeOrder; inputs: invoiceId, changeOrderId, billedAmount; writes ui.invoiceChangeOrderCatalogue.output.cmdCreateInvoiceChangeOrder; status ui.invoiceChangeOrderCatalogue.action.cmdCreateInvoiceChangeOrder.status; feedback keys action.cmdCreateInvoiceChangeOrder.success / action.cmdCreateInvoiceChangeOrder.error */
+    cmdCreateInvoiceChangeOrder(): Promise<void>;
+    /** handler for action cmdCreateInvoiceChangeOrder — bind UI events here */
+    handleCmdCreateInvoiceChangeOrderClick(event?: Event): void;
+    /** action cmdUpdateInvoiceChangeOrder (command) — route buildFlowFsm.invoiceChangeOrderCatalogue.cmdUpdateInvoiceChangeOrder; inputs: invoiceChangeOrderId, invoiceId, changeOrderId, billedAmount; writes ui.invoiceChangeOrderCatalogue.output.cmdUpdateInvoiceChangeOrder; status ui.invoiceChangeOrderCatalogue.action.cmdUpdateInvoiceChangeOrder.status; feedback keys action.cmdUpdateInvoiceChangeOrder.success / action.cmdUpdateInvoiceChangeOrder.error */
+    cmdUpdateInvoiceChangeOrder(): Promise<void>;
+    /** handler for action cmdUpdateInvoiceChangeOrder — bind UI events here */
+    handleCmdUpdateInvoiceChangeOrderClick(event?: Event): void;
+    /** action cmdDeleteInvoiceChangeOrder (command) — route buildFlowFsm.invoiceChangeOrderCatalogue.cmdDeleteInvoiceChangeOrder; inputs: invoiceChangeOrderId; writes ui.invoiceChangeOrderCatalogue.output.cmdDeleteInvoiceChangeOrder; status ui.invoiceChangeOrderCatalogue.action.cmdDeleteInvoiceChangeOrder.status; feedback keys action.cmdDeleteInvoiceChangeOrder.success / action.cmdDeleteInvoiceChangeOrder.error */
+    cmdDeleteInvoiceChangeOrder(): Promise<void>;
+    /** handler for action cmdDeleteInvoiceChangeOrder — bind UI events here */
+    handleCmdDeleteInvoiceChangeOrderClick(event?: Event): void;
+    /** action qryInvoicePicker (query) — route buildFlowFsm.invoiceChangeOrderCatalogue.qryInvoicePicker; inputs: (none); writes ui.invoiceChangeOrderCatalogue.data.qryInvoicePicker; status ui.invoiceChangeOrderCatalogue.action.qryInvoicePicker.status */
+    loadQryInvoicePicker(): Promise<void>;
+    /** handler for action qryInvoicePicker — bind UI events here */
+    handleQryInvoicePickerClick(event?: Event): void;
+    /** action qryChangeOrderPicker (query) — route buildFlowFsm.invoiceChangeOrderCatalogue.qryChangeOrderPicker; inputs: (none); writes ui.invoiceChangeOrderCatalogue.data.qryChangeOrderPicker; status ui.invoiceChangeOrderCatalogue.action.qryChangeOrderPicker.status */
+    loadQryChangeOrderPicker(): Promise<void>;
+    /** handler for action qryChangeOrderPicker — bind UI events here */
+    handleQryChangeOrderPickerClick(event?: Event): void;
+    /** setter for state ui.invoiceChangeOrderCatalogue.input.cmdCreateInvoiceChangeOrder.invoiceId */
+    setCmdCreateInvoiceChangeOrderInvoiceId(value: string): void;
+    /** handler for action set.cmdCreateInvoiceChangeOrderInvoiceId — bind UI events here */
+    handleCmdCreateInvoiceChangeOrderInvoiceIdChange(event: Event): void;
+    /** setter for state ui.invoiceChangeOrderCatalogue.input.cmdCreateInvoiceChangeOrder.changeOrderId */
+    setCmdCreateInvoiceChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.cmdCreateInvoiceChangeOrderChangeOrderId — bind UI events here */
+    handleCmdCreateInvoiceChangeOrderChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.invoiceChangeOrderCatalogue.input.cmdCreateInvoiceChangeOrder.billedAmount */
+    setCmdCreateInvoiceChangeOrderBilledAmount(value: string): void;
+    /** handler for action set.cmdCreateInvoiceChangeOrderBilledAmount — bind UI events here */
+    handleCmdCreateInvoiceChangeOrderBilledAmountChange(event: Event): void;
+    /** setter for state ui.invoiceChangeOrderCatalogue.input.cmdUpdateInvoiceChangeOrder.invoiceChangeOrderId */
+    setCmdUpdateInvoiceChangeOrderInvoiceChangeOrderId(value: string): void;
+    /** handler for action set.cmdUpdateInvoiceChangeOrderInvoiceChangeOrderId — bind UI events here */
+    handleCmdUpdateInvoiceChangeOrderInvoiceChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.invoiceChangeOrderCatalogue.input.cmdUpdateInvoiceChangeOrder.invoiceId */
+    setCmdUpdateInvoiceChangeOrderInvoiceId(value: string): void;
+    /** handler for action set.cmdUpdateInvoiceChangeOrderInvoiceId — bind UI events here */
+    handleCmdUpdateInvoiceChangeOrderInvoiceIdChange(event: Event): void;
+    /** setter for state ui.invoiceChangeOrderCatalogue.input.cmdUpdateInvoiceChangeOrder.changeOrderId */
+    setCmdUpdateInvoiceChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.cmdUpdateInvoiceChangeOrderChangeOrderId — bind UI events here */
+    handleCmdUpdateInvoiceChangeOrderChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.invoiceChangeOrderCatalogue.input.cmdUpdateInvoiceChangeOrder.billedAmount */
+    setCmdUpdateInvoiceChangeOrderBilledAmount(value: string): void;
+    /** handler for action set.cmdUpdateInvoiceChangeOrderBilledAmount — bind UI events here */
+    handleCmdUpdateInvoiceChangeOrderBilledAmountChange(event: Event): void;
+    /** setter for state ui.invoiceChangeOrderCatalogue.input.cmdDeleteInvoiceChangeOrder.invoiceChangeOrderId */
+    setCmdDeleteInvoiceChangeOrderInvoiceChangeOrderId(value: string): void;
+    /** handler for action set.cmdDeleteInvoiceChangeOrderInvoiceChangeOrderId — bind UI events here */
+    handleCmdDeleteInvoiceChangeOrderInvoiceChangeOrderIdChange(event: Event): void;
+}

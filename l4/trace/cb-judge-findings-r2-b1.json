@@ -1,0 +1,23 @@
+{
+  "judgeRun": 2,
+  "batchIndex": 1,
+  "owners": [
+    "listChangeOrder",
+    "createChangeOrder",
+    "updateChangeOrder",
+    "deleteChangeOrder",
+    "listChangeOrderDecision",
+    "createChangeOrderDecision",
+    "updateChangeOrderDecision",
+    "deleteChangeOrderDecision",
+    "listClient",
+    "createClient",
+    "updateClient",
+    "deleteClient",
+    "listClientPortalAccess",
+    "createClientPortalAccess",
+    "updateClientPortalAccess"
+  ],
+  "findings": [],
+  "savedAt": "2026-08-17T20:35:50.771Z"
+}

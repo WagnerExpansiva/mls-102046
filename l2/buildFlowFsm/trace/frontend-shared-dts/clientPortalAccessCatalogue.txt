@@ -1,0 +1,149 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListClientPortalAccessOutput, CmdCreateClientPortalAccessOutput, CmdUpdateClientPortalAccessOutput, CmdDeleteClientPortalAccessOutput, QryClientPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/clientPortalAccessCatalogue.js';
+export type { QryListClientPortalAccessInput, QryListClientPortalAccessOutput, CmdCreateClientPortalAccessInput, CmdCreateClientPortalAccessOutput, CmdUpdateClientPortalAccessInput, CmdUpdateClientPortalAccessOutput, CmdDeleteClientPortalAccessInput, CmdDeleteClientPortalAccessOutput, QryClientPickerInput, QryClientPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/clientPortalAccessCatalogue.js';
+declare const message_pt: {
+    'section.clientPortalAccessCatalogue.recordList.title': string;
+    'organism.clientPortalAccessCatalogue.qryListClientPortalAccess.title': string;
+    'intent.clientPortalAccessCatalogue.qryListClientPortalAccess.list.title': string;
+    'intent.clientPortalAccessCatalogue.qryListClientPortalAccess.list.empty': string;
+    'intent.clientPortalAccessCatalogue.qryListClientPortalAccess.list.column.clientPortalAccessId.label': string;
+    'intent.clientPortalAccessCatalogue.qryListClientPortalAccess.list.column.clientId.label': string;
+    'intent.clientPortalAccessCatalogue.qryListClientPortalAccess.list.column.platformUserId.label': string;
+    'intent.clientPortalAccessCatalogue.qryListClientPortalAccess.list.column.status.label': string;
+    'organism.clientPortalAccessCatalogue.qryClientPicker.title': string;
+    'intent.clientPortalAccessCatalogue.qryClientPicker.list.title': string;
+    'intent.clientPortalAccessCatalogue.qryClientPicker.list.empty': string;
+    'intent.clientPortalAccessCatalogue.qryClientPicker.list.column.clientId.label': string;
+    'intent.clientPortalAccessCatalogue.qryClientPicker.list.column.clientName.label': string;
+    'intent.clientPortalAccessCatalogue.qryClientPicker.list.column.contactEmail.label': string;
+    'intent.clientPortalAccessCatalogue.qryClientPicker.list.column.contactPhone.label': string;
+    'organism.clientPortalAccessCatalogue.cmdUpdateClientPortalAccess.title': string;
+    'intent.clientPortalAccessCatalogue.cmdUpdateClientPortalAccess.form.title': string;
+    'intent.clientPortalAccessCatalogue.cmdUpdateClientPortalAccess.form.action.cmdUpdateClientPortalAccess': string;
+    'intent.clientPortalAccessCatalogue.cmdUpdateClientPortalAccess.form.field.platformUserId.label': string;
+    'intent.clientPortalAccessCatalogue.cmdUpdateClientPortalAccess.form.field.status.label': string;
+    'organism.clientPortalAccessCatalogue.cmdDeleteClientPortalAccess.title': string;
+    'intent.clientPortalAccessCatalogue.cmdDeleteClientPortalAccess.form.title': string;
+    'intent.clientPortalAccessCatalogue.cmdDeleteClientPortalAccess.form.action.cmdDeleteClientPortalAccess': string;
+    'section.clientPortalAccessCatalogue.recordForm.title': string;
+    'organism.clientPortalAccessCatalogue.cmdCreateClientPortalAccess.title': string;
+    'intent.clientPortalAccessCatalogue.cmdCreateClientPortalAccess.form.title': string;
+    'intent.clientPortalAccessCatalogue.cmdCreateClientPortalAccess.form.action.cmdCreateClientPortalAccess': string;
+    'intent.clientPortalAccessCatalogue.cmdCreateClientPortalAccess.form.field.platformUserId.label': string;
+    'intent.clientPortalAccessCatalogue.cmdCreateClientPortalAccess.form.field.status.label': string;
+    'action.cmdCreateClientPortalAccess.success': string;
+    'action.cmdCreateClientPortalAccess.error': string;
+    'action.cmdUpdateClientPortalAccess.success': string;
+    'action.cmdUpdateClientPortalAccess.error': string;
+    'action.cmdDeleteClientPortalAccess.success': string;
+    'action.cmdDeleteClientPortalAccess.error': string;
+    'section.clientPortalAccessCatalogue.accessRecordsWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmClientPortalAccessCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListClientPortalAccessState — actionStatus, values: idle|loading|success|error */
+    qryListClientPortalAccessState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListClientPortalAccessData — queryResult, outputShape: array */
+    qryListClientPortalAccessData: QryListClientPortalAccessOutput[];
+    /** state cmdCreateClientPortalAccessState — actionStatus, values: idle|loading|success|error */
+    cmdCreateClientPortalAccessState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateClientPortalAccessClientId — input */
+    cmdCreateClientPortalAccessClientId: string;
+    /** state cmdCreateClientPortalAccessPlatformUserId — input */
+    cmdCreateClientPortalAccessPlatformUserId: string;
+    /** state cmdCreateClientPortalAccessStatus — input */
+    cmdCreateClientPortalAccessStatus: string;
+    /** state cmdCreateClientPortalAccessOutput — commandOutput */
+    cmdCreateClientPortalAccessOutput: CmdCreateClientPortalAccessOutput | null;
+    /** state cmdCreateClientPortalAccessError — actionError */
+    cmdCreateClientPortalAccessError: string;
+    /** state cmdUpdateClientPortalAccessState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateClientPortalAccessState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateClientPortalAccessClientPortalAccessId — input */
+    cmdUpdateClientPortalAccessClientPortalAccessId: string;
+    /** state cmdUpdateClientPortalAccessClientId — input */
+    cmdUpdateClientPortalAccessClientId: string;
+    /** state cmdUpdateClientPortalAccessPlatformUserId — input */
+    cmdUpdateClientPortalAccessPlatformUserId: string;
+    /** state cmdUpdateClientPortalAccessStatus — input */
+    cmdUpdateClientPortalAccessStatus: string;
+    /** state cmdUpdateClientPortalAccessOutput — commandOutput */
+    cmdUpdateClientPortalAccessOutput: CmdUpdateClientPortalAccessOutput | null;
+    /** state cmdUpdateClientPortalAccessError — actionError */
+    cmdUpdateClientPortalAccessError: string;
+    /** state cmdDeleteClientPortalAccessState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteClientPortalAccessState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteClientPortalAccessClientPortalAccessId — input */
+    cmdDeleteClientPortalAccessClientPortalAccessId: string;
+    /** state cmdDeleteClientPortalAccessOutput — commandOutput */
+    cmdDeleteClientPortalAccessOutput: CmdDeleteClientPortalAccessOutput | null;
+    /** state cmdDeleteClientPortalAccessError — actionError */
+    cmdDeleteClientPortalAccessError: string;
+    /** state qryClientPickerState — actionStatus, values: idle|loading|success|error */
+    qryClientPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryClientPickerData — queryResult, outputShape: array */
+    qryClientPickerData: QryClientPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryListClientPortalAccess (query) — route buildFlowFsm.clientPortalAccessCatalogue.qryListClientPortalAccess; inputs: (none); writes ui.clientPortalAccessCatalogue.data.qryListClientPortalAccess; status ui.clientPortalAccessCatalogue.action.qryListClientPortalAccess.status */
+    loadQryListClientPortalAccess(): Promise<void>;
+    /** handler for action qryListClientPortalAccess — bind UI events here */
+    handleQryListClientPortalAccessClick(event?: Event): void;
+    /** action cmdCreateClientPortalAccess (command) — route buildFlowFsm.clientPortalAccessCatalogue.cmdCreateClientPortalAccess; inputs: clientId, platformUserId, status; writes ui.clientPortalAccessCatalogue.output.cmdCreateClientPortalAccess; status ui.clientPortalAccessCatalogue.action.cmdCreateClientPortalAccess.status; feedback keys action.cmdCreateClientPortalAccess.success / action.cmdCreateClientPortalAccess.error */
+    cmdCreateClientPortalAccess(): Promise<void>;
+    /** handler for action cmdCreateClientPortalAccess — bind UI events here */
+    handleCmdCreateClientPortalAccessClick(event?: Event): void;
+    /** action cmdUpdateClientPortalAccess (command) — route buildFlowFsm.clientPortalAccessCatalogue.cmdUpdateClientPortalAccess; inputs: clientPortalAccessId, clientId, platformUserId, status; writes ui.clientPortalAccessCatalogue.output.cmdUpdateClientPortalAccess; status ui.clientPortalAccessCatalogue.action.cmdUpdateClientPortalAccess.status; feedback keys action.cmdUpdateClientPortalAccess.success / action.cmdUpdateClientPortalAccess.error */
+    cmdUpdateClientPortalAccess(): Promise<void>;
+    /** handler for action cmdUpdateClientPortalAccess — bind UI events here */
+    handleCmdUpdateClientPortalAccessClick(event?: Event): void;
+    /** action cmdDeleteClientPortalAccess (command) — route buildFlowFsm.clientPortalAccessCatalogue.cmdDeleteClientPortalAccess; inputs: clientPortalAccessId; writes ui.clientPortalAccessCatalogue.output.cmdDeleteClientPortalAccess; status ui.clientPortalAccessCatalogue.action.cmdDeleteClientPortalAccess.status; feedback keys action.cmdDeleteClientPortalAccess.success / action.cmdDeleteClientPortalAccess.error */
+    cmdDeleteClientPortalAccess(): Promise<void>;
+    /** handler for action cmdDeleteClientPortalAccess — bind UI events here */
+    handleCmdDeleteClientPortalAccessClick(event?: Event): void;
+    /** action qryClientPicker (query) — route buildFlowFsm.clientPortalAccessCatalogue.qryClientPicker; inputs: (none); writes ui.clientPortalAccessCatalogue.data.qryClientPicker; status ui.clientPortalAccessCatalogue.action.qryClientPicker.status */
+    loadQryClientPicker(): Promise<void>;
+    /** handler for action qryClientPicker — bind UI events here */
+    handleQryClientPickerClick(event?: Event): void;
+    /** setter for state ui.clientPortalAccessCatalogue.input.cmdCreateClientPortalAccess.clientId */
+    setCmdCreateClientPortalAccessClientId(value: string): void;
+    /** handler for action set.cmdCreateClientPortalAccessClientId — bind UI events here */
+    handleCmdCreateClientPortalAccessClientIdChange(event: Event): void;
+    /** setter for state ui.clientPortalAccessCatalogue.input.cmdCreateClientPortalAccess.platformUserId */
+    setCmdCreateClientPortalAccessPlatformUserId(value: string): void;
+    /** handler for action set.cmdCreateClientPortalAccessPlatformUserId — bind UI events here */
+    handleCmdCreateClientPortalAccessPlatformUserIdChange(event: Event): void;
+    /** setter for state ui.clientPortalAccessCatalogue.input.cmdCreateClientPortalAccess.status */
+    setCmdCreateClientPortalAccessStatus(value: string): void;
+    /** handler for action set.cmdCreateClientPortalAccessStatus — bind UI events here */
+    handleCmdCreateClientPortalAccessStatusChange(event: Event): void;
+    /** setter for state ui.clientPortalAccessCatalogue.input.cmdUpdateClientPortalAccess.clientPortalAccessId */
+    setCmdUpdateClientPortalAccessClientPortalAccessId(value: string): void;
+    /** handler for action set.cmdUpdateClientPortalAccessClientPortalAccessId — bind UI events here */
+    handleCmdUpdateClientPortalAccessClientPortalAccessIdChange(event: Event): void;
+    /** setter for state ui.clientPortalAccessCatalogue.input.cmdUpdateClientPortalAccess.clientId */
+    setCmdUpdateClientPortalAccessClientId(value: string): void;
+    /** handler for action set.cmdUpdateClientPortalAccessClientId — bind UI events here */
+    handleCmdUpdateClientPortalAccessClientIdChange(event: Event): void;
+    /** setter for state ui.clientPortalAccessCatalogue.input.cmdUpdateClientPortalAccess.platformUserId */
+    setCmdUpdateClientPortalAccessPlatformUserId(value: string): void;
+    /** handler for action set.cmdUpdateClientPortalAccessPlatformUserId — bind UI events here */
+    handleCmdUpdateClientPortalAccessPlatformUserIdChange(event: Event): void;
+    /** setter for state ui.clientPortalAccessCatalogue.input.cmdUpdateClientPortalAccess.status */
+    setCmdUpdateClientPortalAccessStatus(value: string): void;
+    /** handler for action set.cmdUpdateClientPortalAccessStatus — bind UI events here */
+    handleCmdUpdateClientPortalAccessStatusChange(event: Event): void;
+    /** setter for state ui.clientPortalAccessCatalogue.input.cmdDeleteClientPortalAccess.clientPortalAccessId */
+    setCmdDeleteClientPortalAccessClientPortalAccessId(value: string): void;
+    /** handler for action set.cmdDeleteClientPortalAccessClientPortalAccessId — bind UI events here */
+    handleCmdDeleteClientPortalAccessClientPortalAccessIdChange(event: Event): void;
+}

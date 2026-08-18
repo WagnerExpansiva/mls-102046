@@ -1,0 +1,51 @@
+{
+  "savedAt": "2026-08-18T14:51:55.430Z",
+  "pageId": "forwardChangeOrderForClientApproval",
+  "genome": "page31",
+  "objective": {
+    "actor": "Responsável pelo fluxo de mudanças do projeto",
+    "jobToBeDone": "Revisar uma ordem de mudança submetida e encaminhá-la ao cliente com informações claras sobre escopo, prazo e valor para obter sua decisão de aprovação.",
+    "primaryDecision": "Decidir se a ordem de mudança selecionada está pronta para ser encaminhada ao cliente.",
+    "decisiveInfo": [
+      "status",
+      "description",
+      "scopeImpact",
+      "scheduleImpact",
+      "changeAmount",
+      "clientRef",
+      "projectRef",
+      "submittedAt",
+      "forwardedForClientApprovalAt"
+    ],
+    "usageFrequency": "Operacional e recorrente, quando há ordens de mudança submetidas aguardando encaminhamento.",
+    "informationHierarchy": [
+      "ordens submetidas e sua situação atual",
+      "detalhes da ordem selecionada e impactos de escopo, prazo e valor",
+      "cliente e projeto associados",
+      "ação de encaminhamento e feedback do resultado",
+      "datas de submissão e encaminhamento"
+    ],
+    "successCriteria": "O responsável identifica rapidamente uma ordem submetida, confirma seus impactos e encaminha-a ao cliente sem redigitar identificadores, com a atualização de status e feedback claramente visíveis.",
+    "antiPatterns": [
+      "campo manual para changeOrderId",
+      "edição manual de status ou timestamps",
+      "formulário de encaminhamento separado do detalhe da ordem",
+      "exibir todos os estados como opções livres",
+      "encaminhar sem mostrar o estado atual e os impactos da ordem"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar a ordem de mudança submetida",
+        "presentation": "master-detail selection"
+      },
+      {
+        "action": "Encaminhar a ordem selecionada para aprovação do cliente",
+        "presentation": "contextual-transition-actions with a prominent primary action"
+      },
+      {
+        "action": "Atualizar a fila após o encaminhamento",
+        "presentation": "automatic refresh with dismissible textual feedback"
+      }
+    ]
+  }
+}

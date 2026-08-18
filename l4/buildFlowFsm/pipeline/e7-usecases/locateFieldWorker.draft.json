@@ -1,0 +1,24 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "locateFieldWorker",
+  "title": "Selecionar o trabalhador responsável",
+  "kind": "query",
+  "compiledFrom": [
+    "assignWorkTask.locateFieldWorker",
+    "recordWorkTime.locateFieldWorker"
+  ],
+  "description": "Localiza um trabalhador de campo e disponibiliza sua identidade canônica para vinculação a uma tarefa de trabalho ou a um registro de horas.",
+  "contexts": {
+    "requires": [],
+    "provides": [
+      "selectedFieldWorker"
+    ]
+  },
+  "entityRefs": [
+    "FieldWorker"
+  ],
+  "useRules": [],
+  "transitions": []
+}

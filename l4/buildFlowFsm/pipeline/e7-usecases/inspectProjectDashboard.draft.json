@@ -1,0 +1,28 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "inspectProjectDashboard",
+  "title": "Consultar o painel de obras",
+  "kind": "query",
+  "compiledFrom": [
+    "reviewProjectPortfolio.inspectProjectDashboard"
+  ],
+  "description": "Consulta o painel de obras para acompanhamento gerencial das obras ativas, seu desempenho de custos e suas tarefas próximas.",
+  "contexts": {
+    "requires": [
+      "selectedProjectDashboard"
+    ],
+    "provides": [
+      "selectedProjectDashboard"
+    ]
+  },
+  "entityRefs": [
+    "Project",
+    "ProjectDashboard"
+  ],
+  "useRules": [
+    "activeProjectCostVisibility"
+  ],
+  "transitions": []
+}

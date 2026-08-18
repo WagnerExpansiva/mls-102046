@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "2026-08-13-ns4-e2-impact-report-v2",
+  "moduleName": "buildFlowFsm",
+  "generatedAt": "2026-08-17T18:29:46.240Z",
+  "stepKindHistogram": {
+    "locate": 19,
+    "inspect": 13,
+    "act": 7,
+    "decide": 3,
+    "handoff": 11
+  },
+  "changes": [
+    {
+      "journeyId": "approveChangeOrder",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "assignWorkTask",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "consultApprovedProjectChangeOrders",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "consultClientProjectUpdates",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "declineChangeOrder",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "forwardChangeOrderForClientApproval",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "generateAndPublishProjectStatusReport",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "issueProjectInvoice",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "monitorDailyProjectRecords",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "recordProjectMaterialUsage",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "recordWorkTime",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "reviewProjectPortfolio",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "submitChangeOrder",
+      "reason": "journeyNew"
+    },
+    {
+      "journeyId": "updateWorkTaskProgress",
+      "reason": "journeyNew"
+    }
+  ],
+  "affectedSteps": [
+    "e3-access-matrix",
+    "e4-ontology",
+    "e5-rules",
+    "e7-realization"
+  ]
+}

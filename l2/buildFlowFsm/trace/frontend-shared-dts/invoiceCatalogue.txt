@@ -1,0 +1,191 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListInvoiceOutput, CmdCreateInvoiceOutput, CmdUpdateInvoiceOutput, CmdDeleteInvoiceOutput, QryClientPickerOutput, QryProjectPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/invoiceCatalogue.js';
+export type { QryListInvoiceInput, QryListInvoiceOutput, CmdCreateInvoiceInput, CmdCreateInvoiceOutput, CmdUpdateInvoiceInput, CmdUpdateInvoiceOutput, CmdDeleteInvoiceInput, CmdDeleteInvoiceOutput, QryClientPickerInput, QryClientPickerOutput, QryProjectPickerInput, QryProjectPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/invoiceCatalogue.js';
+declare const message_pt: {
+    'section.invoiceCatalogue.recordList.title': string;
+    'organism.invoiceCatalogue.qryListInvoice.title': string;
+    'intent.invoiceCatalogue.qryListInvoice.list.title': string;
+    'intent.invoiceCatalogue.qryListInvoice.list.empty': string;
+    'intent.invoiceCatalogue.qryListInvoice.list.column.invoiceId.label': string;
+    'intent.invoiceCatalogue.qryListInvoice.list.column.clientId.label': string;
+    'intent.invoiceCatalogue.qryListInvoice.list.column.projectId.label': string;
+    'intent.invoiceCatalogue.qryListInvoice.list.column.commercialReference.label': string;
+    'intent.invoiceCatalogue.qryListInvoice.list.column.amount.label': string;
+    'intent.invoiceCatalogue.qryListInvoice.list.column.status.label': string;
+    'organism.invoiceCatalogue.cmdDeleteInvoice.title': string;
+    'intent.invoiceCatalogue.cmdDeleteInvoice.form.title': string;
+    'intent.invoiceCatalogue.cmdDeleteInvoice.form.action.cmdDeleteInvoice': string;
+    'section.invoiceCatalogue.recordForm.title': string;
+    'organism.invoiceCatalogue.cmdCreateInvoice.title': string;
+    'intent.invoiceCatalogue.cmdCreateInvoice.form.title': string;
+    'intent.invoiceCatalogue.cmdCreateInvoice.form.action.cmdCreateInvoice': string;
+    'intent.invoiceCatalogue.cmdCreateInvoice.form.field.commercialReference.label': string;
+    'intent.invoiceCatalogue.cmdCreateInvoice.form.field.amount.label': string;
+    'organism.invoiceCatalogue.qryClientPicker.title': string;
+    'intent.invoiceCatalogue.qryClientPicker.list.title': string;
+    'intent.invoiceCatalogue.qryClientPicker.list.empty': string;
+    'intent.invoiceCatalogue.qryClientPicker.list.column.clientId.label': string;
+    'intent.invoiceCatalogue.qryClientPicker.list.column.clientName.label': string;
+    'intent.invoiceCatalogue.qryClientPicker.list.column.contactEmail.label': string;
+    'intent.invoiceCatalogue.qryClientPicker.list.column.contactPhone.label': string;
+    'organism.invoiceCatalogue.qryProjectPicker.title': string;
+    'intent.invoiceCatalogue.qryProjectPicker.list.title': string;
+    'intent.invoiceCatalogue.qryProjectPicker.list.empty': string;
+    'intent.invoiceCatalogue.qryProjectPicker.list.column.projectId.label': string;
+    'intent.invoiceCatalogue.qryProjectPicker.list.column.clientId.label': string;
+    'intent.invoiceCatalogue.qryProjectPicker.list.column.name.label': string;
+    'intent.invoiceCatalogue.qryProjectPicker.list.column.address.label': string;
+    'intent.invoiceCatalogue.qryProjectPicker.list.column.status.label': string;
+    'intent.invoiceCatalogue.qryProjectPicker.list.column.authorizedBudget.label': string;
+    'intent.invoiceCatalogue.qryProjectPicker.list.column.plannedStartDate.label': string;
+    'intent.invoiceCatalogue.qryProjectPicker.list.column.plannedEndDate.label': string;
+    'organism.invoiceCatalogue.cmdUpdateInvoice.title': string;
+    'intent.invoiceCatalogue.cmdUpdateInvoice.form.title': string;
+    'intent.invoiceCatalogue.cmdUpdateInvoice.form.action.cmdUpdateInvoice': string;
+    'intent.invoiceCatalogue.cmdUpdateInvoice.form.field.commercialReference.label': string;
+    'intent.invoiceCatalogue.cmdUpdateInvoice.form.field.amount.label': string;
+    'intent.invoiceCatalogue.cmdUpdateInvoice.form.field.status.label': string;
+    'action.cmdCreateInvoice.success': string;
+    'action.cmdCreateInvoice.error': string;
+    'action.cmdUpdateInvoice.success': string;
+    'action.cmdUpdateInvoice.error': string;
+    'action.cmdDeleteInvoice.success': string;
+    'action.cmdDeleteInvoice.error': string;
+    'section.invoiceCatalogue.invoiceWorkbench.title': string;
+    'section.invoiceCatalogue.invoiceIssuance.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmInvoiceCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListInvoiceState — actionStatus, values: idle|loading|success|error */
+    qryListInvoiceState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListInvoiceData — queryResult, outputShape: array */
+    qryListInvoiceData: QryListInvoiceOutput[];
+    /** state cmdCreateInvoiceState — actionStatus, values: idle|loading|success|error */
+    cmdCreateInvoiceState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateInvoiceClientClientId — input */
+    cmdCreateInvoiceClientClientId: string;
+    /** state cmdCreateInvoiceProjectProjectId — input */
+    cmdCreateInvoiceProjectProjectId: string;
+    /** state cmdCreateInvoiceCommercialReference — input */
+    cmdCreateInvoiceCommercialReference: string;
+    /** state cmdCreateInvoiceAmount — input */
+    cmdCreateInvoiceAmount: string;
+    /** state cmdCreateInvoiceOutput — commandOutput */
+    cmdCreateInvoiceOutput: CmdCreateInvoiceOutput | null;
+    /** state cmdCreateInvoiceError — actionError */
+    cmdCreateInvoiceError: string;
+    /** state cmdUpdateInvoiceState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateInvoiceState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateInvoiceInvoiceId — input */
+    cmdUpdateInvoiceInvoiceId: string;
+    /** state cmdUpdateInvoiceClientId — input */
+    cmdUpdateInvoiceClientId: string;
+    /** state cmdUpdateInvoiceProjectId — input */
+    cmdUpdateInvoiceProjectId: string;
+    /** state cmdUpdateInvoiceCommercialReference — input */
+    cmdUpdateInvoiceCommercialReference: string;
+    /** state cmdUpdateInvoiceAmount — input */
+    cmdUpdateInvoiceAmount: string;
+    /** state cmdUpdateInvoiceStatus — input */
+    cmdUpdateInvoiceStatus: string;
+    /** state cmdUpdateInvoiceOutput — commandOutput */
+    cmdUpdateInvoiceOutput: CmdUpdateInvoiceOutput | null;
+    /** state cmdUpdateInvoiceError — actionError */
+    cmdUpdateInvoiceError: string;
+    /** state cmdDeleteInvoiceState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteInvoiceState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteInvoiceInvoiceId — input */
+    cmdDeleteInvoiceInvoiceId: string;
+    /** state cmdDeleteInvoiceOutput — commandOutput */
+    cmdDeleteInvoiceOutput: CmdDeleteInvoiceOutput | null;
+    /** state cmdDeleteInvoiceError — actionError */
+    cmdDeleteInvoiceError: string;
+    /** state qryClientPickerState — actionStatus, values: idle|loading|success|error */
+    qryClientPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryClientPickerData — queryResult, outputShape: array */
+    qryClientPickerData: QryClientPickerOutput[];
+    /** state qryProjectPickerState — actionStatus, values: idle|loading|success|error */
+    qryProjectPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectPickerData — queryResult, outputShape: array */
+    qryProjectPickerData: QryProjectPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryListInvoice (query) — route buildFlowFsm.invoiceCatalogue.qryListInvoice; inputs: (none); writes ui.invoiceCatalogue.data.qryListInvoice; status ui.invoiceCatalogue.action.qryListInvoice.status */
+    loadQryListInvoice(): Promise<void>;
+    /** handler for action qryListInvoice — bind UI events here */
+    handleQryListInvoiceClick(event?: Event): void;
+    /** action cmdCreateInvoice (command) — route buildFlowFsm.invoiceCatalogue.cmdCreateInvoice; inputs: clientClientId, projectProjectId, commercialReference, amount; writes ui.invoiceCatalogue.output.cmdCreateInvoice; status ui.invoiceCatalogue.action.cmdCreateInvoice.status; feedback keys action.cmdCreateInvoice.success / action.cmdCreateInvoice.error */
+    cmdCreateInvoice(): Promise<void>;
+    /** handler for action cmdCreateInvoice — bind UI events here */
+    handleCmdCreateInvoiceClick(event?: Event): void;
+    /** action cmdUpdateInvoice (command) — route buildFlowFsm.invoiceCatalogue.cmdUpdateInvoice; inputs: invoiceId, clientId, projectId, commercialReference, amount, status; writes ui.invoiceCatalogue.output.cmdUpdateInvoice; status ui.invoiceCatalogue.action.cmdUpdateInvoice.status; feedback keys action.cmdUpdateInvoice.success / action.cmdUpdateInvoice.error */
+    cmdUpdateInvoice(): Promise<void>;
+    /** handler for action cmdUpdateInvoice — bind UI events here */
+    handleCmdUpdateInvoiceClick(event?: Event): void;
+    /** action cmdDeleteInvoice (command) — route buildFlowFsm.invoiceCatalogue.cmdDeleteInvoice; inputs: invoiceId; writes ui.invoiceCatalogue.output.cmdDeleteInvoice; status ui.invoiceCatalogue.action.cmdDeleteInvoice.status; feedback keys action.cmdDeleteInvoice.success / action.cmdDeleteInvoice.error */
+    cmdDeleteInvoice(): Promise<void>;
+    /** handler for action cmdDeleteInvoice — bind UI events here */
+    handleCmdDeleteInvoiceClick(event?: Event): void;
+    /** action qryClientPicker (query) — route buildFlowFsm.invoiceCatalogue.qryClientPicker; inputs: (none); writes ui.invoiceCatalogue.data.qryClientPicker; status ui.invoiceCatalogue.action.qryClientPicker.status */
+    loadQryClientPicker(): Promise<void>;
+    /** handler for action qryClientPicker — bind UI events here */
+    handleQryClientPickerClick(event?: Event): void;
+    /** action qryProjectPicker (query) — route buildFlowFsm.invoiceCatalogue.qryProjectPicker; inputs: (none); writes ui.invoiceCatalogue.data.qryProjectPicker; status ui.invoiceCatalogue.action.qryProjectPicker.status */
+    loadQryProjectPicker(): Promise<void>;
+    /** handler for action qryProjectPicker — bind UI events here */
+    handleQryProjectPickerClick(event?: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdCreateInvoice.clientClientId */
+    setCmdCreateInvoiceClientClientId(value: string): void;
+    /** handler for action set.cmdCreateInvoiceClientClientId — bind UI events here */
+    handleCmdCreateInvoiceClientClientIdChange(event: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdCreateInvoice.projectProjectId */
+    setCmdCreateInvoiceProjectProjectId(value: string): void;
+    /** handler for action set.cmdCreateInvoiceProjectProjectId — bind UI events here */
+    handleCmdCreateInvoiceProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdCreateInvoice.commercialReference */
+    setCmdCreateInvoiceCommercialReference(value: string): void;
+    /** handler for action set.cmdCreateInvoiceCommercialReference — bind UI events here */
+    handleCmdCreateInvoiceCommercialReferenceChange(event: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdCreateInvoice.amount */
+    setCmdCreateInvoiceAmount(value: string): void;
+    /** handler for action set.cmdCreateInvoiceAmount — bind UI events here */
+    handleCmdCreateInvoiceAmountChange(event: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdUpdateInvoice.invoiceId */
+    setCmdUpdateInvoiceInvoiceId(value: string): void;
+    /** handler for action set.cmdUpdateInvoiceInvoiceId — bind UI events here */
+    handleCmdUpdateInvoiceInvoiceIdChange(event: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdUpdateInvoice.clientId */
+    setCmdUpdateInvoiceClientId(value: string): void;
+    /** handler for action set.cmdUpdateInvoiceClientId — bind UI events here */
+    handleCmdUpdateInvoiceClientIdChange(event: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdUpdateInvoice.projectId */
+    setCmdUpdateInvoiceProjectId(value: string): void;
+    /** handler for action set.cmdUpdateInvoiceProjectId — bind UI events here */
+    handleCmdUpdateInvoiceProjectIdChange(event: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdUpdateInvoice.commercialReference */
+    setCmdUpdateInvoiceCommercialReference(value: string): void;
+    /** handler for action set.cmdUpdateInvoiceCommercialReference — bind UI events here */
+    handleCmdUpdateInvoiceCommercialReferenceChange(event: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdUpdateInvoice.amount */
+    setCmdUpdateInvoiceAmount(value: string): void;
+    /** handler for action set.cmdUpdateInvoiceAmount — bind UI events here */
+    handleCmdUpdateInvoiceAmountChange(event: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdUpdateInvoice.status */
+    setCmdUpdateInvoiceStatus(value: string): void;
+    /** handler for action set.cmdUpdateInvoiceStatus — bind UI events here */
+    handleCmdUpdateInvoiceStatusChange(event: Event): void;
+    /** setter for state ui.invoiceCatalogue.input.cmdDeleteInvoice.invoiceId */
+    setCmdDeleteInvoiceInvoiceId(value: string): void;
+    /** handler for action set.cmdDeleteInvoiceInvoiceId — bind UI events here */
+    handleCmdDeleteInvoiceInvoiceIdChange(event: Event): void;
+}

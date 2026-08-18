@@ -1,0 +1,166 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListInventoryItemOutput, CmdCreateInventoryItemOutput, CmdUpdateInventoryItemOutput, CmdDeleteInventoryItemOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/inventoryItemCatalogue.js';
+export type { QryListInventoryItemInput, QryListInventoryItemOutput, CmdCreateInventoryItemInput, CmdCreateInventoryItemOutput, CmdUpdateInventoryItemInput, CmdUpdateInventoryItemOutput, CmdDeleteInventoryItemInput, CmdDeleteInventoryItemOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/inventoryItemCatalogue.js';
+declare const message_pt: {
+    'section.inventoryItemCatalogue.recordList.title': string;
+    'organism.inventoryItemCatalogue.qryListInventoryItem.title': string;
+    'intent.inventoryItemCatalogue.qryListInventoryItem.list.title': string;
+    'intent.inventoryItemCatalogue.qryListInventoryItem.list.empty': string;
+    'intent.inventoryItemCatalogue.qryListInventoryItem.list.column.inventoryItemId.label': string;
+    'intent.inventoryItemCatalogue.qryListInventoryItem.list.column.name.label': string;
+    'intent.inventoryItemCatalogue.qryListInventoryItem.list.column.description.label': string;
+    'intent.inventoryItemCatalogue.qryListInventoryItem.list.column.unitOfMeasure.label': string;
+    'intent.inventoryItemCatalogue.qryListInventoryItem.list.column.referenceUnitCost.label': string;
+    'intent.inventoryItemCatalogue.qryListInventoryItem.list.column.status.label': string;
+    'organism.inventoryItemCatalogue.cmdDeleteInventoryItem.title': string;
+    'intent.inventoryItemCatalogue.cmdDeleteInventoryItem.form.title': string;
+    'intent.inventoryItemCatalogue.cmdDeleteInventoryItem.form.action.cmdDeleteInventoryItem': string;
+    'section.inventoryItemCatalogue.recordForm.title': string;
+    'organism.inventoryItemCatalogue.cmdCreateInventoryItem.title': string;
+    'intent.inventoryItemCatalogue.cmdCreateInventoryItem.form.title': string;
+    'intent.inventoryItemCatalogue.cmdCreateInventoryItem.form.action.cmdCreateInventoryItem': string;
+    'intent.inventoryItemCatalogue.cmdCreateInventoryItem.form.field.name.label': string;
+    'intent.inventoryItemCatalogue.cmdCreateInventoryItem.form.field.description.label': string;
+    'intent.inventoryItemCatalogue.cmdCreateInventoryItem.form.field.unitOfMeasure.label': string;
+    'intent.inventoryItemCatalogue.cmdCreateInventoryItem.form.field.referenceUnitCost.label': string;
+    'intent.inventoryItemCatalogue.cmdCreateInventoryItem.form.field.status.label': string;
+    'organism.inventoryItemCatalogue.cmdUpdateInventoryItem.title': string;
+    'intent.inventoryItemCatalogue.cmdUpdateInventoryItem.form.title': string;
+    'intent.inventoryItemCatalogue.cmdUpdateInventoryItem.form.action.cmdUpdateInventoryItem': string;
+    'intent.inventoryItemCatalogue.cmdUpdateInventoryItem.form.field.name.label': string;
+    'intent.inventoryItemCatalogue.cmdUpdateInventoryItem.form.field.description.label': string;
+    'intent.inventoryItemCatalogue.cmdUpdateInventoryItem.form.field.unitOfMeasure.label': string;
+    'intent.inventoryItemCatalogue.cmdUpdateInventoryItem.form.field.referenceUnitCost.label': string;
+    'intent.inventoryItemCatalogue.cmdUpdateInventoryItem.form.field.status.label': string;
+    'action.cmdCreateInventoryItem.success': string;
+    'action.cmdCreateInventoryItem.error': string;
+    'action.cmdUpdateInventoryItem.success': string;
+    'action.cmdUpdateInventoryItem.error': string;
+    'action.cmdDeleteInventoryItem.success': string;
+    'action.cmdDeleteInventoryItem.error': string;
+    'section.inventoryItemCatalogue.inventoryWorkbench.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmInventoryItemCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListInventoryItemState — actionStatus, values: idle|loading|success|error */
+    qryListInventoryItemState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListInventoryItemData — queryResult, outputShape: array */
+    qryListInventoryItemData: QryListInventoryItemOutput[];
+    /** state cmdCreateInventoryItemState — actionStatus, values: idle|loading|success|error */
+    cmdCreateInventoryItemState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateInventoryItemName — input */
+    cmdCreateInventoryItemName: string;
+    /** state cmdCreateInventoryItemDescription — input */
+    cmdCreateInventoryItemDescription: string;
+    /** state cmdCreateInventoryItemUnitOfMeasure — input */
+    cmdCreateInventoryItemUnitOfMeasure: string;
+    /** state cmdCreateInventoryItemReferenceUnitCost — input */
+    cmdCreateInventoryItemReferenceUnitCost: string;
+    /** state cmdCreateInventoryItemStatus — input */
+    cmdCreateInventoryItemStatus: string;
+    /** state cmdCreateInventoryItemOutput — commandOutput */
+    cmdCreateInventoryItemOutput: CmdCreateInventoryItemOutput | null;
+    /** state cmdCreateInventoryItemError — actionError */
+    cmdCreateInventoryItemError: string;
+    /** state cmdUpdateInventoryItemState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateInventoryItemState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateInventoryItemInventoryItemId — input */
+    cmdUpdateInventoryItemInventoryItemId: string;
+    /** state cmdUpdateInventoryItemName — input */
+    cmdUpdateInventoryItemName: string;
+    /** state cmdUpdateInventoryItemDescription — input */
+    cmdUpdateInventoryItemDescription: string;
+    /** state cmdUpdateInventoryItemUnitOfMeasure — input */
+    cmdUpdateInventoryItemUnitOfMeasure: string;
+    /** state cmdUpdateInventoryItemReferenceUnitCost — input */
+    cmdUpdateInventoryItemReferenceUnitCost: string;
+    /** state cmdUpdateInventoryItemStatus — input */
+    cmdUpdateInventoryItemStatus: string;
+    /** state cmdUpdateInventoryItemOutput — commandOutput */
+    cmdUpdateInventoryItemOutput: CmdUpdateInventoryItemOutput | null;
+    /** state cmdUpdateInventoryItemError — actionError */
+    cmdUpdateInventoryItemError: string;
+    /** state cmdDeleteInventoryItemState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteInventoryItemState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteInventoryItemInventoryItemId — input */
+    cmdDeleteInventoryItemInventoryItemId: string;
+    /** state cmdDeleteInventoryItemOutput — commandOutput */
+    cmdDeleteInventoryItemOutput: CmdDeleteInventoryItemOutput | null;
+    /** state cmdDeleteInventoryItemError — actionError */
+    cmdDeleteInventoryItemError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryListInventoryItem (query) — route buildFlowFsm.inventoryItemCatalogue.qryListInventoryItem; inputs: (none); writes ui.inventoryItemCatalogue.data.qryListInventoryItem; status ui.inventoryItemCatalogue.action.qryListInventoryItem.status */
+    loadQryListInventoryItem(): Promise<void>;
+    /** handler for action qryListInventoryItem — bind UI events here */
+    handleQryListInventoryItemClick(event?: Event): void;
+    /** action cmdCreateInventoryItem (command) — route buildFlowFsm.inventoryItemCatalogue.cmdCreateInventoryItem; inputs: name, description, unitOfMeasure, referenceUnitCost, status; writes ui.inventoryItemCatalogue.output.cmdCreateInventoryItem; status ui.inventoryItemCatalogue.action.cmdCreateInventoryItem.status; feedback keys action.cmdCreateInventoryItem.success / action.cmdCreateInventoryItem.error */
+    cmdCreateInventoryItem(): Promise<void>;
+    /** handler for action cmdCreateInventoryItem — bind UI events here */
+    handleCmdCreateInventoryItemClick(event?: Event): void;
+    /** action cmdUpdateInventoryItem (command) — route buildFlowFsm.inventoryItemCatalogue.cmdUpdateInventoryItem; inputs: inventoryItemId, name, description, unitOfMeasure, referenceUnitCost, status; writes ui.inventoryItemCatalogue.output.cmdUpdateInventoryItem; status ui.inventoryItemCatalogue.action.cmdUpdateInventoryItem.status; feedback keys action.cmdUpdateInventoryItem.success / action.cmdUpdateInventoryItem.error */
+    cmdUpdateInventoryItem(): Promise<void>;
+    /** handler for action cmdUpdateInventoryItem — bind UI events here */
+    handleCmdUpdateInventoryItemClick(event?: Event): void;
+    /** action cmdDeleteInventoryItem (command) — route buildFlowFsm.inventoryItemCatalogue.cmdDeleteInventoryItem; inputs: inventoryItemId; writes ui.inventoryItemCatalogue.output.cmdDeleteInventoryItem; status ui.inventoryItemCatalogue.action.cmdDeleteInventoryItem.status; feedback keys action.cmdDeleteInventoryItem.success / action.cmdDeleteInventoryItem.error */
+    cmdDeleteInventoryItem(): Promise<void>;
+    /** handler for action cmdDeleteInventoryItem — bind UI events here */
+    handleCmdDeleteInventoryItemClick(event?: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdCreateInventoryItem.name */
+    setCmdCreateInventoryItemName(value: string): void;
+    /** handler for action set.cmdCreateInventoryItemName — bind UI events here */
+    handleCmdCreateInventoryItemNameChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdCreateInventoryItem.description */
+    setCmdCreateInventoryItemDescription(value: string): void;
+    /** handler for action set.cmdCreateInventoryItemDescription — bind UI events here */
+    handleCmdCreateInventoryItemDescriptionChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdCreateInventoryItem.unitOfMeasure */
+    setCmdCreateInventoryItemUnitOfMeasure(value: string): void;
+    /** handler for action set.cmdCreateInventoryItemUnitOfMeasure — bind UI events here */
+    handleCmdCreateInventoryItemUnitOfMeasureChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdCreateInventoryItem.referenceUnitCost */
+    setCmdCreateInventoryItemReferenceUnitCost(value: string): void;
+    /** handler for action set.cmdCreateInventoryItemReferenceUnitCost — bind UI events here */
+    handleCmdCreateInventoryItemReferenceUnitCostChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdCreateInventoryItem.status */
+    setCmdCreateInventoryItemStatus(value: string): void;
+    /** handler for action set.cmdCreateInventoryItemStatus — bind UI events here */
+    handleCmdCreateInventoryItemStatusChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdUpdateInventoryItem.inventoryItemId */
+    setCmdUpdateInventoryItemInventoryItemId(value: string): void;
+    /** handler for action set.cmdUpdateInventoryItemInventoryItemId — bind UI events here */
+    handleCmdUpdateInventoryItemInventoryItemIdChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdUpdateInventoryItem.name */
+    setCmdUpdateInventoryItemName(value: string): void;
+    /** handler for action set.cmdUpdateInventoryItemName — bind UI events here */
+    handleCmdUpdateInventoryItemNameChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdUpdateInventoryItem.description */
+    setCmdUpdateInventoryItemDescription(value: string): void;
+    /** handler for action set.cmdUpdateInventoryItemDescription — bind UI events here */
+    handleCmdUpdateInventoryItemDescriptionChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdUpdateInventoryItem.unitOfMeasure */
+    setCmdUpdateInventoryItemUnitOfMeasure(value: string): void;
+    /** handler for action set.cmdUpdateInventoryItemUnitOfMeasure — bind UI events here */
+    handleCmdUpdateInventoryItemUnitOfMeasureChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdUpdateInventoryItem.referenceUnitCost */
+    setCmdUpdateInventoryItemReferenceUnitCost(value: string): void;
+    /** handler for action set.cmdUpdateInventoryItemReferenceUnitCost — bind UI events here */
+    handleCmdUpdateInventoryItemReferenceUnitCostChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdUpdateInventoryItem.status */
+    setCmdUpdateInventoryItemStatus(value: string): void;
+    /** handler for action set.cmdUpdateInventoryItemStatus — bind UI events here */
+    handleCmdUpdateInventoryItemStatusChange(event: Event): void;
+    /** setter for state ui.inventoryItemCatalogue.input.cmdDeleteInventoryItem.inventoryItemId */
+    setCmdDeleteInventoryItemInventoryItemId(value: string): void;
+    /** handler for action set.cmdDeleteInventoryItemInventoryItemId — bind UI events here */
+    handleCmdDeleteInventoryItemInventoryItemIdChange(event: Event): void;
+}

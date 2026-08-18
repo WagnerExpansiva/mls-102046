@@ -1,0 +1,59 @@
+{
+  "savedAt": "2026-08-18T14:52:26.756Z",
+  "pageId": "invoiceCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Pessoa da equipe administrativa ou financeira responsável pelo cadastro e manutenção de faturas.",
+    "jobToBeDone": "Localizar uma fatura ou emitir uma nova, conferir seus vínculos e valores e corrigir ou remover o registro quando necessário.",
+    "primaryDecision": "Qual fatura deve ser selecionada para corrigir ou excluir, ou quais dados devem ser confirmados para emitir uma nova fatura.",
+    "decisiveInfo": [
+      "invoiceId",
+      "clientId",
+      "projectId",
+      "commercialReference",
+      "amount",
+      "status",
+      "clientName",
+      "name"
+    ],
+    "usageFrequency": "Recorrente durante o trabalho administrativo, com operações ocasionais de emissão e correção e exclusões menos frequentes.",
+    "informationHierarchy": [
+      "lista de faturas e estado atual",
+      "fatura selecionada e seus vínculos com cliente e obra",
+      "valor e referência comercial",
+      "ações contextuais de corrigir ou excluir",
+      "opção de emitir uma nova fatura"
+    ],
+    "successCriteria": "A equipe encontra rapidamente o registro certo, reconhece cliente e obra sem memorizar IDs, edita somente decisões reais, emite com contexto suficiente e consegue excluir com segurança e feedback claro.",
+    "antiPatterns": [
+      "formulário CRUD separado e duplicado para cada operação",
+      "status exposto como select livre ou campo manual",
+      "IDs técnicos digitados manualmente",
+      "exclusão sem confirmação",
+      "pickers de cliente e obra como seções independentes da tarefa",
+      "ocultar a fatura selecionada durante a edição"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar uma fatura para inspeção e edição",
+        "presentation": "master-detail"
+      },
+      {
+        "action": "Emitir uma nova fatura",
+        "presentation": "primary-button"
+      },
+      {
+        "action": "Corrigir uma fatura selecionada",
+        "presentation": "contextual-transition-actions"
+      },
+      {
+        "action": "Excluir uma fatura selecionada",
+        "presentation": "inline-row-command com confirmação destrutiva"
+      },
+      {
+        "action": "Escolher cliente e obra",
+        "presentation": "lookup-picker dentro do editor"
+      }
+    ]
+  }
+}

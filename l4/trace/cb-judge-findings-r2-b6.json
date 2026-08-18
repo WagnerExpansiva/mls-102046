@@ -1,0 +1,18 @@
+{
+  "judgeRun": 2,
+  "batchIndex": 6,
+  "owners": [
+    "handoffDeclinedChangeOrderToFieldCoordinator",
+    "inspectClientBillingSummary",
+    "handoffInvoiceToClient",
+    "inspectScheduleRiskAssessment",
+    "publishStatusReport",
+    "handoffStatusReportToClient",
+    "inspectStatusReport",
+    "inspectProjectTimeLogs",
+    "inspectProjectMaterialUsages",
+    "inspectApprovedChangeOrders"
+  ],
+  "findings": [],
+  "savedAt": "2026-08-17T20:36:11.628Z"
+}

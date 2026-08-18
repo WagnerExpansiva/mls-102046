@@ -1,0 +1,67 @@
+{
+  "savedAt": "2026-08-18T15:24:03.402Z",
+  "phase": "materialize-phase-pages-verify",
+  "lastRoundPlanId": "materialize-phase-pages-verify-v2-v3-v4",
+  "attempt": 4,
+  "allClear": false,
+  "passedCount": 1,
+  "passed": [
+    {
+      "planId": "materialize-declinechangeorder-l2-page",
+      "typecheck": "passed"
+    }
+  ],
+  "brokenCount": 7,
+  "broken": [
+    {
+      "planId": "materialize-forwardchangeorderforclientapproval-l2-page",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.ts",
+      "errorCount": 2,
+      "warningCount": 1,
+      "firstError": "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11ForwardChangeOrderForClientApprovalPage'."
+    },
+    {
+      "planId": "materialize-recordprojectmaterialusage-l2-page",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts",
+      "errorCount": 6,
+      "warningCount": 2,
+      "firstError": "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11RecordProjectMaterialUsagePage'."
+    },
+    {
+      "planId": "materialize-clientbillingsummaryview-page21-l2-page",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts",
+      "errorCount": 2,
+      "warningCount": 0,
+      "firstError": "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts - TS1002 - Unterminated string literal."
+    },
+    {
+      "planId": "materialize-projecttimelineview-page21-l2-page",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts",
+      "errorCount": 2,
+      "warningCount": 0,
+      "firstError": "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts - TS18047 - 'output' is possibly 'null'."
+    },
+    {
+      "planId": "materialize-declinechangeorder-page31-l2-page",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts",
+      "errorCount": 1,
+      "warningCount": 3,
+      "firstError": "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage31DeclineChangeOrderPage'."
+    },
+    {
+      "planId": "materialize-monitordailyprojectrecords-page31-l2-page",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts",
+      "errorCount": 4,
+      "warningCount": 2,
+      "firstError": "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts - TS2339 - Property 'msg' does not exist on type 'MonitorDailyProjectRecordsDesktopPage31MonitorDailyProjectRecordsPage'."
+    },
+    {
+      "planId": "materialize-projectcatalogue-page31-l2-page",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts",
+      "errorCount": 1,
+      "warningCount": 3,
+      "firstError": "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage31ProjectCataloguePage'."
+    }
+  ],
+  "agent": "agentCfeMaterializePhase"
+}

@@ -1,0 +1,25 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "PlatformUser",
+  "fields": [
+    {
+      "fieldId": "platformUserId",
+      "title": "ID do usuário da plataforma",
+      "type": "uuid",
+      "required": true,
+      "description": "Identificador estável do usuário autenticado, fornecido pela plataforma e usado como referência externa pelos vínculos do módulo.",
+      "constraints": [
+        {
+          "constraintId": "uniquePlatformUserId",
+          "kind": "unique",
+          "value": "true",
+          "description": "Cada usuário externo da plataforma possui um identificador estável único.",
+          "source": "inferred"
+        }
+      ]
+    }
+  ],
+  "useRules": []
+}

@@ -1,0 +1,236 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListStatusReportOutput, CmdCreateStatusReportOutput, CmdUpdateStatusReportOutput, CmdDeleteStatusReportOutput, QryProjectPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/statusReportCatalogue.js';
+export type { QryListStatusReportInput, QryListStatusReportOutput, CmdCreateStatusReportInput, CmdCreateStatusReportOutput, CmdUpdateStatusReportInput, CmdUpdateStatusReportOutput, CmdDeleteStatusReportInput, CmdDeleteStatusReportOutput, QryProjectPickerInput, QryProjectPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/statusReportCatalogue.js';
+declare const message_pt: {
+    'section.statusReportCatalogue.recordList.title': string;
+    'organism.statusReportCatalogue.qryListStatusReport.title': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.title': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.empty': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.statusReportId.label': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.projectId.label': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.status.label': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.title.label': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.content.label': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.communicatedRisks.label': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.generatedAt.label': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.generatedByUserId.label': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.publishedAt.label': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.publishedByUserId.label': string;
+    'intent.statusReportCatalogue.qryListStatusReport.list.column.withdrawnAt.label': string;
+    'organism.statusReportCatalogue.cmdDeleteStatusReport.title': string;
+    'intent.statusReportCatalogue.cmdDeleteStatusReport.form.title': string;
+    'intent.statusReportCatalogue.cmdDeleteStatusReport.form.action.cmdDeleteStatusReport': string;
+    'section.statusReportCatalogue.recordForm.title': string;
+    'organism.statusReportCatalogue.qryProjectPicker.title': string;
+    'intent.statusReportCatalogue.qryProjectPicker.list.title': string;
+    'intent.statusReportCatalogue.qryProjectPicker.list.empty': string;
+    'intent.statusReportCatalogue.qryProjectPicker.list.column.projectId.label': string;
+    'intent.statusReportCatalogue.qryProjectPicker.list.column.clientId.label': string;
+    'intent.statusReportCatalogue.qryProjectPicker.list.column.name.label': string;
+    'intent.statusReportCatalogue.qryProjectPicker.list.column.address.label': string;
+    'intent.statusReportCatalogue.qryProjectPicker.list.column.status.label': string;
+    'intent.statusReportCatalogue.qryProjectPicker.list.column.authorizedBudget.label': string;
+    'intent.statusReportCatalogue.qryProjectPicker.list.column.plannedStartDate.label': string;
+    'intent.statusReportCatalogue.qryProjectPicker.list.column.plannedEndDate.label': string;
+    'organism.statusReportCatalogue.cmdCreateStatusReport.title': string;
+    'intent.statusReportCatalogue.cmdCreateStatusReport.form.title': string;
+    'intent.statusReportCatalogue.cmdCreateStatusReport.form.action.cmdCreateStatusReport': string;
+    'intent.statusReportCatalogue.cmdCreateStatusReport.form.field.title.label': string;
+    'intent.statusReportCatalogue.cmdCreateStatusReport.form.field.content.label': string;
+    'intent.statusReportCatalogue.cmdCreateStatusReport.form.field.communicatedRisks.label': string;
+    'intent.statusReportCatalogue.cmdCreateStatusReport.form.field.generatedByUserId.label': string;
+    'intent.statusReportCatalogue.cmdCreateStatusReport.form.field.publishedByUserId.label': string;
+    'organism.statusReportCatalogue.cmdUpdateStatusReport.title': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.title': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.action.cmdUpdateStatusReport': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.field.status.label': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.field.title.label': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.field.content.label': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.field.communicatedRisks.label': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.field.generatedAt.label': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.field.generatedByUserId.label': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.field.publishedAt.label': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.field.publishedByUserId.label': string;
+    'intent.statusReportCatalogue.cmdUpdateStatusReport.form.field.withdrawnAt.label': string;
+    'action.cmdCreateStatusReport.success': string;
+    'action.cmdCreateStatusReport.error': string;
+    'action.cmdUpdateStatusReport.success': string;
+    'action.cmdUpdateStatusReport.error': string;
+    'action.cmdDeleteStatusReport.success': string;
+    'action.cmdDeleteStatusReport.error': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmStatusReportCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListStatusReportState — actionStatus, values: idle|loading|success|error */
+    qryListStatusReportState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListStatusReportData — queryResult, outputShape: array */
+    qryListStatusReportData: QryListStatusReportOutput[];
+    /** state cmdCreateStatusReportState — actionStatus, values: idle|loading|success|error */
+    cmdCreateStatusReportState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateStatusReportProjectProjectId — input */
+    cmdCreateStatusReportProjectProjectId: string;
+    /** state cmdCreateStatusReportProjectExecutionOverviewProjectId — input */
+    cmdCreateStatusReportProjectExecutionOverviewProjectId: string;
+    /** state cmdCreateStatusReportTitle — input */
+    cmdCreateStatusReportTitle: string;
+    /** state cmdCreateStatusReportContent — input */
+    cmdCreateStatusReportContent: string;
+    /** state cmdCreateStatusReportCommunicatedRisks — input */
+    cmdCreateStatusReportCommunicatedRisks: string;
+    /** state cmdCreateStatusReportGeneratedByUserId — input */
+    cmdCreateStatusReportGeneratedByUserId: string;
+    /** state cmdCreateStatusReportPublishedByUserId — input */
+    cmdCreateStatusReportPublishedByUserId: string;
+    /** state cmdCreateStatusReportOutput — commandOutput */
+    cmdCreateStatusReportOutput: CmdCreateStatusReportOutput | null;
+    /** state cmdCreateStatusReportError — actionError */
+    cmdCreateStatusReportError: string;
+    /** state cmdUpdateStatusReportState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateStatusReportState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateStatusReportStatusReportId — input */
+    cmdUpdateStatusReportStatusReportId: string;
+    /** state cmdUpdateStatusReportProjectId — input */
+    cmdUpdateStatusReportProjectId: string;
+    /** state cmdUpdateStatusReportStatus — input */
+    cmdUpdateStatusReportStatus: string;
+    /** state cmdUpdateStatusReportTitle — input */
+    cmdUpdateStatusReportTitle: string;
+    /** state cmdUpdateStatusReportContent — input */
+    cmdUpdateStatusReportContent: string;
+    /** state cmdUpdateStatusReportCommunicatedRisks — input */
+    cmdUpdateStatusReportCommunicatedRisks: string;
+    /** state cmdUpdateStatusReportGeneratedAt — input */
+    cmdUpdateStatusReportGeneratedAt: string;
+    /** state cmdUpdateStatusReportGeneratedByUserId — input */
+    cmdUpdateStatusReportGeneratedByUserId: string;
+    /** state cmdUpdateStatusReportPublishedAt — input */
+    cmdUpdateStatusReportPublishedAt: string;
+    /** state cmdUpdateStatusReportPublishedByUserId — input */
+    cmdUpdateStatusReportPublishedByUserId: string;
+    /** state cmdUpdateStatusReportWithdrawnAt — input */
+    cmdUpdateStatusReportWithdrawnAt: string;
+    /** state cmdUpdateStatusReportOutput — commandOutput */
+    cmdUpdateStatusReportOutput: CmdUpdateStatusReportOutput | null;
+    /** state cmdUpdateStatusReportError — actionError */
+    cmdUpdateStatusReportError: string;
+    /** state cmdDeleteStatusReportState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteStatusReportState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteStatusReportStatusReportId — input */
+    cmdDeleteStatusReportStatusReportId: string;
+    /** state cmdDeleteStatusReportOutput — commandOutput */
+    cmdDeleteStatusReportOutput: CmdDeleteStatusReportOutput | null;
+    /** state cmdDeleteStatusReportError — actionError */
+    cmdDeleteStatusReportError: string;
+    /** state qryProjectPickerState — actionStatus, values: idle|loading|success|error */
+    qryProjectPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectPickerData — queryResult, outputShape: array */
+    qryProjectPickerData: QryProjectPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryListStatusReport (query) — route buildFlowFsm.statusReportCatalogue.qryListStatusReport; inputs: (none); writes ui.statusReportCatalogue.data.qryListStatusReport; status ui.statusReportCatalogue.action.qryListStatusReport.status */
+    loadQryListStatusReport(): Promise<void>;
+    /** handler for action qryListStatusReport — bind UI events here */
+    handleQryListStatusReportClick(event?: Event): void;
+    /** action cmdCreateStatusReport (command) — route buildFlowFsm.statusReportCatalogue.cmdCreateStatusReport; inputs: projectProjectId, projectExecutionOverviewProjectId, title, content, communicatedRisks, generatedByUserId, publishedByUserId; writes ui.statusReportCatalogue.output.cmdCreateStatusReport; status ui.statusReportCatalogue.action.cmdCreateStatusReport.status; feedback keys action.cmdCreateStatusReport.success / action.cmdCreateStatusReport.error */
+    cmdCreateStatusReport(): Promise<void>;
+    /** handler for action cmdCreateStatusReport — bind UI events here */
+    handleCmdCreateStatusReportClick(event?: Event): void;
+    /** action cmdUpdateStatusReport (command) — route buildFlowFsm.statusReportCatalogue.cmdUpdateStatusReport; inputs: statusReportId, projectId, status, title, content, communicatedRisks, generatedAt, generatedByUserId, publishedAt, publishedByUserId, withdrawnAt; writes ui.statusReportCatalogue.output.cmdUpdateStatusReport; status ui.statusReportCatalogue.action.cmdUpdateStatusReport.status; feedback keys action.cmdUpdateStatusReport.success / action.cmdUpdateStatusReport.error */
+    cmdUpdateStatusReport(): Promise<void>;
+    /** handler for action cmdUpdateStatusReport — bind UI events here */
+    handleCmdUpdateStatusReportClick(event?: Event): void;
+    /** action cmdDeleteStatusReport (command) — route buildFlowFsm.statusReportCatalogue.cmdDeleteStatusReport; inputs: statusReportId; writes ui.statusReportCatalogue.output.cmdDeleteStatusReport; status ui.statusReportCatalogue.action.cmdDeleteStatusReport.status; feedback keys action.cmdDeleteStatusReport.success / action.cmdDeleteStatusReport.error */
+    cmdDeleteStatusReport(): Promise<void>;
+    /** handler for action cmdDeleteStatusReport — bind UI events here */
+    handleCmdDeleteStatusReportClick(event?: Event): void;
+    /** action qryProjectPicker (query) — route buildFlowFsm.statusReportCatalogue.qryProjectPicker; inputs: (none); writes ui.statusReportCatalogue.data.qryProjectPicker; status ui.statusReportCatalogue.action.qryProjectPicker.status */
+    loadQryProjectPicker(): Promise<void>;
+    /** handler for action qryProjectPicker — bind UI events here */
+    handleQryProjectPickerClick(event?: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdCreateStatusReport.projectProjectId */
+    setCmdCreateStatusReportProjectProjectId(value: string): void;
+    /** handler for action set.cmdCreateStatusReportProjectProjectId — bind UI events here */
+    handleCmdCreateStatusReportProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdCreateStatusReport.projectExecutionOverviewProjectId */
+    setCmdCreateStatusReportProjectExecutionOverviewProjectId(value: string): void;
+    /** handler for action set.cmdCreateStatusReportProjectExecutionOverviewProjectId — bind UI events here */
+    handleCmdCreateStatusReportProjectExecutionOverviewProjectIdChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdCreateStatusReport.title */
+    setCmdCreateStatusReportTitle(value: string): void;
+    /** handler for action set.cmdCreateStatusReportTitle — bind UI events here */
+    handleCmdCreateStatusReportTitleChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdCreateStatusReport.content */
+    setCmdCreateStatusReportContent(value: string): void;
+    /** handler for action set.cmdCreateStatusReportContent — bind UI events here */
+    handleCmdCreateStatusReportContentChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdCreateStatusReport.communicatedRisks */
+    setCmdCreateStatusReportCommunicatedRisks(value: string): void;
+    /** handler for action set.cmdCreateStatusReportCommunicatedRisks — bind UI events here */
+    handleCmdCreateStatusReportCommunicatedRisksChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdCreateStatusReport.generatedByUserId */
+    setCmdCreateStatusReportGeneratedByUserId(value: string): void;
+    /** handler for action set.cmdCreateStatusReportGeneratedByUserId — bind UI events here */
+    handleCmdCreateStatusReportGeneratedByUserIdChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdCreateStatusReport.publishedByUserId */
+    setCmdCreateStatusReportPublishedByUserId(value: string): void;
+    /** handler for action set.cmdCreateStatusReportPublishedByUserId — bind UI events here */
+    handleCmdCreateStatusReportPublishedByUserIdChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.statusReportId */
+    setCmdUpdateStatusReportStatusReportId(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportStatusReportId — bind UI events here */
+    handleCmdUpdateStatusReportStatusReportIdChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.projectId */
+    setCmdUpdateStatusReportProjectId(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportProjectId — bind UI events here */
+    handleCmdUpdateStatusReportProjectIdChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.status */
+    setCmdUpdateStatusReportStatus(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportStatus — bind UI events here */
+    handleCmdUpdateStatusReportStatusChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.title */
+    setCmdUpdateStatusReportTitle(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportTitle — bind UI events here */
+    handleCmdUpdateStatusReportTitleChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.content */
+    setCmdUpdateStatusReportContent(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportContent — bind UI events here */
+    handleCmdUpdateStatusReportContentChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.communicatedRisks */
+    setCmdUpdateStatusReportCommunicatedRisks(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportCommunicatedRisks — bind UI events here */
+    handleCmdUpdateStatusReportCommunicatedRisksChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.generatedAt */
+    setCmdUpdateStatusReportGeneratedAt(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportGeneratedAt — bind UI events here */
+    handleCmdUpdateStatusReportGeneratedAtChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.generatedByUserId */
+    setCmdUpdateStatusReportGeneratedByUserId(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportGeneratedByUserId — bind UI events here */
+    handleCmdUpdateStatusReportGeneratedByUserIdChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.publishedAt */
+    setCmdUpdateStatusReportPublishedAt(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportPublishedAt — bind UI events here */
+    handleCmdUpdateStatusReportPublishedAtChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.publishedByUserId */
+    setCmdUpdateStatusReportPublishedByUserId(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportPublishedByUserId — bind UI events here */
+    handleCmdUpdateStatusReportPublishedByUserIdChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdUpdateStatusReport.withdrawnAt */
+    setCmdUpdateStatusReportWithdrawnAt(value: string): void;
+    /** handler for action set.cmdUpdateStatusReportWithdrawnAt — bind UI events here */
+    handleCmdUpdateStatusReportWithdrawnAtChange(event: Event): void;
+    /** setter for state ui.statusReportCatalogue.input.cmdDeleteStatusReport.statusReportId */
+    setCmdDeleteStatusReportStatusReportId(value: string): void;
+    /** handler for action set.cmdDeleteStatusReportStatusReportId — bind UI events here */
+    handleCmdDeleteStatusReportStatusReportIdChange(event: Event): void;
+}

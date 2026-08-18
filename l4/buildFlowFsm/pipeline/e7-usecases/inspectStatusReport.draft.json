@@ -1,0 +1,28 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "inspectStatusReport",
+  "title": "Consultar o relatório de status publicado",
+  "kind": "query",
+  "compiledFrom": [
+    "consultClientProjectUpdates.inspectStatusReport"
+  ],
+  "description": "Consulta um relatório de status publicado da obra, incluindo os riscos de atraso comunicados.",
+  "contexts": {
+    "requires": [
+      "selectedStatusReport"
+    ],
+    "provides": [
+      "selectedStatusReport"
+    ]
+  },
+  "entityRefs": [
+    "ScheduleRiskAssessment",
+    "StatusReport"
+  ],
+  "useRules": [
+    "clientVisibleStatusReport"
+  ],
+  "transitions": []
+}

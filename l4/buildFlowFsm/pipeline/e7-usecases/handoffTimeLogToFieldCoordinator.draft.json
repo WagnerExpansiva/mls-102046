@@ -1,0 +1,25 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "handoffTimeLogToFieldCoordinator",
+  "title": "Encaminhar o registro diário",
+  "kind": "command",
+  "compiledFrom": [
+    "recordWorkTime.handoffTimeLogToFieldCoordinator"
+  ],
+  "description": "Encaminha o registro diário de horas para acompanhamento da execução.",
+  "contexts": {
+    "requires": [
+      "selectedTimeLog"
+    ],
+    "provides": [
+      "selectedTimeLog"
+    ]
+  },
+  "entityRefs": [
+    "TimeLog"
+  ],
+  "useRules": [],
+  "transitions": []
+}

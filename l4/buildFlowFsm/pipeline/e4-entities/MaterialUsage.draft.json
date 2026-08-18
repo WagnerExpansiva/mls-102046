@@ -1,0 +1,108 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "MaterialUsage",
+  "fields": [
+    {
+      "fieldId": "materialUsageId",
+      "title": "ID do consumo de material",
+      "type": "uuid",
+      "required": true,
+      "description": "Identificador estável do apontamento de consumo de material, preservado entre etapas conectadas.",
+      "constraints": [
+        {
+          "constraintId": "uniqueMaterialUsageId",
+          "kind": "unique",
+          "value": "true",
+          "description": "Cada apontamento de consumo possui um identificador estável único.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "status",
+      "title": "Status",
+      "type": "string",
+      "required": true,
+      "description": "Situação do apontamento de consumo para determinar sua elegibilidade no custo realizado e na execução consolidada.",
+      "constraints": [
+        {
+          "constraintId": "materialUsageStatusEnum",
+          "kind": "enum",
+          "value": "[\"recorded\",\"voided\"]",
+          "description": "O consumo pode estar registrado ou anulado.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "projectId",
+      "title": "Obra",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência de contexto à obra contra a qual o material foi efetivamente consumido.",
+      "constraints": []
+    },
+    {
+      "fieldId": "inventoryItemId",
+      "title": "Item de estoque",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência de contexto ao item de material efetivamente utilizado.",
+      "constraints": []
+    },
+    {
+      "fieldId": "inventoryBalanceId",
+      "title": "Saldo de estoque de origem",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência ao saldo operacional que suportou o consumo, para manter a rastreabilidade de disponibilidade e custo.",
+      "constraints": []
+    },
+    {
+      "fieldId": "quantity",
+      "title": "Quantidade consumida",
+      "type": "number",
+      "required": true,
+      "description": "Quantidade do item efetivamente consumida na obra.",
+      "constraints": [
+        {
+          "constraintId": "positiveConsumedQuantity",
+          "kind": "custom",
+          "value": "positive",
+          "description": "A quantidade informada deve ser maior que zero.",
+          "source": "journey"
+        }
+      ]
+    },
+    {
+      "fieldId": "usageDescription",
+      "title": "Descrição do consumo",
+      "type": "text",
+      "required": true,
+      "description": "Descrição informada do consumo de material realizado em campo.",
+      "constraints": []
+    },
+    {
+      "fieldId": "consumedOn",
+      "title": "Data do consumo",
+      "type": "date",
+      "required": true,
+      "description": "Data em que o material foi efetivamente consumido na obra.",
+      "constraints": []
+    },
+    {
+      "fieldId": "unitCostBasis",
+      "title": "Base de custo unitário",
+      "type": "money",
+      "required": true,
+      "description": "Custo unitário preservado como base para o custeio realizado do consumo.",
+      "constraints": []
+    }
+  ],
+  "useRules": [
+    "materialUsageRequiresActiveProjectAndAvailableInventory",
+    "costEligibleMaterialUsage"
+  ]
+}

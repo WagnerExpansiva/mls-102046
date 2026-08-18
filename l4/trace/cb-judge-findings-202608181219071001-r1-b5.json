@@ -1,0 +1,118 @@
+{
+  "runId": "20260818121907.1001",
+  "judgeRun": 1,
+  "batchIndex": 5,
+  "owners": [
+    "listProject",
+    "listStatusReport",
+    "listTimeLog",
+    "listWorkTask",
+    "locateChangeOrder",
+    "locateClient",
+    "locateFieldWorker",
+    "locateInventoryItem",
+    "locateProject",
+    "locateWorkTask",
+    "publishStatusReport",
+    "updateChangeOrderDecision",
+    "updateChangeOrder",
+    "updateClientPortalAccess",
+    "updateClient"
+  ],
+  "findings": [
+    {
+      "ownerId": "listProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase listProject: principal aggregate 'Project' has a local port but is missing from data.ports (materialize never sees IProjectRepository nor the Project shape; see T12)"
+    },
+    {
+      "ownerId": "locateClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase locateClient: principal aggregate 'Client' has a local port but is missing from data.ports (materialize never sees IClientRepository nor the Client shape; see T12)"
+    },
+    {
+      "ownerId": "locateInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase locateInventoryItem: principal aggregate 'InventoryItem' has a local port but is missing from data.ports (materialize never sees IInventoryItemRepository nor the InventoryItem shape; see T12)"
+    },
+    {
+      "ownerId": "locateProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase locateProject: principal aggregate 'Project' has a local port but is missing from data.ports (materialize never sees IProjectRepository nor the Project shape; see T12)"
+    },
+    {
+      "ownerId": "updateClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase updateClient: principal aggregate 'Client' has a local port but is missing from data.ports (materialize never sees IClientRepository nor the Client shape; see T12)"
+    },
+    {
+      "ownerId": "listProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A operação lê Project, mas ports está vazio (também na função listProject); falta a porta válida Project.",
+      "suggestion": "Adicionar Project em ports no nível do usecase e da função listProject."
+    },
+    {
+      "ownerId": "locateClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A operação lê Client, mas ports está vazio (também na função locateClient); falta a porta válida Client.",
+      "suggestion": "Adicionar Client em ports no nível do usecase e da função locateClient."
+    },
+    {
+      "ownerId": "locateInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A definição não contém nenhuma function para implementar a operação list de InventoryItem e também não declara a porta InventoryItem, embora a operação leia essa entidade.",
+      "suggestion": "Gerar a função de listagem com os campos de saída do contrato e declarar InventoryItem em ports no nível do usecase e da função."
+    },
+    {
+      "ownerId": "locateProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A definição não contém nenhuma function para implementar a operação list de Project e também não declara a porta Project, embora a operação leia essa entidade.",
+      "suggestion": "Gerar a função de listagem com os campos de saída do contrato e declarar Project em ports no nível do usecase e da função."
+    },
+    {
+      "ownerId": "publishStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A operação lê Project, mas a porta válida Project está ausente em ports; mdmRefs não substitui a porta requerida.",
+      "suggestion": "Adicionar Project em ports no nível do usecase e da função publishStatusReport."
+    },
+    {
+      "ownerId": "publishStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O input obrigatório do contrato projectProjectId (fieldRef Project.projectId) foi gerado como projectId; o campo de entrada não corresponde exatamente a inputs[].",
+      "suggestion": "Renomear o input projectId para projectProjectId, preservando fieldRef Project.projectId."
+    },
+    {
+      "ownerId": "updateChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A operação lê Client e Project, mas ports contém apenas ChangeOrder; faltam as portas válidas Client e Project.",
+      "suggestion": "Adicionar Client e Project em ports no nível do usecase e da função updateChangeOrder."
+    },
+    {
+      "ownerId": "updateClientPortalAccess",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A operação lê Client, mas ports contém apenas ClientPortalAccess e PlatformUser; falta a porta válida Client.",
+      "suggestion": "Adicionar Client em ports no nível do usecase e da função updateClientPortalAccess."
+    },
+    {
+      "ownerId": "updateClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A operação lê e escreve Client, mas ports está vazio (também na função updateClient); falta a porta válida Client.",
+      "suggestion": "Adicionar Client em ports no nível do usecase e da função updateClient."
+    }
+  ],
+  "savedAt": "2026-08-18T12:24:47.662Z"
+}

@@ -1,0 +1,61 @@
+{
+  "savedAt": "2026-08-18T14:53:13.187Z",
+  "pageId": "projectCatalogue",
+  "genome": "page21",
+  "objective": {
+    "actor": "Profissional administrativo ou gestor de obras responsável pelo cadastro e manutenção de obras.",
+    "jobToBeDone": "Localizar uma obra ou cliente e, com segurança, criar, corrigir ou excluir o cadastro da obra.",
+    "primaryDecision": "Qual obra deve ser selecionada para editar ou excluir, ou quais dados devem ser confirmados para criar uma nova obra.",
+    "decisiveInfo": [
+      "name",
+      "clientId",
+      "address",
+      "status",
+      "authorizedBudget",
+      "plannedStartDate",
+      "plannedEndDate",
+      "projectId",
+      "clientName"
+    ],
+    "usageFrequency": "Uso ocasional a frequente em rotinas administrativas de cadastro, normalmente em sessões de manutenção de registros.",
+    "informationHierarchy": [
+      "Lista e identificação da obra selecionada",
+      "Estado atual da obra e cliente associado",
+      "Nome, endereço, orçamento autorizado e período planejado",
+      "Ações contextuais de atualizar ou excluir",
+      "Cadastro de uma nova obra"
+    ],
+    "successCriteria": "O usuário encontra uma obra sem esforço, entende seu estado atual, edita somente decisões relevantes, cria registros com cliente selecionado por lookup e exclui apenas após confirmação, com atualização da lista após cada comando.",
+    "antiPatterns": [
+      "formulário CRUD separado e duplicado para cada operação",
+      "projectId digitado manualmente",
+      "clientId digitado ou usado sem lookup",
+      "status como select livre com todos os estados",
+      "exclusão sem confirmação",
+      "expor status inicial do sistema como decisão manual",
+      "perder a seleção da obra ao abrir o editor"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar uma obra para manutenção",
+        "presentation": "master-detail row selection"
+      },
+      {
+        "action": "Atualizar a obra selecionada",
+        "presentation": "contextual-action primary button in detail panel"
+      },
+      {
+        "action": "Excluir a obra selecionada",
+        "presentation": "inline-row-command with destructive confirmation"
+      },
+      {
+        "action": "Criar uma nova obra",
+        "presentation": "primary button opening a focused creation form"
+      },
+      {
+        "action": "Selecionar o cliente",
+        "presentation": "lookup-picker backed by qryClientPicker"
+      }
+    ]
+  }
+}

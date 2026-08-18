@@ -1,0 +1,51 @@
+{
+  "savedAt": "2026-08-18T14:50:58.122Z",
+  "pageId": "clientBillingSummaryView",
+  "genome": "page31",
+  "objective": {
+    "actor": "Pessoa responsável por acompanhar o faturamento comercial de um cliente e sua obra.",
+    "jobToBeDone": "Consultar rapidamente o reflexo financeiro do cliente, comparando valores aprovados, faturáveis, faturados e ainda disponibilizados.",
+    "primaryDecision": "Determinar quanto do valor aprovado já foi faturado e quanto permanece disponível para o cliente.",
+    "decisiveInfo": [
+      "clientId",
+      "projectId",
+      "approvedChangeOrderAmount",
+      "billableAmount",
+      "invoicedAmount",
+      "clientAvailableAmount",
+      "approvedChangeOrderReferences",
+      "invoiceReferences"
+    ],
+    "usageFrequency": "Occasional/back-office, quando é necessário revisar a posição financeira de um cliente ou obra.",
+    "informationHierarchy": [
+      "Valores disponibilizados, faturados e faturáveis",
+      "Valor total de alterações aprovadas",
+      "Identificação do cliente e da obra",
+      "Referências das alterações aprovadas",
+      "Referências das faturas"
+    ],
+    "successCriteria": "O usuário identifica a posição financeira em poucos segundos, entende a relação entre os valores e consegue verificar as referências de suporte sem digitar identificadores ou navegar por formulários desnecessários.",
+    "antiPatterns": [
+      "formulário de consulta separado",
+      "entrada manual de clientId",
+      "exposição de ids como campos editáveis",
+      "status select",
+      "duplicar cada entidade relacionada em uma seção independente",
+      "priorizar referências textuais antes dos totais"
+    ],
+    "criticalActions": [
+      {
+        "action": "Consultar o resumo para o cliente selecionado",
+        "presentation": "selection-contextual primary action"
+      },
+      {
+        "action": "Interpretar os valores consolidados",
+        "presentation": "summary-first metric presentation"
+      },
+      {
+        "action": "Verificar alterações aprovadas e faturas de suporte",
+        "presentation": "progressive detail within the summary surface"
+      }
+    ]
+  }
+}

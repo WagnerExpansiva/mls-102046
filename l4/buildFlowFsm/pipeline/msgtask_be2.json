@@ -1,0 +1,191 @@
+{
+  "PK": "20260817213545.1001",
+  "SK": "metadata",
+  "title": "buildFlowFsm - backend",
+  "owner": "20250828124716.1000",
+  "team": "unassigned",
+  "status": "in progress",
+  "last_updated": 1787002641510,
+  "last_update_log": "",
+  "source": "",
+  "iaCompressed": {
+    "queueBackEnd": [],
+    "queueFrontEnd": [
+      {
+        "type": "pooling",
+        "stepId": 1,
+        "executionCount": 29,
+        "hookSequential": 1787002545649,
+        "afterMs": 5000
+      },
+      {
+        "type": "beforePromptStep",
+        "stepId": 16,
+        "hookSequential": 1787002641504,
+        "parentStepId": 2,
+        "args": "{\"planId\":\"cb-validate-before-seeds\",\"preSeeds\":true}"
+      }
+    ],
+    "longMemory": {
+      "actualDate": "2026-08-17",
+      "userName": "Wagner",
+      "taskName": "agentChangeBackend",
+      "flowName": "agentChangeBackend",
+      "version": "1",
+      "cliCommand": "run",
+      "targetModule": "buildFlowFsm"
+    },
+    "nextSteps": [
+      {
+        "stepId": 1,
+        "type": "agent",
+        "agentName": "agentChangeBackend",
+        "nextSteps": [
+          {
+            "type": "agent",
+            "stepId": 2,
+            "status": "in_progress",
+            "stepTitle": "Preparação",
+            "planning": {
+              "planId": "cb-phase-preparation",
+              "dependsOn": [],
+              "executionMode": "sequential",
+              "executionHost": "client"
+            },
+            "agentName": "agentCbPhase",
+            "prompt": "{\"planId\":\"cb-phase-preparation\",\"first\":{\"planId\":\"cb-scan\",\"agentName\":\"agentCbScanCreateOwners\",\"stepTitle\":\"Scan todoBackend (status = toCreate)\",\"args\":{\"planId\":\"cb-scan\"}}}",
+            "rags": [],
+            "interaction": null,
+            "nextSteps": [
+              {
+                "type": "agent",
+                "stepId": 3,
+                "status": "completed",
+                "stepTitle": "Scan todoBackend (status = toCreate)",
+                "planning": {
+                  "planId": "cb-scan",
+                  "dependsOn": [],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbScanCreateOwners",
+                "prompt": "{\"planId\":\"cb-scan\"}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              },
+              {
+                "type": "agent",
+                "stepId": 4,
+                "status": "completed",
+                "stepTitle": "Materializar .ts desatualizados",
+                "planning": {
+                  "planId": "cb-materialize",
+                  "dependsOn": [
+                    "cb-scan"
+                  ],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbMaterialize",
+                "prompt": "{\"planId\":\"cb-materialize\"}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              },
+              {
+                "type": "agent",
+                "stepId": 5,
+                "status": "completed",
+                "stepTitle": "Materializar controllers 14/14 (repairs no trace)",
+                "progress": {
+                  "total": 14,
+                  "completed": 14,
+                  "failed": 0,
+                  "templateTitle": "Materializar controllers {{completed}}/{{total}} (repairs no trace)"
+                },
+                "planning": {
+                  "planId": "cb-mat-L5",
+                  "dependsOn": [],
+                  "executionMode": "parallel_dynamic",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbMaterialize",
+                "prompt": "{}",
+                "rags": [],
+                "onFailure": "continue",
+                "interaction": {
+                  "input": [
+                    {
+                      "type": "system",
+                      "content": "<!-- modelType: code -->"
+                    }
+                  ],
+                  "cost": 0.2747,
+                  "trace": [
+                    "queued 14 parallel args for agentCbMaterialize",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/clientBillingSummaryView.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:35:54.927Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:30822 outputTokens:3073 cost:$0.0099 llmTime: 00:00:12.191\",\"finished at 2026-08-17T21:36:07.143Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/assignWorkTask.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:35:49.338Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:48687 outputTokens:8798 cost:$0.0214 llmTime: 00:00:30.846\",\"finished at 2026-08-17T21:36:20.212Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/changeOrderCatalogue.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:35:53.583Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:60188 outputTokens:9285 cost:$0.0238 llmTime: 00:00:27.919\",\"finished at 2026-08-17T21:36:21.568Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/clientPortalAccessCatalogue.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:35:58.098Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:49036 outputTokens:6967 cost:$0.0184 llmTime: 00:00:23.849\",\"finished at 2026-08-17T21:36:21.974Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/consultApprovedProjectChangeOrders.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:36:00.603Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:40654 outputTokens:6525 cost:$0.0165 llmTime: 00:00:24.702\",\"finished at 2026-08-17T21:36:25.336Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/consultClientProjectUpdates.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:36:02.845Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:41340 outputTokens:6672 cost:$0.0169 llmTime: 00:00:23.078\",\"finished at 2026-08-17T21:36:25.975Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/projectDashboardView.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:36:16.245Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:30455 outputTokens:2602 cost:$0.0087 llmTime: 00:00:11.363\",\"finished at 2026-08-17T21:36:27.649Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/projectCoordinationAssignmentCatalogue.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:36:14.637Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:49956 outputTokens:6464 cost:$0.0184 llmTime: 00:00:18.026\",\"finished at 2026-08-17T21:36:32.699Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/generateAndPublishProjectStatusReport.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:36:07.262Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:69823 outputTokens:9823 cost:$0.0261 llmTime: 00:00:29.060\",\"finished at 2026-08-17T21:36:36.346Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/issueProjectInvoice.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:36:10.711Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:51309 outputTokens:8482 cost:$0.0212 llmTime: 00:00:30.910\",\"finished at 2026-08-17T21:36:41.679Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/projectTimelineView.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:36:40.539Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:34226 outputTokens:3330 cost:$0.0104 llmTime: 00:00:13.099\",\"finished at 2026-08-17T21:36:53.695Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/projectHub.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:36:38.451Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:88419 outputTokens:11299 cost:$0.0354 llmTime: 00:00:23.621\",\"finished at 2026-08-17T21:37:02.102Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/reviewProjectPortfolio.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:36:43.341Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:57316 outputTokens:8180 cost:$0.0224 llmTime: 00:00:22.877\",\"finished at 2026-08-17T21:37:06.241Z\"]}",
+                    "{\"title\":\"Processing with args: _102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers/statusReportCatalogue.defs.ts\",\"ok\":true,\"trace\":[\"starting at 2026-08-17T21:36:47.058Z\",\"preparing user:'wagnerexpansiva@gmail.com' org:'collabcodes' modelType:'code' \",\"starting provider: collab-llm model: code user:'wagnerexpansiva@gmail.com'\",\"x-tool-strict: active — tool arguments schema-validated via ajv\",\"provider: openrouter model:openai/gpt-5.6-luna-pro alias:code stage:primary user:'wagnerexpansiva@gmail.com' inputTokens:69099 outputTokens:8800 cost:$0.0252 llmTime: 00:00:28.351\",\"finished at 2026-08-17T21:37:15.454Z\"]}"
+                  ],
+                  "payload": null
+                },
+                "nextSteps": []
+              },
+              {
+                "type": "agent",
+                "stepId": 16,
+                "status": "waiting_human_input",
+                "stepTitle": "Validar integridade l1 antes dos seeds",
+                "planning": {
+                  "planId": "cb-validate-before-seeds",
+                  "dependsOn": [
+                    "cb-mat-L5"
+                  ],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbValidateAll",
+                "prompt": "{\"planId\":\"cb-validate-before-seeds\",\"preSeeds\":true}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              }
+            ]
+          }
+        ],
+        "status": "in_progress",
+        "rags": [],
+        "interaction": {
+          "input": [
+            {
+              "type": "system",
+              "content": "agentChangeBackend deterministic bootstrap. The root LLM is skipped by AgentIntentAddMessageAI.skipRootLLM."
+            },
+            {
+              "type": "human",
+              "content": "agentChangeBackend"
+            }
+          ],
+          "cost": 0,
+          "trace": [
+            "Root LLM skipped by AgentIntentAddMessageAI.skipRootLLM"
+          ],
+          "payload": null
+        }
+      }
+    ]
+  },
+  "messageid_created": "20260611235058.1000/20260817213545.1000"
+}

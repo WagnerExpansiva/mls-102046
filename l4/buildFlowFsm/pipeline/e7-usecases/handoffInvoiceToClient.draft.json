@@ -1,0 +1,39 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "handoffInvoiceToClient",
+  "title": "Disponibilizar a fatura ao cliente",
+  "kind": "command",
+  "compiledFrom": [
+    "issueProjectInvoice.handoffInvoiceToClient"
+  ],
+  "description": "Disponibiliza uma fatura emitida para consulta.",
+  "contexts": {
+    "requires": [
+      "selectedInvoice"
+    ],
+    "provides": [
+      "selectedInvoice"
+    ]
+  },
+  "entityRefs": [
+    "Invoice"
+  ],
+  "useRules": [
+    "clientVisibleInvoice"
+  ],
+  "transitions": [
+    {
+      "transitionId": "makeInvoiceAvailableToClient",
+      "entityRef": "Invoice",
+      "fromStates": [
+        "issued"
+      ],
+      "toState": "availableToClient",
+      "useRules": [
+        "clientVisibleInvoice"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "createChangeOrder",
+  "title": "Registrar a alteração proposta",
+  "kind": "command",
+  "compiledFrom": [
+    "submitChangeOrder.createChangeOrder"
+  ],
+  "description": "Registra uma ordem de mudança proposta vinculada ao cliente e à obra selecionados.",
+  "contexts": {
+    "requires": [
+      "selectedClient",
+      "selectedProject"
+    ],
+    "provides": [
+      "selectedChangeOrder"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder",
+    "Client",
+    "Project"
+  ],
+  "useRules": [
+    "changeOrderRequiresClientAndProject"
+  ],
+  "transitions": []
+}

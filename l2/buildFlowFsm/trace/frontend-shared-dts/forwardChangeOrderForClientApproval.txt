@@ -1,0 +1,93 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateChangeOrderOutput, CmdHandoffChangeOrderToClientOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/forwardChangeOrderForClientApproval.js';
+export type { QryLocateChangeOrderInput, QryLocateChangeOrderOutput, CmdHandoffChangeOrderToClientInput, CmdHandoffChangeOrderToClientOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/forwardChangeOrderForClientApproval.js';
+declare const message_pt: {
+    'section.forwardChangeOrderForClientApproval.locateChangeOrder.title': string;
+    'organism.forwardChangeOrderForClientApproval.qryLocateChangeOrder.title': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.title': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.empty': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.changeOrderId.label': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.clientRef.label': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.projectRef.label': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.description.label': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.scopeImpact.label': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.scheduleImpact.label': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.changeAmount.label': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.submittedAt.label': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.forwardedForClientApprovalAt.label': string;
+    'intent.forwardChangeOrderForClientApproval.qryLocateChangeOrder.list.column.status.label': string;
+    'section.forwardChangeOrderForClientApproval.handoffChangeOrderToClient.title': string;
+    'organism.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.title': string;
+    'intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.title': string;
+    'intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.action.cmdHandoffChangeOrderToClient': string;
+    'intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.description.label': string;
+    'intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.scopeImpact.label': string;
+    'intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.scheduleImpact.label': string;
+    'intent.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient.form.field.changeAmount.label': string;
+    'action.cmdHandoffChangeOrderToClient.success': string;
+    'action.cmdHandoffChangeOrderToClient.error': string;
+    'section.forwardChangeOrderForClientApproval.change-order-workspace.title': string;
+    'section.forwardChangeOrderForClientApproval.changeOrderApprovalWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmForwardChangeOrderForClientApprovalBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateChangeOrderState — actionStatus, values: idle|loading|success|error */
+    qryLocateChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateChangeOrderData — queryResult, outputShape: array */
+    qryLocateChangeOrderData: QryLocateChangeOrderOutput[];
+    /** state cmdHandoffChangeOrderToClientState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffChangeOrderToClientState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffChangeOrderToClientChangeOrderChangeOrderId — input */
+    cmdHandoffChangeOrderToClientChangeOrderChangeOrderId: string;
+    /** state cmdHandoffChangeOrderToClientDescription — input */
+    cmdHandoffChangeOrderToClientDescription: string;
+    /** state cmdHandoffChangeOrderToClientScopeImpact — input */
+    cmdHandoffChangeOrderToClientScopeImpact: string;
+    /** state cmdHandoffChangeOrderToClientScheduleImpact — input */
+    cmdHandoffChangeOrderToClientScheduleImpact: string;
+    /** state cmdHandoffChangeOrderToClientChangeAmount — input */
+    cmdHandoffChangeOrderToClientChangeAmount: string;
+    /** state cmdHandoffChangeOrderToClientOutput — commandOutput */
+    cmdHandoffChangeOrderToClientOutput: CmdHandoffChangeOrderToClientOutput | null;
+    /** state cmdHandoffChangeOrderToClientError — actionError */
+    cmdHandoffChangeOrderToClientError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryLocateChangeOrder (query) — route buildFlowFsm.forwardChangeOrderForClientApproval.qryLocateChangeOrder; inputs: (none); writes ui.forwardChangeOrderForClientApproval.data.qryLocateChangeOrder; status ui.forwardChangeOrderForClientApproval.action.qryLocateChangeOrder.status */
+    loadQryLocateChangeOrder(): Promise<void>;
+    /** handler for action qryLocateChangeOrder — bind UI events here */
+    handleQryLocateChangeOrderClick(event?: Event): void;
+    /** action cmdHandoffChangeOrderToClient (command) — route buildFlowFsm.forwardChangeOrderForClientApproval.cmdHandoffChangeOrderToClient; inputs: changeOrderChangeOrderId, description, scopeImpact, scheduleImpact, changeAmount; writes ui.forwardChangeOrderForClientApproval.output.cmdHandoffChangeOrderToClient; status ui.forwardChangeOrderForClientApproval.action.cmdHandoffChangeOrderToClient.status; feedback keys action.cmdHandoffChangeOrderToClient.success / action.cmdHandoffChangeOrderToClient.error */
+    cmdHandoffChangeOrderToClient(): Promise<void>;
+    /** handler for action cmdHandoffChangeOrderToClient — bind UI events here */
+    handleCmdHandoffChangeOrderToClientClick(event?: Event): void;
+    /** setter for state ui.forwardChangeOrderForClientApproval.input.cmdHandoffChangeOrderToClient.changeOrderChangeOrderId */
+    setCmdHandoffChangeOrderToClientChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.cmdHandoffChangeOrderToClientChangeOrderChangeOrderId — bind UI events here */
+    handleCmdHandoffChangeOrderToClientChangeOrderChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.forwardChangeOrderForClientApproval.input.cmdHandoffChangeOrderToClient.description */
+    setCmdHandoffChangeOrderToClientDescription(value: string): void;
+    /** handler for action set.cmdHandoffChangeOrderToClientDescription — bind UI events here */
+    handleCmdHandoffChangeOrderToClientDescriptionChange(event: Event): void;
+    /** setter for state ui.forwardChangeOrderForClientApproval.input.cmdHandoffChangeOrderToClient.scopeImpact */
+    setCmdHandoffChangeOrderToClientScopeImpact(value: string): void;
+    /** handler for action set.cmdHandoffChangeOrderToClientScopeImpact — bind UI events here */
+    handleCmdHandoffChangeOrderToClientScopeImpactChange(event: Event): void;
+    /** setter for state ui.forwardChangeOrderForClientApproval.input.cmdHandoffChangeOrderToClient.scheduleImpact */
+    setCmdHandoffChangeOrderToClientScheduleImpact(value: string): void;
+    /** handler for action set.cmdHandoffChangeOrderToClientScheduleImpact — bind UI events here */
+    handleCmdHandoffChangeOrderToClientScheduleImpactChange(event: Event): void;
+    /** setter for state ui.forwardChangeOrderForClientApproval.input.cmdHandoffChangeOrderToClient.changeAmount */
+    setCmdHandoffChangeOrderToClientChangeAmount(value: string): void;
+    /** handler for action set.cmdHandoffChangeOrderToClientChangeAmount — bind UI events here */
+    handleCmdHandoffChangeOrderToClientChangeAmountChange(event: Event): void;
+}

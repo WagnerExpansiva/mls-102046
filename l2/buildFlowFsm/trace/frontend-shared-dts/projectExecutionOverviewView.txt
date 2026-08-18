@@ -1,0 +1,54 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryProjectExecutionOverviewViewOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/projectExecutionOverviewView.js';
+export type { QryProjectExecutionOverviewViewInput, QryProjectExecutionOverviewViewOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/projectExecutionOverviewView.js';
+declare const message_pt: {
+    'section.projectExecutionOverviewView.overview.title': string;
+    'organism.projectExecutionOverviewView.qryProjectExecutionOverviewView.title': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.title': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.empty': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.projectId.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.projectName.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.projectStatus.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.workTaskIds.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.taskSummary.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.upcomingCommitments.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.timeLogIds.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.totalLoggedHours.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.materialUsageIds.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.materialUsageSummary.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.actualLaborCost.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.actualMaterialCost.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.actualCost.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.budgetAmount.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.costVariance.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.changeOrderIds.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.changeOrderImpactSummary.label': string;
+    'intent.projectExecutionOverviewView.qryProjectExecutionOverviewView.list.column.calculatedAt.label': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmProjectExecutionOverviewViewBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryProjectExecutionOverviewViewState — actionStatus, values: idle|loading|success|error */
+    qryProjectExecutionOverviewViewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectExecutionOverviewViewProjectExecutionOverviewProjectId — input */
+    qryProjectExecutionOverviewViewProjectExecutionOverviewProjectId: string;
+    /** state qryProjectExecutionOverviewViewData — queryResult, outputShape: object */
+    qryProjectExecutionOverviewViewData: QryProjectExecutionOverviewViewOutput | null;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    /** action qryProjectExecutionOverviewView (query) — route buildFlowFsm.projectExecutionOverviewView.qryProjectExecutionOverviewView; inputs: projectExecutionOverviewProjectId; writes ui.projectExecutionOverviewView.data.qryProjectExecutionOverviewView; status ui.projectExecutionOverviewView.action.qryProjectExecutionOverviewView.status */
+    loadQryProjectExecutionOverviewView(): Promise<void>;
+    /** handler for action qryProjectExecutionOverviewView — bind UI events here */
+    handleQryProjectExecutionOverviewViewClick(event?: Event): void;
+    /** setter for state ui.projectExecutionOverviewView.input.qryProjectExecutionOverviewView.projectExecutionOverviewProjectId */
+    setQryProjectExecutionOverviewViewProjectExecutionOverviewProjectId(value: string): void;
+    /** handler for action set.qryProjectExecutionOverviewViewProjectExecutionOverviewProjectId — bind UI events here */
+    handleQryProjectExecutionOverviewViewProjectExecutionOverviewProjectIdChange(event: Event): void;
+}

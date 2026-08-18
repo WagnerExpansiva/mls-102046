@@ -1,0 +1,86 @@
+/// <mls fileReference="_102046_/l2/buildFlowFsm/web/shared/projectCatalogue.test.ts" enhancement="_102020_/l2/enhancementAura"/>
+
+import type { BuildFlowFsmProjectCatalogueBase } from '/_102046_/l2/buildFlowFsm/web/shared/projectCatalogue.js';
+import type { CmdCreateProjectInput, CmdCreateProjectOutput, CmdDeleteProjectInput, CmdDeleteProjectOutput, CmdUpdateProjectInput, CmdUpdateProjectOutput, QryClientPickerOutput, QryListProjectOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/projectCatalogue.js';
+
+type IsAny<T> = 0 extends (1 & T) ? true : false;
+type Assignable<Actual, Expected> = IsAny<Actual> extends true ? false : [Actual] extends [Expected] ? true : false;
+type Assert<T extends true> = T;
+
+declare const page: BuildFlowFsmProjectCatalogueBase;
+
+// This file is generated from .defs.ts. Add narrower state/action assertions here as materialization rules evolve.
+type _State_status = Assert<Assignable<typeof page.status, string>>;
+type _State_qryListProjectState = Assert<Assignable<typeof page.qryListProjectState, "idle" | "loading" | "success" | "error">>;
+type _State_qryListProjectData = Assert<Assignable<typeof page.qryListProjectData, unknown[] | QryListProjectOutput>>;
+type _State_cmdCreateProjectState = Assert<Assignable<typeof page.cmdCreateProjectState, "idle" | "loading" | "success" | "error">>;
+type _State_cmdCreateProjectClientId = Assert<Assignable<typeof page.cmdCreateProjectClientId, string | CmdCreateProjectInput["clientId"]>>;
+type _State_cmdCreateProjectName = Assert<Assignable<typeof page.cmdCreateProjectName, string | CmdCreateProjectInput["name"]>>;
+type _State_cmdCreateProjectAddress = Assert<Assignable<typeof page.cmdCreateProjectAddress, string | CmdCreateProjectInput["address"]>>;
+type _State_cmdCreateProjectStatus = Assert<Assignable<typeof page.cmdCreateProjectStatus, string | CmdCreateProjectInput["status"]>>;
+type _State_cmdCreateProjectAuthorizedBudget = Assert<Assignable<typeof page.cmdCreateProjectAuthorizedBudget, string | CmdCreateProjectInput["authorizedBudget"]>>;
+type _State_cmdCreateProjectPlannedStartDate = Assert<Assignable<typeof page.cmdCreateProjectPlannedStartDate, string | CmdCreateProjectInput["plannedStartDate"]>>;
+type _State_cmdCreateProjectPlannedEndDate = Assert<Assignable<typeof page.cmdCreateProjectPlannedEndDate, string | CmdCreateProjectInput["plannedEndDate"]>>;
+type _State_cmdCreateProjectOutput = Assert<Assignable<typeof page.cmdCreateProjectOutput, CmdCreateProjectOutput | null>>;
+type _State_cmdCreateProjectError = Assert<Assignable<typeof page.cmdCreateProjectError, string>>;
+type _State_cmdUpdateProjectState = Assert<Assignable<typeof page.cmdUpdateProjectState, "idle" | "loading" | "success" | "error">>;
+type _State_cmdUpdateProjectProjectId = Assert<Assignable<typeof page.cmdUpdateProjectProjectId, string | CmdUpdateProjectInput["projectId"]>>;
+type _State_cmdUpdateProjectClientId = Assert<Assignable<typeof page.cmdUpdateProjectClientId, string | CmdUpdateProjectInput["clientId"]>>;
+type _State_cmdUpdateProjectName = Assert<Assignable<typeof page.cmdUpdateProjectName, string | CmdUpdateProjectInput["name"]>>;
+type _State_cmdUpdateProjectAddress = Assert<Assignable<typeof page.cmdUpdateProjectAddress, string | CmdUpdateProjectInput["address"]>>;
+type _State_cmdUpdateProjectStatus = Assert<Assignable<typeof page.cmdUpdateProjectStatus, string | CmdUpdateProjectInput["status"]>>;
+type _State_cmdUpdateProjectAuthorizedBudget = Assert<Assignable<typeof page.cmdUpdateProjectAuthorizedBudget, string | CmdUpdateProjectInput["authorizedBudget"]>>;
+type _State_cmdUpdateProjectPlannedStartDate = Assert<Assignable<typeof page.cmdUpdateProjectPlannedStartDate, string | CmdUpdateProjectInput["plannedStartDate"]>>;
+type _State_cmdUpdateProjectPlannedEndDate = Assert<Assignable<typeof page.cmdUpdateProjectPlannedEndDate, string | CmdUpdateProjectInput["plannedEndDate"]>>;
+type _State_cmdUpdateProjectOutput = Assert<Assignable<typeof page.cmdUpdateProjectOutput, CmdUpdateProjectOutput | null>>;
+type _State_cmdUpdateProjectError = Assert<Assignable<typeof page.cmdUpdateProjectError, string>>;
+type _State_cmdDeleteProjectState = Assert<Assignable<typeof page.cmdDeleteProjectState, "idle" | "loading" | "success" | "error">>;
+type _State_cmdDeleteProjectProjectId = Assert<Assignable<typeof page.cmdDeleteProjectProjectId, string | CmdDeleteProjectInput["projectId"]>>;
+type _State_cmdDeleteProjectOutput = Assert<Assignable<typeof page.cmdDeleteProjectOutput, CmdDeleteProjectOutput | null>>;
+type _State_cmdDeleteProjectError = Assert<Assignable<typeof page.cmdDeleteProjectError, string>>;
+type _State_qryClientPickerState = Assert<Assignable<typeof page.qryClientPickerState, "idle" | "loading" | "success" | "error">>;
+type _State_qryClientPickerData = Assert<Assignable<typeof page.qryClientPickerData, unknown[] | QryClientPickerOutput>>;
+type _Action_loadQryListProject = Assert<Assignable<typeof page.loadQryListProject, (...args: any[]) => unknown>>;
+type _Handler_handleQryListProjectClick = Assert<Assignable<typeof page.handleQryListProjectClick, (...args: any[]) => unknown>>;
+type _Action_cmdCreateProject = Assert<Assignable<typeof page.cmdCreateProject, (...args: any[]) => unknown>>;
+type _Handler_handleCmdCreateProjectClick = Assert<Assignable<typeof page.handleCmdCreateProjectClick, (...args: any[]) => unknown>>;
+type _Action_cmdUpdateProject = Assert<Assignable<typeof page.cmdUpdateProject, (...args: any[]) => unknown>>;
+type _Handler_handleCmdUpdateProjectClick = Assert<Assignable<typeof page.handleCmdUpdateProjectClick, (...args: any[]) => unknown>>;
+type _Action_cmdDeleteProject = Assert<Assignable<typeof page.cmdDeleteProject, (...args: any[]) => unknown>>;
+type _Handler_handleCmdDeleteProjectClick = Assert<Assignable<typeof page.handleCmdDeleteProjectClick, (...args: any[]) => unknown>>;
+type _Action_loadQryClientPicker = Assert<Assignable<typeof page.loadQryClientPicker, (...args: any[]) => unknown>>;
+type _Handler_handleQryClientPickerClick = Assert<Assignable<typeof page.handleQryClientPickerClick, (...args: any[]) => unknown>>;
+type _Action_setCmdCreateProjectClientId = Assert<Assignable<typeof page.setCmdCreateProjectClientId, (...args: any[]) => unknown>>;
+type _Handler_handleCmdCreateProjectClientIdChange = Assert<Assignable<typeof page.handleCmdCreateProjectClientIdChange, (...args: any[]) => unknown>>;
+type _Action_setCmdCreateProjectName = Assert<Assignable<typeof page.setCmdCreateProjectName, (...args: any[]) => unknown>>;
+type _Handler_handleCmdCreateProjectNameChange = Assert<Assignable<typeof page.handleCmdCreateProjectNameChange, (...args: any[]) => unknown>>;
+type _Action_setCmdCreateProjectAddress = Assert<Assignable<typeof page.setCmdCreateProjectAddress, (...args: any[]) => unknown>>;
+type _Handler_handleCmdCreateProjectAddressChange = Assert<Assignable<typeof page.handleCmdCreateProjectAddressChange, (...args: any[]) => unknown>>;
+type _Action_setCmdCreateProjectStatus = Assert<Assignable<typeof page.setCmdCreateProjectStatus, (...args: any[]) => unknown>>;
+type _Handler_handleCmdCreateProjectStatusChange = Assert<Assignable<typeof page.handleCmdCreateProjectStatusChange, (...args: any[]) => unknown>>;
+type _Action_setCmdCreateProjectAuthorizedBudget = Assert<Assignable<typeof page.setCmdCreateProjectAuthorizedBudget, (...args: any[]) => unknown>>;
+type _Handler_handleCmdCreateProjectAuthorizedBudgetChange = Assert<Assignable<typeof page.handleCmdCreateProjectAuthorizedBudgetChange, (...args: any[]) => unknown>>;
+type _Action_setCmdCreateProjectPlannedStartDate = Assert<Assignable<typeof page.setCmdCreateProjectPlannedStartDate, (...args: any[]) => unknown>>;
+type _Handler_handleCmdCreateProjectPlannedStartDateChange = Assert<Assignable<typeof page.handleCmdCreateProjectPlannedStartDateChange, (...args: any[]) => unknown>>;
+type _Action_setCmdCreateProjectPlannedEndDate = Assert<Assignable<typeof page.setCmdCreateProjectPlannedEndDate, (...args: any[]) => unknown>>;
+type _Handler_handleCmdCreateProjectPlannedEndDateChange = Assert<Assignable<typeof page.handleCmdCreateProjectPlannedEndDateChange, (...args: any[]) => unknown>>;
+type _Action_setCmdUpdateProjectProjectId = Assert<Assignable<typeof page.setCmdUpdateProjectProjectId, (...args: any[]) => unknown>>;
+type _Handler_handleCmdUpdateProjectProjectIdChange = Assert<Assignable<typeof page.handleCmdUpdateProjectProjectIdChange, (...args: any[]) => unknown>>;
+type _Action_setCmdUpdateProjectClientId = Assert<Assignable<typeof page.setCmdUpdateProjectClientId, (...args: any[]) => unknown>>;
+type _Handler_handleCmdUpdateProjectClientIdChange = Assert<Assignable<typeof page.handleCmdUpdateProjectClientIdChange, (...args: any[]) => unknown>>;
+type _Action_setCmdUpdateProjectName = Assert<Assignable<typeof page.setCmdUpdateProjectName, (...args: any[]) => unknown>>;
+type _Handler_handleCmdUpdateProjectNameChange = Assert<Assignable<typeof page.handleCmdUpdateProjectNameChange, (...args: any[]) => unknown>>;
+type _Action_setCmdUpdateProjectAddress = Assert<Assignable<typeof page.setCmdUpdateProjectAddress, (...args: any[]) => unknown>>;
+type _Handler_handleCmdUpdateProjectAddressChange = Assert<Assignable<typeof page.handleCmdUpdateProjectAddressChange, (...args: any[]) => unknown>>;
+type _Action_setCmdUpdateProjectStatus = Assert<Assignable<typeof page.setCmdUpdateProjectStatus, (...args: any[]) => unknown>>;
+type _Handler_handleCmdUpdateProjectStatusChange = Assert<Assignable<typeof page.handleCmdUpdateProjectStatusChange, (...args: any[]) => unknown>>;
+type _Action_setCmdUpdateProjectAuthorizedBudget = Assert<Assignable<typeof page.setCmdUpdateProjectAuthorizedBudget, (...args: any[]) => unknown>>;
+type _Handler_handleCmdUpdateProjectAuthorizedBudgetChange = Assert<Assignable<typeof page.handleCmdUpdateProjectAuthorizedBudgetChange, (...args: any[]) => unknown>>;
+type _Action_setCmdUpdateProjectPlannedStartDate = Assert<Assignable<typeof page.setCmdUpdateProjectPlannedStartDate, (...args: any[]) => unknown>>;
+type _Handler_handleCmdUpdateProjectPlannedStartDateChange = Assert<Assignable<typeof page.handleCmdUpdateProjectPlannedStartDateChange, (...args: any[]) => unknown>>;
+type _Action_setCmdUpdateProjectPlannedEndDate = Assert<Assignable<typeof page.setCmdUpdateProjectPlannedEndDate, (...args: any[]) => unknown>>;
+type _Handler_handleCmdUpdateProjectPlannedEndDateChange = Assert<Assignable<typeof page.handleCmdUpdateProjectPlannedEndDateChange, (...args: any[]) => unknown>>;
+type _Action_setCmdDeleteProjectProjectId = Assert<Assignable<typeof page.setCmdDeleteProjectProjectId, (...args: any[]) => unknown>>;
+type _Handler_handleCmdDeleteProjectProjectIdChange = Assert<Assignable<typeof page.handleCmdDeleteProjectProjectIdChange, (...args: any[]) => unknown>>;
+
+export {};

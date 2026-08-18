@@ -1,0 +1,46 @@
+{
+  "savedAt": "2026-08-18T14:54:12.870Z",
+  "pageId": "scheduleRiskAssessmentView",
+  "genome": "page31",
+  "objective": {
+    "actor": "Gestor de projeto ou responsável pelo acompanhamento do cronograma da obra",
+    "jobToBeDone": "Identificar rapidamente quais tarefas não concluídas estão em risco de atraso e entender os indicadores que explicam cada risco.",
+    "primaryDecision": "Decidir qual tarefa em risco requer atenção prioritária no acompanhamento do projeto.",
+    "decisiveInfo": [
+      "taskStatus",
+      "dueDate",
+      "progressPercent",
+      "riskIndicators",
+      "riskExplanation",
+      "workTaskId",
+      "assessedAt"
+    ],
+    "usageFrequency": "Recorrente durante o acompanhamento do cronograma e a preparação de relatórios de status.",
+    "informationHierarchy": [
+      "tarefas em risco e seus estados atuais",
+      "prazo e percentual de progresso",
+      "indicadores e explicação do risco",
+      "identificação da obra e da tarefa",
+      "momento da avaliação"
+    ],
+    "successCriteria": "O gestor consegue localizar a tarefa mais preocupante, compreender por que ela está em risco e usar essa leitura para priorizar o acompanhamento sem consultar outra tela.",
+    "antiPatterns": [
+      "formulário separado para consulta",
+      "campo de texto para digitar projectId",
+      "edição manual de status",
+      "tabela sem destaque para tarefas não concluídas ou risco",
+      "exibir indicadores sem explicação contextual",
+      "transformar a consulta em fluxo de criação ou atualização"
+    ],
+    "criticalActions": [
+      {
+        "action": "Consultar as tarefas em risco do projeto selecionado",
+        "presentation": "selection-contextual-query"
+      },
+      {
+        "action": "Inspecionar uma tarefa e seus fatores de risco",
+        "presentation": "master-detail"
+      }
+    ]
+  }
+}

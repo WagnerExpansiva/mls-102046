@@ -1,0 +1,68 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "ChangeOrderDecision",
+  "fields": [
+    {
+      "fieldId": "changeOrderDecisionId",
+      "title": "ID da decisão da ordem de mudança",
+      "type": "uuid",
+      "required": true,
+      "description": "Identificador estável da decisão registrada sobre uma ordem de mudança.",
+      "constraints": [
+        {
+          "constraintId": "uniqueChangeOrderDecisionId",
+          "kind": "unique",
+          "value": "true",
+          "description": "Cada decisão registrada possui um identificador estável exclusivo.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "changeOrder",
+      "title": "Ordem de mudança",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência à ordem de mudança que recebeu a decisão.",
+      "constraints": []
+    },
+    {
+      "fieldId": "madeByPlatformUser",
+      "title": "Usuário responsável pela decisão",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência ao usuário que aprovou ou recusou a ordem de mudança.",
+      "constraints": []
+    },
+    {
+      "fieldId": "decision",
+      "title": "Decisão",
+      "type": "string",
+      "required": true,
+      "description": "Resultado registrado para a ordem de mudança.",
+      "constraints": [
+        {
+          "constraintId": "decisionAllowedValues",
+          "kind": "enum",
+          "value": "[\"approved\",\"declined\"]",
+          "description": "A decisão registrada é aprovação do cliente ou recusa do gerente.",
+          "source": "journey"
+        }
+      ]
+    },
+    {
+      "fieldId": "decidedAt",
+      "title": "Data e hora da decisão",
+      "type": "datetime",
+      "required": true,
+      "description": "Data e hora em que a decisão foi registrada.",
+      "constraints": []
+    }
+  ],
+  "useRules": [
+    "onlyClientApprovesOwnChangeOrder",
+    "onlyProjectManagerDeclinesChangeOrder"
+  ]
+}

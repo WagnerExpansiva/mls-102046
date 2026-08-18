@@ -1,0 +1,163 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateClientOutput, QryLocateProjectOutput, CmdCreateChangeOrderOutput, CmdHandoffChangeOrderToProjectManagerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/submitChangeOrder.js';
+export type { QryLocateClientInput, QryLocateClientOutput, QryLocateProjectInput, QryLocateProjectOutput, CmdCreateChangeOrderInput, CmdCreateChangeOrderOutput, CmdHandoffChangeOrderToProjectManagerInput, CmdHandoffChangeOrderToProjectManagerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/submitChangeOrder.js';
+declare const message_pt: {
+    'section.submitChangeOrder.locateClient.title': string;
+    'organism.submitChangeOrder.qryLocateClient.title': string;
+    'intent.submitChangeOrder.qryLocateClient.list.title': string;
+    'intent.submitChangeOrder.qryLocateClient.list.empty': string;
+    'intent.submitChangeOrder.qryLocateClient.list.column.clientId.label': string;
+    'intent.submitChangeOrder.qryLocateClient.list.column.clientName.label': string;
+    'intent.submitChangeOrder.qryLocateClient.list.column.contactEmail.label': string;
+    'intent.submitChangeOrder.qryLocateClient.list.column.contactPhone.label': string;
+    'section.submitChangeOrder.locateProject.title': string;
+    'organism.submitChangeOrder.qryLocateProject.title': string;
+    'intent.submitChangeOrder.qryLocateProject.list.title': string;
+    'intent.submitChangeOrder.qryLocateProject.list.empty': string;
+    'intent.submitChangeOrder.qryLocateProject.list.column.projectId.label': string;
+    'intent.submitChangeOrder.qryLocateProject.list.column.clientId.label': string;
+    'intent.submitChangeOrder.qryLocateProject.list.column.name.label': string;
+    'intent.submitChangeOrder.qryLocateProject.list.column.address.label': string;
+    'intent.submitChangeOrder.qryLocateProject.list.column.status.label': string;
+    'intent.submitChangeOrder.qryLocateProject.list.column.authorizedBudget.label': string;
+    'intent.submitChangeOrder.qryLocateProject.list.column.plannedStartDate.label': string;
+    'intent.submitChangeOrder.qryLocateProject.list.column.plannedEndDate.label': string;
+    'section.submitChangeOrder.createChangeOrder.title': string;
+    'organism.submitChangeOrder.cmdCreateChangeOrder.title': string;
+    'intent.submitChangeOrder.cmdCreateChangeOrder.form.title': string;
+    'intent.submitChangeOrder.cmdCreateChangeOrder.form.action.cmdCreateChangeOrder': string;
+    'intent.submitChangeOrder.cmdCreateChangeOrder.form.field.description.label': string;
+    'intent.submitChangeOrder.cmdCreateChangeOrder.form.field.scopeImpact.label': string;
+    'intent.submitChangeOrder.cmdCreateChangeOrder.form.field.scheduleImpact.label': string;
+    'intent.submitChangeOrder.cmdCreateChangeOrder.form.field.changeAmount.label': string;
+    'section.submitChangeOrder.handoffChangeOrderToProjectManager.title': string;
+    'organism.submitChangeOrder.cmdHandoffChangeOrderToProjectManager.title': string;
+    'intent.submitChangeOrder.cmdHandoffChangeOrderToProjectManager.form.title': string;
+    'intent.submitChangeOrder.cmdHandoffChangeOrderToProjectManager.form.action.cmdHandoffChangeOrderToProjectManager': string;
+    'intent.submitChangeOrder.cmdHandoffChangeOrderToProjectManager.form.field.description.label': string;
+    'intent.submitChangeOrder.cmdHandoffChangeOrderToProjectManager.form.field.scopeImpact.label': string;
+    'intent.submitChangeOrder.cmdHandoffChangeOrderToProjectManager.form.field.scheduleImpact.label': string;
+    'intent.submitChangeOrder.cmdHandoffChangeOrderToProjectManager.form.field.changeAmount.label': string;
+    'action.cmdCreateChangeOrder.success': string;
+    'action.cmdCreateChangeOrder.error': string;
+    'action.cmdHandoffChangeOrderToProjectManager.success': string;
+    'action.cmdHandoffChangeOrderToProjectManager.error': string;
+    'section.submitChangeOrder.changeOrderWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmSubmitChangeOrderBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateClientState — actionStatus, values: idle|loading|success|error */
+    qryLocateClientState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateClientData — queryResult, outputShape: array */
+    qryLocateClientData: QryLocateClientOutput[];
+    /** state qryLocateProjectState — actionStatus, values: idle|loading|success|error */
+    qryLocateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateProjectData — queryResult, outputShape: array */
+    qryLocateProjectData: QryLocateProjectOutput[];
+    /** state cmdCreateChangeOrderState — actionStatus, values: idle|loading|success|error */
+    cmdCreateChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateChangeOrderClientClientId — input */
+    cmdCreateChangeOrderClientClientId: string;
+    /** state cmdCreateChangeOrderProjectProjectId — input */
+    cmdCreateChangeOrderProjectProjectId: string;
+    /** state cmdCreateChangeOrderDescription — input */
+    cmdCreateChangeOrderDescription: string;
+    /** state cmdCreateChangeOrderScopeImpact — input */
+    cmdCreateChangeOrderScopeImpact: string;
+    /** state cmdCreateChangeOrderScheduleImpact — input */
+    cmdCreateChangeOrderScheduleImpact: string;
+    /** state cmdCreateChangeOrderChangeAmount — input */
+    cmdCreateChangeOrderChangeAmount: string;
+    /** state cmdCreateChangeOrderOutput — commandOutput */
+    cmdCreateChangeOrderOutput: CmdCreateChangeOrderOutput | null;
+    /** state cmdCreateChangeOrderError — actionError */
+    cmdCreateChangeOrderError: string;
+    /** state cmdHandoffChangeOrderToProjectManagerState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffChangeOrderToProjectManagerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffChangeOrderToProjectManagerChangeOrderChangeOrderId — input */
+    cmdHandoffChangeOrderToProjectManagerChangeOrderChangeOrderId: string;
+    /** state cmdHandoffChangeOrderToProjectManagerDescription — input */
+    cmdHandoffChangeOrderToProjectManagerDescription: string;
+    /** state cmdHandoffChangeOrderToProjectManagerScopeImpact — input */
+    cmdHandoffChangeOrderToProjectManagerScopeImpact: string;
+    /** state cmdHandoffChangeOrderToProjectManagerScheduleImpact — input */
+    cmdHandoffChangeOrderToProjectManagerScheduleImpact: string;
+    /** state cmdHandoffChangeOrderToProjectManagerChangeAmount — input */
+    cmdHandoffChangeOrderToProjectManagerChangeAmount: string;
+    /** state cmdHandoffChangeOrderToProjectManagerOutput — commandOutput */
+    cmdHandoffChangeOrderToProjectManagerOutput: CmdHandoffChangeOrderToProjectManagerOutput | null;
+    /** state cmdHandoffChangeOrderToProjectManagerError — actionError */
+    cmdHandoffChangeOrderToProjectManagerError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryLocateClient (query) — route buildFlowFsm.submitChangeOrder.qryLocateClient; inputs: (none); writes ui.submitChangeOrder.data.qryLocateClient; status ui.submitChangeOrder.action.qryLocateClient.status */
+    loadQryLocateClient(): Promise<void>;
+    /** handler for action qryLocateClient — bind UI events here */
+    handleQryLocateClientClick(event?: Event): void;
+    /** action qryLocateProject (query) — route buildFlowFsm.submitChangeOrder.qryLocateProject; inputs: (none); writes ui.submitChangeOrder.data.qryLocateProject; status ui.submitChangeOrder.action.qryLocateProject.status */
+    loadQryLocateProject(): Promise<void>;
+    /** handler for action qryLocateProject — bind UI events here */
+    handleQryLocateProjectClick(event?: Event): void;
+    /** action cmdCreateChangeOrder (command) — route buildFlowFsm.submitChangeOrder.cmdCreateChangeOrder; inputs: clientClientId, projectProjectId, description, scopeImpact, scheduleImpact, changeAmount; writes ui.submitChangeOrder.output.cmdCreateChangeOrder; status ui.submitChangeOrder.action.cmdCreateChangeOrder.status; feedback keys action.cmdCreateChangeOrder.success / action.cmdCreateChangeOrder.error */
+    cmdCreateChangeOrder(): Promise<void>;
+    /** handler for action cmdCreateChangeOrder — bind UI events here */
+    handleCmdCreateChangeOrderClick(event?: Event): void;
+    /** action cmdHandoffChangeOrderToProjectManager (command) — route buildFlowFsm.submitChangeOrder.cmdHandoffChangeOrderToProjectManager; inputs: changeOrderChangeOrderId, description, scopeImpact, scheduleImpact, changeAmount; writes ui.submitChangeOrder.output.cmdHandoffChangeOrderToProjectManager; status ui.submitChangeOrder.action.cmdHandoffChangeOrderToProjectManager.status; feedback keys action.cmdHandoffChangeOrderToProjectManager.success / action.cmdHandoffChangeOrderToProjectManager.error */
+    cmdHandoffChangeOrderToProjectManager(): Promise<void>;
+    /** handler for action cmdHandoffChangeOrderToProjectManager — bind UI events here */
+    handleCmdHandoffChangeOrderToProjectManagerClick(event?: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdCreateChangeOrder.clientClientId */
+    setCmdCreateChangeOrderClientClientId(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderClientClientId — bind UI events here */
+    handleCmdCreateChangeOrderClientClientIdChange(event: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdCreateChangeOrder.projectProjectId */
+    setCmdCreateChangeOrderProjectProjectId(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderProjectProjectId — bind UI events here */
+    handleCmdCreateChangeOrderProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdCreateChangeOrder.description */
+    setCmdCreateChangeOrderDescription(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderDescription — bind UI events here */
+    handleCmdCreateChangeOrderDescriptionChange(event: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdCreateChangeOrder.scopeImpact */
+    setCmdCreateChangeOrderScopeImpact(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderScopeImpact — bind UI events here */
+    handleCmdCreateChangeOrderScopeImpactChange(event: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdCreateChangeOrder.scheduleImpact */
+    setCmdCreateChangeOrderScheduleImpact(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderScheduleImpact — bind UI events here */
+    handleCmdCreateChangeOrderScheduleImpactChange(event: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdCreateChangeOrder.changeAmount */
+    setCmdCreateChangeOrderChangeAmount(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderChangeAmount — bind UI events here */
+    handleCmdCreateChangeOrderChangeAmountChange(event: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdHandoffChangeOrderToProjectManager.changeOrderChangeOrderId */
+    setCmdHandoffChangeOrderToProjectManagerChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.cmdHandoffChangeOrderToProjectManagerChangeOrderChangeOrderId — bind UI events here */
+    handleCmdHandoffChangeOrderToProjectManagerChangeOrderChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdHandoffChangeOrderToProjectManager.description */
+    setCmdHandoffChangeOrderToProjectManagerDescription(value: string): void;
+    /** handler for action set.cmdHandoffChangeOrderToProjectManagerDescription — bind UI events here */
+    handleCmdHandoffChangeOrderToProjectManagerDescriptionChange(event: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdHandoffChangeOrderToProjectManager.scopeImpact */
+    setCmdHandoffChangeOrderToProjectManagerScopeImpact(value: string): void;
+    /** handler for action set.cmdHandoffChangeOrderToProjectManagerScopeImpact — bind UI events here */
+    handleCmdHandoffChangeOrderToProjectManagerScopeImpactChange(event: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdHandoffChangeOrderToProjectManager.scheduleImpact */
+    setCmdHandoffChangeOrderToProjectManagerScheduleImpact(value: string): void;
+    /** handler for action set.cmdHandoffChangeOrderToProjectManagerScheduleImpact — bind UI events here */
+    handleCmdHandoffChangeOrderToProjectManagerScheduleImpactChange(event: Event): void;
+    /** setter for state ui.submitChangeOrder.input.cmdHandoffChangeOrderToProjectManager.changeAmount */
+    setCmdHandoffChangeOrderToProjectManagerChangeAmount(value: string): void;
+    /** handler for action set.cmdHandoffChangeOrderToProjectManagerChangeAmount — bind UI events here */
+    handleCmdHandoffChangeOrderToProjectManagerChangeAmountChange(event: Event): void;
+}

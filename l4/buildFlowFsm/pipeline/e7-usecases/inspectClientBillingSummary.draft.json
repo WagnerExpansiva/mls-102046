@@ -1,0 +1,33 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "inspectClientBillingSummary",
+  "title": "Consultar o resumo de faturamento",
+  "kind": "query",
+  "compiledFrom": [
+    "consultApprovedProjectChangeOrders.inspectClientBillingSummary",
+    "consultClientProjectUpdates.inspectClientBillingSummary",
+    "issueProjectInvoice.inspectClientBillingSummary"
+  ],
+  "description": "Consulta o resumo de faturamento do cliente e da obra, consolidando faturas, valores faturáveis e o reflexo comercial de ordens de mudança aprovadas.",
+  "contexts": {
+    "requires": [
+      "selectedClientBillingSummary"
+    ],
+    "provides": [
+      "selectedClientBillingSummary"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder",
+    "Client",
+    "ClientBillingSummary",
+    "Invoice",
+    "Project"
+  ],
+  "useRules": [
+    "invoiceIncludesApprovedChangeOrdersOnly"
+  ],
+  "transitions": []
+}

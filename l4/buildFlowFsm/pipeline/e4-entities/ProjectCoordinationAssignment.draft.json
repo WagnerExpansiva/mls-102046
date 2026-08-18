@@ -1,0 +1,59 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "ProjectCoordinationAssignment",
+  "fields": [
+    {
+      "fieldId": "projectCoordinationAssignmentId",
+      "title": "Identificador da atribuição de coordenação",
+      "type": "uuid",
+      "required": true,
+      "description": "Identificador estável do registro operacional de encaminhamento da obra para coordenação de campo.",
+      "constraints": [
+        {
+          "constraintId": "uniqueProjectCoordinationAssignmentId",
+          "kind": "unique",
+          "value": "true",
+          "description": "Cada atribuição de coordenação possui um identificador estável e exclusivo.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "projectId",
+      "title": "Obra",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência de contexto à obra específica encaminhada para acompanhamento de campo.",
+      "constraints": []
+    },
+    {
+      "fieldId": "fieldCoordinatorId",
+      "title": "Coordenador de campo",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência de contexto ao coordenador de campo responsável pelo acompanhamento da obra.",
+      "constraints": []
+    },
+    {
+      "fieldId": "status",
+      "title": "Status da atribuição",
+      "type": "string",
+      "required": true,
+      "description": "Estado operacional atual da atribuição de coordenação da obra.",
+      "constraints": [
+        {
+          "constraintId": "projectCoordinationAssignmentStatusEnum",
+          "kind": "enum",
+          "value": "[\"active\",\"closed\",\"revoked\"]",
+          "description": "O status da atribuição deve corresponder a um estado previsto em seu ciclo de vida.",
+          "source": "inferred"
+        }
+      ]
+    }
+  ],
+  "useRules": [
+    "activeProjectCoordination"
+  ]
+}

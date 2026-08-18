@@ -1,0 +1,3686 @@
+{
+  "planId": "e4-ontology-review",
+  "moduleName": "buildFlowFsm",
+  "userLanguage": "pt-BR",
+  "title": "Ontologia de negócios do BuildFlow FSM",
+  "reviewRound": 1,
+  "solutionMode": "new",
+  "businessDomain": "Operações de construção, reforma e serviços de campo nos Estados Unidos",
+  "entities": [
+    {
+      "entityId": "PlatformUser",
+      "title": "Usuário da plataforma",
+      "description": "Referência externa ao usuário autenticado da plataforma, reutilizada para vincular identidades de trabalhadores, coordenadores, gestores e contatos de clientes sem duplicar o cadastro de usuários.",
+      "kind": "core",
+      "ownership": "external",
+      "sourceRefs": {
+        "journeyIds": [],
+        "featureIds": [
+          "fieldTaskCoordination",
+          "dailyFieldLogging",
+          "changeOrderControl",
+          "aiStatusReporting",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldwork",
+          "buildflowfsm:fieldlogs",
+          "buildflowfsm:changemanage",
+          "buildflowfsm:statuspublish",
+          "buildflowfsm:clientapproval",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "platformUserId",
+          "title": "ID do usuário da plataforma",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável do usuário autenticado, fornecido pela plataforma e usado como referência externa pelos vínculos do módulo.",
+          "constraints": [
+            {
+              "constraintId": "uniquePlatformUserId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada usuário externo da plataforma possui um identificador estável único.",
+              "source": "inferred"
+            }
+          ]
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [],
+      "storage": {
+        "target": "external",
+        "scope": "platform",
+        "notes": "A autenticação, os usuários, as funções e o contexto organizacional são fornecidos pela plataforma."
+      }
+    },
+    {
+      "entityId": "Client",
+      "title": "Cliente",
+      "description": "Cadastro organizacional reutilizável do cliente responsável por uma ou mais obras e pelo respectivo relacionamento de faturamento e comunicação.",
+      "kind": "mdm",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "submitChangeOrder",
+          "issueProjectInvoice",
+          "consultClientProjectUpdates",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "changeOrderControl",
+          "clientBilling",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldchange",
+          "buildflowfsm:billing",
+          "buildflowfsm:changemanage",
+          "buildflowfsm:clientapproval",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "clientId",
+          "title": "Identificador do cliente",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável do cadastro mestre do cliente, transportado como contexto entre obras, ordens de mudança, faturas e consultas relacionadas.",
+          "constraints": [
+            {
+              "constraintId": "uniqueClientId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada cadastro mestre de cliente possui um identificador estável exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "clientName",
+          "title": "Nome do cliente",
+          "type": "string",
+          "required": true,
+          "description": "Nome de identificação do cliente organizacional usado para localizá-lo e relacionar suas obras, faturamento e comunicações.",
+          "constraints": []
+        },
+        {
+          "fieldId": "contactEmail",
+          "title": "E-mail de contato",
+          "type": "string",
+          "required": false,
+          "description": "Endereço de e-mail de contato do cliente para a comunicação sobre informações e documentos disponibilizados.",
+          "constraints": [
+            {
+              "constraintId": "contactEmailFormat",
+              "kind": "format",
+              "value": "email",
+              "description": "Quando informado, o e-mail de contato deve ter formato de endereço de e-mail válido.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "contactPhone",
+          "title": "Telefone de contato",
+          "type": "string",
+          "required": false,
+          "description": "Telefone de contato do cliente para comunicação relacionada às suas obras.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [],
+      "storage": {
+        "target": "mdm",
+        "scope": "organization",
+        "idField": "clientId",
+        "mdmType": "buildFlowFsm.Client",
+        "notes": "Cadastro mestre de cliente compartilhado por projetos, ordens de mudança, faturas e resumos."
+      }
+    },
+    {
+      "entityId": "ClientPortalAccess",
+      "title": "Vínculo de acesso do cliente",
+      "description": "Associação durável entre um cliente e um usuário externo da plataforma, usada para comprovar quais obras e comunicações publicadas pertencem ao cliente autenticado.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "approveChangeOrder",
+          "consultClientProjectUpdates",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "changeOrderControl",
+          "clientBilling",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:clientapproval",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "clientPortalAccessId",
+          "title": "Identificador do vínculo de acesso do cliente",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável do vínculo de acesso, transportado entre etapas conectadas da jornada.",
+          "constraints": [
+            {
+              "constraintId": "uniqueClientPortalAccessId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada vínculo de acesso do cliente possui um identificador estável exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "clientId",
+          "title": "Cliente associado",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto ao cliente ao qual o usuário externo está associado.",
+          "constraints": []
+        },
+        {
+          "fieldId": "platformUserId",
+          "title": "Usuário externo da plataforma",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto ao usuário externo da plataforma associado ao cliente.",
+          "constraints": []
+        },
+        {
+          "fieldId": "status",
+          "title": "Status do vínculo de acesso",
+          "type": "string",
+          "required": true,
+          "description": "Indica se o vínculo atualmente concede ou não associação do usuário ao cliente.",
+          "constraints": [
+            {
+              "constraintId": "clientPortalAccessStatusEnum",
+              "kind": "enum",
+              "value": "[\"active\",\"revoked\"]",
+              "description": "O status do vínculo é ativo ou revogado.",
+              "source": "inferred"
+            }
+          ],
+          "enum": [
+            "active",
+            "revoked"
+          ]
+        }
+      ],
+      "lifecycleStates": [
+        "active",
+        "revoked"
+      ],
+      "statusEnum": [
+        "active",
+        "revoked"
+      ],
+      "initialState": "active",
+      "terminalStates": [
+        "revoked"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "activeClientPortalAccess",
+          "description": "O vínculo concede associação de cliente enquanto estiver ativo.",
+          "stateIds": [
+            "active"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "useRules": [
+        "activeClientPortalAccess"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "clientPortalAccessId",
+        "notes": "Registro operacional de associação externa; não recria autenticação nem usuários da plataforma."
+      }
+    },
+    {
+      "entityId": "FieldWorker",
+      "title": "Trabalhador de campo",
+      "description": "Referência externa ao membro da organização elegível para receber tarefas e registrar os próprios apontamentos de execução.",
+      "kind": "core",
+      "ownership": "external",
+      "sourceRefs": {
+        "journeyIds": [
+          "assignWorkTask",
+          "updateWorkTaskProgress",
+          "recordWorkTime"
+        ],
+        "featureIds": [
+          "fieldTaskCoordination",
+          "dailyFieldLogging"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldwork",
+          "buildflowfsm:fieldlogs"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "platformUserId",
+          "title": "Usuário da plataforma",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência ao usuário da plataforma qualificado como trabalhador de campo, selecionada no diretório organizacional.",
+          "constraints": [
+            {
+              "constraintId": "uniquePlatformUserId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Um usuário da plataforma corresponde a, no máximo, uma referência de trabalhador de campo.",
+              "source": "inferred"
+            }
+          ]
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [],
+      "storage": {
+        "target": "external",
+        "scope": "platform",
+        "notes": "Representa um usuário organizacional da plataforma qualificado para trabalho de campo, sem manter um cadastro de pessoal paralelo."
+      }
+    },
+    {
+      "entityId": "FieldCoordinator",
+      "title": "Coordenador de campo",
+      "description": "Referência externa ao membro da organização que recebe obras para acompanhamento, planeja tarefas e trata os apontamentos de campo.",
+      "kind": "core",
+      "ownership": "external",
+      "sourceRefs": {
+        "journeyIds": [
+          "reviewProjectPortfolio",
+          "assignWorkTask",
+          "updateWorkTaskProgress",
+          "recordWorkTime",
+          "recordProjectMaterialUsage",
+          "submitChangeOrder",
+          "declineChangeOrder",
+          "monitorDailyProjectRecords"
+        ],
+        "featureIds": [
+          "projectPortfolioMonitoring",
+          "fieldTaskCoordination",
+          "dailyFieldLogging",
+          "projectMaterialTracking",
+          "changeOrderControl"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:portfolio",
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldchange"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "platformUserRef",
+          "title": "Usuário da plataforma",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência externa ao usuário organizacional qualificado como coordenador de campo.",
+          "constraints": [
+            {
+              "constraintId": "uniquePlatformUserRef",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada usuário da plataforma corresponde a no máximo um coordenador de campo.",
+              "source": "inferred"
+            }
+          ]
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [],
+      "storage": {
+        "target": "external",
+        "scope": "platform",
+        "notes": "Representa um usuário organizacional da plataforma que exerce a função de coordenação de campo."
+      }
+    },
+    {
+      "entityId": "Project",
+      "title": "Obra",
+      "description": "Registro mestre da obra que concentra cliente, endereço, orçamento autorizado, datas planejadas e contexto de custo, execução, cronograma, alteração e faturamento.",
+      "kind": "mdm",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "reviewProjectPortfolio",
+          "assignWorkTask",
+          "recordProjectMaterialUsage",
+          "submitChangeOrder",
+          "issueProjectInvoice",
+          "generateAndPublishProjectStatusReport",
+          "consultClientProjectUpdates",
+          "monitorDailyProjectRecords",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "projectPortfolioMonitoring",
+          "projectScheduleVisibility",
+          "fieldTaskCoordination",
+          "projectMaterialTracking",
+          "jobCostTracking",
+          "changeOrderControl",
+          "clientBilling",
+          "aiStatusReporting",
+          "clientCommunication",
+          "dailyFieldLogging"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:portfolio",
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldchange",
+          "buildflowfsm:fieldlogs",
+          "buildflowfsm:changemanage",
+          "buildflowfsm:statuspublish",
+          "buildflowfsm:billing",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "projectId",
+          "title": "Identificador da obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável da obra, transportado entre etapas e registros relacionados.",
+          "constraints": [
+            {
+              "constraintId": "uniqueProjectId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada obra possui um identificador estável exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "clientId",
+          "title": "Cliente",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência ao cliente selecionado ao qual a obra pertence.",
+          "constraints": []
+        },
+        {
+          "fieldId": "name",
+          "title": "Nome da obra",
+          "type": "string",
+          "required": true,
+          "description": "Nome de identificação da obra para portfólio, coordenação e comunicação com o cliente.",
+          "constraints": [
+            {
+              "constraintId": "minLengthProjectName",
+              "kind": "minLength",
+              "value": "1",
+              "description": "O nome da obra deve ser informado.",
+              "source": "journey"
+            }
+          ]
+        },
+        {
+          "fieldId": "address",
+          "title": "Endereço da obra",
+          "type": "text",
+          "required": true,
+          "description": "Endereço do local de execução da obra.",
+          "constraints": [
+            {
+              "constraintId": "minLengthProjectAddress",
+              "kind": "minLength",
+              "value": "1",
+              "description": "O endereço da obra deve ser informado.",
+              "source": "user"
+            }
+          ]
+        },
+        {
+          "fieldId": "status",
+          "title": "Status",
+          "type": "string",
+          "required": true,
+          "description": "Situação operacional atual da obra.",
+          "constraints": [
+            {
+              "constraintId": "projectStatusEnum",
+              "kind": "enum",
+              "value": "[\"planned\",\"active\",\"completed\",\"cancelled\"]",
+              "description": "O status da obra deve corresponder a um estado previsto em seu ciclo de vida.",
+              "source": "journey"
+            }
+          ],
+          "enum": [
+            "planned",
+            "active",
+            "completed",
+            "cancelled"
+          ]
+        },
+        {
+          "fieldId": "authorizedBudget",
+          "title": "Orçamento autorizado",
+          "type": "money",
+          "required": true,
+          "description": "Valor do orçamento autorizado para acompanhamento de custo e faturamento da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "plannedStartDate",
+          "title": "Data planejada de início",
+          "type": "date",
+          "required": true,
+          "description": "Data planejada para início da execução da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "plannedEndDate",
+          "title": "Data planejada de término",
+          "type": "date",
+          "required": true,
+          "description": "Data planejada para conclusão da obra.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [
+        "planned",
+        "active",
+        "completed",
+        "cancelled"
+      ],
+      "statusEnum": [
+        "planned",
+        "active",
+        "completed",
+        "cancelled"
+      ],
+      "initialState": "planned",
+      "terminalStates": [
+        "completed",
+        "cancelled"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "activeProject",
+          "description": "Uma obra aceita novas tarefas e consumos de material somente enquanto estiver em execução ativa.",
+          "stateIds": [
+            "active"
+          ],
+          "source": "journey"
+        },
+        {
+          "predicateId": "ongoingProject",
+          "description": "Uma obra integra o acompanhamento operacional enquanto estiver planejada ou ativa.",
+          "stateIds": [
+            "planned",
+            "active"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "useRules": [
+        "activeProject",
+        "ongoingProject"
+      ],
+      "storage": {
+        "target": "mdm",
+        "scope": "organization",
+        "idField": "projectId",
+        "mdmType": "buildFlowFsm.Project",
+        "notes": "Cadastro mestre organizacional da obra, reutilizado pelos registros transacionais e pelas projeções de acompanhamento."
+      }
+    },
+    {
+      "entityId": "ProjectCoordinationAssignment",
+      "title": "Atribuição de coordenação da obra",
+      "description": "Registro operacional que formaliza o encaminhamento de uma obra a um coordenador de campo e sustenta o escopo de obras acompanhadas pelo coordenador.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "reviewProjectPortfolio",
+          "assignWorkTask",
+          "monitorDailyProjectRecords",
+          "submitChangeOrder",
+          "declineChangeOrder"
+        ],
+        "featureIds": [
+          "projectPortfolioMonitoring",
+          "fieldTaskCoordination",
+          "dailyFieldLogging",
+          "projectMaterialTracking",
+          "changeOrderControl"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:portfolio",
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldchange"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "projectCoordinationAssignmentId",
+          "title": "Identificador da atribuição de coordenação",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável do registro operacional de encaminhamento da obra para coordenação de campo.",
+          "constraints": [
+            {
+              "constraintId": "uniqueProjectCoordinationAssignmentId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada atribuição de coordenação possui um identificador estável e exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "projectId",
+          "title": "Obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto à obra específica encaminhada para acompanhamento de campo.",
+          "constraints": []
+        },
+        {
+          "fieldId": "fieldCoordinatorId",
+          "title": "Coordenador de campo",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto ao coordenador de campo responsável pelo acompanhamento da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "status",
+          "title": "Status da atribuição",
+          "type": "string",
+          "required": true,
+          "description": "Estado operacional atual da atribuição de coordenação da obra.",
+          "constraints": [
+            {
+              "constraintId": "projectCoordinationAssignmentStatusEnum",
+              "kind": "enum",
+              "value": "[\"active\",\"closed\",\"revoked\"]",
+              "description": "O status da atribuição deve corresponder a um estado previsto em seu ciclo de vida.",
+              "source": "inferred"
+            }
+          ],
+          "enum": [
+            "active",
+            "closed",
+            "revoked"
+          ]
+        }
+      ],
+      "lifecycleStates": [
+        "active",
+        "closed",
+        "revoked"
+      ],
+      "statusEnum": [
+        "active",
+        "closed",
+        "revoked"
+      ],
+      "initialState": "active",
+      "terminalStates": [
+        "closed",
+        "revoked"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "activeProjectCoordination",
+          "description": "A atribuição autoriza o coordenador a acompanhar e coordenar a obra enquanto estiver ativa.",
+          "stateIds": [
+            "active"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "useRules": [
+        "activeProjectCoordination"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "projectCoordinationAssignmentId",
+        "notes": "O encaminhamento é um fato operacional auditável e não altera o cadastro mestre da obra."
+      }
+    },
+    {
+      "entityId": "InventoryItem",
+      "title": "Item de estoque",
+      "description": "Catálogo mestre de material identificável e consumível em obras, com unidade de uso e referência de custo para os apontamentos.",
+      "kind": "mdm",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "recordProjectMaterialUsage"
+        ],
+        "featureIds": [
+          "projectMaterialTracking",
+          "jobCostTracking"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldlogs"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "inventoryItemId",
+          "title": "Identificador do item de estoque",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável do item no catálogo mestre de materiais.",
+          "constraints": [
+            {
+              "constraintId": "uniqueInventoryItemId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada item do catálogo possui um identificador estável único.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "name",
+          "title": "Nome do material",
+          "type": "string",
+          "required": true,
+          "description": "Nome pelo qual o material ou consumível é identificado no catálogo.",
+          "constraints": []
+        },
+        {
+          "fieldId": "description",
+          "title": "Descrição",
+          "type": "text",
+          "required": false,
+          "description": "Descrição complementar para distinguir e especificar o material no catálogo.",
+          "constraints": []
+        },
+        {
+          "fieldId": "unitOfMeasure",
+          "title": "Unidade de uso",
+          "type": "string",
+          "required": true,
+          "description": "Unidade usada para registrar o consumo do material, como unidade, metro ou saco.",
+          "constraints": []
+        },
+        {
+          "fieldId": "referenceUnitCost",
+          "title": "Custo unitário de referência",
+          "type": "money",
+          "required": true,
+          "description": "Custo unitário de referência do material para apoiar os apontamentos e o custeio da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "status",
+          "title": "Status",
+          "type": "string",
+          "required": true,
+          "description": "Situação do item no catálogo, determinando se pode ser selecionado para consumo.",
+          "constraints": [
+            {
+              "constraintId": "inventoryItemStatusValues",
+              "kind": "enum",
+              "value": "[\"active\",\"retired\"]",
+              "description": "O status do item é ativo ou retirado.",
+              "source": "journey"
+            }
+          ],
+          "enum": [
+            "active",
+            "retired"
+          ]
+        }
+      ],
+      "lifecycleStates": [
+        "active",
+        "retired"
+      ],
+      "statusEnum": [
+        "active",
+        "retired"
+      ],
+      "initialState": "active",
+      "terminalStates": [
+        "retired"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "selectableInventoryItem",
+          "description": "Um item pode ser selecionado para consumo quando estiver ativo.",
+          "stateIds": [
+            "active"
+          ],
+          "source": "journey"
+        }
+      ],
+      "useRules": [
+        "selectableInventoryItem"
+      ],
+      "storage": {
+        "target": "mdm",
+        "scope": "organization",
+        "idField": "inventoryItemId",
+        "mdmType": "buildFlowFsm.InventoryItem",
+        "notes": "Catálogo mestre de materiais; saldos e histórico de consumo permanecem em registros operacionais."
+      }
+    },
+    {
+      "entityId": "InventoryBalance",
+      "title": "Saldo de estoque",
+      "description": "Posição operacional atual de disponibilidade de um item de estoque para consumo, incluindo o saldo físico e o custo aplicável ao apontamento.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "recordProjectMaterialUsage"
+        ],
+        "featureIds": [
+          "projectMaterialTracking",
+          "jobCostTracking"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldlogs"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "inventoryBalanceId",
+          "title": "Identificador do saldo de estoque",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável do saldo operacional de estoque, transportado entre etapas conectadas.",
+          "constraints": [
+            {
+              "constraintId": "uniqueInventoryBalanceId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada saldo de estoque possui um identificador estável exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "inventoryItemId",
+          "title": "Item de estoque",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência ao item do catálogo de materiais ao qual este saldo operacional corresponde; é selecionada como contexto, não digitada como identificador bruto.",
+          "constraints": []
+        },
+        {
+          "fieldId": "physicalQuantity",
+          "title": "Quantidade física disponível",
+          "type": "number",
+          "required": true,
+          "description": "Quantidade física atualmente registrada para o item de estoque e usada para atender apontamentos de consumo.",
+          "constraints": []
+        },
+        {
+          "fieldId": "applicableUnitCost",
+          "title": "Custo unitário aplicável",
+          "type": "money",
+          "required": true,
+          "description": "Custo unitário operacional aplicável ao consumo de material para apoiar o custeio realizado da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "status",
+          "title": "Status do saldo",
+          "type": "string",
+          "required": true,
+          "description": "Estado operacional que indica se o saldo pode atender consumo, está esgotado ou foi desativado.",
+          "constraints": [
+            {
+              "constraintId": "inventoryBalanceStatusEnum",
+              "kind": "enum",
+              "value": "[\"available\",\"depleted\",\"retired\"]",
+              "description": "O status do saldo deve corresponder a um estado do ciclo de vida definido para o saldo de estoque.",
+              "source": "journey"
+            }
+          ],
+          "enum": [
+            "available",
+            "depleted",
+            "retired"
+          ]
+        }
+      ],
+      "lifecycleStates": [
+        "available",
+        "depleted",
+        "retired"
+      ],
+      "statusEnum": [
+        "available",
+        "depleted",
+        "retired"
+      ],
+      "initialState": "available",
+      "terminalStates": [
+        "retired"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "availableInventoryBalance",
+          "description": "Um saldo pode atender consumo quando estiver disponível; a quantidade física positiva é verificada no detalhamento do registro.",
+          "stateIds": [
+            "available"
+          ],
+          "source": "journey"
+        }
+      ],
+      "useRules": [
+        "availableInventoryBalance"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "inventoryBalanceId",
+        "notes": "Saldo operacional separado do catálogo MDM para não armazenar balanços ou histórico transacional em dados mestres."
+      }
+    },
+    {
+      "entityId": "WorkTask",
+      "title": "Tarefa de trabalho",
+      "description": "Unidade planejada de execução vinculada a uma obra, com responsável de campo, descrição, prazo, andamento e informações necessárias para o cronograma e a análise de risco.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "assignWorkTask",
+          "updateWorkTaskProgress",
+          "recordWorkTime",
+          "generateAndPublishProjectStatusReport",
+          "monitorDailyProjectRecords"
+        ],
+        "featureIds": [
+          "projectScheduleVisibility",
+          "fieldTaskCoordination",
+          "dailyFieldLogging",
+          "jobCostTracking",
+          "aiStatusReporting"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldwork",
+          "buildflowfsm:fieldlogs",
+          "buildflowfsm:statuspublish"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "workTaskId",
+          "title": "Identificador da tarefa",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável da tarefa, mantido entre as etapas conectadas.",
+          "constraints": [
+            {
+              "constraintId": "uniqueWorkTaskId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada tarefa possui um identificador estável e exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "projectId",
+          "title": "Obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência à obra selecionada em cujo contexto a tarefa é planejada e executada.",
+          "constraints": []
+        },
+        {
+          "fieldId": "assignedFieldWorkerId",
+          "title": "Trabalhador responsável",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência ao trabalhador de campo selecionado como responsável pela execução e atualização da tarefa.",
+          "constraints": []
+        },
+        {
+          "fieldId": "description",
+          "title": "Descrição da tarefa",
+          "type": "text",
+          "required": true,
+          "description": "Descrição do trabalho a ser executado em campo.",
+          "constraints": []
+        },
+        {
+          "fieldId": "dueDate",
+          "title": "Prazo",
+          "type": "date",
+          "required": true,
+          "description": "Data prevista para conclusão da tarefa no cronograma da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "status",
+          "title": "Status",
+          "type": "string",
+          "required": true,
+          "description": "Estado atual da tarefa durante seu planejamento e execução.",
+          "constraints": [
+            {
+              "constraintId": "workTaskStatusEnum",
+              "kind": "enum",
+              "value": "[\"planned\",\"inProgress\",\"completed\",\"cancelled\"]",
+              "description": "O status da tarefa deve corresponder a um estado definido do seu ciclo de vida.",
+              "source": "journey"
+            }
+          ],
+          "enum": [
+            "planned",
+            "inProgress",
+            "completed",
+            "cancelled"
+          ]
+        },
+        {
+          "fieldId": "progressUpdate",
+          "title": "Andamento informado",
+          "type": "text",
+          "required": false,
+          "description": "Atualização de andamento registrada pelo trabalhador durante a execução da tarefa.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [
+        "planned",
+        "inProgress",
+        "completed",
+        "cancelled"
+      ],
+      "statusEnum": [
+        "planned",
+        "inProgress",
+        "completed",
+        "cancelled"
+      ],
+      "initialState": "planned",
+      "terminalStates": [
+        "completed",
+        "cancelled"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "unfinishedWorkTask",
+          "description": "Uma tarefa permanece pendente para fins de cronograma e risco enquanto estiver planejada ou em execução.",
+          "stateIds": [
+            "planned",
+            "inProgress"
+          ],
+          "source": "inferred"
+        },
+        {
+          "predicateId": "activeWorkTask",
+          "description": "Uma tarefa pode receber apontamentos de horas enquanto estiver planejada ou em execução.",
+          "stateIds": [
+            "planned",
+            "inProgress"
+          ],
+          "source": "journey"
+        }
+      ],
+      "useRules": [
+        "workTaskRequiresActiveProject",
+        "workTaskRequiresAssigneeAndDueDate",
+        "onlyAssignedWorkerReportsTaskProgress",
+        "unfinishedWorkTask",
+        "activeWorkTask"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "workTaskId",
+        "notes": "Registro operacional de planejamento e execução; seus custos realizados são formados por apontamentos associados."
+      }
+    },
+    {
+      "entityId": "TimeLog",
+      "title": "Registro de horas",
+      "description": "Apontamento diário de horas de um trabalhador contra uma tarefa, preservando a base de custo de mão de obra aplicável para compor o realizado da obra.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "recordWorkTime",
+          "generateAndPublishProjectStatusReport",
+          "monitorDailyProjectRecords"
+        ],
+        "featureIds": [
+          "dailyFieldLogging",
+          "jobCostTracking",
+          "aiStatusReporting"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldlogs",
+          "buildflowfsm:statuspublish"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "timeLogId",
+          "title": "ID do registro de horas",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável do apontamento de horas, transportado entre as etapas conectadas.",
+          "constraints": [
+            {
+              "constraintId": "uniqueTimeLogId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada registro de horas possui um identificador estável e exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "status",
+          "title": "Status",
+          "type": "string",
+          "required": true,
+          "description": "Estado do apontamento para determinar se suas horas participam do custo e dos indicadores de execução.",
+          "constraints": [
+            {
+              "constraintId": "timeLogStatusEnum",
+              "kind": "enum",
+              "value": "[\"recorded\",\"voided\"]",
+              "description": "O status deve corresponder a um estado previsto para o registro de horas.",
+              "source": "inferred"
+            }
+          ],
+          "enum": [
+            "recorded",
+            "voided"
+          ]
+        },
+        {
+          "fieldId": "workTaskId",
+          "title": "Tarefa",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência à tarefa selecionada à qual as horas executadas são atribuídas.",
+          "constraints": []
+        },
+        {
+          "fieldId": "fieldWorkerId",
+          "title": "Trabalhador de campo",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência ao trabalhador selecionado que realizou as horas registradas.",
+          "constraints": []
+        },
+        {
+          "fieldId": "workDate",
+          "title": "Data de trabalho",
+          "type": "date",
+          "required": true,
+          "description": "Data diária em que as horas foram efetivamente realizadas.",
+          "constraints": []
+        },
+        {
+          "fieldId": "hoursWorked",
+          "title": "Horas trabalhadas",
+          "type": "number",
+          "required": true,
+          "description": "Quantidade de horas de execução apontadas pelo trabalhador para a tarefa.",
+          "constraints": [
+            {
+              "constraintId": "positiveHoursWorked",
+              "kind": "custom",
+              "value": "greaterThanZero",
+              "description": "As horas trabalhadas devem ser maiores que zero.",
+              "source": "journey"
+            }
+          ]
+        },
+        {
+          "fieldId": "hourlyLaborCost",
+          "title": "Custo horário de mão de obra aplicado",
+          "type": "money",
+          "required": true,
+          "description": "Base histórica de custo por hora aplicada ao apontamento para compor o custo realizado da obra.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [
+        "recorded",
+        "voided"
+      ],
+      "statusEnum": [
+        "recorded",
+        "voided"
+      ],
+      "initialState": "recorded",
+      "terminalStates": [
+        "voided"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "costEligibleTimeLog",
+          "description": "Somente apontamentos registrados compõem o custo realizado e os indicadores de execução.",
+          "stateIds": [
+            "recorded"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "useRules": [
+        "timeLogRequiresWorkerTaskAndPositiveHours",
+        "costEligibleTimeLog"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "timeLogId",
+        "notes": "Fato transacional de execução; mantém a atribuição ao trabalhador e à tarefa e a base de custo histórica necessária ao custeio."
+      }
+    },
+    {
+      "entityId": "MaterialUsage",
+      "title": "Consumo de material",
+      "description": "Apontamento de material efetivamente consumido em uma obra, vinculado ao item e ao saldo de estoque que suporta disponibilidade e custo realizado.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "recordProjectMaterialUsage",
+          "generateAndPublishProjectStatusReport",
+          "monitorDailyProjectRecords"
+        ],
+        "featureIds": [
+          "projectMaterialTracking",
+          "jobCostTracking",
+          "aiStatusReporting"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:fieldlogs",
+          "buildflowfsm:statuspublish"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "materialUsageId",
+          "title": "ID do consumo de material",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável do apontamento de consumo de material, preservado entre etapas conectadas.",
+          "constraints": [
+            {
+              "constraintId": "uniqueMaterialUsageId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada apontamento de consumo possui um identificador estável único.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "status",
+          "title": "Status",
+          "type": "string",
+          "required": true,
+          "description": "Situação do apontamento de consumo para determinar sua elegibilidade no custo realizado e na execução consolidada.",
+          "constraints": [
+            {
+              "constraintId": "materialUsageStatusEnum",
+              "kind": "enum",
+              "value": "[\"recorded\",\"voided\"]",
+              "description": "O consumo pode estar registrado ou anulado.",
+              "source": "inferred"
+            }
+          ],
+          "enum": [
+            "recorded",
+            "voided"
+          ]
+        },
+        {
+          "fieldId": "projectId",
+          "title": "Obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto à obra contra a qual o material foi efetivamente consumido.",
+          "constraints": []
+        },
+        {
+          "fieldId": "inventoryItemId",
+          "title": "Item de estoque",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto ao item de material efetivamente utilizado.",
+          "constraints": []
+        },
+        {
+          "fieldId": "inventoryBalanceId",
+          "title": "Saldo de estoque de origem",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência ao saldo operacional que suportou o consumo, para manter a rastreabilidade de disponibilidade e custo.",
+          "constraints": []
+        },
+        {
+          "fieldId": "quantity",
+          "title": "Quantidade consumida",
+          "type": "number",
+          "required": true,
+          "description": "Quantidade do item efetivamente consumida na obra.",
+          "constraints": [
+            {
+              "constraintId": "positiveConsumedQuantity",
+              "kind": "custom",
+              "value": "positive",
+              "description": "A quantidade informada deve ser maior que zero.",
+              "source": "journey"
+            }
+          ]
+        },
+        {
+          "fieldId": "usageDescription",
+          "title": "Descrição do consumo",
+          "type": "text",
+          "required": true,
+          "description": "Descrição informada do consumo de material realizado em campo.",
+          "constraints": []
+        },
+        {
+          "fieldId": "consumedOn",
+          "title": "Data do consumo",
+          "type": "date",
+          "required": true,
+          "description": "Data em que o material foi efetivamente consumido na obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "unitCostBasis",
+          "title": "Base de custo unitário",
+          "type": "money",
+          "required": true,
+          "description": "Custo unitário preservado como base para o custeio realizado do consumo.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [
+        "recorded",
+        "voided"
+      ],
+      "statusEnum": [
+        "recorded",
+        "voided"
+      ],
+      "initialState": "recorded",
+      "terminalStates": [
+        "voided"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "costEligibleMaterialUsage",
+          "description": "Somente consumos registrados compõem o custo realizado e a execução consolidada da obra.",
+          "stateIds": [
+            "recorded"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "useRules": [
+        "materialUsageRequiresActiveProjectAndAvailableInventory",
+        "costEligibleMaterialUsage"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "materialUsageId",
+        "notes": "Fato transacional de consumo que preserva quantidade, item, obra e base de custo usada no custeio."
+      }
+    },
+    {
+      "entityId": "ChangeOrder",
+      "title": "Ordem de mudança",
+      "description": "Proposta formal de alteração vinculada ao cliente e à obra, contendo impacto de escopo, prazo e valor para tratamento gerencial, aprovação do cliente, custeio e faturamento.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "submitChangeOrder",
+          "forwardChangeOrderForClientApproval",
+          "approveChangeOrder",
+          "declineChangeOrder",
+          "issueProjectInvoice",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "changeOrderControl",
+          "jobCostTracking",
+          "clientBilling",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldchange",
+          "buildflowfsm:changemanage",
+          "buildflowfsm:billing",
+          "buildflowfsm:clientapproval",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "changeOrderId",
+          "title": "ID da ordem de mudança",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável da ordem de mudança, transportado entre as etapas conectadas.",
+          "constraints": [
+            {
+              "constraintId": "uniqueChangeOrderId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada ordem de mudança possui um identificador estável exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "clientRef",
+          "title": "Cliente",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto ao cliente para o qual a alteração é proposta, selecionada no catálogo compartilhado.",
+          "constraints": []
+        },
+        {
+          "fieldId": "projectRef",
+          "title": "Obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto à obra do cliente à qual a alteração está vinculada.",
+          "constraints": []
+        },
+        {
+          "fieldId": "description",
+          "title": "Descrição da alteração",
+          "type": "text",
+          "required": true,
+          "description": "Descrição da alteração proposta na obra para avaliação gerencial e comunicação ao cliente.",
+          "constraints": []
+        },
+        {
+          "fieldId": "scopeImpact",
+          "title": "Impacto de escopo",
+          "type": "text",
+          "required": true,
+          "description": "Impacto proposto da alteração no escopo da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "scheduleImpact",
+          "title": "Impacto de prazo",
+          "type": "text",
+          "required": true,
+          "description": "Impacto proposto da alteração no prazo de execução da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "changeAmount",
+          "title": "Valor da alteração",
+          "type": "money",
+          "required": true,
+          "description": "Valor comercial da alteração proposto para aprovação do cliente, custeio e faturamento.",
+          "constraints": []
+        },
+        {
+          "fieldId": "submittedAt",
+          "title": "Data de submissão",
+          "type": "datetime",
+          "required": true,
+          "description": "Data e hora em que a alteração foi formalizada e submetida para tratamento gerencial.",
+          "constraints": []
+        },
+        {
+          "fieldId": "forwardedForClientApprovalAt",
+          "title": "Data de encaminhamento ao cliente",
+          "type": "datetime",
+          "required": false,
+          "description": "Data e hora em que a ordem foi encaminhada ao cliente para decisão.",
+          "constraints": []
+        },
+        {
+          "fieldId": "status",
+          "title": "Status",
+          "type": "string",
+          "required": true,
+          "description": "Estado atual da ordem de mudança no ciclo de tratamento, aprovação do cliente e faturamento.",
+          "constraints": [
+            {
+              "constraintId": "changeOrderStatusEnum",
+              "kind": "enum",
+              "value": "[\"submitted\",\"pendingClientApproval\",\"approved\",\"declined\"]",
+              "description": "O status deve corresponder a um estado definido do ciclo de vida da ordem de mudança.",
+              "source": "journey"
+            }
+          ],
+          "enum": [
+            "submitted",
+            "pendingClientApproval",
+            "approved",
+            "declined"
+          ]
+        }
+      ],
+      "lifecycleStates": [
+        "submitted",
+        "pendingClientApproval",
+        "approved",
+        "declined"
+      ],
+      "statusEnum": [
+        "submitted",
+        "pendingClientApproval",
+        "approved",
+        "declined"
+      ],
+      "initialState": "submitted",
+      "terminalStates": [
+        "approved",
+        "declined"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "managerActionableChangeOrder",
+          "description": "Uma ordem submetida pode ser encaminhada ao cliente ou recusada pelo gerente.",
+          "stateIds": [
+            "submitted"
+          ],
+          "source": "journey"
+        },
+        {
+          "predicateId": "clientApprovableChangeOrder",
+          "description": "Uma ordem pode ser decidida pelo cliente somente quando estiver pendente de sua aprovação.",
+          "stateIds": [
+            "pendingClientApproval"
+          ],
+          "source": "journey"
+        },
+        {
+          "predicateId": "approvedBillableChangeOrder",
+          "description": "Uma ordem integra custo autorizado e pode ser incluída no faturamento somente após aprovação.",
+          "stateIds": [
+            "approved"
+          ],
+          "source": "journey"
+        },
+        {
+          "predicateId": "clientVisibleApprovedChangeOrder",
+          "description": "A consulta do cliente mostra somente ordens de mudança aprovadas.",
+          "stateIds": [
+            "approved"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "useRules": [
+        "changeOrderRequiresClientAndProject",
+        "managerActionableChangeOrder",
+        "clientApprovableChangeOrder",
+        "approvedBillableChangeOrder",
+        "clientVisibleApprovedChangeOrder"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "changeOrderId",
+        "notes": "Registro transacional que mantém o ciclo de decisão comercial e os impactos autorizados da alteração."
+      }
+    },
+    {
+      "entityId": "ChangeOrderDecision",
+      "title": "Decisão sobre ordem de mudança",
+      "description": "Evidência durável de uma decisão de aprovação do cliente ou de recusa do gerente, incluindo o usuário responsável e o momento da decisão.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "approveChangeOrder",
+          "declineChangeOrder"
+        ],
+        "featureIds": [
+          "changeOrderControl",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:changemanage",
+          "buildflowfsm:clientapproval"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "changeOrderDecisionId",
+          "title": "ID da decisão da ordem de mudança",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável da decisão registrada sobre uma ordem de mudança.",
+          "constraints": [
+            {
+              "constraintId": "uniqueChangeOrderDecisionId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada decisão registrada possui um identificador estável exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "changeOrder",
+          "title": "Ordem de mudança",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência à ordem de mudança que recebeu a decisão.",
+          "constraints": []
+        },
+        {
+          "fieldId": "madeByPlatformUser",
+          "title": "Usuário responsável pela decisão",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência ao usuário que aprovou ou recusou a ordem de mudança.",
+          "constraints": []
+        },
+        {
+          "fieldId": "decision",
+          "title": "Decisão",
+          "type": "string",
+          "required": true,
+          "description": "Resultado registrado para a ordem de mudança.",
+          "constraints": [
+            {
+              "constraintId": "decisionAllowedValues",
+              "kind": "enum",
+              "value": "[\"approved\",\"declined\"]",
+              "description": "A decisão registrada é aprovação do cliente ou recusa do gerente.",
+              "source": "journey"
+            }
+          ],
+          "enum": [
+            "approved",
+            "declined"
+          ]
+        },
+        {
+          "fieldId": "decidedAt",
+          "title": "Data e hora da decisão",
+          "type": "datetime",
+          "required": true,
+          "description": "Data e hora em que a decisão foi registrada.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [
+        "onlyClientApprovesOwnChangeOrder",
+        "onlyProjectManagerDeclinesChangeOrder"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "changeOrderDecisionId",
+        "notes": "Preserva a autoria e a rastreabilidade da decisão sem depender apenas da mudança de estado da ordem."
+      }
+    },
+    {
+      "entityId": "Invoice",
+      "title": "Fatura",
+      "description": "Documento de faturamento emitido para um cliente e uma obra, com valor, referência comercial e disponibilidade controlada para consulta externa.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "issueProjectInvoice",
+          "consultClientProjectUpdates",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "clientBilling",
+          "changeOrderControl",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:billing",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "invoiceId",
+          "title": "Identificador da fatura",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável da fatura, mantido entre as etapas conectadas da jornada.",
+          "constraints": [
+            {
+              "constraintId": "uniqueInvoiceId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada fatura possui um identificador estável exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "clientId",
+          "title": "Cliente",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto ao cliente para o qual a fatura é emitida.",
+          "constraints": []
+        },
+        {
+          "fieldId": "projectId",
+          "title": "Obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto à obra faturável à qual a fatura está vinculada.",
+          "constraints": []
+        },
+        {
+          "fieldId": "commercialReference",
+          "title": "Referência comercial",
+          "type": "string",
+          "required": true,
+          "description": "Referência comercial que identifica a fatura para faturamento e consulta do cliente.",
+          "constraints": []
+        },
+        {
+          "fieldId": "amount",
+          "title": "Valor da fatura",
+          "type": "money",
+          "required": true,
+          "description": "Valor comercial total faturado para a obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "status",
+          "title": "Status",
+          "type": "string",
+          "required": true,
+          "description": "Situação da fatura, incluindo sua disponibilidade para consulta externa pelo cliente.",
+          "constraints": [
+            {
+              "constraintId": "invoiceStatusEnum",
+              "kind": "enum",
+              "value": "[\"issued\",\"availableToClient\",\"cancelled\"]",
+              "description": "O status da fatura deve corresponder a um estado válido do seu ciclo de vida.",
+              "source": "inferred"
+            }
+          ],
+          "enum": [
+            "issued",
+            "availableToClient",
+            "cancelled"
+          ]
+        }
+      ],
+      "lifecycleStates": [
+        "issued",
+        "availableToClient",
+        "cancelled"
+      ],
+      "statusEnum": [
+        "issued",
+        "availableToClient",
+        "cancelled"
+      ],
+      "initialState": "issued",
+      "terminalStates": [
+        "cancelled"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "clientVisibleInvoice",
+          "description": "Uma fatura é exibida ao cliente somente depois de disponibilizada para ele.",
+          "stateIds": [
+            "availableToClient"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "useRules": [
+        "invoiceRequiresClientAndProject",
+        "invoiceIncludesApprovedChangeOrdersOnly",
+        "clientVisibleInvoice"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "invoiceId",
+        "notes": "Documento comercial transacional; pagamentos e contabilidade geral permanecem fora do escopo."
+      }
+    },
+    {
+      "entityId": "InvoiceChangeOrder",
+      "title": "Aplicação de ordem de mudança na fatura",
+      "description": "Vínculo durável que identifica cada ordem de mudança aprovada incorporada a uma fatura e o valor efetivamente faturado dessa alteração.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "issueProjectInvoice",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "clientBilling",
+          "changeOrderControl"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:billing",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "invoiceChangeOrderId",
+          "title": "Identificador da aplicação de ordem de mudança na fatura",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável do vínculo de faturamento entre uma fatura e uma ordem de mudança aprovada.",
+          "constraints": [
+            {
+              "constraintId": "uniqueInvoiceChangeOrderId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada aplicação de ordem de mudança na fatura possui um identificador estável exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "invoiceId",
+          "title": "Fatura",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto à fatura emitida que incorpora a ordem de mudança.",
+          "constraints": []
+        },
+        {
+          "fieldId": "changeOrderId",
+          "title": "Ordem de mudança",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto à ordem de mudança aprovada incorporada na fatura.",
+          "constraints": []
+        },
+        {
+          "fieldId": "billedAmount",
+          "title": "Valor faturado",
+          "type": "money",
+          "required": true,
+          "description": "Valor efetivamente faturado nesta fatura em razão da ordem de mudança vinculada.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [
+        "invoiceIncludesApprovedChangeOrdersOnly"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "invoiceChangeOrderId",
+        "notes": "Associação transacional de faturamento que evita inferir, sem registro, quais alterações aprovadas foram incluídas em cada fatura."
+      }
+    },
+    {
+      "entityId": "StatusReport",
+      "title": "Relatório de status",
+      "description": "Comunicação profissional durável da situação da obra, gerada com apoio do proxy LLM a partir da execução e dos riscos, revisada e publicada pelo gerente antes de ser entregue ao cliente.",
+      "kind": "core",
+      "ownership": "moduleOwned",
+      "sourceRefs": {
+        "journeyIds": [
+          "generateAndPublishProjectStatusReport",
+          "consultClientProjectUpdates"
+        ],
+        "featureIds": [
+          "aiStatusReporting",
+          "clientCommunication",
+          "jobCostTracking"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:statuspublish",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "statusReportId",
+          "title": "Identificador do relatório de status",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador estável do relatório, transportado entre as etapas conectadas da jornada.",
+          "constraints": [
+            {
+              "constraintId": "uniqueStatusReportId",
+              "kind": "unique",
+              "value": "true",
+              "description": "Cada relatório de status possui um identificador estável exclusivo.",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "fieldId": "projectId",
+          "title": "Obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Referência de contexto à obra específica cuja situação é comunicada pelo relatório.",
+          "constraints": []
+        },
+        {
+          "fieldId": "status",
+          "title": "Status",
+          "type": "string",
+          "required": true,
+          "description": "Estado do ciclo de vida do relatório para revisão, comunicação ao cliente ou retirada.",
+          "constraints": [
+            {
+              "constraintId": "statusReportStatusEnum",
+              "kind": "enum",
+              "value": "[\"draft\",\"published\",\"withdrawn\"]",
+              "description": "O relatório pode estar em rascunho, publicado ou retirado.",
+              "source": "journey"
+            }
+          ],
+          "enum": [
+            "draft",
+            "published",
+            "withdrawn"
+          ]
+        },
+        {
+          "fieldId": "title",
+          "title": "Título",
+          "type": "string",
+          "required": true,
+          "description": "Título profissional que identifica a comunicação de status da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "content",
+          "title": "Conteúdo do relatório",
+          "type": "text",
+          "required": true,
+          "description": "Texto profissional gerado a partir da execução da obra e revisado pelo gerente antes da publicação.",
+          "constraints": []
+        },
+        {
+          "fieldId": "communicatedRisks",
+          "title": "Riscos comunicados",
+          "type": "json",
+          "required": false,
+          "description": "Riscos de atraso e indicadores selecionados para comunicação ao cliente no relatório.",
+          "constraints": []
+        },
+        {
+          "fieldId": "generatedAt",
+          "title": "Gerado em",
+          "type": "datetime",
+          "required": true,
+          "description": "Data e hora em que o relatório foi gerado para revisão.",
+          "constraints": []
+        },
+        {
+          "fieldId": "generatedByUserId",
+          "title": "Gerado por",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador do gerente responsável por gerar o relatório para revisão.",
+          "constraints": []
+        },
+        {
+          "fieldId": "publishedAt",
+          "title": "Publicado em",
+          "type": "datetime",
+          "required": false,
+          "description": "Data e hora em que o relatório foi aprovado para comunicação ao cliente.",
+          "constraints": []
+        },
+        {
+          "fieldId": "publishedByUserId",
+          "title": "Publicado por",
+          "type": "uuid",
+          "required": false,
+          "description": "Identificador do gerente responsável pela publicação observável do relatório.",
+          "constraints": []
+        },
+        {
+          "fieldId": "withdrawnAt",
+          "title": "Retirado em",
+          "type": "datetime",
+          "required": false,
+          "description": "Data e hora em que um relatório publicado foi retirado de circulação.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [
+        "draft",
+        "published",
+        "withdrawn"
+      ],
+      "statusEnum": [
+        "draft",
+        "published",
+        "withdrawn"
+      ],
+      "initialState": "draft",
+      "terminalStates": [
+        "withdrawn"
+      ],
+      "lifecyclePredicates": [
+        {
+          "predicateId": "clientVisibleStatusReport",
+          "description": "Um relatório é comunicável e consultável pelo cliente somente quando publicado.",
+          "stateIds": [
+            "published"
+          ],
+          "source": "inferred"
+        }
+      ],
+      "useRules": [
+        "statusReportUsesProjectExecutionData",
+        "onlyProjectManagerPublishesStatusReport",
+        "clientSeesOnlyOwnProjectInformation",
+        "clientVisibleStatusReport"
+      ],
+      "storage": {
+        "target": "moduleDatabase",
+        "scope": "module",
+        "idField": "statusReportId",
+        "notes": "O conteúdo publicado e sua autoria são registros do módulo; a geração de IA utiliza o proxy LLM fornecido pela plataforma."
+      }
+    },
+    {
+      "entityId": "ProjectDashboard",
+      "title": "Painel de portfólio de obras",
+      "description": "Projeção organizacional que consolida obras ativas, orçamento versus realizado, atenção de custo e tarefas próximas para monitoramento gerencial.",
+      "kind": "projection",
+      "ownership": "derived",
+      "sourceRefs": {
+        "journeyIds": [
+          "reviewProjectPortfolio"
+        ],
+        "featureIds": [
+          "projectPortfolioMonitoring",
+          "jobCostTracking",
+          "projectScheduleVisibility"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:portfolio"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "activeProjects",
+          "title": "Obras ativas",
+          "type": "json",
+          "required": true,
+          "description": "Coleção derivada de obras ativas visíveis no portfólio, com suas referências de contexto e indicadores resumidos para seleção gerencial.",
+          "constraints": []
+        },
+        {
+          "fieldId": "activeProjectCount",
+          "title": "Quantidade de obras ativas",
+          "type": "integer",
+          "required": true,
+          "description": "Quantidade calculada de obras ativas apresentadas no painel.",
+          "constraints": []
+        },
+        {
+          "fieldId": "totalBudget",
+          "title": "Orçamento total",
+          "type": "money",
+          "required": true,
+          "description": "Soma calculada dos orçamentos das obras ativas apresentadas no painel.",
+          "constraints": []
+        },
+        {
+          "fieldId": "totalActualCost",
+          "title": "Custo realizado total",
+          "type": "money",
+          "required": true,
+          "description": "Soma calculada dos custos realizados das obras ativas apresentadas no painel.",
+          "constraints": []
+        },
+        {
+          "fieldId": "budgetVariance",
+          "title": "Variação de orçamento",
+          "type": "money",
+          "required": true,
+          "description": "Diferença calculada entre o orçamento total e o custo realizado total das obras apresentadas.",
+          "constraints": []
+        },
+        {
+          "fieldId": "costAttentionProjects",
+          "title": "Obras com atenção de custo",
+          "type": "json",
+          "required": true,
+          "description": "Coleção derivada de obras com indicador de atenção de custo, incluindo referência da obra e dados resumidos para acompanhamento.",
+          "constraints": []
+        },
+        {
+          "fieldId": "upcomingTasks",
+          "title": "Próximas tarefas",
+          "type": "json",
+          "required": true,
+          "description": "Coleção derivada de próximas tarefas e prazos das obras ativas para visibilidade gerencial do cronograma.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [
+        "activeProjectCostVisibility"
+      ],
+      "storage": {
+        "target": "derived",
+        "scope": "none",
+        "notes": "Projeção calculada a partir de obras, tarefas, apontamentos, consumos e alterações; não possui persistência própria."
+      }
+    },
+    {
+      "entityId": "ProjectTimeline",
+      "title": "Cronograma da obra",
+      "description": "Projeção do sequenciamento das tarefas e prazos de uma obra para planejamento, atribuição e acompanhamento de campo.",
+      "kind": "projection",
+      "ownership": "derived",
+      "sourceRefs": {
+        "journeyIds": [
+          "assignWorkTask"
+        ],
+        "featureIds": [
+          "projectScheduleVisibility",
+          "fieldTaskCoordination"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:fieldcoord"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "projectId",
+          "title": "Identificador da obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Identidade da obra que delimita a projeção derivada do cronograma.",
+          "constraints": []
+        },
+        {
+          "fieldId": "workTasks",
+          "title": "Tarefas da obra",
+          "type": "json",
+          "required": false,
+          "description": "Lista derivada das tarefas da obra, organizada para exibir sua sequência e seus prazos no cronograma.",
+          "constraints": []
+        },
+        {
+          "fieldId": "scheduleEntries",
+          "title": "Entradas do cronograma",
+          "type": "json",
+          "required": false,
+          "description": "Entradas derivadas para a visualização sequenciada ou tipo Gantt, incluindo a ordem planejada e as datas disponíveis das tarefas.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [],
+      "storage": {
+        "target": "derived",
+        "scope": "none",
+        "notes": "Projeção derivada da obra e de suas tarefas, adequada para lista sequenciada ou visualização tipo Gantt."
+      }
+    },
+    {
+      "entityId": "ProjectExecutionOverview",
+      "title": "Visão consolidada de execução da obra",
+      "description": "Projeção por obra que reúne andamento de tarefas, próximos compromissos, horas, materiais, custos realizados e impactos de alterações para acompanhamento e comunicação.",
+      "kind": "projection",
+      "ownership": "derived",
+      "sourceRefs": {
+        "journeyIds": [
+          "reviewProjectPortfolio",
+          "generateAndPublishProjectStatusReport",
+          "monitorDailyProjectRecords"
+        ],
+        "featureIds": [
+          "projectPortfolioMonitoring",
+          "dailyFieldLogging",
+          "projectMaterialTracking",
+          "jobCostTracking",
+          "aiStatusReporting"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:portfolio",
+          "buildflowfsm:fieldcoord",
+          "buildflowfsm:statuspublish"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "projectId",
+          "title": "Obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador da obra cujo contexto operacional é consolidado nesta projeção calculada.",
+          "constraints": []
+        },
+        {
+          "fieldId": "projectName",
+          "title": "Nome da obra",
+          "type": "string",
+          "required": true,
+          "description": "Nome da obra apresentado para identificar a execução consolidada.",
+          "constraints": []
+        },
+        {
+          "fieldId": "projectStatus",
+          "title": "Status da obra",
+          "type": "string",
+          "required": true,
+          "description": "Status atual da obra, obtido dos dados operacionais da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "workTaskIds",
+          "title": "Tarefas incluídas",
+          "type": "json",
+          "required": false,
+          "description": "Lista derivada das identificações das tarefas que compõem o andamento consolidado da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "taskSummary",
+          "title": "Resumo das tarefas",
+          "type": "json",
+          "required": true,
+          "description": "Consolidação derivada do andamento, status e prazos das tarefas da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "upcomingCommitments",
+          "title": "Próximos compromissos",
+          "type": "json",
+          "required": true,
+          "description": "Lista derivada dos próximos prazos e compromissos operacionais da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "timeLogIds",
+          "title": "Apontamentos de horas incluídos",
+          "type": "json",
+          "required": false,
+          "description": "Lista derivada das identificações dos apontamentos de horas considerados na projeção.",
+          "constraints": []
+        },
+        {
+          "fieldId": "totalLoggedHours",
+          "title": "Total de horas apontadas",
+          "type": "number",
+          "required": true,
+          "description": "Total calculado de horas registradas para a obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "materialUsageIds",
+          "title": "Consumos de materiais incluídos",
+          "type": "json",
+          "required": false,
+          "description": "Lista derivada das identificações dos consumos de materiais considerados na projeção.",
+          "constraints": []
+        },
+        {
+          "fieldId": "materialUsageSummary",
+          "title": "Resumo de materiais",
+          "type": "json",
+          "required": true,
+          "description": "Consolidação derivada dos materiais consumidos e de seus impactos na execução da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "actualLaborCost",
+          "title": "Custo realizado de mão de obra",
+          "type": "money",
+          "required": true,
+          "description": "Custo realizado calculado a partir dos apontamentos de horas da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "actualMaterialCost",
+          "title": "Custo realizado de materiais",
+          "type": "money",
+          "required": true,
+          "description": "Custo realizado calculado a partir dos consumos de materiais da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "actualCost",
+          "title": "Custo realizado total",
+          "type": "money",
+          "required": true,
+          "description": "Custo realizado total calculado para acompanhamento da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "budgetAmount",
+          "title": "Orçamento da obra",
+          "type": "money",
+          "required": true,
+          "description": "Valor orçado da obra apresentado para comparação com o realizado.",
+          "constraints": []
+        },
+        {
+          "fieldId": "costVariance",
+          "title": "Variação de custo",
+          "type": "money",
+          "required": true,
+          "description": "Diferença calculada entre o orçamento da obra e o custo realizado.",
+          "constraints": []
+        },
+        {
+          "fieldId": "changeOrderIds",
+          "title": "Ordens de mudança incluídas",
+          "type": "json",
+          "required": false,
+          "description": "Lista derivada das identificações das ordens de mudança consideradas na projeção.",
+          "constraints": []
+        },
+        {
+          "fieldId": "changeOrderImpactSummary",
+          "title": "Resumo dos impactos de alterações",
+          "type": "json",
+          "required": true,
+          "description": "Consolidação derivada dos impactos de ordens de mudança conforme seus estados.",
+          "constraints": []
+        },
+        {
+          "fieldId": "calculatedAt",
+          "title": "Calculado em",
+          "type": "datetime",
+          "required": true,
+          "description": "Data e hora em que a projeção consolidada foi calculada a partir dos fatos operacionais da obra.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [
+        "activeProjectCostVisibility",
+        "statusReportUsesProjectExecutionData",
+        "fieldCoordinatorSeesProjectDailyRecords"
+      ],
+      "storage": {
+        "target": "derived",
+        "scope": "none",
+        "notes": "Projeção calculada de fatos operacionais da obra; não armazena saldos ou totais independentes."
+      }
+    },
+    {
+      "entityId": "ScheduleRiskAssessment",
+      "title": "Avaliação de risco de atraso",
+      "description": "Projeção que identifica tarefas não concluídas com risco de atraso e os indicadores que explicam o risco para a obra e o relatório de status.",
+      "kind": "projection",
+      "ownership": "derived",
+      "sourceRefs": {
+        "journeyIds": [
+          "generateAndPublishProjectStatusReport"
+        ],
+        "featureIds": [
+          "aiStatusReporting",
+          "projectScheduleVisibility"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:statuspublish"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "projectId",
+          "title": "Obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Identidade da obra cujo contexto de execução fundamenta a avaliação derivada de risco.",
+          "constraints": []
+        },
+        {
+          "fieldId": "workTaskId",
+          "title": "Tarefa",
+          "type": "uuid",
+          "required": true,
+          "description": "Identidade da tarefa não concluída avaliada quanto ao risco de atraso.",
+          "constraints": []
+        },
+        {
+          "fieldId": "taskStatus",
+          "title": "Status da tarefa",
+          "type": "string",
+          "required": true,
+          "description": "Estado da tarefa considerado na identificação do risco de atraso.",
+          "constraints": []
+        },
+        {
+          "fieldId": "dueDate",
+          "title": "Prazo da tarefa",
+          "type": "date",
+          "required": true,
+          "description": "Data de prazo da tarefa usada na projeção do risco de atraso.",
+          "constraints": []
+        },
+        {
+          "fieldId": "progressPercent",
+          "title": "Andamento da tarefa",
+          "type": "number",
+          "required": false,
+          "description": "Percentual de andamento disponível da tarefa no momento da avaliação.",
+          "constraints": []
+        },
+        {
+          "fieldId": "riskIndicators",
+          "title": "Indicadores de risco",
+          "type": "json",
+          "required": true,
+          "description": "Indicadores derivados de prazo, estado, andamento e contexto de execução que explicam o risco identificado.",
+          "constraints": []
+        },
+        {
+          "fieldId": "riskExplanation",
+          "title": "Explicação do risco",
+          "type": "text",
+          "required": true,
+          "description": "Síntese profissional dos fatores que tornam a tarefa suscetível a atraso, para consulta na obra e no relatório de status.",
+          "constraints": []
+        },
+        {
+          "fieldId": "assessedAt",
+          "title": "Data e hora da avaliação",
+          "type": "datetime",
+          "required": true,
+          "description": "Momento em que os dados de execução foram consolidados para gerar esta avaliação derivada.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [
+        "statusReportUsesProjectExecutionData"
+      ],
+      "storage": {
+        "target": "derived",
+        "scope": "none",
+        "notes": "Avaliação derivada de prazo, estado, andamento e contexto de execução das tarefas; não é uma tarefa nem um registro manual de campo."
+      }
+    },
+    {
+      "entityId": "ClientBillingSummary",
+      "title": "Resumo de faturamento do cliente",
+      "description": "Projeção comercial por cliente e obra que consolida alterações aprovadas, valores faturáveis, faturas emitidas e valores disponibilizados ao cliente.",
+      "kind": "projection",
+      "ownership": "derived",
+      "sourceRefs": {
+        "journeyIds": [
+          "issueProjectInvoice",
+          "consultClientProjectUpdates",
+          "consultApprovedProjectChangeOrders"
+        ],
+        "featureIds": [
+          "clientBilling",
+          "changeOrderControl",
+          "clientCommunication"
+        ],
+        "authorityRefs": [
+          "buildflowfsm:billing",
+          "buildflowfsm:clientupdates"
+        ]
+      },
+      "fields": [
+        {
+          "fieldId": "clientId",
+          "title": "Cliente",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador derivado do cliente selecionado para o qual o resumo de faturamento é consolidado.",
+          "constraints": []
+        },
+        {
+          "fieldId": "projectId",
+          "title": "Obra",
+          "type": "uuid",
+          "required": true,
+          "description": "Identificador derivado da obra faturável do cliente que segmenta o resumo.",
+          "constraints": []
+        },
+        {
+          "fieldId": "approvedChangeOrderReferences",
+          "title": "Ordens de mudança aprovadas",
+          "type": "json",
+          "required": false,
+          "description": "Referências derivadas às ordens de mudança aprovadas da obra que compõem o resumo comercial.",
+          "constraints": []
+        },
+        {
+          "fieldId": "invoiceReferences",
+          "title": "Faturas",
+          "type": "json",
+          "required": false,
+          "description": "Referências derivadas às faturas da obra consolidadas no resumo.",
+          "constraints": []
+        },
+        {
+          "fieldId": "approvedChangeOrderAmount",
+          "title": "Valor de ordens de mudança aprovadas",
+          "type": "money",
+          "required": true,
+          "description": "Total derivado dos valores das ordens de mudança aprovadas para a obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "billableAmount",
+          "title": "Valor faturável",
+          "type": "money",
+          "required": true,
+          "description": "Valor comercial derivado disponível para composição de faturamento da obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "invoicedAmount",
+          "title": "Valor faturado",
+          "type": "money",
+          "required": true,
+          "description": "Total derivado dos valores das faturas emitidas para a obra.",
+          "constraints": []
+        },
+        {
+          "fieldId": "clientAvailableAmount",
+          "title": "Valor disponibilizado ao cliente",
+          "type": "money",
+          "required": true,
+          "description": "Total derivado dos valores de faturamento disponibilizados para consulta do cliente.",
+          "constraints": []
+        }
+      ],
+      "lifecycleStates": [],
+      "lifecyclePredicates": [],
+      "useRules": [
+        "invoiceRequiresClientAndProject",
+        "invoiceIncludesApprovedChangeOrdersOnly",
+        "clientSeesOnlyOwnProjectInformation",
+        "clientSeesApprovedChangeOrdersOnly"
+      ],
+      "storage": {
+        "target": "derived",
+        "scope": "none",
+        "notes": "Projeção derivada de cliente, obra, ordens aprovadas, aplicações em fatura e faturas; respeita a visibilidade externa publicada."
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipId": "clientPortalAccessBelongsToClient",
+      "fromEntity": "ClientPortalAccess",
+      "toEntity": "Client",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada vínculo externo identifica o cliente ao qual o usuário autenticado está associado.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "ClientPortalAccess",
+        "from": {
+          "entityId": "ClientPortalAccess",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "to": {
+          "entityId": "Client",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "description": "O vínculo de acesso armazena o identificador do cliente MDM associado."
+      }
+    },
+    {
+      "relationshipId": "clientPortalAccessMapsToPlatformUser",
+      "fromEntity": "ClientPortalAccess",
+      "toEntity": "PlatformUser",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada vínculo de cliente é associado a um usuário externo fornecido pela plataforma.",
+      "persistence": {
+        "mode": "externalReference"
+      },
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "ClientPortalAccess",
+        "from": {
+          "entityId": "ClientPortalAccess",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "to": {
+          "entityId": "PlatformUser",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "O vínculo de acesso referencia o usuário externo autenticado pela plataforma."
+      }
+    },
+    {
+      "relationshipId": "fieldWorkerMapsToPlatformUser",
+      "fromEntity": "FieldWorker",
+      "toEntity": "PlatformUser",
+      "type": "oneToOne",
+      "required": true,
+      "description": "O trabalhador de campo é uma referência qualificada a um usuário da plataforma.",
+      "persistence": {
+        "mode": "externalReference"
+      },
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "FieldWorker",
+        "from": {
+          "entityId": "FieldWorker",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "to": {
+          "entityId": "PlatformUser",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "O trabalhador de campo é qualificado pelo identificador do usuário da plataforma."
+      }
+    },
+    {
+      "relationshipId": "fieldCoordinatorMapsToPlatformUser",
+      "fromEntity": "FieldCoordinator",
+      "toEntity": "PlatformUser",
+      "type": "oneToOne",
+      "required": true,
+      "description": "O coordenador de campo é uma referência qualificada a um usuário da plataforma.",
+      "persistence": {
+        "mode": "externalReference"
+      },
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "FieldCoordinator",
+        "from": {
+          "entityId": "FieldCoordinator",
+          "fieldIds": [
+            "platformUserRef"
+          ]
+        },
+        "to": {
+          "entityId": "PlatformUser",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "O coordenador de campo referencia o usuário organizacional da plataforma."
+      }
+    },
+    {
+      "relationshipId": "projectBelongsToClient",
+      "fromEntity": "Project",
+      "toEntity": "Client",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada obra pertence a um cliente cadastrado.",
+      "persistence": {
+        "mode": "mdmRelationship"
+      },
+      "realization": {
+        "kind": "mdmRelationship",
+        "ownerEntity": "Project",
+        "from": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Client",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "description": "A associação entre as identidades mestre da obra e do cliente é mantida pela relação MDM."
+      }
+    },
+    {
+      "relationshipId": "projectCoordinationAssignmentForProject",
+      "fromEntity": "ProjectCoordinationAssignment",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "O encaminhamento operacional sempre se refere a uma obra específica.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "ProjectCoordinationAssignment",
+        "from": {
+          "entityId": "ProjectCoordinationAssignment",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O encaminhamento operacional armazena a obra MDM acompanhada."
+      }
+    },
+    {
+      "relationshipId": "projectCoordinationAssignmentAssignedToCoordinator",
+      "fromEntity": "ProjectCoordinationAssignment",
+      "toEntity": "FieldCoordinator",
+      "type": "manyToOne",
+      "required": true,
+      "description": "O encaminhamento torna um coordenador específico responsável pelo acompanhamento de campo.",
+      "persistence": {
+        "mode": "externalReference"
+      },
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "ProjectCoordinationAssignment",
+        "from": {
+          "entityId": "ProjectCoordinationAssignment",
+          "fieldIds": [
+            "fieldCoordinatorId"
+          ]
+        },
+        "to": {
+          "entityId": "FieldCoordinator",
+          "fieldIds": [
+            "platformUserRef"
+          ]
+        },
+        "description": "O encaminhamento referencia o coordenador de campo responsável."
+      }
+    },
+    {
+      "relationshipId": "inventoryBalanceForInventoryItem",
+      "fromEntity": "InventoryBalance",
+      "toEntity": "InventoryItem",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada saldo operacional corresponde a um item do catálogo de materiais.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "InventoryBalance",
+        "from": {
+          "entityId": "InventoryBalance",
+          "fieldIds": [
+            "inventoryItemId"
+          ]
+        },
+        "to": {
+          "entityId": "InventoryItem",
+          "fieldIds": [
+            "inventoryItemId"
+          ]
+        },
+        "description": "O saldo operacional armazena a referência ao item do catálogo MDM."
+      }
+    },
+    {
+      "relationshipId": "workTaskBelongsToProject",
+      "fromEntity": "WorkTask",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada tarefa é planejada e executada no contexto de uma obra.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "WorkTask",
+        "from": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A tarefa armazena a obra em cujo contexto é executada."
+      }
+    },
+    {
+      "relationshipId": "workTaskAssignedToFieldWorker",
+      "fromEntity": "WorkTask",
+      "toEntity": "FieldWorker",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada tarefa registrada já possui um trabalhador responsável para execução e atualização.",
+      "persistence": {
+        "mode": "externalReference"
+      },
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "WorkTask",
+        "from": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "assignedFieldWorkerId"
+          ]
+        },
+        "to": {
+          "entityId": "FieldWorker",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "A tarefa referencia o trabalhador de campo responsável."
+      }
+    },
+    {
+      "relationshipId": "timeLogForWorkTask",
+      "fromEntity": "TimeLog",
+      "toEntity": "WorkTask",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada apontamento de horas é atribuído a uma tarefa, que disponibiliza o contexto da obra.",
+      "persistence": {
+        "mode": "moduleReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "TimeLog",
+        "from": {
+          "entityId": "TimeLog",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "to": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "description": "O apontamento de horas armazena a tarefa à qual as horas são atribuídas."
+      }
+    },
+    {
+      "relationshipId": "timeLogRecordedByFieldWorker",
+      "fromEntity": "TimeLog",
+      "toEntity": "FieldWorker",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada apontamento identifica o trabalhador que realizou as horas.",
+      "persistence": {
+        "mode": "externalReference"
+      },
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "TimeLog",
+        "from": {
+          "entityId": "TimeLog",
+          "fieldIds": [
+            "fieldWorkerId"
+          ]
+        },
+        "to": {
+          "entityId": "FieldWorker",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "O apontamento referencia o trabalhador que realizou as horas."
+      }
+    },
+    {
+      "relationshipId": "materialUsageForProject",
+      "fromEntity": "MaterialUsage",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada consumo é registrado diretamente contra uma obra.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "MaterialUsage",
+        "from": {
+          "entityId": "MaterialUsage",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O consumo armazena a obra contra a qual o material foi utilizado."
+      }
+    },
+    {
+      "relationshipId": "materialUsageForInventoryItem",
+      "fromEntity": "MaterialUsage",
+      "toEntity": "InventoryItem",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada consumo identifica o item de material efetivamente utilizado.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "MaterialUsage",
+        "from": {
+          "entityId": "MaterialUsage",
+          "fieldIds": [
+            "inventoryItemId"
+          ]
+        },
+        "to": {
+          "entityId": "InventoryItem",
+          "fieldIds": [
+            "inventoryItemId"
+          ]
+        },
+        "description": "O consumo armazena o item de catálogo efetivamente utilizado."
+      }
+    },
+    {
+      "relationshipId": "materialUsageDrawsFromInventoryBalance",
+      "fromEntity": "MaterialUsage",
+      "toEntity": "InventoryBalance",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada consumo é suportado por um saldo operacional disponível, preservando a rastreabilidade do estoque e do custo.",
+      "persistence": {
+        "mode": "moduleReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "MaterialUsage",
+        "from": {
+          "entityId": "MaterialUsage",
+          "fieldIds": [
+            "inventoryBalanceId"
+          ]
+        },
+        "to": {
+          "entityId": "InventoryBalance",
+          "fieldIds": [
+            "inventoryBalanceId"
+          ]
+        },
+        "description": "O consumo referencia o saldo operacional que forneceu o material."
+      }
+    },
+    {
+      "relationshipId": "changeOrderForClient",
+      "fromEntity": "ChangeOrder",
+      "toEntity": "Client",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada ordem de mudança é proposta para um cliente específico.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "ChangeOrder",
+        "from": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "clientRef"
+          ]
+        },
+        "to": {
+          "entityId": "Client",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "description": "A ordem de mudança armazena o cliente para o qual foi proposta."
+      }
+    },
+    {
+      "relationshipId": "changeOrderForProject",
+      "fromEntity": "ChangeOrder",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada ordem de mudança está vinculada à obra do cliente selecionado.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "ChangeOrder",
+        "from": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "projectRef"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A ordem de mudança armazena a obra afetada."
+      }
+    },
+    {
+      "relationshipId": "changeOrderDecisionForChangeOrder",
+      "fromEntity": "ChangeOrderDecision",
+      "toEntity": "ChangeOrder",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada decisão registrada trata uma ordem de mudança específica.",
+      "persistence": {
+        "mode": "moduleReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "ChangeOrderDecision",
+        "from": {
+          "entityId": "ChangeOrderDecision",
+          "fieldIds": [
+            "changeOrder"
+          ]
+        },
+        "to": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "changeOrderId"
+          ]
+        },
+        "description": "A decisão registrada referencia a ordem de mudança decidida."
+      }
+    },
+    {
+      "relationshipId": "changeOrderDecisionMadeByPlatformUser",
+      "fromEntity": "ChangeOrderDecision",
+      "toEntity": "PlatformUser",
+      "type": "manyToOne",
+      "required": true,
+      "description": "A decisão mantém o usuário que a tomou para evidenciar aprovação do cliente ou recusa do gerente.",
+      "persistence": {
+        "mode": "externalReference"
+      },
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "ChangeOrderDecision",
+        "from": {
+          "entityId": "ChangeOrderDecision",
+          "fieldIds": [
+            "madeByPlatformUser"
+          ]
+        },
+        "to": {
+          "entityId": "PlatformUser",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "A decisão preserva o usuário da plataforma que a tomou."
+      }
+    },
+    {
+      "relationshipId": "invoiceForClient",
+      "fromEntity": "Invoice",
+      "toEntity": "Client",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada fatura é emitida para um cliente específico.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "Invoice",
+        "from": {
+          "entityId": "Invoice",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "to": {
+          "entityId": "Client",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "description": "A fatura armazena o cliente faturado."
+      }
+    },
+    {
+      "relationshipId": "invoiceForProject",
+      "fromEntity": "Invoice",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada fatura é emitida no contexto de uma obra do cliente.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "Invoice",
+        "from": {
+          "entityId": "Invoice",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A fatura armazena a obra em cujo contexto foi emitida."
+      }
+    },
+    {
+      "relationshipId": "invoiceChangeOrderForInvoice",
+      "fromEntity": "InvoiceChangeOrder",
+      "toEntity": "Invoice",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada aplicação comercial pertence a uma fatura emitida.",
+      "persistence": {
+        "mode": "moduleReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "InvoiceChangeOrder",
+        "from": {
+          "entityId": "InvoiceChangeOrder",
+          "fieldIds": [
+            "invoiceId"
+          ]
+        },
+        "to": {
+          "entityId": "Invoice",
+          "fieldIds": [
+            "invoiceId"
+          ]
+        },
+        "description": "A aplicação comercial armazena a fatura que incorpora a alteração."
+      }
+    },
+    {
+      "relationshipId": "invoiceChangeOrderForChangeOrder",
+      "fromEntity": "InvoiceChangeOrder",
+      "toEntity": "ChangeOrder",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada aplicação vincula uma ordem de mudança aprovada à fatura que a incorpora.",
+      "persistence": {
+        "mode": "moduleReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "InvoiceChangeOrder",
+        "from": {
+          "entityId": "InvoiceChangeOrder",
+          "fieldIds": [
+            "changeOrderId"
+          ]
+        },
+        "to": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "changeOrderId"
+          ]
+        },
+        "description": "A aplicação comercial armazena a ordem de mudança faturada."
+      }
+    },
+    {
+      "relationshipId": "statusReportForProject",
+      "fromEntity": "StatusReport",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada relatório comunica o status de uma obra específica.",
+      "persistence": {
+        "mode": "crossStoreReference"
+      },
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "StatusReport",
+        "from": {
+          "entityId": "StatusReport",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O relatório armazena a obra cuja situação é comunicada."
+      }
+    },
+    {
+      "relationshipId": "projectDashboardIncludesProjects",
+      "fromEntity": "ProjectDashboard",
+      "toEntity": "Project",
+      "type": "manyToMany",
+      "required": false,
+      "description": "O painel de portfólio apresenta as obras que satisfazem seus filtros organizacionais.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectDashboard",
+        "from": {
+          "entityId": "ProjectDashboard",
+          "fieldIds": [
+            "activeProjects"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A coleção de obras ativas é derivada dos projetos que atendem aos filtros do painel."
+      }
+    },
+    {
+      "relationshipId": "projectTimelineForProject",
+      "fromEntity": "ProjectTimeline",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada cronograma é apresentado no contexto de uma obra selecionada.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectTimeline",
+        "from": {
+          "entityId": "ProjectTimeline",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O cronograma é derivado para a obra identificada pelo seu contexto de projeto."
+      }
+    },
+    {
+      "relationshipId": "projectTimelineIncludesWorkTasks",
+      "fromEntity": "ProjectTimeline",
+      "toEntity": "WorkTask",
+      "type": "manyToMany",
+      "required": false,
+      "description": "O cronograma organiza as tarefas da obra por sequência e prazo.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectTimeline",
+        "from": {
+          "entityId": "ProjectTimeline",
+          "fieldIds": [
+            "workTasks"
+          ]
+        },
+        "to": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "description": "A lista derivada do cronograma contém as tarefas da obra organizadas por prazo e sequência."
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewForProject",
+      "fromEntity": "ProjectExecutionOverview",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "A visão consolidada é calculada para uma obra específica.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectExecutionOverview",
+        "from": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A visão de execução é calculada para a obra identificada em seu contexto."
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesWorkTasks",
+      "fromEntity": "ProjectExecutionOverview",
+      "toEntity": "WorkTask",
+      "type": "manyToMany",
+      "required": false,
+      "description": "A visão de execução consolida andamento e prazos das tarefas da obra.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectExecutionOverview",
+        "from": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "workTaskIds"
+          ]
+        },
+        "to": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "description": "A visão consolida as tarefas derivadas vinculadas à obra."
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesTimeLogs",
+      "fromEntity": "ProjectExecutionOverview",
+      "toEntity": "TimeLog",
+      "type": "manyToMany",
+      "required": false,
+      "description": "A visão de execução incorpora os apontamentos de horas que compõem custo e progresso.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectExecutionOverview",
+        "from": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "timeLogIds"
+          ]
+        },
+        "to": {
+          "entityId": "TimeLog",
+          "fieldIds": [
+            "timeLogId"
+          ]
+        },
+        "description": "A visão inclui os apontamentos de horas derivados para custo e progresso da obra."
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesMaterialUsages",
+      "fromEntity": "ProjectExecutionOverview",
+      "toEntity": "MaterialUsage",
+      "type": "manyToMany",
+      "required": false,
+      "description": "A visão de execução incorpora os consumos de material da obra.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectExecutionOverview",
+        "from": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "materialUsageIds"
+          ]
+        },
+        "to": {
+          "entityId": "MaterialUsage",
+          "fieldIds": [
+            "materialUsageId"
+          ]
+        },
+        "description": "A visão inclui os consumos de material derivados para a obra."
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesChangeOrders",
+      "fromEntity": "ProjectExecutionOverview",
+      "toEntity": "ChangeOrder",
+      "type": "manyToMany",
+      "required": false,
+      "description": "A visão de execução considera impactos de ordens de mudança conforme seu estado.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectExecutionOverview",
+        "from": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "changeOrderIds"
+          ]
+        },
+        "to": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "changeOrderId"
+          ]
+        },
+        "description": "A visão inclui as ordens de mudança consideradas conforme seus estados."
+      }
+    },
+    {
+      "relationshipId": "scheduleRiskAssessmentForProject",
+      "fromEntity": "ScheduleRiskAssessment",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada avaliação de risco é apresentada no contexto de uma obra.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ScheduleRiskAssessment",
+        "from": {
+          "entityId": "ScheduleRiskAssessment",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A avaliação de risco é derivada no contexto da obra identificada."
+      }
+    },
+    {
+      "relationshipId": "scheduleRiskAssessmentForWorkTask",
+      "fromEntity": "ScheduleRiskAssessment",
+      "toEntity": "WorkTask",
+      "type": "manyToOne",
+      "required": true,
+      "description": "Cada avaliação identifica a tarefa não concluída à qual o risco se refere.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ScheduleRiskAssessment",
+        "from": {
+          "entityId": "ScheduleRiskAssessment",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "to": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "description": "A avaliação identifica a tarefa não concluída analisada quanto ao risco."
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryForClient",
+      "fromEntity": "ClientBillingSummary",
+      "toEntity": "Client",
+      "type": "manyToOne",
+      "required": true,
+      "description": "O resumo de faturamento é calculado para o cliente selecionado.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ClientBillingSummary",
+        "from": {
+          "entityId": "ClientBillingSummary",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "to": {
+          "entityId": "Client",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "description": "O resumo de faturamento é calculado para o cliente selecionado."
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryForProject",
+      "fromEntity": "ClientBillingSummary",
+      "toEntity": "Project",
+      "type": "manyToOne",
+      "required": true,
+      "description": "O resumo de faturamento é segmentado pela obra faturável do cliente.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ClientBillingSummary",
+        "from": {
+          "entityId": "ClientBillingSummary",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O resumo de faturamento é segmentado pela obra faturável identificada."
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryIncludesInvoices",
+      "fromEntity": "ClientBillingSummary",
+      "toEntity": "Invoice",
+      "type": "manyToMany",
+      "required": false,
+      "description": "O resumo consolida faturas da obra e seus valores disponibilizados.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ClientBillingSummary",
+        "from": {
+          "entityId": "ClientBillingSummary",
+          "fieldIds": [
+            "invoiceReferences"
+          ]
+        },
+        "to": {
+          "entityId": "Invoice",
+          "fieldIds": [
+            "invoiceId"
+          ]
+        },
+        "description": "As referências derivadas consolidam as faturas da obra no resumo comercial."
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryIncludesChangeOrders",
+      "fromEntity": "ClientBillingSummary",
+      "toEntity": "ChangeOrder",
+      "type": "manyToMany",
+      "required": false,
+      "description": "O resumo consolida apenas ordens de mudança aprovadas e seus reflexos comerciais.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ClientBillingSummary",
+        "from": {
+          "entityId": "ClientBillingSummary",
+          "fieldIds": [
+            "approvedChangeOrderReferences"
+          ]
+        },
+        "to": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "changeOrderId"
+          ]
+        },
+        "description": "As referências derivadas consolidam somente as ordens de mudança aprovadas."
+      }
+    },
+    {
+      "relationshipId": "statusReportBasedOnProjectExecutionOverview",
+      "fromEntity": "StatusReport",
+      "toEntity": "ProjectExecutionOverview",
+      "type": "manyToOne",
+      "required": true,
+      "description": "O relatório é gerado a partir da visão consolidada de execução da obra.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "StatusReport",
+        "from": {
+          "entityId": "StatusReport",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O relatório usa a visão de execução derivada para a mesma obra como base de geração."
+      }
+    },
+    {
+      "relationshipId": "statusReportCommunicatesScheduleRiskAssessment",
+      "fromEntity": "StatusReport",
+      "toEntity": "ScheduleRiskAssessment",
+      "type": "manyToMany",
+      "required": false,
+      "description": "O relatório pode comunicar avaliações de risco de atraso relevantes para o cliente.",
+      "persistence": {
+        "mode": "derivedJoin"
+      },
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "StatusReport",
+        "from": {
+          "entityId": "StatusReport",
+          "fieldIds": [
+            "communicatedRisks"
+          ]
+        },
+        "to": {
+          "entityId": "ScheduleRiskAssessment",
+          "fieldIds": [
+            "projectId",
+            "workTaskId"
+          ]
+        },
+        "description": "Os riscos comunicados no relatório são selecionados das avaliações derivadas por obra e tarefa."
+      }
+    }
+  ],
+  "changeSummary": [
+    "Primeira versão completa da ontologia para uma solução nova, sem pressupostos de esquema ou persistência legados.",
+    "Separação definida entre cadastros mestres organizacionais, fatos operacionais transacionais, referências externas de usuários e projeções calculadas.",
+    "Foram formalizados vínculos duráveis para coordenação de obras, acesso de clientes, decisões sobre ordens de mudança e aplicação de alterações em faturas.",
+    "Predicados de ciclo de vida foram congelados para obra ativa, tarefa não concluída, disponibilidade de estoque, custos elegíveis, ordens aprovadas e conteúdo visível ao cliente.",
+    "As projeções de portfólio, cronograma, execução, risco de atraso e faturamento foram incluídas para suportar todas as jornadas, funcionalidades atuais e autoridades aprovadas."
+  ]
+}

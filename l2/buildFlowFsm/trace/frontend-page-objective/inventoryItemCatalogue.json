@@ -1,0 +1,52 @@
+{
+  "savedAt": "2026-08-18T14:52:25.618Z",
+  "pageId": "inventoryItemCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Pessoa responsável pelo cadastro e manutenção do estoque.",
+    "jobToBeDone": "Localizar um item de estoque e, no mesmo espaço de trabalho, cadastrá-lo, corrigir seus dados ou removê-lo com segurança.",
+    "primaryDecision": "Qual item deve ser selecionado para editar ou excluir, ou se é necessário criar um novo item.",
+    "decisiveInfo": [
+      "inventoryItemId",
+      "name",
+      "description",
+      "unitOfMeasure",
+      "referenceUnitCost",
+      "status"
+    ],
+    "usageFrequency": "Uso recorrente de back-office, com consultas e ajustes ocasionais durante a manutenção do catálogo.",
+    "informationHierarchy": [
+      "Lista escaneável de itens e seus nomes",
+      "Status, unidade de medida e custo unitário de referência",
+      "Detalhes do item selecionado",
+      "Ações contextuais de atualizar e excluir",
+      "Ação de criar novo item"
+    ],
+    "successCriteria": "A pessoa encontra rapidamente o item correto, entende seu estado atual, edita somente os dados necessários e conclui criação, atualização ou exclusão com feedback e atualização da lista.",
+    "antiPatterns": [
+      "Formulário CRUD sempre aberto ocupando o lugar da lista",
+      "Campo de id digitável manualmente",
+      "Status exposto como seleção livre de qualquer valor",
+      "Exclusão sem confirmação",
+      "Duplicar a lista em uma seção separada para cada operação"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar item para manutenção",
+        "presentation": "master-detail"
+      },
+      {
+        "action": "Atualizar item selecionado",
+        "presentation": "contextual-transition-actions"
+      },
+      {
+        "action": "Excluir item selecionado",
+        "presentation": "inline-row-command"
+      },
+      {
+        "action": "Criar item",
+        "presentation": "primary-button"
+      }
+    ]
+  }
+}

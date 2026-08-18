@@ -1,0 +1,51 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "InvoiceChangeOrder",
+  "fields": [
+    {
+      "fieldId": "invoiceChangeOrderId",
+      "title": "Identificador da aplicação de ordem de mudança na fatura",
+      "type": "uuid",
+      "required": true,
+      "description": "Identificador estável do vínculo de faturamento entre uma fatura e uma ordem de mudança aprovada.",
+      "constraints": [
+        {
+          "constraintId": "uniqueInvoiceChangeOrderId",
+          "kind": "unique",
+          "value": "true",
+          "description": "Cada aplicação de ordem de mudança na fatura possui um identificador estável exclusivo.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "invoiceId",
+      "title": "Fatura",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência de contexto à fatura emitida que incorpora a ordem de mudança.",
+      "constraints": []
+    },
+    {
+      "fieldId": "changeOrderId",
+      "title": "Ordem de mudança",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência de contexto à ordem de mudança aprovada incorporada na fatura.",
+      "constraints": []
+    },
+    {
+      "fieldId": "billedAmount",
+      "title": "Valor faturado",
+      "type": "money",
+      "required": true,
+      "description": "Valor efetivamente faturado nesta fatura em razão da ordem de mudança vinculada.",
+      "constraints": []
+    }
+  ],
+  "useRules": [
+    "invoiceIncludesApprovedChangeOrdersOnly"
+  ]
+}

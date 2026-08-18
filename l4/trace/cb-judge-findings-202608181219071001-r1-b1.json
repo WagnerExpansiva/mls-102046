@@ -1,0 +1,122 @@
+{
+  "runId": "20260818121907.1001",
+  "judgeRun": 1,
+  "batchIndex": 1,
+  "owners": [
+    "approveChangeOrderDecision",
+    "createChangeOrderDecision",
+    "createChangeOrder",
+    "createClientPortalAccess",
+    "createClient",
+    "createInventoryBalance",
+    "createInventoryItem",
+    "createInvoiceChangeOrder",
+    "createInvoice",
+    "createMaterialUsage",
+    "createProjectCoordinationAssignment",
+    "createProject",
+    "createStatusReport",
+    "createTimeLog",
+    "createWorkTask"
+  ],
+  "findings": [
+    {
+      "ownerId": "createProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase createProject: principal aggregate 'Project' has a local port but is missing from data.ports (materialize never sees IProjectRepository nor the Project shape; see T12)"
+    },
+    {
+      "ownerId": "createChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A função declara apenas o port ChangeOrder, mas a operação também lê Client e Project; os ports Client e Project estão ausentes.",
+      "suggestion": "Declare os ports Client e Project para cobrir as entidades lidas pela operação."
+    },
+    {
+      "ownerId": "createClientPortalAccess",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A função declara ClientPortalAccess e PlatformUser, mas não declara o port Client, embora a operação leia Client.",
+      "suggestion": "Declare o port Client para cobrir a leitura de Client."
+    },
+    {
+      "ownerId": "createClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O port Client está ausente, embora a operação escreva e leia Client.",
+      "suggestion": "Declare o port Client na definição do use case e da função."
+    },
+    {
+      "ownerId": "createInventoryBalance",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O port InventoryItem está ausente, embora a operação leia InventoryItem para validar inventoryItemId.",
+      "suggestion": "Declare o port InventoryItem para cobrir a entidade lida."
+    },
+    {
+      "ownerId": "createInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O port InventoryItem está ausente, embora a operação escreva e leia InventoryItem.",
+      "suggestion": "Declare o port InventoryItem na definição do use case e da função."
+    },
+    {
+      "ownerId": "createInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "Os ports Client e Project estão ausentes, embora a operação leia ambas as entidades para validar invoiceRequiresClientAndProject.",
+      "suggestion": "Declare os ports Client e Project para cobrir as entidades lidas."
+    },
+    {
+      "ownerId": "createMaterialUsage",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "Os ports InventoryItem e Project estão ausentes, embora a operação leia ambas as entidades para executar materialUsageRequiresActiveProjectAndAvailableInventory.",
+      "suggestion": "Declare os ports InventoryItem e Project para cobrir as entidades lidas."
+    },
+    {
+      "ownerId": "createProjectCoordinationAssignment",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O port Project está ausente, embora a operação leia Project para validar o contexto da obra.",
+      "suggestion": "Declare o port Project para cobrir a entidade lida."
+    },
+    {
+      "ownerId": "createProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A definição não declara nenhuma função; portanto não modela os inputs obrigatórios clientId, name, address, authorizedBudget, plannedStartDate e plannedEndDate nem a saída da operação.",
+      "suggestion": "Declare uma função createProject com todos os inputs do contrato e o output canônico de Project."
+    },
+    {
+      "ownerId": "createProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "Os ports Client e Project estão ausentes, embora a operação leia Client e escreva Project.",
+      "suggestion": "Declare os ports Client e Project na definição do use case e da função."
+    },
+    {
+      "ownerId": "createStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O port Project está ausente, embora a operação leia Project para validar projectProjectId.",
+      "suggestion": "Declare o port Project para cobrir a entidade lida."
+    },
+    {
+      "ownerId": "createWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O port Project está ausente, embora a operação leia Project para executar workTaskRequiresActiveProject.",
+      "suggestion": "Declare o port Project para cobrir a entidade lida."
+    },
+    {
+      "ownerId": "createWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo obrigatório WorkTask.assignedFieldWorkerId não existe nos inputs nem em contextResolution, mas é necessário para a regra workTaskRequiresAssigneeAndDueDate e para o output; a função não consegue criar uma tarefa atribuída.",
+      "suggestion": "Inclua assignedFieldWorkerId como input obrigatório conforme o contrato revisado ou declare uma resolução de contexto que forneça o assignee; então modele a criação usando esse valor."
+    }
+  ],
+  "savedAt": "2026-08-18T12:24:56.056Z"
+}

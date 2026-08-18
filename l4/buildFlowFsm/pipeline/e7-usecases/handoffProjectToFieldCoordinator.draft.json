@@ -1,0 +1,29 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "handoffProjectToFieldCoordinator",
+  "title": "Encaminhar a obra para acompanhamento de campo",
+  "kind": "command",
+  "compiledFrom": [
+    "reviewProjectPortfolio.handoffProjectToFieldCoordinator"
+  ],
+  "description": "Formaliza o encaminhamento da obra para acompanhamento de campo, estabelecendo sua atribuição de coordenação ativa.",
+  "contexts": {
+    "requires": [
+      "selectedProject"
+    ],
+    "provides": [
+      "selectedProject"
+    ]
+  },
+  "entityRefs": [
+    "Project",
+    "ProjectCoordinationAssignment"
+  ],
+  "useRules": [
+    "activeProjectCoordination",
+    "ongoingProject"
+  ],
+  "transitions": []
+}

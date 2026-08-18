@@ -1,0 +1,39 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "handoffChangeOrderToClient",
+  "title": "Solicitar aprovação do cliente",
+  "kind": "command",
+  "compiledFrom": [
+    "forwardChangeOrderForClientApproval.handoffChangeOrderToClient"
+  ],
+  "description": "Encaminha uma ordem de mudança submetida para decisão de aprovação.",
+  "contexts": {
+    "requires": [
+      "selectedChangeOrder"
+    ],
+    "provides": [
+      "selectedChangeOrder"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder"
+  ],
+  "useRules": [
+    "managerActionableChangeOrder"
+  ],
+  "transitions": [
+    {
+      "transitionId": "handoffChangeOrderToClient",
+      "entityRef": "ChangeOrder",
+      "fromStates": [
+        "submitted"
+      ],
+      "toState": "pendingClientApproval",
+      "useRules": [
+        "managerActionableChangeOrder"
+      ]
+    }
+  ]
+}

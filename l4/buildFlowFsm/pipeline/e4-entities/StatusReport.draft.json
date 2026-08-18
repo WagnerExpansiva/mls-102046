@@ -1,0 +1,118 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "StatusReport",
+  "fields": [
+    {
+      "fieldId": "statusReportId",
+      "title": "Identificador do relatório de status",
+      "type": "uuid",
+      "required": true,
+      "description": "Identificador estável do relatório, transportado entre as etapas conectadas da jornada.",
+      "constraints": [
+        {
+          "constraintId": "uniqueStatusReportId",
+          "kind": "unique",
+          "value": "true",
+          "description": "Cada relatório de status possui um identificador estável exclusivo.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "projectId",
+      "title": "Obra",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência de contexto à obra específica cuja situação é comunicada pelo relatório.",
+      "constraints": []
+    },
+    {
+      "fieldId": "status",
+      "title": "Status",
+      "type": "string",
+      "required": true,
+      "description": "Estado do ciclo de vida do relatório para revisão, comunicação ao cliente ou retirada.",
+      "constraints": [
+        {
+          "constraintId": "statusReportStatusEnum",
+          "kind": "enum",
+          "value": "[\"draft\",\"published\",\"withdrawn\"]",
+          "description": "O relatório pode estar em rascunho, publicado ou retirado.",
+          "source": "journey"
+        }
+      ]
+    },
+    {
+      "fieldId": "title",
+      "title": "Título",
+      "type": "string",
+      "required": true,
+      "description": "Título profissional que identifica a comunicação de status da obra.",
+      "constraints": []
+    },
+    {
+      "fieldId": "content",
+      "title": "Conteúdo do relatório",
+      "type": "text",
+      "required": true,
+      "description": "Texto profissional gerado a partir da execução da obra e revisado pelo gerente antes da publicação.",
+      "constraints": []
+    },
+    {
+      "fieldId": "communicatedRisks",
+      "title": "Riscos comunicados",
+      "type": "json",
+      "required": false,
+      "description": "Riscos de atraso e indicadores selecionados para comunicação ao cliente no relatório.",
+      "constraints": []
+    },
+    {
+      "fieldId": "generatedAt",
+      "title": "Gerado em",
+      "type": "datetime",
+      "required": true,
+      "description": "Data e hora em que o relatório foi gerado para revisão.",
+      "constraints": []
+    },
+    {
+      "fieldId": "generatedByUserId",
+      "title": "Gerado por",
+      "type": "uuid",
+      "required": true,
+      "description": "Identificador do gerente responsável por gerar o relatório para revisão.",
+      "constraints": []
+    },
+    {
+      "fieldId": "publishedAt",
+      "title": "Publicado em",
+      "type": "datetime",
+      "required": false,
+      "description": "Data e hora em que o relatório foi aprovado para comunicação ao cliente.",
+      "constraints": []
+    },
+    {
+      "fieldId": "publishedByUserId",
+      "title": "Publicado por",
+      "type": "uuid",
+      "required": false,
+      "description": "Identificador do gerente responsável pela publicação observável do relatório.",
+      "constraints": []
+    },
+    {
+      "fieldId": "withdrawnAt",
+      "title": "Retirado em",
+      "type": "datetime",
+      "required": false,
+      "description": "Data e hora em que um relatório publicado foi retirado de circulação.",
+      "constraints": []
+    }
+  ],
+  "useRules": [
+    "statusReportUsesProjectExecutionData",
+    "onlyProjectManagerPublishesStatusReport",
+    "clientSeesOnlyOwnProjectInformation",
+    "clientVisibleStatusReport"
+  ]
+}

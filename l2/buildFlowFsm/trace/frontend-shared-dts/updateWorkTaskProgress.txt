@@ -1,0 +1,132 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateWorkTaskOutput, CmdUpdateWorkTaskOutput, CmdHandoffWorkTaskProgressToFieldCoordinatorOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/updateWorkTaskProgress.js';
+export type { QryLocateWorkTaskInput, QryLocateWorkTaskOutput, CmdUpdateWorkTaskInput, CmdUpdateWorkTaskOutput, CmdHandoffWorkTaskProgressToFieldCoordinatorInput, CmdHandoffWorkTaskProgressToFieldCoordinatorOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/updateWorkTaskProgress.js';
+declare const message_pt: {
+    'section.updateWorkTaskProgress.locateWorkTask.title': string;
+    'organism.updateWorkTaskProgress.qryLocateWorkTask.title': string;
+    'intent.updateWorkTaskProgress.qryLocateWorkTask.list.title': string;
+    'intent.updateWorkTaskProgress.qryLocateWorkTask.list.empty': string;
+    'intent.updateWorkTaskProgress.qryLocateWorkTask.list.column.workTaskId.label': string;
+    'intent.updateWorkTaskProgress.qryLocateWorkTask.list.column.projectId.label': string;
+    'intent.updateWorkTaskProgress.qryLocateWorkTask.list.column.assignedFieldWorkerId.label': string;
+    'intent.updateWorkTaskProgress.qryLocateWorkTask.list.column.description.label': string;
+    'intent.updateWorkTaskProgress.qryLocateWorkTask.list.column.dueDate.label': string;
+    'intent.updateWorkTaskProgress.qryLocateWorkTask.list.column.status.label': string;
+    'intent.updateWorkTaskProgress.qryLocateWorkTask.list.column.progressUpdate.label': string;
+    'section.updateWorkTaskProgress.updateWorkTask.title': string;
+    'organism.updateWorkTaskProgress.cmdUpdateWorkTask.title': string;
+    'intent.updateWorkTaskProgress.cmdUpdateWorkTask.form.title': string;
+    'intent.updateWorkTaskProgress.cmdUpdateWorkTask.form.action.cmdUpdateWorkTask': string;
+    'intent.updateWorkTaskProgress.cmdUpdateWorkTask.form.field.description.label': string;
+    'intent.updateWorkTaskProgress.cmdUpdateWorkTask.form.field.dueDate.label': string;
+    'intent.updateWorkTaskProgress.cmdUpdateWorkTask.form.field.progressUpdate.label': string;
+    'section.updateWorkTaskProgress.handoffWorkTaskProgressToFieldCoordinator.title': string;
+    'organism.updateWorkTaskProgress.cmdHandoffWorkTaskProgressToFieldCoordinator.title': string;
+    'intent.updateWorkTaskProgress.cmdHandoffWorkTaskProgressToFieldCoordinator.form.title': string;
+    'intent.updateWorkTaskProgress.cmdHandoffWorkTaskProgressToFieldCoordinator.form.action.cmdHandoffWorkTaskProgressToFieldCoordinator': string;
+    'intent.updateWorkTaskProgress.cmdHandoffWorkTaskProgressToFieldCoordinator.form.field.description.label': string;
+    'intent.updateWorkTaskProgress.cmdHandoffWorkTaskProgressToFieldCoordinator.form.field.dueDate.label': string;
+    'intent.updateWorkTaskProgress.cmdHandoffWorkTaskProgressToFieldCoordinator.form.field.progressUpdate.label': string;
+    'action.cmdUpdateWorkTask.success': string;
+    'action.cmdUpdateWorkTask.error': string;
+    'action.cmdHandoffWorkTaskProgressToFieldCoordinator.success': string;
+    'action.cmdHandoffWorkTaskProgressToFieldCoordinator.error': string;
+    'section.updateWorkTaskProgress.taskProgressWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmUpdateWorkTaskProgressBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateWorkTaskState — actionStatus, values: idle|loading|success|error */
+    qryLocateWorkTaskState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateWorkTaskData — queryResult, outputShape: array */
+    qryLocateWorkTaskData: QryLocateWorkTaskOutput[];
+    /** state cmdUpdateWorkTaskState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateWorkTaskState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateWorkTaskProjectProjectId — input */
+    cmdUpdateWorkTaskProjectProjectId: string;
+    /** state cmdUpdateWorkTaskWorkTaskWorkTaskId — input */
+    cmdUpdateWorkTaskWorkTaskWorkTaskId: string;
+    /** state cmdUpdateWorkTaskDescription — input */
+    cmdUpdateWorkTaskDescription: string;
+    /** state cmdUpdateWorkTaskDueDate — input */
+    cmdUpdateWorkTaskDueDate: string;
+    /** state cmdUpdateWorkTaskProgressUpdate — input */
+    cmdUpdateWorkTaskProgressUpdate: string;
+    /** state cmdUpdateWorkTaskOutput — commandOutput */
+    cmdUpdateWorkTaskOutput: CmdUpdateWorkTaskOutput | null;
+    /** state cmdUpdateWorkTaskError — actionError */
+    cmdUpdateWorkTaskError: string;
+    /** state cmdHandoffWorkTaskProgressToFieldCoordinatorState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffWorkTaskProgressToFieldCoordinatorState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffWorkTaskProgressToFieldCoordinatorWorkTaskWorkTaskId — input */
+    cmdHandoffWorkTaskProgressToFieldCoordinatorWorkTaskWorkTaskId: string;
+    /** state cmdHandoffWorkTaskProgressToFieldCoordinatorDescription — input */
+    cmdHandoffWorkTaskProgressToFieldCoordinatorDescription: string;
+    /** state cmdHandoffWorkTaskProgressToFieldCoordinatorDueDate — input */
+    cmdHandoffWorkTaskProgressToFieldCoordinatorDueDate: string;
+    /** state cmdHandoffWorkTaskProgressToFieldCoordinatorProgressUpdate — input */
+    cmdHandoffWorkTaskProgressToFieldCoordinatorProgressUpdate: string;
+    /** state cmdHandoffWorkTaskProgressToFieldCoordinatorOutput — commandOutput */
+    cmdHandoffWorkTaskProgressToFieldCoordinatorOutput: CmdHandoffWorkTaskProgressToFieldCoordinatorOutput | null;
+    /** state cmdHandoffWorkTaskProgressToFieldCoordinatorError — actionError */
+    cmdHandoffWorkTaskProgressToFieldCoordinatorError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryLocateWorkTask (query) — route buildFlowFsm.updateWorkTaskProgress.qryLocateWorkTask; inputs: (none); writes ui.updateWorkTaskProgress.data.qryLocateWorkTask; status ui.updateWorkTaskProgress.action.qryLocateWorkTask.status */
+    loadQryLocateWorkTask(): Promise<void>;
+    /** handler for action qryLocateWorkTask — bind UI events here */
+    handleQryLocateWorkTaskClick(event?: Event): void;
+    /** action cmdUpdateWorkTask (command) — route buildFlowFsm.updateWorkTaskProgress.cmdUpdateWorkTask; inputs: projectProjectId, workTaskWorkTaskId, description, dueDate, progressUpdate; writes ui.updateWorkTaskProgress.output.cmdUpdateWorkTask; status ui.updateWorkTaskProgress.action.cmdUpdateWorkTask.status; feedback keys action.cmdUpdateWorkTask.success / action.cmdUpdateWorkTask.error */
+    cmdUpdateWorkTask(): Promise<void>;
+    /** handler for action cmdUpdateWorkTask — bind UI events here */
+    handleCmdUpdateWorkTaskClick(event?: Event): void;
+    /** action cmdHandoffWorkTaskProgressToFieldCoordinator (command) — route buildFlowFsm.updateWorkTaskProgress.cmdHandoffWorkTaskProgressToFieldCoordinator; inputs: workTaskWorkTaskId, description, dueDate, progressUpdate; writes ui.updateWorkTaskProgress.output.cmdHandoffWorkTaskProgressToFieldCoordinator; status ui.updateWorkTaskProgress.action.cmdHandoffWorkTaskProgressToFieldCoordinator.status; feedback keys action.cmdHandoffWorkTaskProgressToFieldCoordinator.success / action.cmdHandoffWorkTaskProgressToFieldCoordinator.error */
+    cmdHandoffWorkTaskProgressToFieldCoordinator(): Promise<void>;
+    /** handler for action cmdHandoffWorkTaskProgressToFieldCoordinator — bind UI events here */
+    handleCmdHandoffWorkTaskProgressToFieldCoordinatorClick(event?: Event): void;
+    /** setter for state ui.updateWorkTaskProgress.input.cmdUpdateWorkTask.projectProjectId */
+    setCmdUpdateWorkTaskProjectProjectId(value: string): void;
+    /** handler for action set.cmdUpdateWorkTaskProjectProjectId — bind UI events here */
+    handleCmdUpdateWorkTaskProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.updateWorkTaskProgress.input.cmdUpdateWorkTask.workTaskWorkTaskId */
+    setCmdUpdateWorkTaskWorkTaskWorkTaskId(value: string): void;
+    /** handler for action set.cmdUpdateWorkTaskWorkTaskWorkTaskId — bind UI events here */
+    handleCmdUpdateWorkTaskWorkTaskWorkTaskIdChange(event: Event): void;
+    /** setter for state ui.updateWorkTaskProgress.input.cmdUpdateWorkTask.description */
+    setCmdUpdateWorkTaskDescription(value: string): void;
+    /** handler for action set.cmdUpdateWorkTaskDescription — bind UI events here */
+    handleCmdUpdateWorkTaskDescriptionChange(event: Event): void;
+    /** setter for state ui.updateWorkTaskProgress.input.cmdUpdateWorkTask.dueDate */
+    setCmdUpdateWorkTaskDueDate(value: string): void;
+    /** handler for action set.cmdUpdateWorkTaskDueDate — bind UI events here */
+    handleCmdUpdateWorkTaskDueDateChange(event: Event): void;
+    /** setter for state ui.updateWorkTaskProgress.input.cmdUpdateWorkTask.progressUpdate */
+    setCmdUpdateWorkTaskProgressUpdate(value: string): void;
+    /** handler for action set.cmdUpdateWorkTaskProgressUpdate — bind UI events here */
+    handleCmdUpdateWorkTaskProgressUpdateChange(event: Event): void;
+    /** setter for state ui.updateWorkTaskProgress.input.cmdHandoffWorkTaskProgressToFieldCoordinator.workTaskWorkTaskId */
+    setCmdHandoffWorkTaskProgressToFieldCoordinatorWorkTaskWorkTaskId(value: string): void;
+    /** handler for action set.cmdHandoffWorkTaskProgressToFieldCoordinatorWorkTaskWorkTaskId — bind UI events here */
+    handleCmdHandoffWorkTaskProgressToFieldCoordinatorWorkTaskWorkTaskIdChange(event: Event): void;
+    /** setter for state ui.updateWorkTaskProgress.input.cmdHandoffWorkTaskProgressToFieldCoordinator.description */
+    setCmdHandoffWorkTaskProgressToFieldCoordinatorDescription(value: string): void;
+    /** handler for action set.cmdHandoffWorkTaskProgressToFieldCoordinatorDescription — bind UI events here */
+    handleCmdHandoffWorkTaskProgressToFieldCoordinatorDescriptionChange(event: Event): void;
+    /** setter for state ui.updateWorkTaskProgress.input.cmdHandoffWorkTaskProgressToFieldCoordinator.dueDate */
+    setCmdHandoffWorkTaskProgressToFieldCoordinatorDueDate(value: string): void;
+    /** handler for action set.cmdHandoffWorkTaskProgressToFieldCoordinatorDueDate — bind UI events here */
+    handleCmdHandoffWorkTaskProgressToFieldCoordinatorDueDateChange(event: Event): void;
+    /** setter for state ui.updateWorkTaskProgress.input.cmdHandoffWorkTaskProgressToFieldCoordinator.progressUpdate */
+    setCmdHandoffWorkTaskProgressToFieldCoordinatorProgressUpdate(value: string): void;
+    /** handler for action set.cmdHandoffWorkTaskProgressToFieldCoordinatorProgressUpdate — bind UI events here */
+    handleCmdHandoffWorkTaskProgressToFieldCoordinatorProgressUpdateChange(event: Event): void;
+}

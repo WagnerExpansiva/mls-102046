@@ -1,0 +1,31 @@
+{
+  "judgeRun": 2,
+  "batchIndex": 5,
+  "owners": [
+    "inspectProjectTimeline",
+    "locateFieldWorker",
+    "handoffWorkTaskToFieldWorker",
+    "locateWorkTask",
+    "handoffWorkTaskProgressToFieldCoordinator",
+    "handoffTimeLogToFieldCoordinator",
+    "locateInventoryItem",
+    "handoffMaterialUsageToFieldCoordinator",
+    "locateClient",
+    "handoffChangeOrderToProjectManager",
+    "locateChangeOrder",
+    "handoffChangeOrderToClient",
+    "approveChangeOrderDecision",
+    "handoffApprovedChangeOrderToBilling",
+    "declineChangeOrderDecision"
+  ],
+  "findings": [
+    {
+      "ownerId": "locateInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A definição gerada não contém nenhuma função para a operação list de InventoryItem; portanto a regraApplied selectableInventoryItem não pode ser executada e a projeção declarada do resultado não é modelada.",
+      "suggestion": "Regenerar locateInventoryItem com uma função de consulta do tipo list, usando a referência MDM InventoryItem (sem adicioná-la como port), projetando inventoryItemId, name, description, unitOfMeasure, referenceUnitCost e status, e aplicando selectableInventoryItem."
+    }
+  ],
+  "savedAt": "2026-08-17T20:35:58.921Z"
+}

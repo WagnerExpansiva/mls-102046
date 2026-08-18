@@ -1,0 +1,161 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryInspectProjectDashboardOutput, QryLocateProjectOutput, QryInspectProjectExecutionOverviewOutput, CmdHandoffProjectToFieldCoordinatorOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/reviewProjectPortfolio.js';
+export type { QryInspectProjectDashboardInput, QryInspectProjectDashboardOutput, QryLocateProjectInput, QryLocateProjectOutput, QryInspectProjectExecutionOverviewInput, QryInspectProjectExecutionOverviewOutput, CmdHandoffProjectToFieldCoordinatorInput, CmdHandoffProjectToFieldCoordinatorOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/reviewProjectPortfolio.js';
+declare const message_pt: {
+    'section.reviewProjectPortfolio.projectDashboardSection.title': string;
+    'organism.reviewProjectPortfolio.qryInspectProjectDashboard.title': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectDashboard.list.title': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectDashboard.list.empty': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectDashboard.list.column.activeProjects.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectDashboard.list.column.activeProjectCount.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectDashboard.list.column.totalBudget.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectDashboard.list.column.totalActualCost.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectDashboard.list.column.budgetVariance.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectDashboard.list.column.costAttentionProjects.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectDashboard.list.column.upcomingTasks.label': string;
+    'section.reviewProjectPortfolio.projectSelectionSection.title': string;
+    'organism.reviewProjectPortfolio.qryLocateProject.title': string;
+    'intent.reviewProjectPortfolio.qryLocateProject.list.title': string;
+    'intent.reviewProjectPortfolio.qryLocateProject.list.empty': string;
+    'intent.reviewProjectPortfolio.qryLocateProject.list.column.projectId.label': string;
+    'intent.reviewProjectPortfolio.qryLocateProject.list.column.clientId.label': string;
+    'intent.reviewProjectPortfolio.qryLocateProject.list.column.name.label': string;
+    'intent.reviewProjectPortfolio.qryLocateProject.list.column.address.label': string;
+    'intent.reviewProjectPortfolio.qryLocateProject.list.column.status.label': string;
+    'intent.reviewProjectPortfolio.qryLocateProject.list.column.authorizedBudget.label': string;
+    'intent.reviewProjectPortfolio.qryLocateProject.list.column.plannedStartDate.label': string;
+    'intent.reviewProjectPortfolio.qryLocateProject.list.column.plannedEndDate.label': string;
+    'organism.reviewProjectPortfolio.qryInspectProjectExecutionOverview.title': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.title': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.empty': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.projectId.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.projectName.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.projectStatus.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.workTaskIds.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.taskSummary.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.upcomingCommitments.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.timeLogIds.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.totalLoggedHours.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.materialUsageIds.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.materialUsageSummary.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.actualLaborCost.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.actualMaterialCost.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.actualCost.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.budgetAmount.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.costVariance.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.changeOrderIds.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.changeOrderImpactSummary.label': string;
+    'intent.reviewProjectPortfolio.qryInspectProjectExecutionOverview.list.column.calculatedAt.label': string;
+    'organism.reviewProjectPortfolio.cmdHandoffProjectToFieldCoordinator.title': string;
+    'intent.reviewProjectPortfolio.cmdHandoffProjectToFieldCoordinator.form.title': string;
+    'intent.reviewProjectPortfolio.cmdHandoffProjectToFieldCoordinator.form.action.cmdHandoffProjectToFieldCoordinator': string;
+    'intent.reviewProjectPortfolio.cmdHandoffProjectToFieldCoordinator.form.field.clientId.label': string;
+    'intent.reviewProjectPortfolio.cmdHandoffProjectToFieldCoordinator.form.field.name.label': string;
+    'intent.reviewProjectPortfolio.cmdHandoffProjectToFieldCoordinator.form.field.address.label': string;
+    'intent.reviewProjectPortfolio.cmdHandoffProjectToFieldCoordinator.form.field.authorizedBudget.label': string;
+    'intent.reviewProjectPortfolio.cmdHandoffProjectToFieldCoordinator.form.field.plannedStartDate.label': string;
+    'intent.reviewProjectPortfolio.cmdHandoffProjectToFieldCoordinator.form.field.plannedEndDate.label': string;
+    'action.cmdHandoffProjectToFieldCoordinator.success': string;
+    'action.cmdHandoffProjectToFieldCoordinator.error': string;
+    'section.reviewProjectPortfolio.portfolioOverview.title': string;
+    'section.reviewProjectPortfolio.projectAttentionWorkspace.title': string;
+    'section.reviewProjectPortfolio.portfolio-overview.title': string;
+    'section.reviewProjectPortfolio.project-triage.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmReviewProjectPortfolioBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryInspectProjectDashboardState — actionStatus, values: idle|loading|success|error */
+    qryInspectProjectDashboardState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectProjectDashboardData — queryResult, outputShape: object */
+    qryInspectProjectDashboardData: QryInspectProjectDashboardOutput | null;
+    /** state qryLocateProjectState — actionStatus, values: idle|loading|success|error */
+    qryLocateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateProjectData — queryResult, outputShape: array */
+    qryLocateProjectData: QryLocateProjectOutput[];
+    /** state qryInspectProjectExecutionOverviewState — actionStatus, values: idle|loading|success|error */
+    qryInspectProjectExecutionOverviewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId — input */
+    qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId: string;
+    /** state qryInspectProjectExecutionOverviewData — queryResult, outputShape: object */
+    qryInspectProjectExecutionOverviewData: QryInspectProjectExecutionOverviewOutput | null;
+    /** state cmdHandoffProjectToFieldCoordinatorState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffProjectToFieldCoordinatorState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffProjectToFieldCoordinatorProjectProjectId — input */
+    cmdHandoffProjectToFieldCoordinatorProjectProjectId: string;
+    /** state cmdHandoffProjectToFieldCoordinatorClientId — input */
+    cmdHandoffProjectToFieldCoordinatorClientId: string;
+    /** state cmdHandoffProjectToFieldCoordinatorName — input */
+    cmdHandoffProjectToFieldCoordinatorName: string;
+    /** state cmdHandoffProjectToFieldCoordinatorAddress — input */
+    cmdHandoffProjectToFieldCoordinatorAddress: string;
+    /** state cmdHandoffProjectToFieldCoordinatorAuthorizedBudget — input */
+    cmdHandoffProjectToFieldCoordinatorAuthorizedBudget: string;
+    /** state cmdHandoffProjectToFieldCoordinatorPlannedStartDate — input */
+    cmdHandoffProjectToFieldCoordinatorPlannedStartDate: string;
+    /** state cmdHandoffProjectToFieldCoordinatorPlannedEndDate — input */
+    cmdHandoffProjectToFieldCoordinatorPlannedEndDate: string;
+    /** state cmdHandoffProjectToFieldCoordinatorOutput — commandOutput */
+    cmdHandoffProjectToFieldCoordinatorOutput: CmdHandoffProjectToFieldCoordinatorOutput | null;
+    /** state cmdHandoffProjectToFieldCoordinatorError — actionError */
+    cmdHandoffProjectToFieldCoordinatorError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryInspectProjectDashboard (query) — route buildFlowFsm.reviewProjectPortfolio.qryInspectProjectDashboard; inputs: (none); writes ui.reviewProjectPortfolio.data.qryInspectProjectDashboard; status ui.reviewProjectPortfolio.action.qryInspectProjectDashboard.status */
+    loadQryInspectProjectDashboard(): Promise<void>;
+    /** handler for action qryInspectProjectDashboard — bind UI events here */
+    handleQryInspectProjectDashboardClick(event?: Event): void;
+    /** action qryLocateProject (query) — route buildFlowFsm.reviewProjectPortfolio.qryLocateProject; inputs: (none); writes ui.reviewProjectPortfolio.data.qryLocateProject; status ui.reviewProjectPortfolio.action.qryLocateProject.status */
+    loadQryLocateProject(): Promise<void>;
+    /** handler for action qryLocateProject — bind UI events here */
+    handleQryLocateProjectClick(event?: Event): void;
+    /** action qryInspectProjectExecutionOverview (query) — route buildFlowFsm.reviewProjectPortfolio.qryInspectProjectExecutionOverview; inputs: projectExecutionOverviewProjectId; writes ui.reviewProjectPortfolio.data.qryInspectProjectExecutionOverview; status ui.reviewProjectPortfolio.action.qryInspectProjectExecutionOverview.status */
+    loadQryInspectProjectExecutionOverview(): Promise<void>;
+    /** handler for action qryInspectProjectExecutionOverview — bind UI events here */
+    handleQryInspectProjectExecutionOverviewClick(event?: Event): void;
+    /** action cmdHandoffProjectToFieldCoordinator (command) — route buildFlowFsm.reviewProjectPortfolio.cmdHandoffProjectToFieldCoordinator; inputs: projectProjectId, clientId, name, address, authorizedBudget, plannedStartDate, plannedEndDate; writes ui.reviewProjectPortfolio.output.cmdHandoffProjectToFieldCoordinator; status ui.reviewProjectPortfolio.action.cmdHandoffProjectToFieldCoordinator.status; feedback keys action.cmdHandoffProjectToFieldCoordinator.success / action.cmdHandoffProjectToFieldCoordinator.error */
+    cmdHandoffProjectToFieldCoordinator(): Promise<void>;
+    /** handler for action cmdHandoffProjectToFieldCoordinator — bind UI events here */
+    handleCmdHandoffProjectToFieldCoordinatorClick(event?: Event): void;
+    /** setter for state ui.reviewProjectPortfolio.input.qryInspectProjectExecutionOverview.projectExecutionOverviewProjectId */
+    setQryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId(value: string): void;
+    /** handler for action set.qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId — bind UI events here */
+    handleQryInspectProjectExecutionOverviewProjectExecutionOverviewProjectIdChange(event: Event): void;
+    /** setter for state ui.reviewProjectPortfolio.input.cmdHandoffProjectToFieldCoordinator.projectProjectId */
+    setCmdHandoffProjectToFieldCoordinatorProjectProjectId(value: string): void;
+    /** handler for action set.cmdHandoffProjectToFieldCoordinatorProjectProjectId — bind UI events here */
+    handleCmdHandoffProjectToFieldCoordinatorProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.reviewProjectPortfolio.input.cmdHandoffProjectToFieldCoordinator.clientId */
+    setCmdHandoffProjectToFieldCoordinatorClientId(value: string): void;
+    /** handler for action set.cmdHandoffProjectToFieldCoordinatorClientId — bind UI events here */
+    handleCmdHandoffProjectToFieldCoordinatorClientIdChange(event: Event): void;
+    /** setter for state ui.reviewProjectPortfolio.input.cmdHandoffProjectToFieldCoordinator.name */
+    setCmdHandoffProjectToFieldCoordinatorName(value: string): void;
+    /** handler for action set.cmdHandoffProjectToFieldCoordinatorName — bind UI events here */
+    handleCmdHandoffProjectToFieldCoordinatorNameChange(event: Event): void;
+    /** setter for state ui.reviewProjectPortfolio.input.cmdHandoffProjectToFieldCoordinator.address */
+    setCmdHandoffProjectToFieldCoordinatorAddress(value: string): void;
+    /** handler for action set.cmdHandoffProjectToFieldCoordinatorAddress — bind UI events here */
+    handleCmdHandoffProjectToFieldCoordinatorAddressChange(event: Event): void;
+    /** setter for state ui.reviewProjectPortfolio.input.cmdHandoffProjectToFieldCoordinator.authorizedBudget */
+    setCmdHandoffProjectToFieldCoordinatorAuthorizedBudget(value: string): void;
+    /** handler for action set.cmdHandoffProjectToFieldCoordinatorAuthorizedBudget — bind UI events here */
+    handleCmdHandoffProjectToFieldCoordinatorAuthorizedBudgetChange(event: Event): void;
+    /** setter for state ui.reviewProjectPortfolio.input.cmdHandoffProjectToFieldCoordinator.plannedStartDate */
+    setCmdHandoffProjectToFieldCoordinatorPlannedStartDate(value: string): void;
+    /** handler for action set.cmdHandoffProjectToFieldCoordinatorPlannedStartDate — bind UI events here */
+    handleCmdHandoffProjectToFieldCoordinatorPlannedStartDateChange(event: Event): void;
+    /** setter for state ui.reviewProjectPortfolio.input.cmdHandoffProjectToFieldCoordinator.plannedEndDate */
+    setCmdHandoffProjectToFieldCoordinatorPlannedEndDate(value: string): void;
+    /** handler for action set.cmdHandoffProjectToFieldCoordinatorPlannedEndDate — bind UI events here */
+    handleCmdHandoffProjectToFieldCoordinatorPlannedEndDateChange(event: Event): void;
+}

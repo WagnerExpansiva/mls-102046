@@ -1,0 +1,38 @@
+{
+  "judgeRun": 2,
+  "batchIndex": 3,
+  "owners": [
+    "updateInvoiceChangeOrder",
+    "deleteInvoiceChangeOrder",
+    "listMaterialUsage",
+    "createMaterialUsage",
+    "updateMaterialUsage",
+    "deleteMaterialUsage",
+    "listProject",
+    "createProject",
+    "updateProject",
+    "deleteProject",
+    "listProjectCoordinationAssignment",
+    "createProjectCoordinationAssignment",
+    "updateProjectCoordinationAssignment",
+    "deleteProjectCoordinationAssignment",
+    "listStatusReport"
+  ],
+  "findings": [
+    {
+      "ownerId": "createProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs.functions está vazio; a operação createProject não modela a função, os inputs obrigatórios clientId, name, address, authorizedBudget, plannedStartDate e plannedEndDate, nem o output declarado.",
+      "suggestion": "Regenerar createProject com uma função command de criação que declare todos os inputs userInput do contrato, resolva status como systemDefault, aplique activeProject e ongoingProject com os dados de Project e Client via MDM, e retorne o output canônico."
+    },
+    {
+      "ownerId": "updateProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs.functions está vazio; a operação updateProject não modela a função, o projectId de seleção, os campos de atualização obrigatórios, nem o output declarado.",
+      "suggestion": "Regenerar updateProject com uma função update cujo input contenha projectId e os campos userInput do contrato, resolva status como systemDefault, aplique activeProject e ongoingProject, e retorne o output canônico."
+    }
+  ],
+  "savedAt": "2026-08-17T20:35:58.807Z"
+}

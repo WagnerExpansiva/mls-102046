@@ -1,0 +1,195 @@
+{
+  "judgeRun": 1,
+  "batchIndex": 1,
+  "owners": [
+    "listChangeOrder",
+    "createChangeOrder",
+    "updateChangeOrder",
+    "deleteChangeOrder",
+    "listChangeOrderDecision",
+    "createChangeOrderDecision",
+    "updateChangeOrderDecision",
+    "deleteChangeOrderDecision",
+    "listClient",
+    "createClient",
+    "updateClient",
+    "deleteClient",
+    "listClientPortalAccess",
+    "createClientPortalAccess",
+    "updateClientPortalAccess"
+  ],
+  "findings": [
+    {
+      "ownerId": "createChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createChangeOrder (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateChangeOrder (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createChangeOrderDecision",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createChangeOrderDecision (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateChangeOrderDecision",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateChangeOrderDecision (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listClient (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createClient (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateClient (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteClient (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listClientPortalAccess",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listClientPortalAccess (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createClientPortalAccess",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createClientPortalAccess (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateClientPortalAccess",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateClientPortalAccess (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase listChangeOrder conforme o contrato L4."
+    },
+    {
+      "ownerId": "createChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, rulesApplied, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase createChangeOrder conforme o contrato L4."
+    },
+    {
+      "ownerId": "updateChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, rulesApplied, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase updateChangeOrder conforme o contrato L4."
+    },
+    {
+      "ownerId": "deleteChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase deleteChangeOrder conforme o contrato L4."
+    },
+    {
+      "ownerId": "listChangeOrderDecision",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase listChangeOrderDecision conforme o contrato L4."
+    },
+    {
+      "ownerId": "createChangeOrderDecision",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, rulesApplied, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase createChangeOrderDecision conforme o contrato L4."
+    },
+    {
+      "ownerId": "updateChangeOrderDecision",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, rulesApplied, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase updateChangeOrderDecision conforme o contrato L4."
+    },
+    {
+      "ownerId": "deleteChangeOrderDecision",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase deleteChangeOrderDecision conforme o contrato L4."
+    },
+    {
+      "ownerId": "listClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase listClient conforme o contrato L4."
+    },
+    {
+      "ownerId": "createClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase createClient conforme o contrato L4."
+    },
+    {
+      "ownerId": "updateClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase updateClient conforme o contrato L4."
+    },
+    {
+      "ownerId": "deleteClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase deleteClient conforme o contrato L4."
+    },
+    {
+      "ownerId": "listClientPortalAccess",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase listClientPortalAccess conforme o contrato L4."
+    },
+    {
+      "ownerId": "createClientPortalAccess",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, rulesApplied, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase createClientPortalAccess conforme o contrato L4."
+    },
+    {
+      "ownerId": "updateClientPortalAccess",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há definição de usecase para verificar ports, rulesApplied, inputs ou contrato.",
+      "suggestion": "Gerar a definição do usecase updateClientPortalAccess conforme o contrato L4."
+    }
+  ],
+  "savedAt": "2026-08-17T20:29:36.945Z"
+}

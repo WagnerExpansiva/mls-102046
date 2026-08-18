@@ -1,0 +1,32 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "createMaterialUsage",
+  "title": "Registrar o consumo de material",
+  "kind": "command",
+  "compiledFrom": [
+    "recordProjectMaterialUsage.createMaterialUsage"
+  ],
+  "description": "Registra o consumo de um item de material para uma obra, sustentado pelo saldo de estoque correspondente e disponível para a apuração do custo realizado.",
+  "contexts": {
+    "requires": [
+      "selectedInventoryBalance",
+      "selectedInventoryItem",
+      "selectedProject"
+    ],
+    "provides": [
+      "selectedMaterialUsage"
+    ]
+  },
+  "entityRefs": [
+    "InventoryBalance",
+    "InventoryItem",
+    "MaterialUsage",
+    "Project"
+  ],
+  "useRules": [
+    "materialUsageRequiresActiveProjectAndAvailableInventory"
+  ],
+  "transitions": []
+}

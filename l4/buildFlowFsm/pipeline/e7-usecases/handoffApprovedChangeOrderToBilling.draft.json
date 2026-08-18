@@ -1,0 +1,27 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "handoffApprovedChangeOrderToBilling",
+  "title": "Encaminhar a alteração aprovada ao faturamento",
+  "kind": "command",
+  "compiledFrom": [
+    "approveChangeOrder.handoffApprovedChangeOrderToBilling"
+  ],
+  "description": "Disponibiliza a ordem de mudança aprovada para faturamento.",
+  "contexts": {
+    "requires": [
+      "selectedChangeOrder"
+    ],
+    "provides": [
+      "selectedChangeOrder"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder"
+  ],
+  "useRules": [
+    "approvedBillableChangeOrder"
+  ],
+  "transitions": []
+}

@@ -1,0 +1,52 @@
+{
+  "savedAt": "2026-08-18T14:52:57.850Z",
+  "pageId": "materialUsageCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Profissional de obra ou responsável pelo controle de custos e estoque",
+    "jobToBeDone": "Registrar, localizar e corrigir consumos de material vinculados a uma obra, mantendo o custo realizado baseado em dados de estoque confiáveis.",
+    "primaryDecision": "Confirmar o material e a quantidade consumida e registrar ou corrigir esse consumo na obra correta.",
+    "decisiveInfo": [
+      "projectId",
+      "inventoryItemId",
+      "inventoryBalanceId",
+      "quantity",
+      "consumedOn",
+      "unitCostBasis",
+      "usageDescription",
+      "status"
+    ],
+    "usageFrequency": "Recorrente durante a execução da obra, especialmente após retiradas ou aplicações de materiais; também ocasionalmente em conferências administrativas.",
+    "informationHierarchy": [
+      "obra e material associados",
+      "quantidade consumida e data",
+      "saldo físico e custo unitário de referência",
+      "descrição do uso",
+      "status do registro",
+      "ações de registrar, corrigir ou excluir"
+    ],
+    "successCriteria": "O usuário identifica o consumo correto sem digitar IDs, vê referências de saldo e custo antes de salvar, registra ou corrige com poucos passos e recebe confirmação clara após a atualização da lista.",
+    "antiPatterns": [
+      "formulário CRUD expondo IDs técnicos",
+      "status como select livre",
+      "formulário de exclusão separado",
+      "perder a seleção da lista ao editar",
+      "permitir consumo sem contexto de obra, item ou saldo",
+      "ocultar a quantidade e a data entre campos secundários"
+    ],
+    "criticalActions": [
+      {
+        "action": "Registrar consumo",
+        "presentation": "primary-button no painel contextual de criação, com lookups de obra, item e saldo integrados"
+      },
+      {
+        "action": "Corrigir consumo selecionado",
+        "presentation": "contextual-transition-actions no painel de detalhe, preenchido pela linha selecionada"
+      },
+      {
+        "action": "Excluir consumo selecionado",
+        "presentation": "inline-row-command com confirmação explícita para ação destrutiva"
+      }
+    ]
+  }
+}

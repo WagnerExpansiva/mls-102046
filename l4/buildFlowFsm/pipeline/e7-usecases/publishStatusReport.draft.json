@@ -1,0 +1,43 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "publishStatusReport",
+  "title": "Publicar o relatório de status",
+  "kind": "command",
+  "compiledFrom": [
+    "generateAndPublishProjectStatusReport.publishStatusReport"
+  ],
+  "description": "Publica o relatório de status selecionado da obra com base na visão consolidada de execução, tornando-o disponível para comunicação.",
+  "contexts": {
+    "requires": [
+      "selectedProject",
+      "selectedProjectExecutionOverview",
+      "selectedStatusReport"
+    ],
+    "provides": [
+      "selectedStatusReport"
+    ]
+  },
+  "entityRefs": [
+    "Project",
+    "ProjectExecutionOverview",
+    "StatusReport"
+  ],
+  "useRules": [
+    "statusReportUsesProjectExecutionData"
+  ],
+  "transitions": [
+    {
+      "transitionId": "publishStatusReport",
+      "entityRef": "StatusReport",
+      "fromStates": [
+        "draft"
+      ],
+      "toState": "published",
+      "useRules": [
+        "statusReportUsesProjectExecutionData"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "savedAt": "2026-08-18T14:54:42.807Z",
+  "pageId": "updateWorkTaskProgress",
+  "genome": "page31",
+  "objective": {
+    "actor": "Trabalhador de campo responsável pela tarefa atribuída",
+    "jobToBeDone": "Confirmar a tarefa em execução, registrar seu andamento atual e comunicar esse progresso ao coordenador de campo.",
+    "primaryDecision": "Registrar e enviar o andamento correto da tarefa selecionada ao coordenador.",
+    "decisiveInfo": [
+      "workTaskId",
+      "description",
+      "dueDate",
+      "status",
+      "progressUpdate",
+      "projectId",
+      "assignedFieldWorkerId"
+    ],
+    "usageFrequency": "Contínua ou frequente durante a execução em campo, possivelmente em condições de atenção e mãos ocupadas.",
+    "informationHierarchy": [
+      "tarefa selecionada e identificação contextual",
+      "status atual e andamento registrado",
+      "prazo e descrição da tarefa",
+      "ação de salvar o andamento",
+      "ação contextual de comunicar ao coordenador",
+      "feedback de sucesso ou erro"
+    ],
+    "successCriteria": "O trabalhador identifica a tarefa sem digitar ids, entende seu status atual, registra rapidamente o progresso e recebe confirmação clara de que a atualização e o handoff foram concluídos.",
+    "antiPatterns": [
+      "campo manual para workTaskId ou projectId",
+      "edição livre do status",
+      "ação de handoff desconectada da tarefa selecionada",
+      "formulários duplicados e extensos para cada comando",
+      "ocultar o status atual antes da confirmação da mudança",
+      "exigir redigitação do mesmo andamento para salvar e comunicar"
+    ],
+    "criticalActions": [
+      {
+        "action": "Registrar o andamento da tarefa",
+        "presentation": "primary-button no painel contextual da tarefa selecionada"
+      },
+      {
+        "action": "Informar o andamento ao coordenador",
+        "presentation": "contextual-transition-actions junto ao detalhe da tarefa, habilitadas somente para a seleção válida"
+      },
+      {
+        "action": "Selecionar a tarefa atribuída",
+        "presentation": "master-detail com seleção direta na superfície de localização"
+      },
+      {
+        "action": "Atualizar a lista após sucesso",
+        "presentation": "refresh da superfície com feedback textual descartável"
+      }
+    ]
+  }
+}

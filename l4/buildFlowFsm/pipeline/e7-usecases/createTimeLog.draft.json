@@ -1,0 +1,30 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "createTimeLog",
+  "title": "Registrar as horas trabalhadas",
+  "kind": "command",
+  "compiledFrom": [
+    "recordWorkTime.createTimeLog"
+  ],
+  "description": "Registra as horas trabalhadas por um trabalhador de campo para a tarefa de trabalho selecionada, preservando a base de custo de mão de obra da obra.",
+  "contexts": {
+    "requires": [
+      "selectedWorkTask"
+    ],
+    "provides": [
+      "selectedTimeLog"
+    ]
+  },
+  "entityRefs": [
+    "FieldWorker",
+    "TimeLog",
+    "WorkTask"
+  ],
+  "useRules": [
+    "activeWorkTask",
+    "timeLogRequiresWorkerTaskAndPositiveHours"
+  ],
+  "transitions": []
+}

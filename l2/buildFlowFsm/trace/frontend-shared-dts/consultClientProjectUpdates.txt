@@ -1,0 +1,97 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateProjectOutput, QryInspectStatusReportOutput, QryInspectClientBillingSummaryOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/consultClientProjectUpdates.js';
+export type { QryLocateProjectInput, QryLocateProjectOutput, QryInspectStatusReportInput, QryInspectStatusReportOutput, QryInspectClientBillingSummaryInput, QryInspectClientBillingSummaryOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/consultClientProjectUpdates.js';
+declare const message_pt: {
+    'section.consultClientProjectUpdates.locateProject.title': string;
+    'organism.consultClientProjectUpdates.qryLocateProject.title': string;
+    'intent.consultClientProjectUpdates.qryLocateProject.list.title': string;
+    'intent.consultClientProjectUpdates.qryLocateProject.list.empty': string;
+    'intent.consultClientProjectUpdates.qryLocateProject.list.column.projectId.label': string;
+    'intent.consultClientProjectUpdates.qryLocateProject.list.column.clientId.label': string;
+    'intent.consultClientProjectUpdates.qryLocateProject.list.column.name.label': string;
+    'intent.consultClientProjectUpdates.qryLocateProject.list.column.address.label': string;
+    'intent.consultClientProjectUpdates.qryLocateProject.list.column.status.label': string;
+    'intent.consultClientProjectUpdates.qryLocateProject.list.column.authorizedBudget.label': string;
+    'intent.consultClientProjectUpdates.qryLocateProject.list.column.plannedStartDate.label': string;
+    'intent.consultClientProjectUpdates.qryLocateProject.list.column.plannedEndDate.label': string;
+    'section.consultClientProjectUpdates.inspectStatusReport.title': string;
+    'organism.consultClientProjectUpdates.qryInspectStatusReport.title': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.title': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.empty': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.statusReportId.label': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.projectId.label': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.status.label': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.title.label': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.content.label': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.communicatedRisks.label': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.generatedAt.label': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.generatedByUserId.label': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.publishedAt.label': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.publishedByUserId.label': string;
+    'intent.consultClientProjectUpdates.qryInspectStatusReport.list.column.withdrawnAt.label': string;
+    'section.consultClientProjectUpdates.inspectClientBillingSummary.title': string;
+    'organism.consultClientProjectUpdates.qryInspectClientBillingSummary.title': string;
+    'intent.consultClientProjectUpdates.qryInspectClientBillingSummary.list.title': string;
+    'intent.consultClientProjectUpdates.qryInspectClientBillingSummary.list.empty': string;
+    'intent.consultClientProjectUpdates.qryInspectClientBillingSummary.list.column.clientId.label': string;
+    'intent.consultClientProjectUpdates.qryInspectClientBillingSummary.list.column.projectId.label': string;
+    'intent.consultClientProjectUpdates.qryInspectClientBillingSummary.list.column.approvedChangeOrderReferences.label': string;
+    'intent.consultClientProjectUpdates.qryInspectClientBillingSummary.list.column.invoiceReferences.label': string;
+    'intent.consultClientProjectUpdates.qryInspectClientBillingSummary.list.column.approvedChangeOrderAmount.label': string;
+    'intent.consultClientProjectUpdates.qryInspectClientBillingSummary.list.column.billableAmount.label': string;
+    'intent.consultClientProjectUpdates.qryInspectClientBillingSummary.list.column.invoicedAmount.label': string;
+    'intent.consultClientProjectUpdates.qryInspectClientBillingSummary.list.column.clientAvailableAmount.label': string;
+    'section.consultClientProjectUpdates.projectContextSection.title': string;
+    'section.consultClientProjectUpdates.projectUpdatesSection.title': string;
+    'section.consultClientProjectUpdates.projectOverview.title': string;
+    'section.consultClientProjectUpdates.projectInsights.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmConsultClientProjectUpdatesBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateProjectState — actionStatus, values: idle|loading|success|error */
+    qryLocateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateProjectData — queryResult, outputShape: array */
+    qryLocateProjectData: QryLocateProjectOutput[];
+    /** state qryInspectStatusReportState — actionStatus, values: idle|loading|success|error */
+    qryInspectStatusReportState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectStatusReportStatusReportStatusReportId — input */
+    qryInspectStatusReportStatusReportStatusReportId: string;
+    /** state qryInspectStatusReportData — queryResult, outputShape: object */
+    qryInspectStatusReportData: QryInspectStatusReportOutput | null;
+    /** state qryInspectClientBillingSummaryState — actionStatus, values: idle|loading|success|error */
+    qryInspectClientBillingSummaryState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectClientBillingSummaryClientBillingSummaryClientId — input */
+    qryInspectClientBillingSummaryClientBillingSummaryClientId: string;
+    /** state qryInspectClientBillingSummaryData — queryResult, outputShape: object */
+    qryInspectClientBillingSummaryData: QryInspectClientBillingSummaryOutput | null;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    /** action qryLocateProject (query) — route buildFlowFsm.consultClientProjectUpdates.qryLocateProject; inputs: (none); writes ui.consultClientProjectUpdates.data.qryLocateProject; status ui.consultClientProjectUpdates.action.qryLocateProject.status */
+    loadQryLocateProject(): Promise<void>;
+    /** handler for action qryLocateProject — bind UI events here */
+    handleQryLocateProjectClick(event?: Event): void;
+    /** action qryInspectStatusReport (query) — route buildFlowFsm.consultClientProjectUpdates.qryInspectStatusReport; inputs: statusReportStatusReportId; writes ui.consultClientProjectUpdates.data.qryInspectStatusReport; status ui.consultClientProjectUpdates.action.qryInspectStatusReport.status */
+    loadQryInspectStatusReport(): Promise<void>;
+    /** handler for action qryInspectStatusReport — bind UI events here */
+    handleQryInspectStatusReportClick(event?: Event): void;
+    /** action qryInspectClientBillingSummary (query) — route buildFlowFsm.consultClientProjectUpdates.qryInspectClientBillingSummary; inputs: clientBillingSummaryClientId; writes ui.consultClientProjectUpdates.data.qryInspectClientBillingSummary; status ui.consultClientProjectUpdates.action.qryInspectClientBillingSummary.status */
+    loadQryInspectClientBillingSummary(): Promise<void>;
+    /** handler for action qryInspectClientBillingSummary — bind UI events here */
+    handleQryInspectClientBillingSummaryClick(event?: Event): void;
+    /** setter for state ui.consultClientProjectUpdates.input.qryInspectStatusReport.statusReportStatusReportId */
+    setQryInspectStatusReportStatusReportStatusReportId(value: string): void;
+    /** handler for action set.qryInspectStatusReportStatusReportStatusReportId — bind UI events here */
+    handleQryInspectStatusReportStatusReportStatusReportIdChange(event: Event): void;
+    /** setter for state ui.consultClientProjectUpdates.input.qryInspectClientBillingSummary.clientBillingSummaryClientId */
+    setQryInspectClientBillingSummaryClientBillingSummaryClientId(value: string): void;
+    /** handler for action set.qryInspectClientBillingSummaryClientBillingSummaryClientId — bind UI events here */
+    handleQryInspectClientBillingSummaryClientBillingSummaryClientIdChange(event: Event): void;
+}

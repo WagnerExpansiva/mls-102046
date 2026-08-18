@@ -1,0 +1,27 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "handoffChangeOrderToProjectManager",
+  "title": "Submeter a alteração para tratamento",
+  "kind": "command",
+  "compiledFrom": [
+    "submitChangeOrder.handoffChangeOrderToProjectManager"
+  ],
+  "description": "Encaminha a ordem de mudança submetida para tratamento e decisão subsequente, preservando sua condição para possível recusa ou encaminhamento à aprovação do cliente.",
+  "contexts": {
+    "requires": [
+      "selectedChangeOrder"
+    ],
+    "provides": [
+      "selectedChangeOrder"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder"
+  ],
+  "useRules": [
+    "managerActionableChangeOrder"
+  ],
+  "transitions": []
+}

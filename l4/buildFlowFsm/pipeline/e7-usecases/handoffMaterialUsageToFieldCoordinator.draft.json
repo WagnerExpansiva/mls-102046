@@ -1,0 +1,25 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "handoffMaterialUsageToFieldCoordinator",
+  "title": "Informar o consumo ao coordenador",
+  "kind": "command",
+  "compiledFrom": [
+    "recordProjectMaterialUsage.handoffMaterialUsageToFieldCoordinator"
+  ],
+  "description": "Disponibiliza o consumo de material registrado para acompanhamento operacional.",
+  "contexts": {
+    "requires": [
+      "selectedMaterialUsage"
+    ],
+    "provides": [
+      "selectedMaterialUsage"
+    ]
+  },
+  "entityRefs": [
+    "MaterialUsage"
+  ],
+  "useRules": [],
+  "transitions": []
+}

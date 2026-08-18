@@ -1,0 +1,96 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateProjectOutput, QryInspectApprovedChangeOrdersOutput, QryInspectClientBillingSummaryOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/consultApprovedProjectChangeOrders.js';
+export type { QryLocateProjectInput, QryLocateProjectOutput, QryInspectApprovedChangeOrdersInput, QryInspectApprovedChangeOrdersOutput, QryInspectClientBillingSummaryInput, QryInspectClientBillingSummaryOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/consultApprovedProjectChangeOrders.js';
+declare const message_pt: {
+    'section.consultApprovedProjectChangeOrders.project-context.title': string;
+    'organism.consultApprovedProjectChangeOrders.qryLocateProject.title': string;
+    'intent.consultApprovedProjectChangeOrders.qryLocateProject.list.title': string;
+    'intent.consultApprovedProjectChangeOrders.qryLocateProject.list.empty': string;
+    'intent.consultApprovedProjectChangeOrders.qryLocateProject.list.column.projectId.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryLocateProject.list.column.clientId.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryLocateProject.list.column.name.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryLocateProject.list.column.address.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryLocateProject.list.column.status.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryLocateProject.list.column.authorizedBudget.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryLocateProject.list.column.plannedStartDate.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryLocateProject.list.column.plannedEndDate.label': string;
+    'section.consultApprovedProjectChangeOrders.approved-change-orders.title': string;
+    'organism.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.title': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.title': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.empty': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.column.changeOrderId.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.column.clientRef.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.column.projectRef.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.column.description.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.column.scopeImpact.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.column.scheduleImpact.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.column.changeAmount.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.column.submittedAt.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.column.forwardedForClientApprovalAt.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders.list.column.status.label': string;
+    'section.consultApprovedProjectChangeOrders.billing-summary.title': string;
+    'organism.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.title': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.list.title': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.list.empty': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.list.column.clientId.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.list.column.projectId.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.list.column.approvedChangeOrderReferences.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.list.column.invoiceReferences.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.list.column.approvedChangeOrderAmount.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.list.column.billableAmount.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.list.column.invoicedAmount.label': string;
+    'intent.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary.list.column.clientAvailableAmount.label': string;
+    'section.consultApprovedProjectChangeOrders.projectAndApprovedChanges.title': string;
+    'section.consultApprovedProjectChangeOrders.billingImpact.title': string;
+    'section.consultApprovedProjectChangeOrders.approvedChangeOrdersWorkspace.title': string;
+    'section.consultApprovedProjectChangeOrders.billingImpactSummary.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmConsultApprovedProjectChangeOrdersBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateProjectState — actionStatus, values: idle|loading|success|error */
+    qryLocateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateProjectData — queryResult, outputShape: array */
+    qryLocateProjectData: QryLocateProjectOutput[];
+    /** state qryInspectApprovedChangeOrdersState — actionStatus, values: idle|loading|success|error */
+    qryInspectApprovedChangeOrdersState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectApprovedChangeOrdersChangeOrderChangeOrderId — input */
+    qryInspectApprovedChangeOrdersChangeOrderChangeOrderId: string;
+    /** state qryInspectApprovedChangeOrdersData — queryResult, outputShape: object */
+    qryInspectApprovedChangeOrdersData: QryInspectApprovedChangeOrdersOutput | null;
+    /** state qryInspectClientBillingSummaryState — actionStatus, values: idle|loading|success|error */
+    qryInspectClientBillingSummaryState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectClientBillingSummaryClientBillingSummaryClientId — input */
+    qryInspectClientBillingSummaryClientBillingSummaryClientId: string;
+    /** state qryInspectClientBillingSummaryData — queryResult, outputShape: object */
+    qryInspectClientBillingSummaryData: QryInspectClientBillingSummaryOutput | null;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    /** action qryLocateProject (query) — route buildFlowFsm.consultApprovedProjectChangeOrders.qryLocateProject; inputs: (none); writes ui.consultApprovedProjectChangeOrders.data.qryLocateProject; status ui.consultApprovedProjectChangeOrders.action.qryLocateProject.status */
+    loadQryLocateProject(): Promise<void>;
+    /** handler for action qryLocateProject — bind UI events here */
+    handleQryLocateProjectClick(event?: Event): void;
+    /** action qryInspectApprovedChangeOrders (query) — route buildFlowFsm.consultApprovedProjectChangeOrders.qryInspectApprovedChangeOrders; inputs: changeOrderChangeOrderId; writes ui.consultApprovedProjectChangeOrders.data.qryInspectApprovedChangeOrders; status ui.consultApprovedProjectChangeOrders.action.qryInspectApprovedChangeOrders.status */
+    loadQryInspectApprovedChangeOrders(): Promise<void>;
+    /** handler for action qryInspectApprovedChangeOrders — bind UI events here */
+    handleQryInspectApprovedChangeOrdersClick(event?: Event): void;
+    /** action qryInspectClientBillingSummary (query) — route buildFlowFsm.consultApprovedProjectChangeOrders.qryInspectClientBillingSummary; inputs: clientBillingSummaryClientId; writes ui.consultApprovedProjectChangeOrders.data.qryInspectClientBillingSummary; status ui.consultApprovedProjectChangeOrders.action.qryInspectClientBillingSummary.status */
+    loadQryInspectClientBillingSummary(): Promise<void>;
+    /** handler for action qryInspectClientBillingSummary — bind UI events here */
+    handleQryInspectClientBillingSummaryClick(event?: Event): void;
+    /** setter for state ui.consultApprovedProjectChangeOrders.input.qryInspectApprovedChangeOrders.changeOrderChangeOrderId */
+    setQryInspectApprovedChangeOrdersChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.qryInspectApprovedChangeOrdersChangeOrderChangeOrderId — bind UI events here */
+    handleQryInspectApprovedChangeOrdersChangeOrderChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.consultApprovedProjectChangeOrders.input.qryInspectClientBillingSummary.clientBillingSummaryClientId */
+    setQryInspectClientBillingSummaryClientBillingSummaryClientId(value: string): void;
+    /** handler for action set.qryInspectClientBillingSummaryClientBillingSummaryClientId — bind UI events here */
+    handleQryInspectClientBillingSummaryClientBillingSummaryClientIdChange(event: Event): void;
+}

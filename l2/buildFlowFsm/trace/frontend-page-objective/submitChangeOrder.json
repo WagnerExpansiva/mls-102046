@@ -1,0 +1,54 @@
+{
+  "savedAt": "2026-08-18T14:54:32.938Z",
+  "pageId": "submitChangeOrder",
+  "genome": "page21",
+  "objective": {
+    "actor": "Responsável por registrar alterações de uma obra e encaminhá-las ao gerente de projeto.",
+    "jobToBeDone": "Selecionar o cliente e a obra corretos, registrar os impactos da alteração e submetê-la para tratamento do gerente de projeto.",
+    "primaryDecision": "Submeter uma ordem de mudança contextualizada e completa ao gerente de projeto.",
+    "decisiveInfo": [
+      "clientName",
+      "contactEmail",
+      "projectId",
+      "name",
+      "address",
+      "status",
+      "description",
+      "scopeImpact",
+      "scheduleImpact",
+      "changeAmount"
+    ],
+    "usageFrequency": "Operacional e recorrente, normalmente durante o acompanhamento de uma obra quando surge uma alteração de escopo.",
+    "informationHierarchy": [
+      "obra selecionada e seu status",
+      "cliente associado e dados de contato",
+      "descrição da alteração",
+      "impacto no escopo",
+      "impacto no cronograma",
+      "impacto financeiro",
+      "estado da ordem e resultado das ações"
+    ],
+    "successCriteria": "O usuário confirma rapidamente o cliente e a obra, registra somente os impactos necessários, cria a ordem sem IDs manuais e a encaminha com uma ação contextual clara, recebendo feedback explícito.",
+    "antiPatterns": [
+      "formulário separado para cada etapa de localização",
+      "ID de cliente, projeto ou ordem digitado manualmente",
+      "campo livre para editar status",
+      "repetição desnecessária dos dados da alteração entre criação e encaminhamento",
+      "encaminhamento sem exibir o contexto e o estado atual da ordem"
+    ],
+    "criticalActions": [
+      {
+        "action": "Localizar e selecionar cliente e obra",
+        "presentation": "master-detail com seleção contextual e contexto read-only"
+      },
+      {
+        "action": "Registrar a ordem de mudança",
+        "presentation": "primary-button em formulário compacto de decisão"
+      },
+      {
+        "action": "Submeter a ordem para tratamento",
+        "presentation": "contextual-transition-actions junto da ordem selecionada, com botão de ação permitido"
+      }
+    ]
+  }
+}

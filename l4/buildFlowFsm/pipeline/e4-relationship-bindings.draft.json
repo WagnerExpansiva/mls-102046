@@ -1,0 +1,808 @@
+{
+  "planId": "e4-relationship-bindings",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "bindings": [
+    {
+      "relationshipId": "clientPortalAccessBelongsToClient",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "ClientPortalAccess",
+        "from": {
+          "entityId": "ClientPortalAccess",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "to": {
+          "entityId": "Client",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "description": "O vínculo de acesso armazena o identificador do cliente MDM associado."
+      }
+    },
+    {
+      "relationshipId": "clientPortalAccessMapsToPlatformUser",
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "ClientPortalAccess",
+        "from": {
+          "entityId": "ClientPortalAccess",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "to": {
+          "entityId": "PlatformUser",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "O vínculo de acesso referencia o usuário externo autenticado pela plataforma."
+      }
+    },
+    {
+      "relationshipId": "fieldWorkerMapsToPlatformUser",
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "FieldWorker",
+        "from": {
+          "entityId": "FieldWorker",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "to": {
+          "entityId": "PlatformUser",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "O trabalhador de campo é qualificado pelo identificador do usuário da plataforma."
+      }
+    },
+    {
+      "relationshipId": "fieldCoordinatorMapsToPlatformUser",
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "FieldCoordinator",
+        "from": {
+          "entityId": "FieldCoordinator",
+          "fieldIds": [
+            "platformUserRef"
+          ]
+        },
+        "to": {
+          "entityId": "PlatformUser",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "O coordenador de campo referencia o usuário organizacional da plataforma."
+      }
+    },
+    {
+      "relationshipId": "projectBelongsToClient",
+      "realization": {
+        "kind": "mdmRelationship",
+        "ownerEntity": "Project",
+        "from": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Client",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "description": "A associação entre as identidades mestre da obra e do cliente é mantida pela relação MDM."
+      }
+    },
+    {
+      "relationshipId": "projectCoordinationAssignmentForProject",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "ProjectCoordinationAssignment",
+        "from": {
+          "entityId": "ProjectCoordinationAssignment",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O encaminhamento operacional armazena a obra MDM acompanhada."
+      }
+    },
+    {
+      "relationshipId": "projectCoordinationAssignmentAssignedToCoordinator",
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "ProjectCoordinationAssignment",
+        "from": {
+          "entityId": "ProjectCoordinationAssignment",
+          "fieldIds": [
+            "fieldCoordinatorId"
+          ]
+        },
+        "to": {
+          "entityId": "FieldCoordinator",
+          "fieldIds": [
+            "platformUserRef"
+          ]
+        },
+        "description": "O encaminhamento referencia o coordenador de campo responsável."
+      }
+    },
+    {
+      "relationshipId": "inventoryBalanceForInventoryItem",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "InventoryBalance",
+        "from": {
+          "entityId": "InventoryBalance",
+          "fieldIds": [
+            "inventoryItemId"
+          ]
+        },
+        "to": {
+          "entityId": "InventoryItem",
+          "fieldIds": [
+            "inventoryItemId"
+          ]
+        },
+        "description": "O saldo operacional armazena a referência ao item do catálogo MDM."
+      }
+    },
+    {
+      "relationshipId": "workTaskBelongsToProject",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "WorkTask",
+        "from": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A tarefa armazena a obra em cujo contexto é executada."
+      }
+    },
+    {
+      "relationshipId": "workTaskAssignedToFieldWorker",
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "WorkTask",
+        "from": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "assignedFieldWorkerId"
+          ]
+        },
+        "to": {
+          "entityId": "FieldWorker",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "A tarefa referencia o trabalhador de campo responsável."
+      }
+    },
+    {
+      "relationshipId": "timeLogForWorkTask",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "TimeLog",
+        "from": {
+          "entityId": "TimeLog",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "to": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "description": "O apontamento de horas armazena a tarefa à qual as horas são atribuídas."
+      }
+    },
+    {
+      "relationshipId": "timeLogRecordedByFieldWorker",
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "TimeLog",
+        "from": {
+          "entityId": "TimeLog",
+          "fieldIds": [
+            "fieldWorkerId"
+          ]
+        },
+        "to": {
+          "entityId": "FieldWorker",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "O apontamento referencia o trabalhador que realizou as horas."
+      }
+    },
+    {
+      "relationshipId": "materialUsageForProject",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "MaterialUsage",
+        "from": {
+          "entityId": "MaterialUsage",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O consumo armazena a obra contra a qual o material foi utilizado."
+      }
+    },
+    {
+      "relationshipId": "materialUsageForInventoryItem",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "MaterialUsage",
+        "from": {
+          "entityId": "MaterialUsage",
+          "fieldIds": [
+            "inventoryItemId"
+          ]
+        },
+        "to": {
+          "entityId": "InventoryItem",
+          "fieldIds": [
+            "inventoryItemId"
+          ]
+        },
+        "description": "O consumo armazena o item de catálogo efetivamente utilizado."
+      }
+    },
+    {
+      "relationshipId": "materialUsageDrawsFromInventoryBalance",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "MaterialUsage",
+        "from": {
+          "entityId": "MaterialUsage",
+          "fieldIds": [
+            "inventoryBalanceId"
+          ]
+        },
+        "to": {
+          "entityId": "InventoryBalance",
+          "fieldIds": [
+            "inventoryBalanceId"
+          ]
+        },
+        "description": "O consumo referencia o saldo operacional que forneceu o material."
+      }
+    },
+    {
+      "relationshipId": "changeOrderForClient",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "ChangeOrder",
+        "from": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "clientRef"
+          ]
+        },
+        "to": {
+          "entityId": "Client",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "description": "A ordem de mudança armazena o cliente para o qual foi proposta."
+      }
+    },
+    {
+      "relationshipId": "changeOrderForProject",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "ChangeOrder",
+        "from": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "projectRef"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A ordem de mudança armazena a obra afetada."
+      }
+    },
+    {
+      "relationshipId": "changeOrderDecisionForChangeOrder",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "ChangeOrderDecision",
+        "from": {
+          "entityId": "ChangeOrderDecision",
+          "fieldIds": [
+            "changeOrder"
+          ]
+        },
+        "to": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "changeOrderId"
+          ]
+        },
+        "description": "A decisão registrada referencia a ordem de mudança decidida."
+      }
+    },
+    {
+      "relationshipId": "changeOrderDecisionMadeByPlatformUser",
+      "realization": {
+        "kind": "externalReference",
+        "ownerEntity": "ChangeOrderDecision",
+        "from": {
+          "entityId": "ChangeOrderDecision",
+          "fieldIds": [
+            "madeByPlatformUser"
+          ]
+        },
+        "to": {
+          "entityId": "PlatformUser",
+          "fieldIds": [
+            "platformUserId"
+          ]
+        },
+        "description": "A decisão preserva o usuário da plataforma que a tomou."
+      }
+    },
+    {
+      "relationshipId": "invoiceForClient",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "Invoice",
+        "from": {
+          "entityId": "Invoice",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "to": {
+          "entityId": "Client",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "description": "A fatura armazena o cliente faturado."
+      }
+    },
+    {
+      "relationshipId": "invoiceForProject",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "Invoice",
+        "from": {
+          "entityId": "Invoice",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A fatura armazena a obra em cujo contexto foi emitida."
+      }
+    },
+    {
+      "relationshipId": "invoiceChangeOrderForInvoice",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "InvoiceChangeOrder",
+        "from": {
+          "entityId": "InvoiceChangeOrder",
+          "fieldIds": [
+            "invoiceId"
+          ]
+        },
+        "to": {
+          "entityId": "Invoice",
+          "fieldIds": [
+            "invoiceId"
+          ]
+        },
+        "description": "A aplicação comercial armazena a fatura que incorpora a alteração."
+      }
+    },
+    {
+      "relationshipId": "invoiceChangeOrderForChangeOrder",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "InvoiceChangeOrder",
+        "from": {
+          "entityId": "InvoiceChangeOrder",
+          "fieldIds": [
+            "changeOrderId"
+          ]
+        },
+        "to": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "changeOrderId"
+          ]
+        },
+        "description": "A aplicação comercial armazena a ordem de mudança faturada."
+      }
+    },
+    {
+      "relationshipId": "statusReportForProject",
+      "realization": {
+        "kind": "fieldReference",
+        "ownerEntity": "StatusReport",
+        "from": {
+          "entityId": "StatusReport",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O relatório armazena a obra cuja situação é comunicada."
+      }
+    },
+    {
+      "relationshipId": "projectDashboardIncludesProjects",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectDashboard",
+        "from": {
+          "entityId": "ProjectDashboard",
+          "fieldIds": [
+            "activeProjects"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A coleção de obras ativas é derivada dos projetos que atendem aos filtros do painel."
+      }
+    },
+    {
+      "relationshipId": "projectTimelineForProject",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectTimeline",
+        "from": {
+          "entityId": "ProjectTimeline",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O cronograma é derivado para a obra identificada pelo seu contexto de projeto."
+      }
+    },
+    {
+      "relationshipId": "projectTimelineIncludesWorkTasks",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectTimeline",
+        "from": {
+          "entityId": "ProjectTimeline",
+          "fieldIds": [
+            "workTasks"
+          ]
+        },
+        "to": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "description": "A lista derivada do cronograma contém as tarefas da obra organizadas por prazo e sequência."
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewForProject",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectExecutionOverview",
+        "from": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A visão de execução é calculada para a obra identificada em seu contexto."
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesWorkTasks",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectExecutionOverview",
+        "from": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "workTaskIds"
+          ]
+        },
+        "to": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "description": "A visão consolida as tarefas derivadas vinculadas à obra."
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesTimeLogs",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectExecutionOverview",
+        "from": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "timeLogIds"
+          ]
+        },
+        "to": {
+          "entityId": "TimeLog",
+          "fieldIds": [
+            "timeLogId"
+          ]
+        },
+        "description": "A visão inclui os apontamentos de horas derivados para custo e progresso da obra."
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesMaterialUsages",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectExecutionOverview",
+        "from": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "materialUsageIds"
+          ]
+        },
+        "to": {
+          "entityId": "MaterialUsage",
+          "fieldIds": [
+            "materialUsageId"
+          ]
+        },
+        "description": "A visão inclui os consumos de material derivados para a obra."
+      }
+    },
+    {
+      "relationshipId": "projectExecutionOverviewIncludesChangeOrders",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ProjectExecutionOverview",
+        "from": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "changeOrderIds"
+          ]
+        },
+        "to": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "changeOrderId"
+          ]
+        },
+        "description": "A visão inclui as ordens de mudança consideradas conforme seus estados."
+      }
+    },
+    {
+      "relationshipId": "scheduleRiskAssessmentForProject",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ScheduleRiskAssessment",
+        "from": {
+          "entityId": "ScheduleRiskAssessment",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "A avaliação de risco é derivada no contexto da obra identificada."
+      }
+    },
+    {
+      "relationshipId": "scheduleRiskAssessmentForWorkTask",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ScheduleRiskAssessment",
+        "from": {
+          "entityId": "ScheduleRiskAssessment",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "to": {
+          "entityId": "WorkTask",
+          "fieldIds": [
+            "workTaskId"
+          ]
+        },
+        "description": "A avaliação identifica a tarefa não concluída analisada quanto ao risco."
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryForClient",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ClientBillingSummary",
+        "from": {
+          "entityId": "ClientBillingSummary",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "to": {
+          "entityId": "Client",
+          "fieldIds": [
+            "clientId"
+          ]
+        },
+        "description": "O resumo de faturamento é calculado para o cliente selecionado."
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryForProject",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ClientBillingSummary",
+        "from": {
+          "entityId": "ClientBillingSummary",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "Project",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O resumo de faturamento é segmentado pela obra faturável identificada."
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryIncludesInvoices",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ClientBillingSummary",
+        "from": {
+          "entityId": "ClientBillingSummary",
+          "fieldIds": [
+            "invoiceReferences"
+          ]
+        },
+        "to": {
+          "entityId": "Invoice",
+          "fieldIds": [
+            "invoiceId"
+          ]
+        },
+        "description": "As referências derivadas consolidam as faturas da obra no resumo comercial."
+      }
+    },
+    {
+      "relationshipId": "clientBillingSummaryIncludesChangeOrders",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "ClientBillingSummary",
+        "from": {
+          "entityId": "ClientBillingSummary",
+          "fieldIds": [
+            "approvedChangeOrderReferences"
+          ]
+        },
+        "to": {
+          "entityId": "ChangeOrder",
+          "fieldIds": [
+            "changeOrderId"
+          ]
+        },
+        "description": "As referências derivadas consolidam somente as ordens de mudança aprovadas."
+      }
+    },
+    {
+      "relationshipId": "statusReportBasedOnProjectExecutionOverview",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "StatusReport",
+        "from": {
+          "entityId": "StatusReport",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "to": {
+          "entityId": "ProjectExecutionOverview",
+          "fieldIds": [
+            "projectId"
+          ]
+        },
+        "description": "O relatório usa a visão de execução derivada para a mesma obra como base de geração."
+      }
+    },
+    {
+      "relationshipId": "statusReportCommunicatesScheduleRiskAssessment",
+      "realization": {
+        "kind": "derived",
+        "ownerEntity": "StatusReport",
+        "from": {
+          "entityId": "StatusReport",
+          "fieldIds": [
+            "communicatedRisks"
+          ]
+        },
+        "to": {
+          "entityId": "ScheduleRiskAssessment",
+          "fieldIds": [
+            "projectId",
+            "workTaskId"
+          ]
+        },
+        "description": "Os riscos comunicados no relatório são selecionados das avaliações derivadas por obra e tarefa."
+      }
+    }
+  ]
+}

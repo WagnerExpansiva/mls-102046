@@ -1,0 +1,57 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "Client",
+  "fields": [
+    {
+      "fieldId": "clientId",
+      "title": "Identificador do cliente",
+      "type": "uuid",
+      "required": true,
+      "description": "Identificador estável do cadastro mestre do cliente, transportado como contexto entre obras, ordens de mudança, faturas e consultas relacionadas.",
+      "constraints": [
+        {
+          "constraintId": "uniqueClientId",
+          "kind": "unique",
+          "value": "true",
+          "description": "Cada cadastro mestre de cliente possui um identificador estável exclusivo.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "clientName",
+      "title": "Nome do cliente",
+      "type": "string",
+      "required": true,
+      "description": "Nome de identificação do cliente organizacional usado para localizá-lo e relacionar suas obras, faturamento e comunicações.",
+      "constraints": []
+    },
+    {
+      "fieldId": "contactEmail",
+      "title": "E-mail de contato",
+      "type": "string",
+      "required": false,
+      "description": "Endereço de e-mail de contato do cliente para a comunicação sobre informações e documentos disponibilizados.",
+      "constraints": [
+        {
+          "constraintId": "contactEmailFormat",
+          "kind": "format",
+          "value": "email",
+          "description": "Quando informado, o e-mail de contato deve ter formato de endereço de e-mail válido.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "contactPhone",
+      "title": "Telefone de contato",
+      "type": "string",
+      "required": false,
+      "description": "Telefone de contato do cliente para comunicação relacionada às suas obras.",
+      "constraints": []
+    }
+  ],
+  "useRules": []
+}

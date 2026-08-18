@@ -1,0 +1,57 @@
+{
+  "savedAt": "2026-08-18T14:51:31.130Z",
+  "pageId": "clientPortalAccessCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Operador administrativo responsável por gerenciar acessos do portal de clientes.",
+    "jobToBeDone": "Localizar um vínculo de acesso, criar um novo vínculo para o cliente correto ou corrigir/remover o registro selecionado.",
+    "primaryDecision": "Selecionar o vínculo correto e decidir entre corrigir ou remover, ou iniciar a criação de um novo vínculo.",
+    "decisiveInfo": [
+      "clientName",
+      "contactEmail",
+      "clientId",
+      "platformUserId",
+      "status",
+      "clientPortalAccessId"
+    ],
+    "usageFrequency": "Uso operacional recorrente, geralmente ocasional e orientado a manutenção de cadastros.",
+    "informationHierarchy": [
+      "cliente e contato identificáveis",
+      "estado atual do vínculo",
+      "usuário da plataforma associado",
+      "ações disponíveis para corrigir ou remover",
+      "criação de um novo vínculo"
+    ],
+    "successCriteria": "O operador identifica o cliente sem memorizar ids, entende imediatamente o estado atual, edita somente os dados necessários e executa exclusão com segurança; após cada comando, a lista permanece atualizada.",
+    "antiPatterns": [
+      "formulário CRUD separado para cada operação",
+      "status como select livre com estados inválidos",
+      "ids técnicos digitados manualmente",
+      "exclusão sem confirmação",
+      "duplicar a consulta de clientes em uma seção isolada",
+      "ocultar o registro selecionado durante a edição"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar um vínculo existente",
+        "presentation": "master-detail"
+      },
+      {
+        "action": "Criar um vínculo",
+        "presentation": "primary-button no painel contextual"
+      },
+      {
+        "action": "Corrigir um vínculo selecionado",
+        "presentation": "contextual-transition-actions no painel de detalhe"
+      },
+      {
+        "action": "Excluir um vínculo selecionado",
+        "presentation": "inline-row-command com confirmação destrutiva"
+      },
+      {
+        "action": "Escolher o cliente",
+        "presentation": "lookup/picker integrado ao editor"
+      }
+    ]
+  }
+}

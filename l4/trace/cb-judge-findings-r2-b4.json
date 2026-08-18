@@ -1,0 +1,52 @@
+{
+  "judgeRun": 2,
+  "batchIndex": 4,
+  "owners": [
+    "createStatusReport",
+    "updateStatusReport",
+    "deleteStatusReport",
+    "listTimeLog",
+    "createTimeLog",
+    "updateTimeLog",
+    "deleteTimeLog",
+    "listWorkTask",
+    "createWorkTask",
+    "updateWorkTask",
+    "deleteWorkTask",
+    "inspectProjectDashboard",
+    "locateProject",
+    "inspectProjectExecutionOverview",
+    "handoffProjectToFieldCoordinator"
+  ],
+  "findings": [
+    {
+      "ownerId": "createWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A etapa de criação rejeita incondicionalmente porque não há fonte para o assignee, e a regra `workTaskRequiresAssigneeAndDueDate` não pode ser executada com os inputs declarados; o output obrigatório `WorkTask.assignedFieldWorkerId` também não pode ser produzido.",
+      "suggestion": "Regenerar o usecase para obter o assignee de uma resolução de contexto declarada ou de um input contratual existente, validá-lo pelo port `FieldWorker` e criar o `WorkTask`; não deixar a operação sempre rejeitar."
+    },
+    {
+      "ownerId": "updateWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "Os campos de entrada da função não correspondem aos `inputId`s do contrato: `projectId` foi gerado em vez de `projectProjectId` e `workTaskId` em vez de `workTaskWorkTaskId` (ambos são inputs obrigatórios do commandInput).",
+      "suggestion": "Regenerar a assinatura de `updateWorkTask` usando exatamente os campos `projectProjectId` e `workTaskWorkTaskId`, preservando seus respectivos `fieldRef`s."
+    },
+    {
+      "ownerId": "locateProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "`functions` está vazio para um accessPattern `list` de `Project`; o usecase não possui entrada, saída nem operação de consulta e portanto não pode listar os campos declarados de `Project`.",
+      "suggestion": "Regenerar uma função de listagem com o output canônico de `Project` e uma estratégia de leitura MDM suportada, sem adicionar `Project` como port."
+    },
+    {
+      "ownerId": "inspectProjectExecutionOverview",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo de entrada da função é `projectId`, mas o contrato exige o input `projectExecutionOverviewProjectId` para o `getById` por `ProjectExecutionOverview.projectId`.",
+      "suggestion": "Regenerar a assinatura usando exatamente `projectExecutionOverviewProjectId`, com `fieldRef` `ProjectExecutionOverview.projectId`, e usá-lo como a chave da consulta."
+    }
+  ],
+  "savedAt": "2026-08-17T20:36:11.572Z"
+}

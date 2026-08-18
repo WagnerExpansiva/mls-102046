@@ -1,0 +1,266 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateProjectOutput, QryInspectProjectExecutionOverviewOutput, QryInspectScheduleRiskAssessmentOutput, CmdCreateStatusReportOutput, CmdPublishStatusReportOutput, CmdHandoffStatusReportToClientOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/generateAndPublishProjectStatusReport.js';
+export type { QryLocateProjectInput, QryLocateProjectOutput, QryInspectProjectExecutionOverviewInput, QryInspectProjectExecutionOverviewOutput, QryInspectScheduleRiskAssessmentInput, QryInspectScheduleRiskAssessmentOutput, CmdCreateStatusReportInput, CmdCreateStatusReportOutput, CmdPublishStatusReportInput, CmdPublishStatusReportOutput, CmdHandoffStatusReportToClientInput, CmdHandoffStatusReportToClientOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/generateAndPublishProjectStatusReport.js';
+declare const message_pt: {
+    'section.generateAndPublishProjectStatusReport.locateProject.title': string;
+    'organism.generateAndPublishProjectStatusReport.qryLocateProject.title': string;
+    'intent.generateAndPublishProjectStatusReport.qryLocateProject.list.title': string;
+    'intent.generateAndPublishProjectStatusReport.qryLocateProject.list.empty': string;
+    'intent.generateAndPublishProjectStatusReport.qryLocateProject.list.column.projectId.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryLocateProject.list.column.clientId.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryLocateProject.list.column.name.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryLocateProject.list.column.address.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryLocateProject.list.column.status.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryLocateProject.list.column.authorizedBudget.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryLocateProject.list.column.plannedStartDate.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryLocateProject.list.column.plannedEndDate.label': string;
+    'section.generateAndPublishProjectStatusReport.projectAssessment.title': string;
+    'organism.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.title': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.title': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.empty': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.projectId.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.projectName.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.projectStatus.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.workTaskIds.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.taskSummary.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.upcomingCommitments.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.timeLogIds.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.totalLoggedHours.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.materialUsageIds.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.materialUsageSummary.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.actualLaborCost.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.actualMaterialCost.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.actualCost.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.budgetAmount.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.costVariance.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.changeOrderIds.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.changeOrderImpactSummary.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview.list.column.calculatedAt.label': string;
+    'organism.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.title': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.list.title': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.list.empty': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.list.column.projectId.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.list.column.workTaskId.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.list.column.taskStatus.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.list.column.dueDate.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.list.column.progressPercent.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.list.column.riskIndicators.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.list.column.riskExplanation.label': string;
+    'intent.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment.list.column.assessedAt.label': string;
+    'section.generateAndPublishProjectStatusReport.reportWorkflow.title': string;
+    'organism.generateAndPublishProjectStatusReport.cmdCreateStatusReport.title': string;
+    'intent.generateAndPublishProjectStatusReport.cmdCreateStatusReport.form.title': string;
+    'intent.generateAndPublishProjectStatusReport.cmdCreateStatusReport.form.action.cmdCreateStatusReport': string;
+    'intent.generateAndPublishProjectStatusReport.cmdCreateStatusReport.form.field.title.label': string;
+    'intent.generateAndPublishProjectStatusReport.cmdCreateStatusReport.form.field.content.label': string;
+    'intent.generateAndPublishProjectStatusReport.cmdCreateStatusReport.form.field.communicatedRisks.label': string;
+    'intent.generateAndPublishProjectStatusReport.cmdCreateStatusReport.form.field.generatedByUserId.label': string;
+    'intent.generateAndPublishProjectStatusReport.cmdCreateStatusReport.form.field.publishedByUserId.label': string;
+    'organism.generateAndPublishProjectStatusReport.cmdPublishStatusReport.title': string;
+    'intent.generateAndPublishProjectStatusReport.cmdPublishStatusReport.form.title': string;
+    'intent.generateAndPublishProjectStatusReport.cmdPublishStatusReport.form.action.cmdPublishStatusReport': string;
+    'intent.generateAndPublishProjectStatusReport.cmdPublishStatusReport.form.field.status.label': string;
+    'organism.generateAndPublishProjectStatusReport.cmdHandoffStatusReportToClient.title': string;
+    'intent.generateAndPublishProjectStatusReport.cmdHandoffStatusReportToClient.form.title': string;
+    'intent.generateAndPublishProjectStatusReport.cmdHandoffStatusReportToClient.form.action.cmdHandoffStatusReportToClient': string;
+    'intent.generateAndPublishProjectStatusReport.cmdHandoffStatusReportToClient.form.field.title.label': string;
+    'intent.generateAndPublishProjectStatusReport.cmdHandoffStatusReportToClient.form.field.content.label': string;
+    'intent.generateAndPublishProjectStatusReport.cmdHandoffStatusReportToClient.form.field.communicatedRisks.label': string;
+    'intent.generateAndPublishProjectStatusReport.cmdHandoffStatusReportToClient.form.field.generatedByUserId.label': string;
+    'intent.generateAndPublishProjectStatusReport.cmdHandoffStatusReportToClient.form.field.publishedByUserId.label': string;
+    'action.cmdCreateStatusReport.success': string;
+    'action.cmdCreateStatusReport.error': string;
+    'action.cmdPublishStatusReport.success': string;
+    'action.cmdPublishStatusReport.error': string;
+    'action.cmdHandoffStatusReportToClient.success': string;
+    'action.cmdHandoffStatusReportToClient.error': string;
+    'section.generateAndPublishProjectStatusReport.projectContext.title': string;
+    'section.generateAndPublishProjectStatusReport.reportPreparation.title': string;
+    'organism.generateAndPublishProjectStatusReport.master-detail20.title': string;
+    'intent.generateAndPublishProjectStatusReport.master-detail20.content.title': string;
+    'section.generateAndPublishProjectStatusReport.publicationAndHandoff.title': string;
+    'section.generateAndPublishProjectStatusReport.reportWorkflowWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmGenerateAndPublishProjectStatusReportBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateProjectState — actionStatus, values: idle|loading|success|error */
+    qryLocateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateProjectData — queryResult, outputShape: array */
+    qryLocateProjectData: QryLocateProjectOutput[];
+    /** state qryInspectProjectExecutionOverviewState — actionStatus, values: idle|loading|success|error */
+    qryInspectProjectExecutionOverviewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId — input */
+    qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId: string;
+    /** state qryInspectProjectExecutionOverviewData — queryResult, outputShape: object */
+    qryInspectProjectExecutionOverviewData: QryInspectProjectExecutionOverviewOutput | null;
+    /** state qryInspectScheduleRiskAssessmentState — actionStatus, values: idle|loading|success|error */
+    qryInspectScheduleRiskAssessmentState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectScheduleRiskAssessmentScheduleRiskAssessmentProjectId — input */
+    qryInspectScheduleRiskAssessmentScheduleRiskAssessmentProjectId: string;
+    /** state qryInspectScheduleRiskAssessmentData — queryResult, outputShape: object */
+    qryInspectScheduleRiskAssessmentData: QryInspectScheduleRiskAssessmentOutput | null;
+    /** state cmdCreateStatusReportState — actionStatus, values: idle|loading|success|error */
+    cmdCreateStatusReportState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateStatusReportProjectProjectId — input */
+    cmdCreateStatusReportProjectProjectId: string;
+    /** state cmdCreateStatusReportProjectExecutionOverviewProjectId — input */
+    cmdCreateStatusReportProjectExecutionOverviewProjectId: string;
+    /** state cmdCreateStatusReportTitle — input */
+    cmdCreateStatusReportTitle: string;
+    /** state cmdCreateStatusReportContent — input */
+    cmdCreateStatusReportContent: string;
+    /** state cmdCreateStatusReportCommunicatedRisks — input */
+    cmdCreateStatusReportCommunicatedRisks: string;
+    /** state cmdCreateStatusReportGeneratedByUserId — input */
+    cmdCreateStatusReportGeneratedByUserId: string;
+    /** state cmdCreateStatusReportPublishedByUserId — input */
+    cmdCreateStatusReportPublishedByUserId: string;
+    /** state cmdCreateStatusReportOutput — commandOutput */
+    cmdCreateStatusReportOutput: CmdCreateStatusReportOutput | null;
+    /** state cmdCreateStatusReportError — actionError */
+    cmdCreateStatusReportError: string;
+    /** state cmdPublishStatusReportState — actionStatus, values: idle|loading|success|error */
+    cmdPublishStatusReportState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdPublishStatusReportProjectProjectId — input */
+    cmdPublishStatusReportProjectProjectId: string;
+    /** state cmdPublishStatusReportProjectExecutionOverviewProjectId — input */
+    cmdPublishStatusReportProjectExecutionOverviewProjectId: string;
+    /** state cmdPublishStatusReportStatusReportStatusReportId — input */
+    cmdPublishStatusReportStatusReportStatusReportId: string;
+    /** state cmdPublishStatusReportStatus — input */
+    cmdPublishStatusReportStatus: string;
+    /** state cmdPublishStatusReportOutput — commandOutput */
+    cmdPublishStatusReportOutput: CmdPublishStatusReportOutput | null;
+    /** state cmdPublishStatusReportError — actionError */
+    cmdPublishStatusReportError: string;
+    /** state cmdHandoffStatusReportToClientState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffStatusReportToClientState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffStatusReportToClientStatusReportStatusReportId — input */
+    cmdHandoffStatusReportToClientStatusReportStatusReportId: string;
+    /** state cmdHandoffStatusReportToClientTitle — input */
+    cmdHandoffStatusReportToClientTitle: string;
+    /** state cmdHandoffStatusReportToClientContent — input */
+    cmdHandoffStatusReportToClientContent: string;
+    /** state cmdHandoffStatusReportToClientCommunicatedRisks — input */
+    cmdHandoffStatusReportToClientCommunicatedRisks: string;
+    /** state cmdHandoffStatusReportToClientGeneratedByUserId — input */
+    cmdHandoffStatusReportToClientGeneratedByUserId: string;
+    /** state cmdHandoffStatusReportToClientPublishedByUserId — input */
+    cmdHandoffStatusReportToClientPublishedByUserId: string;
+    /** state cmdHandoffStatusReportToClientOutput — commandOutput */
+    cmdHandoffStatusReportToClientOutput: CmdHandoffStatusReportToClientOutput | null;
+    /** state cmdHandoffStatusReportToClientError — actionError */
+    cmdHandoffStatusReportToClientError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryLocateProject (query) — route buildFlowFsm.generateAndPublishProjectStatusReport.qryLocateProject; inputs: (none); writes ui.generateAndPublishProjectStatusReport.data.qryLocateProject; status ui.generateAndPublishProjectStatusReport.action.qryLocateProject.status */
+    loadQryLocateProject(): Promise<void>;
+    /** handler for action qryLocateProject — bind UI events here */
+    handleQryLocateProjectClick(event?: Event): void;
+    /** action qryInspectProjectExecutionOverview (query) — route buildFlowFsm.generateAndPublishProjectStatusReport.qryInspectProjectExecutionOverview; inputs: projectExecutionOverviewProjectId; writes ui.generateAndPublishProjectStatusReport.data.qryInspectProjectExecutionOverview; status ui.generateAndPublishProjectStatusReport.action.qryInspectProjectExecutionOverview.status */
+    loadQryInspectProjectExecutionOverview(): Promise<void>;
+    /** handler for action qryInspectProjectExecutionOverview — bind UI events here */
+    handleQryInspectProjectExecutionOverviewClick(event?: Event): void;
+    /** action qryInspectScheduleRiskAssessment (query) — route buildFlowFsm.generateAndPublishProjectStatusReport.qryInspectScheduleRiskAssessment; inputs: scheduleRiskAssessmentProjectId; writes ui.generateAndPublishProjectStatusReport.data.qryInspectScheduleRiskAssessment; status ui.generateAndPublishProjectStatusReport.action.qryInspectScheduleRiskAssessment.status */
+    loadQryInspectScheduleRiskAssessment(): Promise<void>;
+    /** handler for action qryInspectScheduleRiskAssessment — bind UI events here */
+    handleQryInspectScheduleRiskAssessmentClick(event?: Event): void;
+    /** action cmdCreateStatusReport (command) — route buildFlowFsm.generateAndPublishProjectStatusReport.cmdCreateStatusReport; inputs: projectProjectId, projectExecutionOverviewProjectId, title, content, communicatedRisks, generatedByUserId, publishedByUserId; writes ui.generateAndPublishProjectStatusReport.output.cmdCreateStatusReport; status ui.generateAndPublishProjectStatusReport.action.cmdCreateStatusReport.status; feedback keys action.cmdCreateStatusReport.success / action.cmdCreateStatusReport.error */
+    cmdCreateStatusReport(): Promise<void>;
+    /** handler for action cmdCreateStatusReport — bind UI events here */
+    handleCmdCreateStatusReportClick(event?: Event): void;
+    /** action cmdPublishStatusReport (command) — route buildFlowFsm.generateAndPublishProjectStatusReport.cmdPublishStatusReport; inputs: projectProjectId, projectExecutionOverviewProjectId, statusReportStatusReportId, status; writes ui.generateAndPublishProjectStatusReport.output.cmdPublishStatusReport; status ui.generateAndPublishProjectStatusReport.action.cmdPublishStatusReport.status; feedback keys action.cmdPublishStatusReport.success / action.cmdPublishStatusReport.error */
+    cmdPublishStatusReport(): Promise<void>;
+    /** handler for action cmdPublishStatusReport — bind UI events here */
+    handleCmdPublishStatusReportClick(event?: Event): void;
+    /** action cmdHandoffStatusReportToClient (command) — route buildFlowFsm.generateAndPublishProjectStatusReport.cmdHandoffStatusReportToClient; inputs: statusReportStatusReportId, title, content, communicatedRisks, generatedByUserId, publishedByUserId; writes ui.generateAndPublishProjectStatusReport.output.cmdHandoffStatusReportToClient; status ui.generateAndPublishProjectStatusReport.action.cmdHandoffStatusReportToClient.status; feedback keys action.cmdHandoffStatusReportToClient.success / action.cmdHandoffStatusReportToClient.error */
+    cmdHandoffStatusReportToClient(): Promise<void>;
+    /** handler for action cmdHandoffStatusReportToClient — bind UI events here */
+    handleCmdHandoffStatusReportToClientClick(event?: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.qryInspectProjectExecutionOverview.projectExecutionOverviewProjectId */
+    setQryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId(value: string): void;
+    /** handler for action set.qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId — bind UI events here */
+    handleQryInspectProjectExecutionOverviewProjectExecutionOverviewProjectIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.qryInspectScheduleRiskAssessment.scheduleRiskAssessmentProjectId */
+    setQryInspectScheduleRiskAssessmentScheduleRiskAssessmentProjectId(value: string): void;
+    /** handler for action set.qryInspectScheduleRiskAssessmentScheduleRiskAssessmentProjectId — bind UI events here */
+    handleQryInspectScheduleRiskAssessmentScheduleRiskAssessmentProjectIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdCreateStatusReport.projectProjectId */
+    setCmdCreateStatusReportProjectProjectId(value: string): void;
+    /** handler for action set.cmdCreateStatusReportProjectProjectId — bind UI events here */
+    handleCmdCreateStatusReportProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdCreateStatusReport.projectExecutionOverviewProjectId */
+    setCmdCreateStatusReportProjectExecutionOverviewProjectId(value: string): void;
+    /** handler for action set.cmdCreateStatusReportProjectExecutionOverviewProjectId — bind UI events here */
+    handleCmdCreateStatusReportProjectExecutionOverviewProjectIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdCreateStatusReport.title */
+    setCmdCreateStatusReportTitle(value: string): void;
+    /** handler for action set.cmdCreateStatusReportTitle — bind UI events here */
+    handleCmdCreateStatusReportTitleChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdCreateStatusReport.content */
+    setCmdCreateStatusReportContent(value: string): void;
+    /** handler for action set.cmdCreateStatusReportContent — bind UI events here */
+    handleCmdCreateStatusReportContentChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdCreateStatusReport.communicatedRisks */
+    setCmdCreateStatusReportCommunicatedRisks(value: string): void;
+    /** handler for action set.cmdCreateStatusReportCommunicatedRisks — bind UI events here */
+    handleCmdCreateStatusReportCommunicatedRisksChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdCreateStatusReport.generatedByUserId */
+    setCmdCreateStatusReportGeneratedByUserId(value: string): void;
+    /** handler for action set.cmdCreateStatusReportGeneratedByUserId — bind UI events here */
+    handleCmdCreateStatusReportGeneratedByUserIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdCreateStatusReport.publishedByUserId */
+    setCmdCreateStatusReportPublishedByUserId(value: string): void;
+    /** handler for action set.cmdCreateStatusReportPublishedByUserId — bind UI events here */
+    handleCmdCreateStatusReportPublishedByUserIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdPublishStatusReport.projectProjectId */
+    setCmdPublishStatusReportProjectProjectId(value: string): void;
+    /** handler for action set.cmdPublishStatusReportProjectProjectId — bind UI events here */
+    handleCmdPublishStatusReportProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdPublishStatusReport.projectExecutionOverviewProjectId */
+    setCmdPublishStatusReportProjectExecutionOverviewProjectId(value: string): void;
+    /** handler for action set.cmdPublishStatusReportProjectExecutionOverviewProjectId — bind UI events here */
+    handleCmdPublishStatusReportProjectExecutionOverviewProjectIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdPublishStatusReport.statusReportStatusReportId */
+    setCmdPublishStatusReportStatusReportStatusReportId(value: string): void;
+    /** handler for action set.cmdPublishStatusReportStatusReportStatusReportId — bind UI events here */
+    handleCmdPublishStatusReportStatusReportStatusReportIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdPublishStatusReport.status */
+    setCmdPublishStatusReportStatus(value: string): void;
+    /** handler for action set.cmdPublishStatusReportStatus — bind UI events here */
+    handleCmdPublishStatusReportStatusChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdHandoffStatusReportToClient.statusReportStatusReportId */
+    setCmdHandoffStatusReportToClientStatusReportStatusReportId(value: string): void;
+    /** handler for action set.cmdHandoffStatusReportToClientStatusReportStatusReportId — bind UI events here */
+    handleCmdHandoffStatusReportToClientStatusReportStatusReportIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdHandoffStatusReportToClient.title */
+    setCmdHandoffStatusReportToClientTitle(value: string): void;
+    /** handler for action set.cmdHandoffStatusReportToClientTitle — bind UI events here */
+    handleCmdHandoffStatusReportToClientTitleChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdHandoffStatusReportToClient.content */
+    setCmdHandoffStatusReportToClientContent(value: string): void;
+    /** handler for action set.cmdHandoffStatusReportToClientContent — bind UI events here */
+    handleCmdHandoffStatusReportToClientContentChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdHandoffStatusReportToClient.communicatedRisks */
+    setCmdHandoffStatusReportToClientCommunicatedRisks(value: string): void;
+    /** handler for action set.cmdHandoffStatusReportToClientCommunicatedRisks — bind UI events here */
+    handleCmdHandoffStatusReportToClientCommunicatedRisksChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdHandoffStatusReportToClient.generatedByUserId */
+    setCmdHandoffStatusReportToClientGeneratedByUserId(value: string): void;
+    /** handler for action set.cmdHandoffStatusReportToClientGeneratedByUserId — bind UI events here */
+    handleCmdHandoffStatusReportToClientGeneratedByUserIdChange(event: Event): void;
+    /** setter for state ui.generateAndPublishProjectStatusReport.input.cmdHandoffStatusReportToClient.publishedByUserId */
+    setCmdHandoffStatusReportToClientPublishedByUserId(value: string): void;
+    /** handler for action set.cmdHandoffStatusReportToClientPublishedByUserId — bind UI events here */
+    handleCmdHandoffStatusReportToClientPublishedByUserIdChange(event: Event): void;
+}

@@ -1,0 +1,25 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "locateInventoryItem",
+  "title": "Selecionar o material consumido",
+  "kind": "query",
+  "compiledFrom": [
+    "recordProjectMaterialUsage.locateInventoryItem"
+  ],
+  "description": "Localiza e seleciona um item de estoque ativo do catálogo compartilhado para identificar o material consumido.",
+  "contexts": {
+    "requires": [],
+    "provides": [
+      "selectedInventoryItem"
+    ]
+  },
+  "entityRefs": [
+    "InventoryItem"
+  ],
+  "useRules": [
+    "selectableInventoryItem"
+  ],
+  "transitions": []
+}

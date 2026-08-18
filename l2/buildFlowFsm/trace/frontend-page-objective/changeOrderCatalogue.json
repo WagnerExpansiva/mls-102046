@@ -1,0 +1,57 @@
+{
+  "savedAt": "2026-08-18T14:50:39.025Z",
+  "pageId": "changeOrderCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Gestor de obra ou responsável pelo controle contratual",
+    "jobToBeDone": "Registrar, revisar e manter ordens de mudança vinculadas à obra, entendendo rapidamente seus impactos e estado de aprovação.",
+    "primaryDecision": "Selecionar uma ordem de mudança e decidir se deve ser corrigida ou excluída; quando não houver uma adequada, registrar uma nova proposta.",
+    "decisiveInfo": [
+      "description",
+      "scopeImpact",
+      "scheduleImpact",
+      "changeAmount",
+      "clientRef",
+      "projectRef",
+      "status",
+      "submittedAt",
+      "forwardedForClientApprovalAt"
+    ],
+    "usageFrequency": "Ocasional e operacional, durante o acompanhamento de alterações de escopo, prazo ou valor da obra.",
+    "informationHierarchy": [
+      "ordens existentes e sua identificação contextual",
+      "status atual e situação de aprovação",
+      "valor e impactos de escopo e cronograma",
+      "detalhes da ordem selecionada",
+      "ações de corrigir ou excluir",
+      "registro de uma nova alteração proposta"
+    ],
+    "successCriteria": "O usuário encontra uma ordem rapidamente, compreende seus impactos e status antes de agir, consegue editar ou excluir apenas o registro selecionado e registra novas propostas sem digitar identificadores técnicos.",
+    "antiPatterns": [
+      "expor uma lista de status como campo livre",
+      "permitir digitação manual de changeOrderId, clientId ou projectId",
+      "separar exclusão em um formulário independente",
+      "ocultar a ordem selecionada durante a edição",
+      "expor submittedAt ou forwardedForClientApprovalAt como decisões manuais",
+      "empilhar uma seção de formulário completa antes da lista principal"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar uma ordem para inspeção e edição",
+        "presentation": "master-detail"
+      },
+      {
+        "action": "Atualizar a ordem selecionada",
+        "presentation": "contextual-transition-actions"
+      },
+      {
+        "action": "Excluir a ordem selecionada",
+        "presentation": "inline-row-command"
+      },
+      {
+        "action": "Registrar uma nova alteração",
+        "presentation": "primary-button"
+      }
+    ]
+  }
+}

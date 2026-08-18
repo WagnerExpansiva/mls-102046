@@ -1,0 +1,56 @@
+{
+  "savedAt": "2026-08-18T14:52:08.414Z",
+  "pageId": "generateAndPublishProjectStatusReport",
+  "genome": "page31",
+  "objective": {
+    "actor": "Project manager or site manager responsible for client communication.",
+    "jobToBeDone": "Review the selected project's execution and schedule risks, generate an accurate status report, publish it, and hand it off to the client.",
+    "primaryDecision": "Whether the reviewed report is ready to publish and send to the client.",
+    "decisiveInfo": [
+      "project name and current project status",
+      "task summary and upcoming commitments",
+      "total logged hours",
+      "actual cost, budget amount, and cost variance",
+      "at-risk task status, due date, progress, risk indicators, and explanation",
+      "status report title, content, communicated risks, and current report status"
+    ],
+    "usageFrequency": "Occasional, typically at a reporting milestone or when a client update is due; deliberate back-office workflow rather than continuous operational use.",
+    "informationHierarchy": [
+      "selected project identity and status",
+      "execution and cost summary",
+      "schedule risks and explanations",
+      "draft report content and communicated risks",
+      "current report lifecycle status",
+      "publish action",
+      "client handoff action and confirmation"
+    ],
+    "successCriteria": "The user can verify the report against current execution and risk evidence, create it without retyping context or actor identifiers, clearly distinguish draft from published state, and complete publication and client handoff with unambiguous feedback.",
+    "antiPatterns": [
+      "separate transition form for publishing",
+      "free status select for lifecycle changes",
+      "manually typed project or status-report identifiers",
+      "manually entered generatedByUserId or publishedByUserId when actor context is available",
+      "publishing before showing current report status and supporting execution evidence",
+      "duplicating inspection queries into disconnected sections",
+      "adding urgency or persuasion language to an operational communication workflow"
+    ],
+    "criticalActions": [
+      {
+        "action": "Inspect execution and schedule risk evidence for the selected project",
+        "presentation": "contextual master-detail summary with risk details adjacent to the project selection"
+      },
+      {
+        "action": "Generate the report for review",
+        "presentation": "primary-button contextual command with a focused content editor and derived project context"
+      },
+      {
+        "action": "Publish the reviewed draft",
+        "presentation": "contextual-transition-actions on the selected report, showing current status and only the valid next transition"
+      },
+      {
+        "action": "Hand off the published report to the client",
+        "presentation": "contextual-transition-actions with explicit confirmation for external communication"
+      }
+    ]
+  }
+}

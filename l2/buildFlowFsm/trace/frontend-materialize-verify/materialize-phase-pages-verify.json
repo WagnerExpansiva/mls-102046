@@ -1,0 +1,335 @@
+{
+  "savedAt": "2026-08-18T15:15:43.581Z",
+  "planId": "materialize-phase-pages-verify",
+  "attempt": 1,
+  "brokenCount": 24,
+  "broken": [
+    {
+      "planId": "materialize-approvechangeorder-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/approveChangeOrder.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/approveChangeOrder.ts",
+      "typecheck": "passed",
+      "errors": [
+        "cmdApproveChangeOrderDecision.projectProjectId is a technical id with source 'routeparam' but is bound to an editable control: take it from context (routeparam) instead of rendering a field"
+      ],
+      "warnings": [
+        "approveChangeOrder: generated page does not render textual mutation feedback: cmdApproveChangeOrderDecision",
+        "approveChangeOrder: generated page does not render textual mutation feedback: cmdHandoffApprovedChangeOrderToBilling",
+        "cmdApproveChangeOrderDecision.changeOrderChangeOrderId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it",
+        "cmdApproveChangeOrderDecision.clientClientId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it",
+        "cmdHandoffApprovedChangeOrderToBilling.changeOrderChangeOrderId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-declinechangeorder-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.ts",
+      "typecheck": "passed",
+      "errors": [
+        "cmdDeclineChangeOrderDecision.projectProjectId is a technical id with source 'routeparam' but is bound to an editable control: take it from context (routeparam) instead of rendering a field"
+      ],
+      "warnings": [
+        "declineChangeOrder: generated page does not render textual mutation feedback: cmdDeclineChangeOrderDecision",
+        "declineChangeOrder: generated page does not render textual mutation feedback: cmdHandoffDeclinedChangeOrderToFieldCoordinator",
+        "cmdDeclineChangeOrderDecision.changeOrderChangeOrderId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it",
+        "cmdDeclineChangeOrderDecision.clientClientId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it",
+        "cmdHandoffDeclinedChangeOrderToFieldCoordinator.changeOrderChangeOrderId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-forwardchangeorderforclientapproval-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.ts",
+      "typecheck": "passed",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.ts - TS2551 - Property 'cmdHandoffChangeOrderToClientChangeOrderId' does not exist on type 'BuildFlowFsmDesktopPage11ForwardChangeOrderForClientApprovalPage'. Did you mean 'cmdHandoffChangeOrderToClientChangeOrderChangeOrderId'?"
+      ],
+      "warnings": [
+        "forwardChangeOrderForClientApproval: generated page does not render textual mutation feedback: cmdHandoffChangeOrderToClient",
+        "cmdHandoffChangeOrderToClient.changeOrderChangeOrderId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-monitordailyprojectrecords-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/monitorDailyProjectRecords.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/monitorDailyProjectRecords.ts",
+      "typecheck": "passed",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/monitorDailyProjectRecords.ts - TS2345 - Argument of type '(row: Record<string, unknown>) => TemplateResult<1>' is not assignable to parameter of type '(value: QryLocateProjectOutput, index: number, array: QryLocateProjectOutput[]) => TemplateResult<1>'. Types of parameters 'row' and 'value' are incompatible. Type 'QryLocateProjectOutput' is not assignable to type 'Record<string, unknown>'. Index signature for type 'string' is missing in type 'QryLocateProjectOutput'."
+      ],
+      "warnings": []
+    },
+    {
+      "planId": "materialize-recordprojectmaterialusage-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts",
+      "typecheck": "passed",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts - TS2551 - Property 'cmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageId' does not exist on type 'BuildFlowFsmDesktopPage11RecordProjectMaterialUsagePage'. Did you mean 'cmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageMaterialUsageId'?"
+      ],
+      "warnings": [
+        "recordProjectMaterialUsage: generated page does not render textual mutation feedback: cmdCreateMaterialUsage",
+        "recordProjectMaterialUsage: generated page does not render textual mutation feedback: cmdHandoffMaterialUsageToFieldCoordinator",
+        "cmdCreateMaterialUsage.inventoryBalanceInventoryBalanceId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it",
+        "cmdCreateMaterialUsage.inventoryItemInventoryItemId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-approvechangeorder-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/approveChangeOrder.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/approveChangeOrder.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/approveChangeOrder.ts - TS2345 - Argument of type '([label, value]: [string, string | number | null | undefined]) => TemplateResult<1>' is not assignable to parameter of type '(value: (string | number)[], index: number, array: (string | number)[][]) => TemplateResult<1>'. Types of parameters '__0' and 'value' are incompatible. Type '(string | number)[]' is not assignable to type '[string, string | number | null | undefined]'. Target requires 2 element(s) but source may have fewer."
+      ],
+      "warnings": [
+        "approveChangeOrder: generated page does not render textual mutation feedback: cmdApproveChangeOrderDecision",
+        "approveChangeOrder: generated page does not render textual mutation feedback: cmdHandoffApprovedChangeOrderToBilling"
+      ]
+    },
+    {
+      "planId": "materialize-changeordercatalogue-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/changeOrderCatalogue.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/changeOrderCatalogue.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "cmdCreateChangeOrder.projectProjectId is a technical id with source 'routeparam' but is bound to an editable control: take it from context (routeparam) instead of rendering a field"
+      ],
+      "warnings": [
+        "changeOrderCatalogue: generated page does not render textual mutation feedback: cmdCreateChangeOrder",
+        "changeOrderCatalogue: generated page does not render textual mutation feedback: cmdUpdateChangeOrder",
+        "changeOrderCatalogue: generated page does not render textual mutation feedback: cmdDeleteChangeOrder"
+      ]
+    },
+    {
+      "planId": "materialize-clientbillingsummaryview-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts - TS2345 - Argument of type 'string' is not assignable to parameter of type 'readonly string[]'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts - TS2345 - Argument of type 'string' is not assignable to parameter of type 'readonly string[]'."
+      ],
+      "warnings": []
+    },
+    {
+      "planId": "materialize-clientportalaccesscatalogue-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/clientPortalAccessCatalogue.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/clientPortalAccessCatalogue.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "cmdCreateClientPortalAccess.platformUserId is a technical id with source 'actorsession' but is bound to an editable control: take it from context (actorsession) instead of rendering a field",
+        "cmdUpdateClientPortalAccess.platformUserId is a technical id with source 'actorsession' but is bound to an editable control: take it from context (actorsession) instead of rendering a field"
+      ],
+      "warnings": [
+        "clientPortalAccessCatalogue: generated page does not render textual mutation feedback: cmdCreateClientPortalAccess",
+        "clientPortalAccessCatalogue: generated page does not render textual mutation feedback: cmdUpdateClientPortalAccess",
+        "clientPortalAccessCatalogue: generated page does not render textual mutation feedback: cmdDeleteClientPortalAccess",
+        "cmdCreateClientPortalAccess.clientId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it",
+        "cmdUpdateClientPortalAccess.clientId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-consultclientprojectupdates-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/consultClientProjectUpdates.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/consultClientProjectUpdates.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/consultClientProjectUpdates.ts - TS2345 - Argument of type 'string' is not assignable to parameter of type 'string[]'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/consultClientProjectUpdates.ts - TS2345 - Argument of type 'string' is not assignable to parameter of type 'string[]'."
+      ],
+      "warnings": []
+    },
+    {
+      "planId": "materialize-generateandpublishprojectstatusreport-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/generateAndPublishProjectStatusReport.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/generateAndPublishProjectStatusReport.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/generateAndPublishProjectStatusReport.ts - TS2551 - Property 'cmdHandoffStatusReportState' does not exist on type 'BuildFlowFsmDesktopPage21GenerateAndPublishProjectStatusReportPage'. Did you mean 'cmdHandoffStatusReportToClientState'?",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/generateAndPublishProjectStatusReport.ts - TS2551 - Property 'cmdHandoffStatusReportError' does not exist on type 'BuildFlowFsmDesktopPage21GenerateAndPublishProjectStatusReportPage'. Did you mean 'cmdHandoffStatusReportToClientError'?"
+      ],
+      "warnings": [
+        "generateAndPublishProjectStatusReport: generated page does not render textual mutation feedback: cmdCreateStatusReport",
+        "generateAndPublishProjectStatusReport: generated page does not render textual mutation feedback: cmdPublishStatusReport",
+        "generateAndPublishProjectStatusReport: generated page does not render textual mutation feedback: cmdHandoffStatusReportToClient"
+      ]
+    },
+    {
+      "planId": "materialize-issueprojectinvoice-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/issueProjectInvoice.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/issueProjectInvoice.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/issueProjectInvoice.ts - TS1005 - '}' expected."
+      ],
+      "warnings": [
+        "issueProjectInvoice: generated page does not render textual mutation feedback: cmdCreateInvoice",
+        "issueProjectInvoice: generated page does not render textual mutation feedback: cmdHandoffInvoiceToClient",
+        "cmdCreateInvoice.clientClientId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-projectcatalogue-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectCatalogue.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectCatalogue.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/projectCatalogue.ts - TS2339 - Property 'clientName' does not exist on type 'QryListProjectOutput'."
+      ],
+      "warnings": [
+        "projectCatalogue: generated page does not render textual mutation feedback: cmdCreateProject",
+        "projectCatalogue: generated page does not render textual mutation feedback: cmdUpdateProject",
+        "projectCatalogue: generated page does not render textual mutation feedback: cmdDeleteProject"
+      ]
+    },
+    {
+      "planId": "materialize-projectcoordinationassignmentcatalogue-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectCoordinationAssignmentCatalogue.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectCoordinationAssignmentCatalogue.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "cmdUpdateProjectCoordinationAssignment.fieldCoordinatorId is a technical id with source 'actorsession' but is bound to an editable control: take it from context (actorsession) instead of rendering a field"
+      ],
+      "warnings": [
+        "projectCoordinationAssignmentCatalogue: generated page does not render textual mutation feedback: cmdCreateProjectCoordinationAssignment",
+        "projectCoordinationAssignmentCatalogue: generated page does not render textual mutation feedback: cmdUpdateProjectCoordinationAssignment",
+        "projectCoordinationAssignmentCatalogue: generated page does not render textual mutation feedback: cmdDeleteProjectCoordinationAssignment",
+        "cmdCreateProjectCoordinationAssignment.projectId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-projecttimelineview-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts - TS18047 - 'data' is possibly 'null'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts - TS18047 - 'data' is possibly 'null'."
+      ],
+      "warnings": []
+    },
+    {
+      "planId": "materialize-declinechangeorder-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts - TS2339 - Property 'clientId' does not exist on type 'QryLocateChangeOrderOutput'."
+      ],
+      "warnings": [
+        "declineChangeOrder: generated page does not render textual mutation feedback: cmdDeclineChangeOrderDecision",
+        "declineChangeOrder: generated page does not render textual mutation feedback: cmdHandoffDeclinedChangeOrderToFieldCoordinator"
+      ]
+    },
+    {
+      "planId": "materialize-forwardchangeorderforclientapproval-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/forwardChangeOrderForClientApproval.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/forwardChangeOrderForClientApproval.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/forwardChangeOrderForClientApproval.ts - TS2345 - Argument of type 'QryLocateChangeOrderOutput' is not assignable to parameter of type 'Record<string, unknown>'. Index signature for type 'string' is missing in type 'QryLocateChangeOrderOutput'."
+      ],
+      "warnings": [
+        "forwardChangeOrderForClientApproval: generated page does not render textual mutation feedback: cmdHandoffChangeOrderToClient"
+      ]
+    },
+    {
+      "planId": "materialize-generateandpublishprojectstatusreport-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/generateAndPublishProjectStatusReport.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/generateAndPublishProjectStatusReport.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/generateAndPublishProjectStatusReport.ts - TS18047 - 'risks' is possibly 'null'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/generateAndPublishProjectStatusReport.ts - TS18047 - 'risks' is possibly 'null'."
+      ],
+      "warnings": [
+        "generateAndPublishProjectStatusReport: generated page does not render textual mutation feedback: cmdCreateStatusReport",
+        "generateAndPublishProjectStatusReport: generated page does not render textual mutation feedback: cmdPublishStatusReport",
+        "generateAndPublishProjectStatusReport: generated page does not render textual mutation feedback: cmdHandoffStatusReportToClient"
+      ]
+    },
+    {
+      "planId": "materialize-materialusagecatalogue-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/materialUsageCatalogue.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/materialUsageCatalogue.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "cmdCreateMaterialUsage.projectProjectId is a technical id with source 'routeparam' but is bound to an editable control: take it from context (routeparam) instead of rendering a field"
+      ],
+      "warnings": [
+        "materialUsageCatalogue: generated page does not render textual mutation feedback: cmdCreateMaterialUsage",
+        "materialUsageCatalogue: generated page does not render textual mutation feedback: cmdUpdateMaterialUsage",
+        "materialUsageCatalogue: generated page does not render textual mutation feedback: cmdDeleteMaterialUsage",
+        "cmdCreateMaterialUsage.inventoryBalanceInventoryBalanceId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it",
+        "cmdCreateMaterialUsage.inventoryItemInventoryItemId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-monitordailyprojectrecords-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts - TS2352 - Conversion of type 'QryInspectProjectExecutionOverviewOutput' to type 'Record<string, unknown>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first. Index signature for type 'string' is missing in type 'QryInspectProjectExecutionOverviewOutput'."
+      ],
+      "warnings": []
+    },
+    {
+      "planId": "materialize-projectcatalogue-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2339 - Property 'clientName' does not exist on type 'QryListProjectOutput'."
+      ],
+      "warnings": [
+        "projectCatalogue: generated page does not render textual mutation feedback: cmdCreateProject",
+        "projectCatalogue: generated page does not render textual mutation feedback: cmdUpdateProject",
+        "projectCatalogue: generated page does not render textual mutation feedback: cmdDeleteProject"
+      ]
+    },
+    {
+      "planId": "materialize-projecthub-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/projectHub.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/projectHub.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectHub.ts - TS2352 - Conversion of type 'QryProjectDashboardViewOutput' to type 'Record<string, unknown>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first. Index signature for type 'string' is missing in type 'QryProjectDashboardViewOutput'."
+      ],
+      "warnings": []
+    },
+    {
+      "planId": "materialize-recordprojectmaterialusage-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/recordProjectMaterialUsage.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/recordProjectMaterialUsage.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/recordProjectMaterialUsage.ts - TS2551 - Property 'setCmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageId' does not exist on type 'BuildFlowFsmDesktopPage31RecordProjectMaterialUsagePage'. Did you mean 'setCmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageMaterialUsageId'?",
+        "cmdCreateMaterialUsage.projectProjectId is a technical id with source 'routeparam' but is bound to an editable control: take it from context (routeparam) instead of rendering a field"
+      ],
+      "warnings": [
+        "recordProjectMaterialUsage: generated page does not render textual mutation feedback: cmdCreateMaterialUsage",
+        "recordProjectMaterialUsage: generated page does not render textual mutation feedback: cmdHandoffMaterialUsageToFieldCoordinator",
+        "cmdCreateMaterialUsage.inventoryBalanceInventoryBalanceId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it",
+        "cmdCreateMaterialUsage.inventoryItemInventoryItemId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-statusreportcatalogue-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/statusReportCatalogue.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/statusReportCatalogue.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "cmdCreateStatusReport.projectProjectId is a technical id with source 'routeparam' but is bound to an editable control: take it from context (routeparam) instead of rendering a field"
+      ],
+      "warnings": [
+        "statusReportCatalogue: generated page does not render textual mutation feedback: cmdCreateStatusReport",
+        "statusReportCatalogue: generated page does not render textual mutation feedback: cmdUpdateStatusReport",
+        "statusReportCatalogue: generated page does not render textual mutation feedback: cmdDeleteStatusReport",
+        "cmdCreateStatusReport.projectExecutionOverviewProjectId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    }
+  ],
+  "agent": "agentCfeMaterializePhase"
+}

@@ -1,0 +1,153 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListProjectCoordinationAssignmentOutput, CmdCreateProjectCoordinationAssignmentOutput, CmdUpdateProjectCoordinationAssignmentOutput, CmdDeleteProjectCoordinationAssignmentOutput, QryProjectPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/projectCoordinationAssignmentCatalogue.js';
+export type { QryListProjectCoordinationAssignmentInput, QryListProjectCoordinationAssignmentOutput, CmdCreateProjectCoordinationAssignmentInput, CmdCreateProjectCoordinationAssignmentOutput, CmdUpdateProjectCoordinationAssignmentInput, CmdUpdateProjectCoordinationAssignmentOutput, CmdDeleteProjectCoordinationAssignmentInput, CmdDeleteProjectCoordinationAssignmentOutput, QryProjectPickerInput, QryProjectPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/projectCoordinationAssignmentCatalogue.js';
+declare const message_pt: {
+    'section.projectCoordinationAssignmentCatalogue.recordList.title': string;
+    'organism.projectCoordinationAssignmentCatalogue.qryListProjectCoordinationAssignment.title': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryListProjectCoordinationAssignment.list.title': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryListProjectCoordinationAssignment.list.empty': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryListProjectCoordinationAssignment.list.column.projectCoordinationAssignmentId.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryListProjectCoordinationAssignment.list.column.projectId.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryListProjectCoordinationAssignment.list.column.fieldCoordinatorId.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryListProjectCoordinationAssignment.list.column.status.label': string;
+    'organism.projectCoordinationAssignmentCatalogue.cmdDeleteProjectCoordinationAssignment.title': string;
+    'intent.projectCoordinationAssignmentCatalogue.cmdDeleteProjectCoordinationAssignment.form.title': string;
+    'intent.projectCoordinationAssignmentCatalogue.cmdDeleteProjectCoordinationAssignment.form.action.cmdDeleteProjectCoordinationAssignment': string;
+    'section.projectCoordinationAssignmentCatalogue.recordForm.title': string;
+    'organism.projectCoordinationAssignmentCatalogue.qryProjectPicker.title': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryProjectPicker.list.title': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryProjectPicker.list.empty': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryProjectPicker.list.column.projectId.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryProjectPicker.list.column.clientId.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryProjectPicker.list.column.name.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryProjectPicker.list.column.address.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryProjectPicker.list.column.status.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryProjectPicker.list.column.authorizedBudget.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryProjectPicker.list.column.plannedStartDate.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.qryProjectPicker.list.column.plannedEndDate.label': string;
+    'organism.projectCoordinationAssignmentCatalogue.cmdCreateProjectCoordinationAssignment.title': string;
+    'intent.projectCoordinationAssignmentCatalogue.cmdCreateProjectCoordinationAssignment.form.title': string;
+    'intent.projectCoordinationAssignmentCatalogue.cmdCreateProjectCoordinationAssignment.form.action.cmdCreateProjectCoordinationAssignment': string;
+    'intent.projectCoordinationAssignmentCatalogue.cmdCreateProjectCoordinationAssignment.form.field.fieldCoordinatorId.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.cmdCreateProjectCoordinationAssignment.form.field.status.label': string;
+    'organism.projectCoordinationAssignmentCatalogue.cmdUpdateProjectCoordinationAssignment.title': string;
+    'intent.projectCoordinationAssignmentCatalogue.cmdUpdateProjectCoordinationAssignment.form.title': string;
+    'intent.projectCoordinationAssignmentCatalogue.cmdUpdateProjectCoordinationAssignment.form.action.cmdUpdateProjectCoordinationAssignment': string;
+    'intent.projectCoordinationAssignmentCatalogue.cmdUpdateProjectCoordinationAssignment.form.field.fieldCoordinatorId.label': string;
+    'intent.projectCoordinationAssignmentCatalogue.cmdUpdateProjectCoordinationAssignment.form.field.status.label': string;
+    'action.cmdCreateProjectCoordinationAssignment.success': string;
+    'action.cmdCreateProjectCoordinationAssignment.error': string;
+    'action.cmdUpdateProjectCoordinationAssignment.success': string;
+    'action.cmdUpdateProjectCoordinationAssignment.error': string;
+    'action.cmdDeleteProjectCoordinationAssignment.success': string;
+    'action.cmdDeleteProjectCoordinationAssignment.error': string;
+    'section.projectCoordinationAssignmentCatalogue.assignmentWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmProjectCoordinationAssignmentCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListProjectCoordinationAssignmentState — actionStatus, values: idle|loading|success|error */
+    qryListProjectCoordinationAssignmentState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListProjectCoordinationAssignmentData — queryResult, outputShape: array */
+    qryListProjectCoordinationAssignmentData: QryListProjectCoordinationAssignmentOutput[];
+    /** state cmdCreateProjectCoordinationAssignmentState — actionStatus, values: idle|loading|success|error */
+    cmdCreateProjectCoordinationAssignmentState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateProjectCoordinationAssignmentProjectId — input */
+    cmdCreateProjectCoordinationAssignmentProjectId: string;
+    /** state cmdCreateProjectCoordinationAssignmentFieldCoordinatorId — input */
+    cmdCreateProjectCoordinationAssignmentFieldCoordinatorId: string;
+    /** state cmdCreateProjectCoordinationAssignmentStatus — input */
+    cmdCreateProjectCoordinationAssignmentStatus: string;
+    /** state cmdCreateProjectCoordinationAssignmentOutput — commandOutput */
+    cmdCreateProjectCoordinationAssignmentOutput: CmdCreateProjectCoordinationAssignmentOutput | null;
+    /** state cmdCreateProjectCoordinationAssignmentError — actionError */
+    cmdCreateProjectCoordinationAssignmentError: string;
+    /** state cmdUpdateProjectCoordinationAssignmentState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateProjectCoordinationAssignmentState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateProjectCoordinationAssignmentProjectCoordinationAssignmentId — input */
+    cmdUpdateProjectCoordinationAssignmentProjectCoordinationAssignmentId: string;
+    /** state cmdUpdateProjectCoordinationAssignmentProjectId — input */
+    cmdUpdateProjectCoordinationAssignmentProjectId: string;
+    /** state cmdUpdateProjectCoordinationAssignmentFieldCoordinatorId — input */
+    cmdUpdateProjectCoordinationAssignmentFieldCoordinatorId: string;
+    /** state cmdUpdateProjectCoordinationAssignmentStatus — input */
+    cmdUpdateProjectCoordinationAssignmentStatus: string;
+    /** state cmdUpdateProjectCoordinationAssignmentOutput — commandOutput */
+    cmdUpdateProjectCoordinationAssignmentOutput: CmdUpdateProjectCoordinationAssignmentOutput | null;
+    /** state cmdUpdateProjectCoordinationAssignmentError — actionError */
+    cmdUpdateProjectCoordinationAssignmentError: string;
+    /** state cmdDeleteProjectCoordinationAssignmentState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteProjectCoordinationAssignmentState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteProjectCoordinationAssignmentProjectCoordinationAssignmentId — input */
+    cmdDeleteProjectCoordinationAssignmentProjectCoordinationAssignmentId: string;
+    /** state cmdDeleteProjectCoordinationAssignmentOutput — commandOutput */
+    cmdDeleteProjectCoordinationAssignmentOutput: CmdDeleteProjectCoordinationAssignmentOutput | null;
+    /** state cmdDeleteProjectCoordinationAssignmentError — actionError */
+    cmdDeleteProjectCoordinationAssignmentError: string;
+    /** state qryProjectPickerState — actionStatus, values: idle|loading|success|error */
+    qryProjectPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectPickerData — queryResult, outputShape: array */
+    qryProjectPickerData: QryProjectPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryListProjectCoordinationAssignment (query) — route buildFlowFsm.projectCoordinationAssignmentCatalogue.qryListProjectCoordinationAssignment; inputs: (none); writes ui.projectCoordinationAssignmentCatalogue.data.qryListProjectCoordinationAssignment; status ui.projectCoordinationAssignmentCatalogue.action.qryListProjectCoordinationAssignment.status */
+    loadQryListProjectCoordinationAssignment(): Promise<void>;
+    /** handler for action qryListProjectCoordinationAssignment — bind UI events here */
+    handleQryListProjectCoordinationAssignmentClick(event?: Event): void;
+    /** action cmdCreateProjectCoordinationAssignment (command) — route buildFlowFsm.projectCoordinationAssignmentCatalogue.cmdCreateProjectCoordinationAssignment; inputs: projectId, fieldCoordinatorId, status; writes ui.projectCoordinationAssignmentCatalogue.output.cmdCreateProjectCoordinationAssignment; status ui.projectCoordinationAssignmentCatalogue.action.cmdCreateProjectCoordinationAssignment.status; feedback keys action.cmdCreateProjectCoordinationAssignment.success / action.cmdCreateProjectCoordinationAssignment.error */
+    cmdCreateProjectCoordinationAssignment(): Promise<void>;
+    /** handler for action cmdCreateProjectCoordinationAssignment — bind UI events here */
+    handleCmdCreateProjectCoordinationAssignmentClick(event?: Event): void;
+    /** action cmdUpdateProjectCoordinationAssignment (command) — route buildFlowFsm.projectCoordinationAssignmentCatalogue.cmdUpdateProjectCoordinationAssignment; inputs: projectCoordinationAssignmentId, projectId, fieldCoordinatorId, status; writes ui.projectCoordinationAssignmentCatalogue.output.cmdUpdateProjectCoordinationAssignment; status ui.projectCoordinationAssignmentCatalogue.action.cmdUpdateProjectCoordinationAssignment.status; feedback keys action.cmdUpdateProjectCoordinationAssignment.success / action.cmdUpdateProjectCoordinationAssignment.error */
+    cmdUpdateProjectCoordinationAssignment(): Promise<void>;
+    /** handler for action cmdUpdateProjectCoordinationAssignment — bind UI events here */
+    handleCmdUpdateProjectCoordinationAssignmentClick(event?: Event): void;
+    /** action cmdDeleteProjectCoordinationAssignment (command) — route buildFlowFsm.projectCoordinationAssignmentCatalogue.cmdDeleteProjectCoordinationAssignment; inputs: projectCoordinationAssignmentId; writes ui.projectCoordinationAssignmentCatalogue.output.cmdDeleteProjectCoordinationAssignment; status ui.projectCoordinationAssignmentCatalogue.action.cmdDeleteProjectCoordinationAssignment.status; feedback keys action.cmdDeleteProjectCoordinationAssignment.success / action.cmdDeleteProjectCoordinationAssignment.error */
+    cmdDeleteProjectCoordinationAssignment(): Promise<void>;
+    /** handler for action cmdDeleteProjectCoordinationAssignment — bind UI events here */
+    handleCmdDeleteProjectCoordinationAssignmentClick(event?: Event): void;
+    /** action qryProjectPicker (query) — route buildFlowFsm.projectCoordinationAssignmentCatalogue.qryProjectPicker; inputs: (none); writes ui.projectCoordinationAssignmentCatalogue.data.qryProjectPicker; status ui.projectCoordinationAssignmentCatalogue.action.qryProjectPicker.status */
+    loadQryProjectPicker(): Promise<void>;
+    /** handler for action qryProjectPicker — bind UI events here */
+    handleQryProjectPickerClick(event?: Event): void;
+    /** setter for state ui.projectCoordinationAssignmentCatalogue.input.cmdCreateProjectCoordinationAssignment.projectId */
+    setCmdCreateProjectCoordinationAssignmentProjectId(value: string): void;
+    /** handler for action set.cmdCreateProjectCoordinationAssignmentProjectId — bind UI events here */
+    handleCmdCreateProjectCoordinationAssignmentProjectIdChange(event: Event): void;
+    /** setter for state ui.projectCoordinationAssignmentCatalogue.input.cmdCreateProjectCoordinationAssignment.fieldCoordinatorId */
+    setCmdCreateProjectCoordinationAssignmentFieldCoordinatorId(value: string): void;
+    /** handler for action set.cmdCreateProjectCoordinationAssignmentFieldCoordinatorId — bind UI events here */
+    handleCmdCreateProjectCoordinationAssignmentFieldCoordinatorIdChange(event: Event): void;
+    /** setter for state ui.projectCoordinationAssignmentCatalogue.input.cmdCreateProjectCoordinationAssignment.status */
+    setCmdCreateProjectCoordinationAssignmentStatus(value: string): void;
+    /** handler for action set.cmdCreateProjectCoordinationAssignmentStatus — bind UI events here */
+    handleCmdCreateProjectCoordinationAssignmentStatusChange(event: Event): void;
+    /** setter for state ui.projectCoordinationAssignmentCatalogue.input.cmdUpdateProjectCoordinationAssignment.projectCoordinationAssignmentId */
+    setCmdUpdateProjectCoordinationAssignmentProjectCoordinationAssignmentId(value: string): void;
+    /** handler for action set.cmdUpdateProjectCoordinationAssignmentProjectCoordinationAssignmentId — bind UI events here */
+    handleCmdUpdateProjectCoordinationAssignmentProjectCoordinationAssignmentIdChange(event: Event): void;
+    /** setter for state ui.projectCoordinationAssignmentCatalogue.input.cmdUpdateProjectCoordinationAssignment.projectId */
+    setCmdUpdateProjectCoordinationAssignmentProjectId(value: string): void;
+    /** handler for action set.cmdUpdateProjectCoordinationAssignmentProjectId — bind UI events here */
+    handleCmdUpdateProjectCoordinationAssignmentProjectIdChange(event: Event): void;
+    /** setter for state ui.projectCoordinationAssignmentCatalogue.input.cmdUpdateProjectCoordinationAssignment.fieldCoordinatorId */
+    setCmdUpdateProjectCoordinationAssignmentFieldCoordinatorId(value: string): void;
+    /** handler for action set.cmdUpdateProjectCoordinationAssignmentFieldCoordinatorId — bind UI events here */
+    handleCmdUpdateProjectCoordinationAssignmentFieldCoordinatorIdChange(event: Event): void;
+    /** setter for state ui.projectCoordinationAssignmentCatalogue.input.cmdUpdateProjectCoordinationAssignment.status */
+    setCmdUpdateProjectCoordinationAssignmentStatus(value: string): void;
+    /** handler for action set.cmdUpdateProjectCoordinationAssignmentStatus — bind UI events here */
+    handleCmdUpdateProjectCoordinationAssignmentStatusChange(event: Event): void;
+    /** setter for state ui.projectCoordinationAssignmentCatalogue.input.cmdDeleteProjectCoordinationAssignment.projectCoordinationAssignmentId */
+    setCmdDeleteProjectCoordinationAssignmentProjectCoordinationAssignmentId(value: string): void;
+    /** handler for action set.cmdDeleteProjectCoordinationAssignmentProjectCoordinationAssignmentId — bind UI events here */
+    handleCmdDeleteProjectCoordinationAssignmentProjectCoordinationAssignmentIdChange(event: Event): void;
+}

@@ -1,0 +1,53 @@
+{
+  "savedAt": "2026-08-18T14:50:34.394Z",
+  "pageId": "approveChangeOrder",
+  "genome": "page21",
+  "objective": {
+    "actor": "Responsável pelo controle de mudanças do projeto, com autoridade para aprovar alterações recebidas do cliente e encaminhá-las ao faturamento.",
+    "jobToBeDone": "Revisar a ordem de mudança pendente, aprová-la quando estiver correta e encaminhá-la ao faturamento com os impactos e o valor registrados.",
+    "primaryDecision": "Aprovar a ordem de mudança selecionada e, após a aprovação, decidir encaminhá-la ao faturamento.",
+    "decisiveInfo": [
+      "status atual da ordem",
+      "descrição da alteração",
+      "impacto no escopo",
+      "impacto no cronograma",
+      "valor da alteração",
+      "cliente associado",
+      "projeto associado",
+      "data de submissão",
+      "data de encaminhamento para aprovação do cliente"
+    ],
+    "usageFrequency": "Operacional e recorrente, durante o tratamento de ordens de mudança pendentes.",
+    "informationHierarchy": [
+      "ordem selecionada e status atual",
+      "descrição, cliente e projeto",
+      "impactos de escopo e cronograma",
+      "valor da alteração e datas de referência",
+      "ação de aprovação",
+      "dados complementares e ação de encaminhamento ao faturamento"
+    ],
+    "successCriteria": "O usuário identifica rapidamente a ordem pendente, entende seu impacto, executa a aprovação como uma transição explícita e consegue encaminhar somente uma ordem aprovada ao faturamento sem redigitar IDs.",
+    "antiPatterns": [
+      "formulário CRUD com todos os campos da entidade",
+      "campo manual para changeOrderId, clientId ou projectId",
+      "select livre para status",
+      "formulário de transição separado da ordem selecionada",
+      "mostrar o encaminhamento ao faturamento antes de a aprovação estar concluída",
+      "ocultar o status atual antes da decisão"
+    ],
+    "criticalActions": [
+      {
+        "action": "Localizar e selecionar a ordem pendente",
+        "presentation": "master-detail com superfície dominante de ordens e detalhe contextual"
+      },
+      {
+        "action": "Aprovar a ordem selecionada",
+        "presentation": "contextual-transition-actions com botão explícito para a transição válida"
+      },
+      {
+        "action": "Encaminhar a ordem aprovada ao faturamento",
+        "presentation": "contextual-transition-actions em painel contextual, com dados de impacto editáveis e identificador derivado da seleção"
+      }
+    ]
+  }
+}

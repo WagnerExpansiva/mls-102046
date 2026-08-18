@@ -1,0 +1,1431 @@
+{
+  "modules": [
+    {
+      "moduleId": "buildFlowFsm",
+      "basePath": "/buildFlowFsm",
+      "navigation": [
+        {
+          "id": "changeOrderCatalogue",
+          "label": "Ordem de mudança",
+          "href": "/buildFlowFsm/changeOrderCatalogue",
+          "description": "Cadastro de Ordem de mudança.",
+          "actors": [
+            "client",
+            "fieldCoordinator",
+            "projectManager"
+          ],
+          "workspaceId": "changeOrderCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "changeOrderDecisionCatalogue",
+          "label": "Decisão sobre ordem de mudança",
+          "href": "/buildFlowFsm/changeOrderDecisionCatalogue",
+          "description": "Cadastro de Decisão sobre ordem de mudança.",
+          "actors": [
+            "billingStaff",
+            "fieldCoordinator",
+            "fieldWorker",
+            "projectManager"
+          ],
+          "workspaceId": "changeOrderDecisionCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "clientBillingSummaryView",
+          "label": "Resumo de faturamento do cliente",
+          "href": "/buildFlowFsm/clientBillingSummaryView",
+          "description": "Projeção comercial por cliente e obra que consolida alterações aprovadas, valores faturáveis, faturas emitidas e valores disponibilizados ao cliente.",
+          "actors": [
+            "billingStaff"
+          ],
+          "workspaceId": "clientBillingSummaryView",
+          "scenarioId": "overview",
+          "sectionId": "projection"
+        },
+        {
+          "id": "clientCatalogue",
+          "label": "Cliente",
+          "href": "/buildFlowFsm/clientCatalogue",
+          "description": "Cadastro de Cliente.",
+          "actors": [
+            "billingStaff",
+            "fieldCoordinator"
+          ],
+          "workspaceId": "clientCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "clientPortalAccessCatalogue",
+          "label": "Vínculo de acesso do cliente",
+          "href": "/buildFlowFsm/clientPortalAccessCatalogue",
+          "description": "Cadastro de Vínculo de acesso do cliente.",
+          "actors": [
+            "billingStaff",
+            "fieldCoordinator",
+            "fieldWorker",
+            "projectManager"
+          ],
+          "workspaceId": "clientPortalAccessCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "inventoryBalanceCatalogue",
+          "label": "Saldo de estoque",
+          "href": "/buildFlowFsm/inventoryBalanceCatalogue",
+          "description": "Cadastro de Saldo de estoque.",
+          "actors": [
+            "billingStaff",
+            "fieldCoordinator",
+            "fieldWorker",
+            "projectManager"
+          ],
+          "workspaceId": "inventoryBalanceCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "inventoryItemCatalogue",
+          "label": "Item de estoque",
+          "href": "/buildFlowFsm/inventoryItemCatalogue",
+          "description": "Cadastro de Item de estoque.",
+          "actors": [
+            "fieldWorker"
+          ],
+          "workspaceId": "inventoryItemCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "invoiceCatalogue",
+          "label": "Fatura",
+          "href": "/buildFlowFsm/invoiceCatalogue",
+          "description": "Cadastro de Fatura.",
+          "actors": [
+            "billingStaff"
+          ],
+          "workspaceId": "invoiceCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "invoiceChangeOrderCatalogue",
+          "label": "Aplicação de ordem de mudança na fatura",
+          "href": "/buildFlowFsm/invoiceChangeOrderCatalogue",
+          "description": "Cadastro de Aplicação de ordem de mudança na fatura.",
+          "actors": [
+            "billingStaff",
+            "fieldCoordinator",
+            "fieldWorker",
+            "projectManager"
+          ],
+          "workspaceId": "invoiceChangeOrderCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "materialUsageCatalogue",
+          "label": "Consumo de material",
+          "href": "/buildFlowFsm/materialUsageCatalogue",
+          "description": "Cadastro de Consumo de material.",
+          "actors": [
+            "fieldCoordinator",
+            "fieldWorker"
+          ],
+          "workspaceId": "materialUsageCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "projectCatalogue",
+          "label": "Obra",
+          "href": "/buildFlowFsm/projectCatalogue",
+          "description": "Cadastro de Obra.",
+          "actors": [
+            "billingStaff",
+            "client",
+            "fieldCoordinator",
+            "fieldWorker",
+            "projectManager"
+          ],
+          "workspaceId": "projectCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "projectCoordinationAssignmentCatalogue",
+          "label": "Atribuição de coordenação da obra",
+          "href": "/buildFlowFsm/projectCoordinationAssignmentCatalogue",
+          "description": "Cadastro de Atribuição de coordenação da obra.",
+          "actors": [
+            "billingStaff",
+            "fieldCoordinator",
+            "fieldWorker",
+            "projectManager"
+          ],
+          "workspaceId": "projectCoordinationAssignmentCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "projectDashboardView",
+          "label": "Painel de portfólio de obras",
+          "href": "/buildFlowFsm/projectDashboardView",
+          "description": "Projeção organizacional que consolida obras ativas, orçamento versus realizado, atenção de custo e tarefas próximas para monitoramento gerencial.",
+          "actors": [
+            "projectManager"
+          ],
+          "workspaceId": "projectDashboardView",
+          "scenarioId": "overview",
+          "sectionId": "projection"
+        },
+        {
+          "id": "projectExecutionOverviewView",
+          "label": "Visão consolidada de execução da obra",
+          "href": "/buildFlowFsm/projectExecutionOverviewView",
+          "description": "Projeção por obra que reúne andamento de tarefas, próximos compromissos, horas, materiais, custos realizados e impactos de alterações para acompanhamento e comunicação.",
+          "actors": [
+            "projectManager"
+          ],
+          "workspaceId": "projectExecutionOverviewView",
+          "scenarioId": "overview",
+          "sectionId": "projection"
+        },
+        {
+          "id": "projectHub",
+          "label": "Obra",
+          "href": "/buildFlowFsm/projectHub",
+          "description": "Painel de Obra.",
+          "actors": [
+            "billingStaff",
+            "client",
+            "fieldCoordinator",
+            "fieldWorker",
+            "projectManager"
+          ],
+          "workspaceId": "projectHub",
+          "scenarioId": "collection",
+          "sectionId": "hub",
+          "hub": "Project"
+        },
+        {
+          "id": "projectTimelineView",
+          "label": "Cronograma da obra",
+          "href": "/buildFlowFsm/projectTimelineView",
+          "description": "Projeção do sequenciamento das tarefas e prazos de uma obra para planejamento, atribuição e acompanhamento de campo.",
+          "actors": [
+            "fieldCoordinator"
+          ],
+          "workspaceId": "projectTimelineView",
+          "scenarioId": "overview",
+          "sectionId": "projection"
+        },
+        {
+          "id": "scheduleRiskAssessmentView",
+          "label": "Avaliação de risco de atraso",
+          "href": "/buildFlowFsm/scheduleRiskAssessmentView",
+          "description": "Projeção que identifica tarefas não concluídas com risco de atraso e os indicadores que explicam o risco para a obra e o relatório de status.",
+          "actors": [
+            "projectManager"
+          ],
+          "workspaceId": "scheduleRiskAssessmentView",
+          "scenarioId": "overview",
+          "sectionId": "projection"
+        },
+        {
+          "id": "statusReportCatalogue",
+          "label": "Relatório de status",
+          "href": "/buildFlowFsm/statusReportCatalogue",
+          "description": "Cadastro de Relatório de status.",
+          "actors": [
+            "client",
+            "projectManager"
+          ],
+          "workspaceId": "statusReportCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "timeLogCatalogue",
+          "label": "Registro de horas",
+          "href": "/buildFlowFsm/timeLogCatalogue",
+          "description": "Cadastro de Registro de horas.",
+          "actors": [
+            "fieldCoordinator",
+            "fieldWorker"
+          ],
+          "workspaceId": "timeLogCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        },
+        {
+          "id": "workTaskCatalogue",
+          "label": "Tarefa de trabalho",
+          "href": "/buildFlowFsm/workTaskCatalogue",
+          "description": "Cadastro de Tarefa de trabalho.",
+          "actors": [
+            "fieldCoordinator",
+            "fieldWorker"
+          ],
+          "workspaceId": "workTaskCatalogue",
+          "scenarioId": "recordList",
+          "sectionId": "recordCatalogue"
+        }
+      ],
+      "headerLinks": [
+        {
+          "id": "headerProjectHub",
+          "label": "Obra",
+          "href": "/buildFlowFsm/projectHub",
+          "actors": [
+            "billingStaff",
+            "client",
+            "fieldCoordinator",
+            "fieldWorker",
+            "projectManager"
+          ],
+          "manageable": true,
+          "hub": "Project"
+        }
+      ]
+    }
+  ],
+  "defaultProjectId": "102046",
+  "projects": {
+    "102029": {
+      "root": "../mls-102029",
+      "type": "lib"
+    },
+    "102033": {
+      "root": "../mls-102033",
+      "type": "master frontend"
+    },
+    "102034": {
+      "root": "../mls-102034",
+      "type": "master backend"
+    },
+    "102046": {
+      "root": ".",
+      "type": "client",
+      "runtime": {
+        "projectId": "102046"
+      },
+      "modules": [
+        {
+          "moduleId": "buildFlowFsm",
+          "basePath": "/buildFlowFsm",
+          "shellMode": "spa",
+          "backendControllers": "./_102046_/l1/buildFlowFsm/layer_1_external/adapters/http/controllers",
+          "languages": [
+            "pt-br",
+            "en",
+            "es"
+          ],
+          "navigation": [
+            {
+              "id": "approveChangeOrder",
+              "label": "Aprovar ordem de mudança",
+              "href": "/buildFlowFsm/approveChangeOrder",
+              "description": "Aprovar ordem de mudança"
+            },
+            {
+              "id": "assignWorkTask",
+              "label": "Planejar e atribuir tarefa de campo",
+              "href": "/buildFlowFsm/assignWorkTask",
+              "description": "Planejar e atribuir tarefa de campo"
+            },
+            {
+              "id": "changeOrderCatalogue",
+              "label": "Ordem de mudança",
+              "href": "/buildFlowFsm/changeOrderCatalogue",
+              "description": "Ordem de mudança"
+            },
+            {
+              "id": "changeOrderDecisionCatalogue",
+              "label": "Decisão sobre ordem de mudança",
+              "href": "/buildFlowFsm/changeOrderDecisionCatalogue",
+              "description": "Decisão sobre ordem de mudança"
+            },
+            {
+              "id": "clientBillingSummaryView",
+              "label": "Resumo de faturamento do cliente",
+              "href": "/buildFlowFsm/clientBillingSummaryView",
+              "description": "Resumo de faturamento do cliente"
+            },
+            {
+              "id": "clientCatalogue",
+              "label": "Cliente",
+              "href": "/buildFlowFsm/clientCatalogue",
+              "description": "Cliente"
+            },
+            {
+              "id": "clientPortalAccessCatalogue",
+              "label": "Vínculo de acesso do cliente",
+              "href": "/buildFlowFsm/clientPortalAccessCatalogue",
+              "description": "Vínculo de acesso do cliente"
+            },
+            {
+              "id": "consultApprovedProjectChangeOrders",
+              "label": "Consultar alterações aprovadas da obra",
+              "href": "/buildFlowFsm/consultApprovedProjectChangeOrders",
+              "description": "Consultar alterações aprovadas da obra"
+            },
+            {
+              "id": "consultClientProjectUpdates",
+              "label": "Consultar status e faturamento da obra",
+              "href": "/buildFlowFsm/consultClientProjectUpdates",
+              "description": "Consultar status e faturamento da obra"
+            },
+            {
+              "id": "declineChangeOrder",
+              "label": "Recusar ordem de mudança",
+              "href": "/buildFlowFsm/declineChangeOrder",
+              "description": "Recusar ordem de mudança"
+            },
+            {
+              "id": "forwardChangeOrderForClientApproval",
+              "label": "Encaminhar ordem de mudança ao cliente",
+              "href": "/buildFlowFsm/forwardChangeOrderForClientApproval",
+              "description": "Encaminhar ordem de mudança ao cliente"
+            },
+            {
+              "id": "generateAndPublishProjectStatusReport",
+              "label": "Gerar e publicar relatório de status",
+              "href": "/buildFlowFsm/generateAndPublishProjectStatusReport",
+              "description": "Gerar e publicar relatório de status"
+            },
+            {
+              "id": "inventoryBalanceCatalogue",
+              "label": "Saldo de estoque",
+              "href": "/buildFlowFsm/inventoryBalanceCatalogue",
+              "description": "Saldo de estoque"
+            },
+            {
+              "id": "inventoryItemCatalogue",
+              "label": "Item de estoque",
+              "href": "/buildFlowFsm/inventoryItemCatalogue",
+              "description": "Item de estoque"
+            },
+            {
+              "id": "invoiceCatalogue",
+              "label": "Fatura",
+              "href": "/buildFlowFsm/invoiceCatalogue",
+              "description": "Fatura"
+            },
+            {
+              "id": "invoiceChangeOrderCatalogue",
+              "label": "Aplicação de ordem de mudança na fatura",
+              "href": "/buildFlowFsm/invoiceChangeOrderCatalogue",
+              "description": "Aplicação de ordem de mudança na fatura"
+            },
+            {
+              "id": "issueProjectInvoice",
+              "label": "Emitir fatura da obra",
+              "href": "/buildFlowFsm/issueProjectInvoice",
+              "description": "Emitir fatura da obra"
+            },
+            {
+              "id": "materialUsageCatalogue",
+              "label": "Consumo de material",
+              "href": "/buildFlowFsm/materialUsageCatalogue",
+              "description": "Consumo de material"
+            },
+            {
+              "id": "monitorDailyProjectRecords",
+              "label": "Acompanhar registros diários da obra",
+              "href": "/buildFlowFsm/monitorDailyProjectRecords",
+              "description": "Acompanhar registros diários da obra"
+            },
+            {
+              "id": "projectCatalogue",
+              "label": "Obra",
+              "href": "/buildFlowFsm/projectCatalogue",
+              "description": "Obra"
+            },
+            {
+              "id": "projectCoordinationAssignmentCatalogue",
+              "label": "Atribuição de coordenação da obra",
+              "href": "/buildFlowFsm/projectCoordinationAssignmentCatalogue",
+              "description": "Atribuição de coordenação da obra"
+            },
+            {
+              "id": "projectDashboardView",
+              "label": "Painel de portfólio de obras",
+              "href": "/buildFlowFsm/projectDashboardView",
+              "description": "Painel de portfólio de obras"
+            },
+            {
+              "id": "projectExecutionOverviewView",
+              "label": "Visão consolidada de execução da obra",
+              "href": "/buildFlowFsm/projectExecutionOverviewView",
+              "description": "Visão consolidada de execução da obra"
+            },
+            {
+              "id": "projectHub",
+              "label": "Obra",
+              "href": "/buildFlowFsm/projectHub",
+              "description": "Obra"
+            },
+            {
+              "id": "projectTimelineView",
+              "label": "Cronograma da obra",
+              "href": "/buildFlowFsm/projectTimelineView",
+              "description": "Cronograma da obra"
+            },
+            {
+              "id": "recordProjectMaterialUsage",
+              "label": "Registrar consumo de material da obra",
+              "href": "/buildFlowFsm/recordProjectMaterialUsage",
+              "description": "Registrar consumo de material da obra"
+            },
+            {
+              "id": "recordWorkTime",
+              "label": "Registrar horas trabalhadas",
+              "href": "/buildFlowFsm/recordWorkTime",
+              "description": "Registrar horas trabalhadas"
+            },
+            {
+              "id": "reviewProjectPortfolio",
+              "label": "Monitorar portfólio e direcionar obra",
+              "href": "/buildFlowFsm/reviewProjectPortfolio",
+              "description": "Monitorar portfólio e direcionar obra"
+            },
+            {
+              "id": "scheduleRiskAssessmentView",
+              "label": "Avaliação de risco de atraso",
+              "href": "/buildFlowFsm/scheduleRiskAssessmentView",
+              "description": "Avaliação de risco de atraso"
+            },
+            {
+              "id": "statusReportCatalogue",
+              "label": "Relatório de status",
+              "href": "/buildFlowFsm/statusReportCatalogue",
+              "description": "Relatório de status"
+            },
+            {
+              "id": "submitChangeOrder",
+              "label": "Registrar e submeter ordem de mudança",
+              "href": "/buildFlowFsm/submitChangeOrder",
+              "description": "Registrar e submeter ordem de mudança"
+            },
+            {
+              "id": "timeLogCatalogue",
+              "label": "Registro de horas",
+              "href": "/buildFlowFsm/timeLogCatalogue",
+              "description": "Registro de horas"
+            },
+            {
+              "id": "updateWorkTaskProgress",
+              "label": "Atualizar andamento da tarefa",
+              "href": "/buildFlowFsm/updateWorkTaskProgress",
+              "description": "Atualizar andamento da tarefa"
+            },
+            {
+              "id": "workTaskCatalogue",
+              "label": "Tarefa de trabalho",
+              "href": "/buildFlowFsm/workTaskCatalogue",
+              "description": "Tarefa de trabalho"
+            }
+          ],
+          "frontend": {
+            "layer": "l2",
+            "pages": [
+              {
+                "pageId": "approveChangeOrder",
+                "route": "/buildFlowFsm/approveChangeOrder/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/approveChangeOrder.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/approveChangeOrder.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--approve-change-order-102046",
+                "title": "Aprovar ordem de mudança"
+              },
+              {
+                "pageId": "approveChangeOrder-page21",
+                "route": "/buildFlowFsm/approveChangeOrder-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/approveChangeOrder.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/approveChangeOrder.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--approve-change-order-102046",
+                "title": "Aprovar ordem de mudança - PAGE21"
+              },
+              {
+                "pageId": "approveChangeOrder-page31",
+                "route": "/buildFlowFsm/approveChangeOrder-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/approveChangeOrder.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/approveChangeOrder.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--approve-change-order-102046",
+                "title": "Aprovar ordem de mudança - PAGE31"
+              },
+              {
+                "pageId": "assignWorkTask",
+                "route": "/buildFlowFsm/assignWorkTask/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/assignWorkTask.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/assignWorkTask.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--assign-work-task-102046",
+                "title": "Planejar e atribuir tarefa de campo"
+              },
+              {
+                "pageId": "assignWorkTask-page21",
+                "route": "/buildFlowFsm/assignWorkTask-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/assignWorkTask.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/assignWorkTask.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--assign-work-task-102046",
+                "title": "Planejar e atribuir tarefa de campo - PAGE21"
+              },
+              {
+                "pageId": "assignWorkTask-page31",
+                "route": "/buildFlowFsm/assignWorkTask-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/assignWorkTask.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/assignWorkTask.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--assign-work-task-102046",
+                "title": "Planejar e atribuir tarefa de campo - PAGE31"
+              },
+              {
+                "pageId": "changeOrderCatalogue",
+                "route": "/buildFlowFsm/changeOrderCatalogue/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/changeOrderCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/changeOrderCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--change-order-catalogue-102046",
+                "title": "Ordem de mudança"
+              },
+              {
+                "pageId": "changeOrderCatalogue-page21",
+                "route": "/buildFlowFsm/changeOrderCatalogue-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/changeOrderCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/changeOrderCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--change-order-catalogue-102046",
+                "title": "Ordem de mudança - PAGE21"
+              },
+              {
+                "pageId": "changeOrderCatalogue-page31",
+                "route": "/buildFlowFsm/changeOrderCatalogue-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/changeOrderCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/changeOrderCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--change-order-catalogue-102046",
+                "title": "Ordem de mudança - PAGE31"
+              },
+              {
+                "pageId": "changeOrderDecisionCatalogue",
+                "route": "/buildFlowFsm/changeOrderDecisionCatalogue",
+                "source": "l2/buildFlowFsm/web/desktop/page11/changeOrderDecisionCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/changeOrderDecisionCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--change-order-decision-catalogue-102046",
+                "title": "Decisão sobre ordem de mudança"
+              },
+              {
+                "pageId": "changeOrderDecisionCatalogue-page21",
+                "route": "/buildFlowFsm/changeOrderDecisionCatalogue-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/changeOrderDecisionCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/changeOrderDecisionCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--change-order-decision-catalogue-102046",
+                "title": "Decisão sobre ordem de mudança - PAGE21"
+              },
+              {
+                "pageId": "changeOrderDecisionCatalogue-page31",
+                "route": "/buildFlowFsm/changeOrderDecisionCatalogue-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/changeOrderDecisionCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/changeOrderDecisionCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--change-order-decision-catalogue-102046",
+                "title": "Decisão sobre ordem de mudança - PAGE31"
+              },
+              {
+                "pageId": "clientBillingSummaryView",
+                "route": "/buildFlowFsm/clientBillingSummaryView",
+                "source": "l2/buildFlowFsm/web/desktop/page11/clientBillingSummaryView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/clientBillingSummaryView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--client-billing-summary-view-102046",
+                "title": "Resumo de faturamento do cliente"
+              },
+              {
+                "pageId": "clientBillingSummaryView-page21",
+                "route": "/buildFlowFsm/clientBillingSummaryView-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--client-billing-summary-view-102046",
+                "title": "Resumo de faturamento do cliente - PAGE21"
+              },
+              {
+                "pageId": "clientBillingSummaryView-page31",
+                "route": "/buildFlowFsm/clientBillingSummaryView-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/clientBillingSummaryView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/clientBillingSummaryView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--client-billing-summary-view-102046",
+                "title": "Resumo de faturamento do cliente - PAGE31"
+              },
+              {
+                "pageId": "clientCatalogue",
+                "route": "/buildFlowFsm/clientCatalogue",
+                "source": "l2/buildFlowFsm/web/desktop/page11/clientCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/clientCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--client-catalogue-102046",
+                "title": "Cliente"
+              },
+              {
+                "pageId": "clientCatalogue-page21",
+                "route": "/buildFlowFsm/clientCatalogue-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/clientCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/clientCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--client-catalogue-102046",
+                "title": "Cliente - PAGE21"
+              },
+              {
+                "pageId": "clientCatalogue-page31",
+                "route": "/buildFlowFsm/clientCatalogue-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/clientCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/clientCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--client-catalogue-102046",
+                "title": "Cliente - PAGE31"
+              },
+              {
+                "pageId": "clientPortalAccessCatalogue",
+                "route": "/buildFlowFsm/clientPortalAccessCatalogue",
+                "source": "l2/buildFlowFsm/web/desktop/page11/clientPortalAccessCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/clientPortalAccessCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--client-portal-access-catalogue-102046",
+                "title": "Vínculo de acesso do cliente"
+              },
+              {
+                "pageId": "clientPortalAccessCatalogue-page21",
+                "route": "/buildFlowFsm/clientPortalAccessCatalogue-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/clientPortalAccessCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/clientPortalAccessCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--client-portal-access-catalogue-102046",
+                "title": "Vínculo de acesso do cliente - PAGE21"
+              },
+              {
+                "pageId": "clientPortalAccessCatalogue-page31",
+                "route": "/buildFlowFsm/clientPortalAccessCatalogue-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/clientPortalAccessCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/clientPortalAccessCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--client-portal-access-catalogue-102046",
+                "title": "Vínculo de acesso do cliente - PAGE31"
+              },
+              {
+                "pageId": "consultApprovedProjectChangeOrders",
+                "route": "/buildFlowFsm/consultApprovedProjectChangeOrders",
+                "source": "l2/buildFlowFsm/web/desktop/page11/consultApprovedProjectChangeOrders.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/consultApprovedProjectChangeOrders.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--consult-approved-project-change-orders-102046",
+                "title": "Consultar alterações aprovadas da obra"
+              },
+              {
+                "pageId": "consultApprovedProjectChangeOrders-page21",
+                "route": "/buildFlowFsm/consultApprovedProjectChangeOrders-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/consultApprovedProjectChangeOrders.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/consultApprovedProjectChangeOrders.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--consult-approved-project-change-orders-102046",
+                "title": "Consultar alterações aprovadas da obra - PAGE21"
+              },
+              {
+                "pageId": "consultApprovedProjectChangeOrders-page31",
+                "route": "/buildFlowFsm/consultApprovedProjectChangeOrders-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/consultApprovedProjectChangeOrders.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/consultApprovedProjectChangeOrders.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--consult-approved-project-change-orders-102046",
+                "title": "Consultar alterações aprovadas da obra - PAGE31"
+              },
+              {
+                "pageId": "consultClientProjectUpdates",
+                "route": "/buildFlowFsm/consultClientProjectUpdates",
+                "source": "l2/buildFlowFsm/web/desktop/page11/consultClientProjectUpdates.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/consultClientProjectUpdates.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--consult-client-project-updates-102046",
+                "title": "Consultar status e faturamento da obra"
+              },
+              {
+                "pageId": "consultClientProjectUpdates-page21",
+                "route": "/buildFlowFsm/consultClientProjectUpdates-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/consultClientProjectUpdates.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/consultClientProjectUpdates.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--consult-client-project-updates-102046",
+                "title": "Consultar status e faturamento da obra - PAGE21"
+              },
+              {
+                "pageId": "consultClientProjectUpdates-page31",
+                "route": "/buildFlowFsm/consultClientProjectUpdates-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/consultClientProjectUpdates.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/consultClientProjectUpdates.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--consult-client-project-updates-102046",
+                "title": "Consultar status e faturamento da obra - PAGE31"
+              },
+              {
+                "pageId": "declineChangeOrder",
+                "route": "/buildFlowFsm/declineChangeOrder/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--decline-change-order-102046",
+                "title": "Recusar ordem de mudança"
+              },
+              {
+                "pageId": "declineChangeOrder-page21",
+                "route": "/buildFlowFsm/declineChangeOrder-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/declineChangeOrder.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/declineChangeOrder.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--decline-change-order-102046",
+                "title": "Recusar ordem de mudança - PAGE21"
+              },
+              {
+                "pageId": "declineChangeOrder-page31",
+                "route": "/buildFlowFsm/declineChangeOrder-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--decline-change-order-102046",
+                "title": "Recusar ordem de mudança - PAGE31"
+              },
+              {
+                "pageId": "forwardChangeOrderForClientApproval",
+                "route": "/buildFlowFsm/forwardChangeOrderForClientApproval",
+                "source": "l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--forward-change-order-for-client-approval-102046",
+                "title": "Encaminhar ordem de mudança ao cliente"
+              },
+              {
+                "pageId": "forwardChangeOrderForClientApproval-page21",
+                "route": "/buildFlowFsm/forwardChangeOrderForClientApproval-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/forwardChangeOrderForClientApproval.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/forwardChangeOrderForClientApproval.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--forward-change-order-for-client-approval-102046",
+                "title": "Encaminhar ordem de mudança ao cliente - PAGE21"
+              },
+              {
+                "pageId": "forwardChangeOrderForClientApproval-page31",
+                "route": "/buildFlowFsm/forwardChangeOrderForClientApproval-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/forwardChangeOrderForClientApproval.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/forwardChangeOrderForClientApproval.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--forward-change-order-for-client-approval-102046",
+                "title": "Encaminhar ordem de mudança ao cliente - PAGE31"
+              },
+              {
+                "pageId": "generateAndPublishProjectStatusReport",
+                "route": "/buildFlowFsm/generateAndPublishProjectStatusReport/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/generateAndPublishProjectStatusReport.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/generateAndPublishProjectStatusReport.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--generate-and-publish-project-status-report-102046",
+                "title": "Gerar e publicar relatório de status"
+              },
+              {
+                "pageId": "generateAndPublishProjectStatusReport-page21",
+                "route": "/buildFlowFsm/generateAndPublishProjectStatusReport-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/generateAndPublishProjectStatusReport.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/generateAndPublishProjectStatusReport.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--generate-and-publish-project-status-report-102046",
+                "title": "Gerar e publicar relatório de status - PAGE21"
+              },
+              {
+                "pageId": "generateAndPublishProjectStatusReport-page31",
+                "route": "/buildFlowFsm/generateAndPublishProjectStatusReport-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/generateAndPublishProjectStatusReport.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/generateAndPublishProjectStatusReport.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--generate-and-publish-project-status-report-102046",
+                "title": "Gerar e publicar relatório de status - PAGE31"
+              },
+              {
+                "pageId": "inventoryBalanceCatalogue",
+                "route": "/buildFlowFsm/inventoryBalanceCatalogue",
+                "source": "l2/buildFlowFsm/web/desktop/page11/inventoryBalanceCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/inventoryBalanceCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--inventory-balance-catalogue-102046",
+                "title": "Saldo de estoque"
+              },
+              {
+                "pageId": "inventoryBalanceCatalogue-page21",
+                "route": "/buildFlowFsm/inventoryBalanceCatalogue-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/inventoryBalanceCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/inventoryBalanceCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--inventory-balance-catalogue-102046",
+                "title": "Saldo de estoque - PAGE21"
+              },
+              {
+                "pageId": "inventoryBalanceCatalogue-page31",
+                "route": "/buildFlowFsm/inventoryBalanceCatalogue-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/inventoryBalanceCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/inventoryBalanceCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--inventory-balance-catalogue-102046",
+                "title": "Saldo de estoque - PAGE31"
+              },
+              {
+                "pageId": "inventoryItemCatalogue",
+                "route": "/buildFlowFsm/inventoryItemCatalogue",
+                "source": "l2/buildFlowFsm/web/desktop/page11/inventoryItemCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/inventoryItemCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--inventory-item-catalogue-102046",
+                "title": "Item de estoque"
+              },
+              {
+                "pageId": "inventoryItemCatalogue-page21",
+                "route": "/buildFlowFsm/inventoryItemCatalogue-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/inventoryItemCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/inventoryItemCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--inventory-item-catalogue-102046",
+                "title": "Item de estoque - PAGE21"
+              },
+              {
+                "pageId": "inventoryItemCatalogue-page31",
+                "route": "/buildFlowFsm/inventoryItemCatalogue-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/inventoryItemCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/inventoryItemCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--inventory-item-catalogue-102046",
+                "title": "Item de estoque - PAGE31"
+              },
+              {
+                "pageId": "invoiceCatalogue",
+                "route": "/buildFlowFsm/invoiceCatalogue/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/invoiceCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/invoiceCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--invoice-catalogue-102046",
+                "title": "Fatura"
+              },
+              {
+                "pageId": "invoiceCatalogue-page21",
+                "route": "/buildFlowFsm/invoiceCatalogue-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/invoiceCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/invoiceCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--invoice-catalogue-102046",
+                "title": "Fatura - PAGE21"
+              },
+              {
+                "pageId": "invoiceCatalogue-page31",
+                "route": "/buildFlowFsm/invoiceCatalogue-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/invoiceCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/invoiceCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--invoice-catalogue-102046",
+                "title": "Fatura - PAGE31"
+              },
+              {
+                "pageId": "invoiceChangeOrderCatalogue",
+                "route": "/buildFlowFsm/invoiceChangeOrderCatalogue",
+                "source": "l2/buildFlowFsm/web/desktop/page11/invoiceChangeOrderCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/invoiceChangeOrderCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--invoice-change-order-catalogue-102046",
+                "title": "Aplicação de ordem de mudança na fatura"
+              },
+              {
+                "pageId": "invoiceChangeOrderCatalogue-page21",
+                "route": "/buildFlowFsm/invoiceChangeOrderCatalogue-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/invoiceChangeOrderCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/invoiceChangeOrderCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--invoice-change-order-catalogue-102046",
+                "title": "Aplicação de ordem de mudança na fatura - PAGE21"
+              },
+              {
+                "pageId": "invoiceChangeOrderCatalogue-page31",
+                "route": "/buildFlowFsm/invoiceChangeOrderCatalogue-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/invoiceChangeOrderCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/invoiceChangeOrderCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--invoice-change-order-catalogue-102046",
+                "title": "Aplicação de ordem de mudança na fatura - PAGE31"
+              },
+              {
+                "pageId": "issueProjectInvoice",
+                "route": "/buildFlowFsm/issueProjectInvoice/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/issueProjectInvoice.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/issueProjectInvoice.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--issue-project-invoice-102046",
+                "title": "Emitir fatura da obra"
+              },
+              {
+                "pageId": "issueProjectInvoice-page21",
+                "route": "/buildFlowFsm/issueProjectInvoice-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/issueProjectInvoice.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/issueProjectInvoice.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--issue-project-invoice-102046",
+                "title": "Emitir fatura da obra - PAGE21"
+              },
+              {
+                "pageId": "issueProjectInvoice-page31",
+                "route": "/buildFlowFsm/issueProjectInvoice-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/issueProjectInvoice.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/issueProjectInvoice.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--issue-project-invoice-102046",
+                "title": "Emitir fatura da obra - PAGE31"
+              },
+              {
+                "pageId": "materialUsageCatalogue",
+                "route": "/buildFlowFsm/materialUsageCatalogue/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/materialUsageCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/materialUsageCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--material-usage-catalogue-102046",
+                "title": "Consumo de material"
+              },
+              {
+                "pageId": "materialUsageCatalogue-page21",
+                "route": "/buildFlowFsm/materialUsageCatalogue-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/materialUsageCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/materialUsageCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--material-usage-catalogue-102046",
+                "title": "Consumo de material - PAGE21"
+              },
+              {
+                "pageId": "materialUsageCatalogue-page31",
+                "route": "/buildFlowFsm/materialUsageCatalogue-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/materialUsageCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/materialUsageCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--material-usage-catalogue-102046",
+                "title": "Consumo de material - PAGE31"
+              },
+              {
+                "pageId": "monitorDailyProjectRecords",
+                "route": "/buildFlowFsm/monitorDailyProjectRecords",
+                "source": "l2/buildFlowFsm/web/desktop/page11/monitorDailyProjectRecords.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/monitorDailyProjectRecords.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--monitor-daily-project-records-102046",
+                "title": "Acompanhar registros diários da obra"
+              },
+              {
+                "pageId": "monitorDailyProjectRecords-page21",
+                "route": "/buildFlowFsm/monitorDailyProjectRecords-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/monitorDailyProjectRecords.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/monitorDailyProjectRecords.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--monitor-daily-project-records-102046",
+                "title": "Acompanhar registros diários da obra - PAGE21"
+              },
+              {
+                "pageId": "monitorDailyProjectRecords-page31",
+                "route": "/buildFlowFsm/monitorDailyProjectRecords-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--monitor-daily-project-records-102046",
+                "title": "Acompanhar registros diários da obra - PAGE31"
+              },
+              {
+                "pageId": "projectCatalogue",
+                "route": "/buildFlowFsm/projectCatalogue",
+                "source": "l2/buildFlowFsm/web/desktop/page11/projectCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/projectCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--project-catalogue-102046",
+                "title": "Obra"
+              },
+              {
+                "pageId": "projectCatalogue-page21",
+                "route": "/buildFlowFsm/projectCatalogue-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/projectCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/projectCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--project-catalogue-102046",
+                "title": "Obra - PAGE21"
+              },
+              {
+                "pageId": "projectCatalogue-page31",
+                "route": "/buildFlowFsm/projectCatalogue-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/projectCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--project-catalogue-102046",
+                "title": "Obra - PAGE31"
+              },
+              {
+                "pageId": "projectCoordinationAssignmentCatalogue",
+                "route": "/buildFlowFsm/projectCoordinationAssignmentCatalogue",
+                "source": "l2/buildFlowFsm/web/desktop/page11/projectCoordinationAssignmentCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/projectCoordinationAssignmentCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--project-coordination-assignment-catalogue-102046",
+                "title": "Atribuição de coordenação da obra"
+              },
+              {
+                "pageId": "projectCoordinationAssignmentCatalogue-page21",
+                "route": "/buildFlowFsm/projectCoordinationAssignmentCatalogue-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/projectCoordinationAssignmentCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/projectCoordinationAssignmentCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--project-coordination-assignment-catalogue-102046",
+                "title": "Atribuição de coordenação da obra - PAGE21"
+              },
+              {
+                "pageId": "projectCoordinationAssignmentCatalogue-page31",
+                "route": "/buildFlowFsm/projectCoordinationAssignmentCatalogue-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/projectCoordinationAssignmentCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/projectCoordinationAssignmentCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--project-coordination-assignment-catalogue-102046",
+                "title": "Atribuição de coordenação da obra - PAGE31"
+              },
+              {
+                "pageId": "projectDashboardView",
+                "route": "/buildFlowFsm/projectDashboardView",
+                "source": "l2/buildFlowFsm/web/desktop/page11/projectDashboardView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/projectDashboardView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--project-dashboard-view-102046",
+                "title": "Painel de portfólio de obras"
+              },
+              {
+                "pageId": "projectDashboardView-page21",
+                "route": "/buildFlowFsm/projectDashboardView-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/projectDashboardView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/projectDashboardView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--project-dashboard-view-102046",
+                "title": "Painel de portfólio de obras - PAGE21"
+              },
+              {
+                "pageId": "projectDashboardView-page31",
+                "route": "/buildFlowFsm/projectDashboardView-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/projectDashboardView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/projectDashboardView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--project-dashboard-view-102046",
+                "title": "Painel de portfólio de obras - PAGE31"
+              },
+              {
+                "pageId": "projectExecutionOverviewView",
+                "route": "/buildFlowFsm/projectExecutionOverviewView",
+                "source": "l2/buildFlowFsm/web/desktop/page11/projectExecutionOverviewView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/projectExecutionOverviewView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--project-execution-overview-view-102046",
+                "title": "Visão consolidada de execução da obra"
+              },
+              {
+                "pageId": "projectExecutionOverviewView-page21",
+                "route": "/buildFlowFsm/projectExecutionOverviewView-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/projectExecutionOverviewView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/projectExecutionOverviewView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--project-execution-overview-view-102046",
+                "title": "Visão consolidada de execução da obra - PAGE21"
+              },
+              {
+                "pageId": "projectExecutionOverviewView-page31",
+                "route": "/buildFlowFsm/projectExecutionOverviewView-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/projectExecutionOverviewView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/projectExecutionOverviewView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--project-execution-overview-view-102046",
+                "title": "Visão consolidada de execução da obra - PAGE31"
+              },
+              {
+                "pageId": "projectHub",
+                "route": "/buildFlowFsm/projectHub",
+                "source": "l2/buildFlowFsm/web/desktop/page11/projectHub.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/projectHub.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--project-hub-102046",
+                "title": "Obra"
+              },
+              {
+                "pageId": "projectHub-page21",
+                "route": "/buildFlowFsm/projectHub-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/projectHub.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/projectHub.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--project-hub-102046",
+                "title": "Obra - PAGE21"
+              },
+              {
+                "pageId": "projectHub-page31",
+                "route": "/buildFlowFsm/projectHub-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/projectHub.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/projectHub.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--project-hub-102046",
+                "title": "Obra - PAGE31"
+              },
+              {
+                "pageId": "projectTimelineView",
+                "route": "/buildFlowFsm/projectTimelineView",
+                "source": "l2/buildFlowFsm/web/desktop/page11/projectTimelineView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/projectTimelineView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--project-timeline-view-102046",
+                "title": "Cronograma da obra"
+              },
+              {
+                "pageId": "projectTimelineView-page21",
+                "route": "/buildFlowFsm/projectTimelineView-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/projectTimelineView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--project-timeline-view-102046",
+                "title": "Cronograma da obra - PAGE21"
+              },
+              {
+                "pageId": "projectTimelineView-page31",
+                "route": "/buildFlowFsm/projectTimelineView-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/projectTimelineView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/projectTimelineView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--project-timeline-view-102046",
+                "title": "Cronograma da obra - PAGE31"
+              },
+              {
+                "pageId": "recordProjectMaterialUsage",
+                "route": "/buildFlowFsm/recordProjectMaterialUsage/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--record-project-material-usage-102046",
+                "title": "Registrar consumo de material da obra"
+              },
+              {
+                "pageId": "recordProjectMaterialUsage-page21",
+                "route": "/buildFlowFsm/recordProjectMaterialUsage-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/recordProjectMaterialUsage.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/recordProjectMaterialUsage.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--record-project-material-usage-102046",
+                "title": "Registrar consumo de material da obra - PAGE21"
+              },
+              {
+                "pageId": "recordProjectMaterialUsage-page31",
+                "route": "/buildFlowFsm/recordProjectMaterialUsage-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/recordProjectMaterialUsage.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/recordProjectMaterialUsage.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--record-project-material-usage-102046",
+                "title": "Registrar consumo de material da obra - PAGE31"
+              },
+              {
+                "pageId": "recordWorkTime",
+                "route": "/buildFlowFsm/recordWorkTime",
+                "source": "l2/buildFlowFsm/web/desktop/page11/recordWorkTime.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/recordWorkTime.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--record-work-time-102046",
+                "title": "Registrar horas trabalhadas"
+              },
+              {
+                "pageId": "recordWorkTime-page21",
+                "route": "/buildFlowFsm/recordWorkTime-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/recordWorkTime.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/recordWorkTime.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--record-work-time-102046",
+                "title": "Registrar horas trabalhadas - PAGE21"
+              },
+              {
+                "pageId": "recordWorkTime-page31",
+                "route": "/buildFlowFsm/recordWorkTime-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/recordWorkTime.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/recordWorkTime.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--record-work-time-102046",
+                "title": "Registrar horas trabalhadas - PAGE31"
+              },
+              {
+                "pageId": "reviewProjectPortfolio",
+                "route": "/buildFlowFsm/reviewProjectPortfolio/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/reviewProjectPortfolio.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/reviewProjectPortfolio.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--review-project-portfolio-102046",
+                "title": "Monitorar portfólio e direcionar obra"
+              },
+              {
+                "pageId": "reviewProjectPortfolio-page21",
+                "route": "/buildFlowFsm/reviewProjectPortfolio-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/reviewProjectPortfolio.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/reviewProjectPortfolio.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--review-project-portfolio-102046",
+                "title": "Monitorar portfólio e direcionar obra - PAGE21"
+              },
+              {
+                "pageId": "reviewProjectPortfolio-page31",
+                "route": "/buildFlowFsm/reviewProjectPortfolio-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/reviewProjectPortfolio.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/reviewProjectPortfolio.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--review-project-portfolio-102046",
+                "title": "Monitorar portfólio e direcionar obra - PAGE31"
+              },
+              {
+                "pageId": "scheduleRiskAssessmentView",
+                "route": "/buildFlowFsm/scheduleRiskAssessmentView",
+                "source": "l2/buildFlowFsm/web/desktop/page11/scheduleRiskAssessmentView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/scheduleRiskAssessmentView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--schedule-risk-assessment-view-102046",
+                "title": "Avaliação de risco de atraso"
+              },
+              {
+                "pageId": "scheduleRiskAssessmentView-page21",
+                "route": "/buildFlowFsm/scheduleRiskAssessmentView-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/scheduleRiskAssessmentView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/scheduleRiskAssessmentView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--schedule-risk-assessment-view-102046",
+                "title": "Avaliação de risco de atraso - PAGE21"
+              },
+              {
+                "pageId": "scheduleRiskAssessmentView-page31",
+                "route": "/buildFlowFsm/scheduleRiskAssessmentView-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/scheduleRiskAssessmentView.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/scheduleRiskAssessmentView.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--schedule-risk-assessment-view-102046",
+                "title": "Avaliação de risco de atraso - PAGE31"
+              },
+              {
+                "pageId": "statusReportCatalogue",
+                "route": "/buildFlowFsm/statusReportCatalogue/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/statusReportCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/statusReportCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--status-report-catalogue-102046",
+                "title": "Relatório de status"
+              },
+              {
+                "pageId": "statusReportCatalogue-page21",
+                "route": "/buildFlowFsm/statusReportCatalogue-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/statusReportCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/statusReportCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--status-report-catalogue-102046",
+                "title": "Relatório de status - PAGE21"
+              },
+              {
+                "pageId": "statusReportCatalogue-page31",
+                "route": "/buildFlowFsm/statusReportCatalogue-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/statusReportCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/statusReportCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--status-report-catalogue-102046",
+                "title": "Relatório de status - PAGE31"
+              },
+              {
+                "pageId": "submitChangeOrder",
+                "route": "/buildFlowFsm/submitChangeOrder/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/submitChangeOrder.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/submitChangeOrder.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--submit-change-order-102046",
+                "title": "Registrar e submeter ordem de mudança"
+              },
+              {
+                "pageId": "submitChangeOrder-page21",
+                "route": "/buildFlowFsm/submitChangeOrder-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/submitChangeOrder.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/submitChangeOrder.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--submit-change-order-102046",
+                "title": "Registrar e submeter ordem de mudança - PAGE21"
+              },
+              {
+                "pageId": "submitChangeOrder-page31",
+                "route": "/buildFlowFsm/submitChangeOrder-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/submitChangeOrder.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/submitChangeOrder.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--submit-change-order-102046",
+                "title": "Registrar e submeter ordem de mudança - PAGE31"
+              },
+              {
+                "pageId": "timeLogCatalogue",
+                "route": "/buildFlowFsm/timeLogCatalogue",
+                "source": "l2/buildFlowFsm/web/desktop/page11/timeLogCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/timeLogCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--time-log-catalogue-102046",
+                "title": "Registro de horas"
+              },
+              {
+                "pageId": "timeLogCatalogue-page21",
+                "route": "/buildFlowFsm/timeLogCatalogue-page21",
+                "source": "l2/buildFlowFsm/web/desktop/page21/timeLogCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/timeLogCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--time-log-catalogue-102046",
+                "title": "Registro de horas - PAGE21"
+              },
+              {
+                "pageId": "timeLogCatalogue-page31",
+                "route": "/buildFlowFsm/timeLogCatalogue-page31",
+                "source": "l2/buildFlowFsm/web/desktop/page31/timeLogCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/timeLogCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--time-log-catalogue-102046",
+                "title": "Registro de horas - PAGE31"
+              },
+              {
+                "pageId": "updateWorkTaskProgress",
+                "route": "/buildFlowFsm/updateWorkTaskProgress/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/updateWorkTaskProgress.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/updateWorkTaskProgress.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--update-work-task-progress-102046",
+                "title": "Atualizar andamento da tarefa"
+              },
+              {
+                "pageId": "updateWorkTaskProgress-page21",
+                "route": "/buildFlowFsm/updateWorkTaskProgress-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/updateWorkTaskProgress.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/updateWorkTaskProgress.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--update-work-task-progress-102046",
+                "title": "Atualizar andamento da tarefa - PAGE21"
+              },
+              {
+                "pageId": "updateWorkTaskProgress-page31",
+                "route": "/buildFlowFsm/updateWorkTaskProgress-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/updateWorkTaskProgress.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/updateWorkTaskProgress.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--update-work-task-progress-102046",
+                "title": "Atualizar andamento da tarefa - PAGE31"
+              },
+              {
+                "pageId": "workTaskCatalogue",
+                "route": "/buildFlowFsm/workTaskCatalogue/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page11/workTaskCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page11/workTaskCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page11--work-task-catalogue-102046",
+                "title": "Tarefa de trabalho"
+              },
+              {
+                "pageId": "workTaskCatalogue-page21",
+                "route": "/buildFlowFsm/workTaskCatalogue-page21/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page21/workTaskCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page21/workTaskCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page21--work-task-catalogue-102046",
+                "title": "Tarefa de trabalho - PAGE21"
+              },
+              {
+                "pageId": "workTaskCatalogue-page31",
+                "route": "/buildFlowFsm/workTaskCatalogue-page31/:projectProjectId?",
+                "source": "l2/buildFlowFsm/web/desktop/page31/workTaskCatalogue.ts",
+                "definition": "l2/buildFlowFsm/web/desktop/page31/workTaskCatalogue.defs.ts",
+                "componentTag": "build-flow-fsm--web--desktop--page31--work-task-catalogue-102046",
+                "title": "Tarefa de trabalho - PAGE31"
+              }
+            ],
+            "pageTests": [
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/approveChangeOrder.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/assignWorkTask.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/changeOrderCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/changeOrderDecisionCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/clientCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/clientPortalAccessCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/consultApprovedProjectChangeOrders.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/consultClientProjectUpdates.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/declineChangeOrder.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/generateAndPublishProjectStatusReport.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/inventoryBalanceCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/inventoryItemCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/invoiceCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/invoiceChangeOrderCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/issueProjectInvoice.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/materialUsageCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/monitorDailyProjectRecords.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/projectCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/projectCoordinationAssignmentCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/projectDashboardView.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/projectHub.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/recordWorkTime.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/reviewProjectPortfolio.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/statusReportCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/submitChangeOrder.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/timeLogCatalogue.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/updateWorkTaskProgress.test.js",
+              "_102046_/l2/buildFlowFsm/web/desktop/page11/workTaskCatalogue.test.js"
+            ]
+          }
+        }
+      ],
+      "persistenceModules": [
+        {
+          "moduleId": "buildFlowFsm",
+          "tableDefsDir": "./_102046_/l1/buildFlowFsm/layer_1_external/adapters/persistence"
+        }
+      ]
+    }
+  },
+  "shellTemplates": {
+    "spa": "./_102033_/l2/shared/spa/index.html",
+    "pwa": "./_102033_/l2/shared/pwa/index.html"
+  },
+  "publication": {
+    "defaultTarget": "web",
+    "targets": {
+      "web": {
+        "assetBaseUrl": "",
+        "serveStaticFromServer": true,
+        "minify": false,
+        "sourcemap": true
+      }
+    }
+  },
+  "clientShell": {
+    "mode": "spa",
+    "activeProfile": "production",
+    "regions": {
+      "aside": {
+        "activeProfile": "defaultAura",
+        "profiles": {
+          "defaultAura": {
+            "renderer": {
+              "entrypoint": "/_102033_/l2/shared/layout/aura-aside.js",
+              "source": "../mls-102033/l2/shared/layout/aura-aside.ts",
+              "tag": "collab-aura-aside"
+            },
+            "widthPx": 280
+          }
+        }
+      }
+    }
+  }
+}

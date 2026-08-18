@@ -1,0 +1,42 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "approveChangeOrderDecision",
+  "title": "Aprovar a ordem de mudança",
+  "kind": "command",
+  "compiledFrom": [
+    "approveChangeOrder.approveChangeOrderDecision"
+  ],
+  "description": "Registra a decisão de aprovação de uma ordem de mudança e a torna aprovada.",
+  "contexts": {
+    "requires": [
+      "selectedChangeOrder",
+      "selectedClient",
+      "selectedProject"
+    ],
+    "provides": [
+      "selectedChangeOrder"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder",
+    "ChangeOrderDecision"
+  ],
+  "useRules": [
+    "clientApprovableChangeOrder"
+  ],
+  "transitions": [
+    {
+      "transitionId": "approveChangeOrder",
+      "entityRef": "ChangeOrder",
+      "fromStates": [
+        "pendingClientApproval"
+      ],
+      "toState": "approved",
+      "useRules": [
+        "clientApprovableChangeOrder"
+      ]
+    }
+  ]
+}

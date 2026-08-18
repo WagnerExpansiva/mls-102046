@@ -1,0 +1,149 @@
+{
+  "savedAt": "2026-08-18T14:59:40.703Z",
+  "phase": "materialize-phase-shared-verify",
+  "lastRoundPlanId": "materialize-phase-shared-verify",
+  "attempt": 1,
+  "allClear": true,
+  "passedCount": 34,
+  "passed": [
+    {
+      "planId": "materialize-approvechangeorder-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-assignworktask-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-changeordercatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-changeorderdecisioncatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-clientbillingsummaryview-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-clientcatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-clientportalaccesscatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-consultapprovedprojectchangeorders-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-consultclientprojectupdates-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-declinechangeorder-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-forwardchangeorderforclientapproval-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-generateandpublishprojectstatusreport-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-inventorybalancecatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-inventoryitemcatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-invoicecatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-invoicechangeordercatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-issueprojectinvoice-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-materialusagecatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-monitordailyprojectrecords-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-projectcatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-projectcoordinationassignmentcatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-projectdashboardview-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-projectexecutionoverviewview-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-projecthub-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-projecttimelineview-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-recordprojectmaterialusage-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-recordworktime-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-reviewprojectportfolio-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-scheduleriskassessmentview-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-statusreportcatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-submitchangeorder-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-timelogcatalogue-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-updateworktaskprogress-l2-shared",
+      "typecheck": "passed"
+    },
+    {
+      "planId": "materialize-worktaskcatalogue-l2-shared",
+      "typecheck": "passed"
+    }
+  ],
+  "brokenCount": 0,
+  "broken": [],
+  "agent": "agentCfeMaterializePhase"
+}

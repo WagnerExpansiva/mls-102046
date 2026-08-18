@@ -1,0 +1,167 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListInventoryBalanceOutput, CmdCreateInventoryBalanceOutput, CmdUpdateInventoryBalanceOutput, CmdDeleteInventoryBalanceOutput, QryInventoryItemPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/inventoryBalanceCatalogue.js';
+export type { QryListInventoryBalanceInput, QryListInventoryBalanceOutput, CmdCreateInventoryBalanceInput, CmdCreateInventoryBalanceOutput, CmdUpdateInventoryBalanceInput, CmdUpdateInventoryBalanceOutput, CmdDeleteInventoryBalanceInput, CmdDeleteInventoryBalanceOutput, QryInventoryItemPickerInput, QryInventoryItemPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/inventoryBalanceCatalogue.js';
+declare const message_pt: {
+    'section.inventoryBalanceCatalogue.recordList.title': string;
+    'organism.inventoryBalanceCatalogue.qryListInventoryBalance.title': string;
+    'intent.inventoryBalanceCatalogue.qryListInventoryBalance.list.title': string;
+    'intent.inventoryBalanceCatalogue.qryListInventoryBalance.list.empty': string;
+    'intent.inventoryBalanceCatalogue.qryListInventoryBalance.list.column.inventoryBalanceId.label': string;
+    'intent.inventoryBalanceCatalogue.qryListInventoryBalance.list.column.inventoryItemId.label': string;
+    'intent.inventoryBalanceCatalogue.qryListInventoryBalance.list.column.physicalQuantity.label': string;
+    'intent.inventoryBalanceCatalogue.qryListInventoryBalance.list.column.applicableUnitCost.label': string;
+    'intent.inventoryBalanceCatalogue.qryListInventoryBalance.list.column.status.label': string;
+    'organism.inventoryBalanceCatalogue.qryInventoryItemPicker.title': string;
+    'intent.inventoryBalanceCatalogue.qryInventoryItemPicker.list.title': string;
+    'intent.inventoryBalanceCatalogue.qryInventoryItemPicker.list.empty': string;
+    'intent.inventoryBalanceCatalogue.qryInventoryItemPicker.list.column.inventoryItemId.label': string;
+    'intent.inventoryBalanceCatalogue.qryInventoryItemPicker.list.column.name.label': string;
+    'intent.inventoryBalanceCatalogue.qryInventoryItemPicker.list.column.description.label': string;
+    'intent.inventoryBalanceCatalogue.qryInventoryItemPicker.list.column.unitOfMeasure.label': string;
+    'intent.inventoryBalanceCatalogue.qryInventoryItemPicker.list.column.referenceUnitCost.label': string;
+    'intent.inventoryBalanceCatalogue.qryInventoryItemPicker.list.column.status.label': string;
+    'organism.inventoryBalanceCatalogue.cmdDeleteInventoryBalance.title': string;
+    'intent.inventoryBalanceCatalogue.cmdDeleteInventoryBalance.form.title': string;
+    'intent.inventoryBalanceCatalogue.cmdDeleteInventoryBalance.form.action.cmdDeleteInventoryBalance': string;
+    'section.inventoryBalanceCatalogue.recordForm.title': string;
+    'organism.inventoryBalanceCatalogue.cmdCreateInventoryBalance.title': string;
+    'intent.inventoryBalanceCatalogue.cmdCreateInventoryBalance.form.title': string;
+    'intent.inventoryBalanceCatalogue.cmdCreateInventoryBalance.form.action.cmdCreateInventoryBalance': string;
+    'intent.inventoryBalanceCatalogue.cmdCreateInventoryBalance.form.field.physicalQuantity.label': string;
+    'intent.inventoryBalanceCatalogue.cmdCreateInventoryBalance.form.field.applicableUnitCost.label': string;
+    'intent.inventoryBalanceCatalogue.cmdCreateInventoryBalance.form.field.status.label': string;
+    'organism.inventoryBalanceCatalogue.cmdUpdateInventoryBalance.title': string;
+    'intent.inventoryBalanceCatalogue.cmdUpdateInventoryBalance.form.title': string;
+    'intent.inventoryBalanceCatalogue.cmdUpdateInventoryBalance.form.action.cmdUpdateInventoryBalance': string;
+    'intent.inventoryBalanceCatalogue.cmdUpdateInventoryBalance.form.field.physicalQuantity.label': string;
+    'intent.inventoryBalanceCatalogue.cmdUpdateInventoryBalance.form.field.applicableUnitCost.label': string;
+    'intent.inventoryBalanceCatalogue.cmdUpdateInventoryBalance.form.field.status.label': string;
+    'action.cmdCreateInventoryBalance.success': string;
+    'action.cmdCreateInventoryBalance.error': string;
+    'action.cmdUpdateInventoryBalance.success': string;
+    'action.cmdUpdateInventoryBalance.error': string;
+    'action.cmdDeleteInventoryBalance.success': string;
+    'action.cmdDeleteInventoryBalance.error': string;
+    'section.inventoryBalanceCatalogue.inventoryBalanceWorkbench.title': string;
+    'section.inventoryBalanceCatalogue.inventoryBalanceCreation.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmInventoryBalanceCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListInventoryBalanceState — actionStatus, values: idle|loading|success|error */
+    qryListInventoryBalanceState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListInventoryBalanceData — queryResult, outputShape: array */
+    qryListInventoryBalanceData: QryListInventoryBalanceOutput[];
+    /** state cmdCreateInventoryBalanceState — actionStatus, values: idle|loading|success|error */
+    cmdCreateInventoryBalanceState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateInventoryBalanceInventoryItemId — input */
+    cmdCreateInventoryBalanceInventoryItemId: string;
+    /** state cmdCreateInventoryBalancePhysicalQuantity — input */
+    cmdCreateInventoryBalancePhysicalQuantity: string;
+    /** state cmdCreateInventoryBalanceApplicableUnitCost — input */
+    cmdCreateInventoryBalanceApplicableUnitCost: string;
+    /** state cmdCreateInventoryBalanceStatus — input */
+    cmdCreateInventoryBalanceStatus: string;
+    /** state cmdCreateInventoryBalanceOutput — commandOutput */
+    cmdCreateInventoryBalanceOutput: CmdCreateInventoryBalanceOutput | null;
+    /** state cmdCreateInventoryBalanceError — actionError */
+    cmdCreateInventoryBalanceError: string;
+    /** state cmdUpdateInventoryBalanceState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateInventoryBalanceState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateInventoryBalanceInventoryBalanceId — input */
+    cmdUpdateInventoryBalanceInventoryBalanceId: string;
+    /** state cmdUpdateInventoryBalanceInventoryItemId — input */
+    cmdUpdateInventoryBalanceInventoryItemId: string;
+    /** state cmdUpdateInventoryBalancePhysicalQuantity — input */
+    cmdUpdateInventoryBalancePhysicalQuantity: string;
+    /** state cmdUpdateInventoryBalanceApplicableUnitCost — input */
+    cmdUpdateInventoryBalanceApplicableUnitCost: string;
+    /** state cmdUpdateInventoryBalanceStatus — input */
+    cmdUpdateInventoryBalanceStatus: string;
+    /** state cmdUpdateInventoryBalanceOutput — commandOutput */
+    cmdUpdateInventoryBalanceOutput: CmdUpdateInventoryBalanceOutput | null;
+    /** state cmdUpdateInventoryBalanceError — actionError */
+    cmdUpdateInventoryBalanceError: string;
+    /** state cmdDeleteInventoryBalanceState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteInventoryBalanceState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteInventoryBalanceInventoryBalanceId — input */
+    cmdDeleteInventoryBalanceInventoryBalanceId: string;
+    /** state cmdDeleteInventoryBalanceOutput — commandOutput */
+    cmdDeleteInventoryBalanceOutput: CmdDeleteInventoryBalanceOutput | null;
+    /** state cmdDeleteInventoryBalanceError — actionError */
+    cmdDeleteInventoryBalanceError: string;
+    /** state qryInventoryItemPickerState — actionStatus, values: idle|loading|success|error */
+    qryInventoryItemPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInventoryItemPickerData — queryResult, outputShape: array */
+    qryInventoryItemPickerData: QryInventoryItemPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryListInventoryBalance (query) — route buildFlowFsm.inventoryBalanceCatalogue.qryListInventoryBalance; inputs: (none); writes ui.inventoryBalanceCatalogue.data.qryListInventoryBalance; status ui.inventoryBalanceCatalogue.action.qryListInventoryBalance.status */
+    loadQryListInventoryBalance(): Promise<void>;
+    /** handler for action qryListInventoryBalance — bind UI events here */
+    handleQryListInventoryBalanceClick(event?: Event): void;
+    /** action cmdCreateInventoryBalance (command) — route buildFlowFsm.inventoryBalanceCatalogue.cmdCreateInventoryBalance; inputs: inventoryItemId, physicalQuantity, applicableUnitCost, status; writes ui.inventoryBalanceCatalogue.output.cmdCreateInventoryBalance; status ui.inventoryBalanceCatalogue.action.cmdCreateInventoryBalance.status; feedback keys action.cmdCreateInventoryBalance.success / action.cmdCreateInventoryBalance.error */
+    cmdCreateInventoryBalance(): Promise<void>;
+    /** handler for action cmdCreateInventoryBalance — bind UI events here */
+    handleCmdCreateInventoryBalanceClick(event?: Event): void;
+    /** action cmdUpdateInventoryBalance (command) — route buildFlowFsm.inventoryBalanceCatalogue.cmdUpdateInventoryBalance; inputs: inventoryBalanceId, inventoryItemId, physicalQuantity, applicableUnitCost, status; writes ui.inventoryBalanceCatalogue.output.cmdUpdateInventoryBalance; status ui.inventoryBalanceCatalogue.action.cmdUpdateInventoryBalance.status; feedback keys action.cmdUpdateInventoryBalance.success / action.cmdUpdateInventoryBalance.error */
+    cmdUpdateInventoryBalance(): Promise<void>;
+    /** handler for action cmdUpdateInventoryBalance — bind UI events here */
+    handleCmdUpdateInventoryBalanceClick(event?: Event): void;
+    /** action cmdDeleteInventoryBalance (command) — route buildFlowFsm.inventoryBalanceCatalogue.cmdDeleteInventoryBalance; inputs: inventoryBalanceId; writes ui.inventoryBalanceCatalogue.output.cmdDeleteInventoryBalance; status ui.inventoryBalanceCatalogue.action.cmdDeleteInventoryBalance.status; feedback keys action.cmdDeleteInventoryBalance.success / action.cmdDeleteInventoryBalance.error */
+    cmdDeleteInventoryBalance(): Promise<void>;
+    /** handler for action cmdDeleteInventoryBalance — bind UI events here */
+    handleCmdDeleteInventoryBalanceClick(event?: Event): void;
+    /** action qryInventoryItemPicker (query) — route buildFlowFsm.inventoryBalanceCatalogue.qryInventoryItemPicker; inputs: (none); writes ui.inventoryBalanceCatalogue.data.qryInventoryItemPicker; status ui.inventoryBalanceCatalogue.action.qryInventoryItemPicker.status */
+    loadQryInventoryItemPicker(): Promise<void>;
+    /** handler for action qryInventoryItemPicker — bind UI events here */
+    handleQryInventoryItemPickerClick(event?: Event): void;
+    /** setter for state ui.inventoryBalanceCatalogue.input.cmdCreateInventoryBalance.inventoryItemId */
+    setCmdCreateInventoryBalanceInventoryItemId(value: string): void;
+    /** handler for action set.cmdCreateInventoryBalanceInventoryItemId — bind UI events here */
+    handleCmdCreateInventoryBalanceInventoryItemIdChange(event: Event): void;
+    /** setter for state ui.inventoryBalanceCatalogue.input.cmdCreateInventoryBalance.physicalQuantity */
+    setCmdCreateInventoryBalancePhysicalQuantity(value: string): void;
+    /** handler for action set.cmdCreateInventoryBalancePhysicalQuantity — bind UI events here */
+    handleCmdCreateInventoryBalancePhysicalQuantityChange(event: Event): void;
+    /** setter for state ui.inventoryBalanceCatalogue.input.cmdCreateInventoryBalance.applicableUnitCost */
+    setCmdCreateInventoryBalanceApplicableUnitCost(value: string): void;
+    /** handler for action set.cmdCreateInventoryBalanceApplicableUnitCost — bind UI events here */
+    handleCmdCreateInventoryBalanceApplicableUnitCostChange(event: Event): void;
+    /** setter for state ui.inventoryBalanceCatalogue.input.cmdCreateInventoryBalance.status */
+    setCmdCreateInventoryBalanceStatus(value: string): void;
+    /** handler for action set.cmdCreateInventoryBalanceStatus — bind UI events here */
+    handleCmdCreateInventoryBalanceStatusChange(event: Event): void;
+    /** setter for state ui.inventoryBalanceCatalogue.input.cmdUpdateInventoryBalance.inventoryBalanceId */
+    setCmdUpdateInventoryBalanceInventoryBalanceId(value: string): void;
+    /** handler for action set.cmdUpdateInventoryBalanceInventoryBalanceId — bind UI events here */
+    handleCmdUpdateInventoryBalanceInventoryBalanceIdChange(event: Event): void;
+    /** setter for state ui.inventoryBalanceCatalogue.input.cmdUpdateInventoryBalance.inventoryItemId */
+    setCmdUpdateInventoryBalanceInventoryItemId(value: string): void;
+    /** handler for action set.cmdUpdateInventoryBalanceInventoryItemId — bind UI events here */
+    handleCmdUpdateInventoryBalanceInventoryItemIdChange(event: Event): void;
+    /** setter for state ui.inventoryBalanceCatalogue.input.cmdUpdateInventoryBalance.physicalQuantity */
+    setCmdUpdateInventoryBalancePhysicalQuantity(value: string): void;
+    /** handler for action set.cmdUpdateInventoryBalancePhysicalQuantity — bind UI events here */
+    handleCmdUpdateInventoryBalancePhysicalQuantityChange(event: Event): void;
+    /** setter for state ui.inventoryBalanceCatalogue.input.cmdUpdateInventoryBalance.applicableUnitCost */
+    setCmdUpdateInventoryBalanceApplicableUnitCost(value: string): void;
+    /** handler for action set.cmdUpdateInventoryBalanceApplicableUnitCost — bind UI events here */
+    handleCmdUpdateInventoryBalanceApplicableUnitCostChange(event: Event): void;
+    /** setter for state ui.inventoryBalanceCatalogue.input.cmdUpdateInventoryBalance.status */
+    setCmdUpdateInventoryBalanceStatus(value: string): void;
+    /** handler for action set.cmdUpdateInventoryBalanceStatus — bind UI events here */
+    handleCmdUpdateInventoryBalanceStatusChange(event: Event): void;
+    /** setter for state ui.inventoryBalanceCatalogue.input.cmdDeleteInventoryBalance.inventoryBalanceId */
+    setCmdDeleteInventoryBalanceInventoryBalanceId(value: string): void;
+    /** handler for action set.cmdDeleteInventoryBalanceInventoryBalanceId — bind UI events here */
+    handleCmdDeleteInventoryBalanceInventoryBalanceIdChange(event: Event): void;
+}

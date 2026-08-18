@@ -1,0 +1,1326 @@
+stor.server.ts:313 project 102021 with 10 files updated, lastModified:2026-08-18T12:17:30.379Z
+(index):64 cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
+(anonymous) @ (index):64
+(anonymous) @ (index):64
+(index):52 [13h] potential listener LEAK detected, having 200 listeners already. MOST frequent listener (1):
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:111
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:105
+(anonymous) @ editor.ts:189
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:186
+(anonymous) @ stor.ts:410
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ stor.ts:407
+Promise.then
+(anonymous) @ stor.ts:407
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModelForFile @ stor.ts:398
+(anonymous) @ stor.ts:366
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModel @ stor.ts:364
+_createModel @ libModel.js:271
+await in _createModel
+(anonymous) @ libModel.js:135
+await in (anonymous)
+createModel @ libModel.js:164
+createStorFile @ libStor.js:34
+await in createStorFile
+writeDefsSource @ cbShared.js:673
+saveDefs @ cbShared.js:666
+afterPromptStep @ agentCbUsecase?t=ecf0dfd80b246cf83220ab5a902551fafd07a5da:314
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 Error
+    at I_.create (monaco.js:8:10103)
+    at DP._onDidChangeLanguages (monaco.js:10:1669)
+    at get onDidChange (monaco.js:238:9292)
+    at aH.setLanguage (monaco.js:607:29060)
+    at FL.setMode (monaco.js:611:3618)
+    at FL.createModel (monaco.js:611:3459)
+    at pce (monaco.js:638:161)
+    at UU (monaco.js:638:103)
+    at Object.Vke [as createModel] (monaco.js:638:7108)
+    at editor.ts:111:26
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:111
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:105
+(anonymous) @ editor.ts:189
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:186
+(anonymous) @ stor.ts:410
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ stor.ts:407
+Promise.then
+(anonymous) @ stor.ts:407
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModelForFile @ stor.ts:398
+(anonymous) @ stor.ts:366
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModel @ stor.ts:364
+_createModel @ libModel.js:271
+await in _createModel
+(anonymous) @ libModel.js:135
+await in (anonymous)
+createModel @ libModel.js:164
+createStorFile @ libStor.js:34
+await in createStorFile
+writeDefsSource @ cbShared.js:673
+saveDefs @ cbShared.js:666
+afterPromptStep @ agentCbUsecase?t=ecf0dfd80b246cf83220ab5a902551fafd07a5da:314
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 [13h] potential listener LEAK detected, having 296 listeners already. MOST frequent listener (50):
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:187
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:186
+(anonymous) @ stor.ts:410
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ stor.ts:407
+Promise.then
+(anonymous) @ stor.ts:407
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModelForFile @ stor.ts:398
+(anonymous) @ stor.ts:366
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModel @ stor.ts:364
+saveGeneratedTs @ cbMaterializeIo.js:518
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:478
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 Error
+    at I_.create (monaco.js:8:10103)
+    at DP._onDidChangeLanguages (monaco.js:10:1669)
+    at get onDidChange (monaco.js:238:9292)
+    at aH.setLanguage (monaco.js:607:29060)
+    at FL.setMode (monaco.js:611:3618)
+    at FL.createModel (monaco.js:611:3459)
+    at pce (monaco.js:638:161)
+    at UU (monaco.js:638:103)
+    at Object.Vke [as createModel] (monaco.js:638:7108)
+    at editor.ts:111:26
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:187
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:186
+(anonymous) @ stor.ts:410
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ stor.ts:407
+Promise.then
+(anonymous) @ stor.ts:407
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModelForFile @ stor.ts:398
+(anonymous) @ stor.ts:366
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModel @ stor.ts:364
+saveGeneratedTs @ cbMaterializeIo.js:518
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:478
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 [13h] potential listener LEAK detected, having 336 listeners already. MOST frequent listener (87):
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:187
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:186
+(anonymous) @ stor.ts:410
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ stor.ts:407
+Promise.then
+(anonymous) @ stor.ts:407
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModelForFile @ stor.ts:398
+(anonymous) @ stor.ts:366
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModel @ stor.ts:364
+_createModel @ libModel.js:271
+await in _createModel
+(anonymous) @ libModel.js:135
+await in (anonymous)
+createModel @ libModel.js:164
+createStorFile @ libStor.js:34
+await in createStorFile
+saveGeneratedTs @ cbMaterializeIo.js:515
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:478
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 Error
+    at I_.create (monaco.js:8:10103)
+    at DP._onDidChangeLanguages (monaco.js:10:1669)
+    at get onDidChange (monaco.js:238:9292)
+    at aH.setLanguage (monaco.js:607:29060)
+    at FL.setMode (monaco.js:611:3618)
+    at FL.createModel (monaco.js:611:3459)
+    at pce (monaco.js:638:161)
+    at UU (monaco.js:638:103)
+    at Object.Vke [as createModel] (monaco.js:638:7108)
+    at editor.ts:81:26
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:187
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:186
+(anonymous) @ stor.ts:410
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ stor.ts:407
+Promise.then
+(anonymous) @ stor.ts:407
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModelForFile @ stor.ts:398
+(anonymous) @ stor.ts:366
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModel @ stor.ts:364
+_createModel @ libModel.js:271
+await in _createModel
+(anonymous) @ libModel.js:135
+await in (anonymous)
+createModel @ libModel.js:164
+createStorFile @ libStor.js:34
+await in createStorFile
+saveGeneratedTs @ cbMaterializeIo.js:515
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:478
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 [agentCbMaterialize] context ref unreadable, prompt will omit it: _102046_/l1/buildFlowFsm/layer_2_application/ports/nventoryItemDeletionRepository.d.ts
+console.warn @ (index):52
+readContextRef @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:200
+await in readContextRef
+repositoryMethodIssues @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:221
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:469
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 [13h] potential listener LEAK detected, having 370 listeners already. MOST frequent listener (121):
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:187
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:186
+(anonymous) @ stor.ts:410
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ stor.ts:407
+Promise.then
+(anonymous) @ stor.ts:407
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModelForFile @ stor.ts:398
+(anonymous) @ stor.ts:366
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModel @ stor.ts:364
+saveGeneratedTs @ cbMaterializeIo.js:518
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:478
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 Error
+    at I_.create (monaco.js:8:10103)
+    at DP._onDidChangeLanguages (monaco.js:10:1669)
+    at get onDidChange (monaco.js:238:9292)
+    at aH.setLanguage (monaco.js:607:29060)
+    at FL.setMode (monaco.js:611:3618)
+    at FL.createModel (monaco.js:611:3459)
+    at pce (monaco.js:638:161)
+    at UU (monaco.js:638:103)
+    at Object.Vke [as createModel] (monaco.js:638:7108)
+    at editor.ts:81:26
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:187
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:186
+(anonymous) @ stor.ts:410
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ stor.ts:407
+Promise.then
+(anonymous) @ stor.ts:407
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModelForFile @ stor.ts:398
+(anonymous) @ stor.ts:366
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+getOrCreateModel @ stor.ts:364
+saveGeneratedTs @ cbMaterializeIo.js:518
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:478
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 [13h] potential listener LEAK detected, having 404 listeners already. MOST frequent listener (155):
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:175
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:173
+loadImportModel @ cbMaterializeIo.js:215
+ensureImportModels @ cbMaterializeIo.js:181
+compileGeneratedTs @ cbMaterializeIo.js:425
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:478
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 Error
+    at I_.create (monaco.js:8:10103)
+    at DP._onDidChangeLanguages (monaco.js:10:1669)
+    at get onDidChange (monaco.js:238:9292)
+    at aH.setLanguage (monaco.js:607:29060)
+    at FL.setMode (monaco.js:611:3618)
+    at FL.createModel (monaco.js:611:3459)
+    at pce (monaco.js:638:161)
+    at UU (monaco.js:638:103)
+    at Object.Vke [as createModel] (monaco.js:638:7108)
+    at editor.ts:81:26
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:175
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:173
+loadImportModel @ cbMaterializeIo.js:215
+ensureImportModels @ cbMaterializeIo.js:181
+compileGeneratedTs @ cbMaterializeIo.js:425
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:478
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+(index):52 [13h] potential listener LEAK detected, having 444 listeners already. MOST frequent listener (195):
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:175
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:173
+loadImportModel @ cbMaterializeIo.js:215
+ensureImportModels @ cbMaterializeIo.js:181
+compileGeneratedTs @ cbMaterializeIo.js:425
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:478
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+(index):52 Error
+    at I_.create (monaco.js:8:10103)
+    at DP._onDidChangeLanguages (monaco.js:10:1669)
+    at get onDidChange (monaco.js:238:9292)
+    at aH.setLanguage (monaco.js:607:29060)
+    at FL.setMode (monaco.js:611:3618)
+    at FL.createModel (monaco.js:611:3459)
+    at pce (monaco.js:638:161)
+    at UU (monaco.js:638:103)
+    at Object.Vke [as createModel] (monaco.js:638:7108)
+    at editor.ts:81:26
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:175
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:173
+loadImportModel @ cbMaterializeIo.js:215
+ensureImportModels @ cbMaterializeIo.js:181
+compileGeneratedTs @ cbMaterializeIo.js:425
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+afterPromptStep @ agentCbMaterialize?t=630b4233cfbcbd082d9281e468054d0dfb4a6e05:478
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+mlsServiceWorker.js:415 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'size')
+    at add (mlsServiceWorker.js:415:131)
+    at mlsServiceWorker.js:212:29
+add @ mlsServiceWorker.js:415
+(anonymous) @ mlsServiceWorker.js:212
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getVersionId (monaco.js:77:3077)
+    at l2.typescript.ts:66:89
+    at Generator.next (<anonymous>)
+    at mls.js:78:63
+    at new Promise (<anonymous>)
+    at __async (mls.js:62:12)
+    at compile (l2.typescript.ts:63:82
+    at l2.typescript.ts:46:14
+    at Generator.next (<anonymous>)
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:632
+compileGeneratedTs @ cbMaterializeIo.js:436
+await in compileGeneratedTs
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+afterPromptStep @ agentCbSeeds?t=f77cbfcdd46d675e7d02a0641b347ce06de93ab9:244
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getVersionId (monaco.js:77:3077)
+    at l2.typescript.ts:66:89
+    at next (<anonymous>)
+    at mls.js:78:63
+    at new Promise (<anonymous>)
+    at __async (mls.js:62:12)
+    at compile (l2.typescript.ts:63:82
+    at l2.typescript.ts:46:14
+    at next (<anonymous>)
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:632
+compileGeneratedTs @ cbMaterializeIo.js:436
+await in compileGeneratedTs
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+afterPromptStep @ agentCbSeeds?t=f77cbfcdd46d675e7d02a0641b347ce06de93ab9:244
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getVersionId (monaco.js:77:3077)
+    at l2.typescript.ts:66:89
+    at Generator.next (<anonymous>)
+    at mls.js:78:63
+    at new Promise (<anonymous>)
+    at __async (mls.js:62:12)
+    at compile (l2.typescript.ts:63:82
+    at l2.typescript.ts:46:14
+    at Generator.next (<anonymous>)
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:632
+compileGeneratedTs @ cbMaterializeIo.js:436
+await in compileGeneratedTs
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+afterPromptStep @ agentCbSeeds?t=f77cbfcdd46d675e7d02a0641b347ce06de93ab9:244
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getVersionId (monaco.js:77:3077)
+    at l2.typescript.ts:66:89
+    at next (<anonymous>)
+    at mls.js:78:63
+    at new Promise (<anonymous>)
+    at __async (mls.js:62:12)
+    at compile (l2.typescript.ts:63:82
+    at l2.typescript.ts:46:14
+    at next (<anonymous>)
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:632
+compileGeneratedTs @ cbMaterializeIo.js:436
+await in compileGeneratedTs
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+afterPromptStep @ agentCbSeeds?t=f77cbfcdd46d675e7d02a0641b347ce06de93ab9:244
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getVersionId (monaco.js:77:3077)
+    at l2.typescript.ts:66:89
+    at Generator.next (<anonymous>)
+    at mls.js:78:63
+    at new Promise (<anonymous>)
+    at __async (mls.js:62:12)
+    at compile (l2.typescript.ts:63:82
+    at l2.typescript.ts:46:14
+    at Generator.next (<anonymous>)
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:632
+compileGeneratedTs @ cbMaterializeIo.js:436
+await in compileGeneratedTs
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+afterPromptStep @ agentCbSeeds?t=f77cbfcdd46d675e7d02a0641b347ce06de93ab9:244
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getVersionId (monaco.js:77:3077)
+    at l2.typescript.ts:66:89
+    at next (<anonymous>)
+    at mls.js:78:63
+    at new Promise (<anonymous>)
+    at __async (mls.js:62:12)
+    at compile (l2.typescript.ts:63:82
+    at l2.typescript.ts:46:14
+    at next (<anonymous>)
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:632
+compileGeneratedTs @ cbMaterializeIo.js:436
+await in compileGeneratedTs
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+afterPromptStep @ agentCbSeeds?t=f77cbfcdd46d675e7d02a0641b347ce06de93ab9:244
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getVersionId (monaco.js:77:3077)
+    at l2.typescript.ts:66:89
+    at next (<anonymous>)
+    at mls.js:78:63
+    at new Promise (<anonymous>)
+    at __async (mls.js:62:12)
+    at compile (l2.typescript.ts:63:82
+    at l2.typescript.ts:46:14
+    at next (<anonymous>)
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:632
+compileGeneratedTs @ cbMaterializeIo.js:436
+await in compileGeneratedTs
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+finalizeSeedPlan @ agentCbSeeds?t=f77cbfcdd46d675e7d02a0641b347ce06de93ab9:290
+afterPromptStep @ agentCbSeeds?t=f77cbfcdd46d675e7d02a0641b347ce06de93ab9:251
+await in afterPromptStep
+processHookAfterPromptStep @ aiAgentOrchestration.js:293
+processIntents2 @ aiAgentOrchestration.js:253
+_processIntentsStream @ aiAgentOrchestration.js:149
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getVersionId (monaco.js:77:3077)
+    at l2.typescript.ts:66:89
+    at next (<anonymous>)
+    at mls.js:78:63
+    at new Promise (<anonymous>)
+    at __async (mls.js:62:12)
+    at compile (l2.typescript.ts:63:82
+    at l2.typescript.ts:46:14
+    at next (<anonymous>)
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:632
+compileGeneratedTs @ cbMaterializeIo.js:436
+await in compileGeneratedTs
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+completeAssets @ agentCbSeedAssets?t=2231567eb9b7baf4751cd8a4555c0ea143e45f77:145
+beforePromptStep @ agentCbSeedAssets?t=2231567eb9b7baf4751cd8a4555c0ea143e45f77:34
+await in beforePromptStep
+processHookBeforePromptStep @ aiAgentOrchestration.js:283
+processIntents2 @ aiAgentOrchestration.js:251
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43
+libModel.js:436 [onModelChange] Error: Model is disposed!
+    at Qk._assertNotDisposed (monaco.js:75:120)
+    at Qk.getVersionId (monaco.js:77:3077)
+    at l2.typescript.ts:66:89
+    at next (<anonymous>)
+    at mls.js:78:63
+    at new Promise (<anonymous>)
+    at __async (mls.js:62:12)
+    at compile (l2.typescript.ts:63:82
+    at l2.typescript.ts:46:14
+    at next (<anonymous>)
+(anonymous) @ libModel.js:436
+setTimeout
+_onModelChange @ libModel.js:402
+(anonymous) @ libModel.js:312
+(anonymous) @ monaco.js:74
+invoke @ monaco.js:10
+deliver @ monaco.js:10
+fire @ monaco.js:10
+endDeferredEmit @ monaco.js:83
+applyEdits @ monaco.js:83
+(anonymous) @ editor.ts:632
+compileGeneratedTs @ cbMaterializeIo.js:436
+await in compileGeneratedTs
+saveGeneratedTs @ cbMaterializeIo.js:526
+await in saveGeneratedTs
+writeRegisterRepositories @ agentCbRegister?t=45f2698060550110a2e2789cf6fecbe84d3a9a60:64
+await in writeRegisterRepositories
+beforePromptStep @ agentCbRegister?t=45f2698060550110a2e2789cf6fecbe84d3a9a60:144
+await in beforePromptStep
+processHookBeforePromptStep @ aiAgentOrchestration.js:283
+processIntents2 @ aiAgentOrchestration.js:251
+_processIntentsStream @ aiAgentOrchestration.js:149
+await in _processIntentsStream
+processIntentsStream @ aiAgentOrchestration.js:73
+executeBeforePromptStream @ aiAgentOrchestration.js:36
+executeBeforePrompt @ aiAgentOrchestration.js:43

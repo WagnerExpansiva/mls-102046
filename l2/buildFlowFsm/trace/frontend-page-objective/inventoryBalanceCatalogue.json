@@ -1,0 +1,55 @@
+{
+  "savedAt": "2026-08-18T14:52:09.117Z",
+  "pageId": "inventoryBalanceCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Responsável pelo controle de estoque, como um estoquista ou operador administrativo.",
+    "jobToBeDone": "Localizar um saldo de estoque, corrigir seus valores quando necessário ou cadastrar um novo saldo com segurança.",
+    "primaryDecision": "Qual saldo de estoque selecionar para revisar/corrigir ou, na ausência dele, qual item usar para criar um novo saldo.",
+    "decisiveInfo": [
+      "inventoryItemId",
+      "name",
+      "description",
+      "unitOfMeasure",
+      "physicalQuantity",
+      "applicableUnitCost",
+      "referenceUnitCost",
+      "status"
+    ],
+    "usageFrequency": "Uso operacional recorrente, especialmente durante conferências e correções de inventário.",
+    "informationHierarchy": [
+      "Lista de saldos localizável e selecionável",
+      "Item associado e estado atual do saldo",
+      "Quantidade física e custo aplicável, com custo de referência para comparação",
+      "Ações de atualizar ou excluir o registro selecionado",
+      "Criação de um novo saldo a partir do item escolhido"
+    ],
+    "successCriteria": "O operador identifica o registro correto sem digitar IDs, entende seu estado e valores atuais, consegue corrigir ou excluir com baixo atrito e cadastra novos saldos sem expor campos técnicos.",
+    "antiPatterns": [
+      "Formulário CRUD separado e dominante para cada operação",
+      "IDs técnicos como campos digitáveis",
+      "Status exposto como select livre ou entrada manual",
+      "Excluir sem confirmação",
+      "Pedir novamente dados já disponíveis no registro selecionado",
+      "Ocultar a lista enquanto o operador edita"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar um saldo para inspeção e edição",
+        "presentation": "master-detail row selection"
+      },
+      {
+        "action": "Atualizar quantidade ou custo do saldo selecionado",
+        "presentation": "contextual detail action with prefilled selected-entity context"
+      },
+      {
+        "action": "Excluir o saldo selecionado",
+        "presentation": "inline-row-command with destructive confirmation"
+      },
+      {
+        "action": "Criar novo saldo",
+        "presentation": "primary-button opening an inline or contextual creation form with inventory-item picker"
+      }
+    ]
+  }
+}

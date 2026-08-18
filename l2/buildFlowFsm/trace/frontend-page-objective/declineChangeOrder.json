@@ -1,0 +1,51 @@
+{
+  "savedAt": "2026-08-18T14:51:44.418Z",
+  "pageId": "declineChangeOrder",
+  "genome": "page31",
+  "objective": {
+    "actor": "Gerente responsável por avaliar ordens de mudança submetidas, com apoio do coordenador de campo.",
+    "jobToBeDone": "Revisar uma ordem de mudança pendente, recusá-la quando apropriado e encaminhar o resultado ao campo para continuidade do tratamento.",
+    "primaryDecision": "Recusar a ordem selecionada e, em seguida, decidir se o resultado deve ser devolvido ao coordenador de campo.",
+    "decisiveInfo": [
+      "status",
+      "description",
+      "scopeImpact",
+      "scheduleImpact",
+      "changeAmount",
+      "clientRef",
+      "projectRef",
+      "submittedAt",
+      "forwardedForClientApprovalAt"
+    ],
+    "usageFrequency": "Operacional e recorrente, durante o processamento da fila de ordens pendentes.",
+    "informationHierarchy": [
+      "ordens pendentes e seu status atual",
+      "detalhes da ordem selecionada",
+      "impactos de escopo, prazo e valor",
+      "cliente e projeto relacionados",
+      "ação de recusa",
+      "dados necessários para devolver o resultado ao campo",
+      "feedback de sucesso ou erro"
+    ],
+    "successCriteria": "O gerente identifica rapidamente a ordem correta, entende seus impactos, executa a transição de recusa sem editar ids ou status manualmente e consegue encaminhar o resultado ao campo com contexto suficiente.",
+    "antiPatterns": [
+      "formulário separado para localizar ou selecionar ids",
+      "seletor livre de status",
+      "digitação manual de identificadores de ordem, cliente ou projeto",
+      "transformar cada operação em uma seção independente",
+      "ocultar o status atual antes da transição",
+      "exigir redigitação dos dados já presentes na ordem",
+      "adicionar urgência ou persuasão a uma tela operacional"
+    ],
+    "criticalActions": [
+      {
+        "action": "Recusar a ordem de mudança selecionada",
+        "presentation": "contextual-transition-actions"
+      },
+      {
+        "action": "Devolver a decisão recusada ao coordenador de campo",
+        "presentation": "contextual-transition-actions"
+      }
+    ]
+  }
+}

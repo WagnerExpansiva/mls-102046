@@ -1,0 +1,106 @@
+{
+  "savedAt": "2026-08-18T15:24:03.404Z",
+  "planId": "materialize-phase-pages-verify-v2-v3-v4",
+  "attempt": 4,
+  "brokenCount": 7,
+  "broken": [
+    {
+      "planId": "materialize-forwardchangeorderforclientapproval-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.ts",
+      "typecheck": "passed",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11ForwardChangeOrderForClientApprovalPage'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/forwardChangeOrderForClientApproval.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11ForwardChangeOrderForClientApprovalPage'."
+      ],
+      "warnings": [
+        "forwardChangeOrderForClientApproval: generated page does not render textual mutation feedback: cmdHandoffChangeOrderToClient"
+      ]
+    },
+    {
+      "planId": "materialize-recordprojectmaterialusage-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts",
+      "typecheck": "passed",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11RecordProjectMaterialUsagePage'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11RecordProjectMaterialUsagePage'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11RecordProjectMaterialUsagePage'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11RecordProjectMaterialUsagePage'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage11RecordProjectMaterialUsagePage'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page11/recordProjectMaterialUsage.ts - TS2551 - Property 'cmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageId' does not exist on type 'BuildFlowFsmDesktopPage11RecordProjectMaterialUsagePage'. Did you mean 'cmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageMaterialUsageId'?"
+      ],
+      "warnings": [
+        "recordProjectMaterialUsage: generated page does not render textual mutation feedback: cmdCreateMaterialUsage",
+        "recordProjectMaterialUsage: generated page does not render textual mutation feedback: cmdHandoffMaterialUsageToFieldCoordinator"
+      ]
+    },
+    {
+      "planId": "materialize-clientbillingsummaryview-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts - TS1002 - Unterminated string literal.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/clientBillingSummaryView.ts - TS1005 - ']' expected."
+      ],
+      "warnings": []
+    },
+    {
+      "planId": "materialize-projecttimelineview-page21-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts - TS18047 - 'output' is possibly 'null'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page21/projectTimelineView.ts - TS18047 - 'output' is possibly 'null'."
+      ],
+      "warnings": []
+    },
+    {
+      "planId": "materialize-declinechangeorder-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/declineChangeOrder.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage31DeclineChangeOrderPage'."
+      ],
+      "warnings": [
+        "declineChangeOrder: generated page does not render textual mutation feedback: cmdDeclineChangeOrderDecision",
+        "declineChangeOrder: generated page does not render textual mutation feedback: cmdHandoffDeclinedChangeOrderToFieldCoordinator",
+        "cmdDeclineChangeOrderDecision.clientClientId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-monitordailyprojectrecords-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts - TS2339 - Property 'msg' does not exist on type 'MonitorDailyProjectRecordsDesktopPage31MonitorDailyProjectRecordsPage'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts - TS2345 - Argument of type 'unknown' is not assignable to parameter of type 'object | null | undefined'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts - TS2345 - Argument of type 'unknown' is not assignable to parameter of type 'object | null | undefined'.",
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/monitorDailyProjectRecords.ts - TS2345 - Argument of type 'unknown' is not assignable to parameter of type 'object | null | undefined'."
+      ],
+      "warnings": [
+        "qryInspectProjectTimeLogs.timeLogTimeLogId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it",
+        "qryInspectProjectMaterialUsages.materialUsageMaterialUsageId is a technical id with source 'selectedentity' and this page has NO query that could populate a picker for it (L4-LOOKUP-GAP): the l4 workspace must expose a lookup query for the referenced entity — rewriting this page cannot fix it"
+      ]
+    },
+    {
+      "planId": "materialize-projectcatalogue-page31-l2-page",
+      "defPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.defs.ts",
+      "outputPath": "_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts",
+      "typecheck": "not-applicable",
+      "errors": [
+        "file://server/_102046_/l2/buildFlowFsm/web/desktop/page31/projectCatalogue.ts - TS2339 - Property 'msg' does not exist on type 'BuildFlowFsmDesktopPage31ProjectCataloguePage'."
+      ],
+      "warnings": [
+        "projectCatalogue: generated page does not render textual mutation feedback: cmdCreateProject",
+        "projectCatalogue: generated page does not render textual mutation feedback: cmdUpdateProject",
+        "projectCatalogue: generated page does not render textual mutation feedback: cmdDeleteProject"
+      ]
+    }
+  ],
+  "agent": "agentCfeMaterializePhase"
+}

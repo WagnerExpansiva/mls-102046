@@ -1,0 +1,42 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "declineChangeOrderDecision",
+  "title": "Recusar a ordem de mudança",
+  "kind": "command",
+  "compiledFrom": [
+    "declineChangeOrder.declineChangeOrderDecision"
+  ],
+  "description": "Recusa uma ordem de mudança submetida e registra a decisão correspondente.",
+  "contexts": {
+    "requires": [
+      "selectedChangeOrder",
+      "selectedClient",
+      "selectedProject"
+    ],
+    "provides": [
+      "selectedChangeOrder"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder",
+    "ChangeOrderDecision"
+  ],
+  "useRules": [
+    "managerActionableChangeOrder"
+  ],
+  "transitions": [
+    {
+      "transitionId": "declineChangeOrder",
+      "entityRef": "ChangeOrder",
+      "fromStates": [
+        "submitted"
+      ],
+      "toState": "declined",
+      "useRules": [
+        "managerActionableChangeOrder"
+      ]
+    }
+  ]
+}

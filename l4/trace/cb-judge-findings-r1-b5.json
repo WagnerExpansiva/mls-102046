@@ -1,0 +1,114 @@
+{
+  "judgeRun": 1,
+  "batchIndex": 5,
+  "owners": [
+    "inspectProjectTimeline",
+    "locateFieldWorker",
+    "handoffWorkTaskToFieldWorker",
+    "locateWorkTask",
+    "handoffWorkTaskProgressToFieldCoordinator",
+    "handoffTimeLogToFieldCoordinator",
+    "locateInventoryItem",
+    "handoffMaterialUsageToFieldCoordinator",
+    "locateClient",
+    "handoffChangeOrderToProjectManager",
+    "locateChangeOrder",
+    "handoffChangeOrderToClient",
+    "approveChangeOrderDecision",
+    "handoffApprovedChangeOrderToBilling",
+    "declineChangeOrderDecision"
+  ],
+  "findings": [
+    {
+      "ownerId": "inspectProjectTimeline",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation inspectProjectTimeline (worker failed or never saved)"
+    },
+    {
+      "ownerId": "locateFieldWorker",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation locateFieldWorker (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffWorkTaskToFieldWorker",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffWorkTaskToFieldWorker (worker failed or never saved)"
+    },
+    {
+      "ownerId": "locateWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation locateWorkTask (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffWorkTaskProgressToFieldCoordinator",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffWorkTaskProgressToFieldCoordinator (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffTimeLogToFieldCoordinator",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffTimeLogToFieldCoordinator (worker failed or never saved)"
+    },
+    {
+      "ownerId": "locateInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation locateInventoryItem (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffMaterialUsageToFieldCoordinator",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffMaterialUsageToFieldCoordinator (worker failed or never saved)"
+    },
+    {
+      "ownerId": "locateClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation locateClient (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffChangeOrderToProjectManager",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffChangeOrderToProjectManager (worker failed or never saved)"
+    },
+    {
+      "ownerId": "locateChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation locateChangeOrder (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffChangeOrderToClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffChangeOrderToClient (worker failed or never saved)"
+    },
+    {
+      "ownerId": "approveChangeOrderDecision",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation approveChangeOrderDecision (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffApprovedChangeOrderToBilling",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffApprovedChangeOrderToBilling (worker failed or never saved)"
+    },
+    {
+      "ownerId": "declineChangeOrderDecision",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation declineChangeOrderDecision (worker failed or never saved)"
+    }
+  ],
+  "savedAt": "2026-08-17T20:29:53.668Z"
+}

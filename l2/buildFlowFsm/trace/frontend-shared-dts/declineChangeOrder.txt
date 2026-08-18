@@ -1,0 +1,150 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateChangeOrderOutput, CmdDeclineChangeOrderDecisionOutput, CmdHandoffDeclinedChangeOrderToFieldCoordinatorOutput, QryClientPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/declineChangeOrder.js';
+export type { QryLocateChangeOrderInput, QryLocateChangeOrderOutput, CmdDeclineChangeOrderDecisionInput, CmdDeclineChangeOrderDecisionOutput, CmdHandoffDeclinedChangeOrderToFieldCoordinatorInput, CmdHandoffDeclinedChangeOrderToFieldCoordinatorOutput, QryClientPickerInput, QryClientPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/declineChangeOrder.js';
+declare const message_pt: {
+    'section.declineChangeOrder.locateChangeOrder.title': string;
+    'organism.declineChangeOrder.qryLocateChangeOrder.title': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.title': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.empty': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.column.changeOrderId.label': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.column.clientRef.label': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.column.projectRef.label': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.column.description.label': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.column.scopeImpact.label': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.column.scheduleImpact.label': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.column.changeAmount.label': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.column.submittedAt.label': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.column.forwardedForClientApprovalAt.label': string;
+    'intent.declineChangeOrder.qryLocateChangeOrder.list.column.status.label': string;
+    'section.declineChangeOrder.declineChangeOrderDecision.title': string;
+    'organism.declineChangeOrder.cmdDeclineChangeOrderDecision.title': string;
+    'intent.declineChangeOrder.cmdDeclineChangeOrderDecision.form.title': string;
+    'intent.declineChangeOrder.cmdDeclineChangeOrderDecision.form.action.cmdDeclineChangeOrderDecision': string;
+    'intent.declineChangeOrder.cmdDeclineChangeOrderDecision.form.field.status.label': string;
+    'organism.declineChangeOrder.qryClientPicker.title': string;
+    'intent.declineChangeOrder.qryClientPicker.list.title': string;
+    'intent.declineChangeOrder.qryClientPicker.list.empty': string;
+    'intent.declineChangeOrder.qryClientPicker.list.column.clientId.label': string;
+    'intent.declineChangeOrder.qryClientPicker.list.column.clientName.label': string;
+    'intent.declineChangeOrder.qryClientPicker.list.column.contactEmail.label': string;
+    'intent.declineChangeOrder.qryClientPicker.list.column.contactPhone.label': string;
+    'section.declineChangeOrder.handoffDeclinedChangeOrderToFieldCoordinator.title': string;
+    'organism.declineChangeOrder.cmdHandoffDeclinedChangeOrderToFieldCoordinator.title': string;
+    'intent.declineChangeOrder.cmdHandoffDeclinedChangeOrderToFieldCoordinator.form.title': string;
+    'intent.declineChangeOrder.cmdHandoffDeclinedChangeOrderToFieldCoordinator.form.action.cmdHandoffDeclinedChangeOrderToFieldCoordinator': string;
+    'intent.declineChangeOrder.cmdHandoffDeclinedChangeOrderToFieldCoordinator.form.field.description.label': string;
+    'intent.declineChangeOrder.cmdHandoffDeclinedChangeOrderToFieldCoordinator.form.field.scopeImpact.label': string;
+    'intent.declineChangeOrder.cmdHandoffDeclinedChangeOrderToFieldCoordinator.form.field.scheduleImpact.label': string;
+    'intent.declineChangeOrder.cmdHandoffDeclinedChangeOrderToFieldCoordinator.form.field.changeAmount.label': string;
+    'action.cmdDeclineChangeOrderDecision.success': string;
+    'action.cmdDeclineChangeOrderDecision.error': string;
+    'action.cmdHandoffDeclinedChangeOrderToFieldCoordinator.success': string;
+    'action.cmdHandoffDeclinedChangeOrderToFieldCoordinator.error': string;
+    'section.declineChangeOrder.decisionQueue.title': string;
+    'section.declineChangeOrder.handoffOutcome.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmDeclineChangeOrderBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateChangeOrderState — actionStatus, values: idle|loading|success|error */
+    qryLocateChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateChangeOrderData — queryResult, outputShape: array */
+    qryLocateChangeOrderData: QryLocateChangeOrderOutput[];
+    /** state cmdDeclineChangeOrderDecisionState — actionStatus, values: idle|loading|success|error */
+    cmdDeclineChangeOrderDecisionState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeclineChangeOrderDecisionChangeOrderChangeOrderId — input */
+    cmdDeclineChangeOrderDecisionChangeOrderChangeOrderId: string;
+    /** state cmdDeclineChangeOrderDecisionClientClientId — input */
+    cmdDeclineChangeOrderDecisionClientClientId: string;
+    /** state cmdDeclineChangeOrderDecisionProjectProjectId — input */
+    cmdDeclineChangeOrderDecisionProjectProjectId: string;
+    /** state cmdDeclineChangeOrderDecisionStatus — input */
+    cmdDeclineChangeOrderDecisionStatus: string;
+    /** state cmdDeclineChangeOrderDecisionOutput — commandOutput */
+    cmdDeclineChangeOrderDecisionOutput: CmdDeclineChangeOrderDecisionOutput | null;
+    /** state cmdDeclineChangeOrderDecisionError — actionError */
+    cmdDeclineChangeOrderDecisionError: string;
+    /** state cmdHandoffDeclinedChangeOrderToFieldCoordinatorState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffDeclinedChangeOrderToFieldCoordinatorState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffDeclinedChangeOrderToFieldCoordinatorChangeOrderChangeOrderId — input */
+    cmdHandoffDeclinedChangeOrderToFieldCoordinatorChangeOrderChangeOrderId: string;
+    /** state cmdHandoffDeclinedChangeOrderToFieldCoordinatorDescription — input */
+    cmdHandoffDeclinedChangeOrderToFieldCoordinatorDescription: string;
+    /** state cmdHandoffDeclinedChangeOrderToFieldCoordinatorScopeImpact — input */
+    cmdHandoffDeclinedChangeOrderToFieldCoordinatorScopeImpact: string;
+    /** state cmdHandoffDeclinedChangeOrderToFieldCoordinatorScheduleImpact — input */
+    cmdHandoffDeclinedChangeOrderToFieldCoordinatorScheduleImpact: string;
+    /** state cmdHandoffDeclinedChangeOrderToFieldCoordinatorChangeAmount — input */
+    cmdHandoffDeclinedChangeOrderToFieldCoordinatorChangeAmount: string;
+    /** state cmdHandoffDeclinedChangeOrderToFieldCoordinatorOutput — commandOutput */
+    cmdHandoffDeclinedChangeOrderToFieldCoordinatorOutput: CmdHandoffDeclinedChangeOrderToFieldCoordinatorOutput | null;
+    /** state cmdHandoffDeclinedChangeOrderToFieldCoordinatorError — actionError */
+    cmdHandoffDeclinedChangeOrderToFieldCoordinatorError: string;
+    /** state qryClientPickerState — actionStatus, values: idle|loading|success|error */
+    qryClientPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryClientPickerData — queryResult, outputShape: array */
+    qryClientPickerData: QryClientPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryLocateChangeOrder (query) — route buildFlowFsm.declineChangeOrder.qryLocateChangeOrder; inputs: (none); writes ui.declineChangeOrder.data.qryLocateChangeOrder; status ui.declineChangeOrder.action.qryLocateChangeOrder.status */
+    loadQryLocateChangeOrder(): Promise<void>;
+    /** handler for action qryLocateChangeOrder — bind UI events here */
+    handleQryLocateChangeOrderClick(event?: Event): void;
+    /** action cmdDeclineChangeOrderDecision (command) — route buildFlowFsm.declineChangeOrder.cmdDeclineChangeOrderDecision; inputs: changeOrderChangeOrderId, clientClientId, projectProjectId, status; writes ui.declineChangeOrder.output.cmdDeclineChangeOrderDecision; status ui.declineChangeOrder.action.cmdDeclineChangeOrderDecision.status; feedback keys action.cmdDeclineChangeOrderDecision.success / action.cmdDeclineChangeOrderDecision.error */
+    cmdDeclineChangeOrderDecision(): Promise<void>;
+    /** handler for action cmdDeclineChangeOrderDecision — bind UI events here */
+    handleCmdDeclineChangeOrderDecisionClick(event?: Event): void;
+    /** action cmdHandoffDeclinedChangeOrderToFieldCoordinator (command) — route buildFlowFsm.declineChangeOrder.cmdHandoffDeclinedChangeOrderToFieldCoordinator; inputs: changeOrderChangeOrderId, description, scopeImpact, scheduleImpact, changeAmount; writes ui.declineChangeOrder.output.cmdHandoffDeclinedChangeOrderToFieldCoordinator; status ui.declineChangeOrder.action.cmdHandoffDeclinedChangeOrderToFieldCoordinator.status; feedback keys action.cmdHandoffDeclinedChangeOrderToFieldCoordinator.success / action.cmdHandoffDeclinedChangeOrderToFieldCoordinator.error */
+    cmdHandoffDeclinedChangeOrderToFieldCoordinator(): Promise<void>;
+    /** handler for action cmdHandoffDeclinedChangeOrderToFieldCoordinator — bind UI events here */
+    handleCmdHandoffDeclinedChangeOrderToFieldCoordinatorClick(event?: Event): void;
+    /** action qryClientPicker (query) — route buildFlowFsm.declineChangeOrder.qryClientPicker; inputs: (none); writes ui.declineChangeOrder.data.qryClientPicker; status ui.declineChangeOrder.action.qryClientPicker.status */
+    loadQryClientPicker(): Promise<void>;
+    /** handler for action qryClientPicker — bind UI events here */
+    handleQryClientPickerClick(event?: Event): void;
+    /** setter for state ui.declineChangeOrder.input.cmdDeclineChangeOrderDecision.changeOrderChangeOrderId */
+    setCmdDeclineChangeOrderDecisionChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.cmdDeclineChangeOrderDecisionChangeOrderChangeOrderId — bind UI events here */
+    handleCmdDeclineChangeOrderDecisionChangeOrderChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.declineChangeOrder.input.cmdDeclineChangeOrderDecision.clientClientId */
+    setCmdDeclineChangeOrderDecisionClientClientId(value: string): void;
+    /** handler for action set.cmdDeclineChangeOrderDecisionClientClientId — bind UI events here */
+    handleCmdDeclineChangeOrderDecisionClientClientIdChange(event: Event): void;
+    /** setter for state ui.declineChangeOrder.input.cmdDeclineChangeOrderDecision.projectProjectId */
+    setCmdDeclineChangeOrderDecisionProjectProjectId(value: string): void;
+    /** handler for action set.cmdDeclineChangeOrderDecisionProjectProjectId — bind UI events here */
+    handleCmdDeclineChangeOrderDecisionProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.declineChangeOrder.input.cmdDeclineChangeOrderDecision.status */
+    setCmdDeclineChangeOrderDecisionStatus(value: string): void;
+    /** handler for action set.cmdDeclineChangeOrderDecisionStatus — bind UI events here */
+    handleCmdDeclineChangeOrderDecisionStatusChange(event: Event): void;
+    /** setter for state ui.declineChangeOrder.input.cmdHandoffDeclinedChangeOrderToFieldCoordinator.changeOrderChangeOrderId */
+    setCmdHandoffDeclinedChangeOrderToFieldCoordinatorChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.cmdHandoffDeclinedChangeOrderToFieldCoordinatorChangeOrderChangeOrderId — bind UI events here */
+    handleCmdHandoffDeclinedChangeOrderToFieldCoordinatorChangeOrderChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.declineChangeOrder.input.cmdHandoffDeclinedChangeOrderToFieldCoordinator.description */
+    setCmdHandoffDeclinedChangeOrderToFieldCoordinatorDescription(value: string): void;
+    /** handler for action set.cmdHandoffDeclinedChangeOrderToFieldCoordinatorDescription — bind UI events here */
+    handleCmdHandoffDeclinedChangeOrderToFieldCoordinatorDescriptionChange(event: Event): void;
+    /** setter for state ui.declineChangeOrder.input.cmdHandoffDeclinedChangeOrderToFieldCoordinator.scopeImpact */
+    setCmdHandoffDeclinedChangeOrderToFieldCoordinatorScopeImpact(value: string): void;
+    /** handler for action set.cmdHandoffDeclinedChangeOrderToFieldCoordinatorScopeImpact — bind UI events here */
+    handleCmdHandoffDeclinedChangeOrderToFieldCoordinatorScopeImpactChange(event: Event): void;
+    /** setter for state ui.declineChangeOrder.input.cmdHandoffDeclinedChangeOrderToFieldCoordinator.scheduleImpact */
+    setCmdHandoffDeclinedChangeOrderToFieldCoordinatorScheduleImpact(value: string): void;
+    /** handler for action set.cmdHandoffDeclinedChangeOrderToFieldCoordinatorScheduleImpact — bind UI events here */
+    handleCmdHandoffDeclinedChangeOrderToFieldCoordinatorScheduleImpactChange(event: Event): void;
+    /** setter for state ui.declineChangeOrder.input.cmdHandoffDeclinedChangeOrderToFieldCoordinator.changeAmount */
+    setCmdHandoffDeclinedChangeOrderToFieldCoordinatorChangeAmount(value: string): void;
+    /** handler for action set.cmdHandoffDeclinedChangeOrderToFieldCoordinatorChangeAmount — bind UI events here */
+    handleCmdHandoffDeclinedChangeOrderToFieldCoordinatorChangeAmountChange(event: Event): void;
+}

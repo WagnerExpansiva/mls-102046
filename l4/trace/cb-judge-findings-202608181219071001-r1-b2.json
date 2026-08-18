@@ -1,0 +1,64 @@
+{
+  "runId": "20260818121907.1001",
+  "judgeRun": 1,
+  "batchIndex": 2,
+  "owners": [
+    "declineChangeOrderDecision",
+    "deleteChangeOrderDecision",
+    "deleteChangeOrder",
+    "deleteClientPortalAccess",
+    "deleteClient",
+    "deleteInventoryBalance",
+    "deleteInventoryItem",
+    "deleteInvoiceChangeOrder",
+    "deleteInvoice",
+    "deleteMaterialUsage",
+    "deleteProjectCoordinationAssignment",
+    "deleteProject",
+    "deleteStatusReport",
+    "deleteTimeLog",
+    "deleteWorkTask"
+  ],
+  "findings": [
+    {
+      "ownerId": "deleteClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase deleteClient: principal aggregate 'Client' has a local port but is missing from data.ports (materialize never sees IClientRepository nor the Client shape; see T12)"
+    },
+    {
+      "ownerId": "deleteInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase deleteInventoryItem: principal aggregate 'InventoryItem' has a local port but is missing from data.ports (materialize never sees IInventoryItemRepository nor the InventoryItem shape; see T12)"
+    },
+    {
+      "ownerId": "deleteProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase deleteProject: principal aggregate 'Project' has a local port but is missing from data.ports (materialize never sees IProjectRepository nor the Project shape; see T12)"
+    },
+    {
+      "ownerId": "deleteClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports está vazio, mas o contrato L4 lê e escreve a entidade persistida Client; Client é uma porta válida do repositório.",
+      "suggestion": "Inclua \"Client\" em generatedUsecaseDefs.ports e na função, mantendo a operação de leitura e exclusão pelo port Client; não trate Client como mdmRef."
+    },
+    {
+      "ownerId": "deleteInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports está vazio, mas o contrato L4 lê e escreve a entidade persistida InventoryItem; InventoryItem é uma porta válida do repositório.",
+      "suggestion": "Inclua \"InventoryItem\" em generatedUsecaseDefs.ports e na função, mantendo a operação de leitura e exclusão pelo port InventoryItem; remova o uso de mdmRefs para InventoryItem."
+    },
+    {
+      "ownerId": "deleteProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports está vazio, mas o contrato L4 lê e escreve a entidade persistida Project; Project é uma porta válida do repositório.",
+      "suggestion": "Inclua \"Project\" em generatedUsecaseDefs.ports e na função, mantendo a operação de leitura e exclusão pelo port Project; remova o uso de mdmRefs para Project."
+    }
+  ],
+  "savedAt": "2026-08-18T12:24:32.725Z"
+}

@@ -1,0 +1,136 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListClientOutput, CmdCreateClientOutput, CmdUpdateClientOutput, CmdDeleteClientOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/clientCatalogue.js';
+export type { QryListClientInput, QryListClientOutput, CmdCreateClientInput, CmdCreateClientOutput, CmdUpdateClientInput, CmdUpdateClientOutput, CmdDeleteClientInput, CmdDeleteClientOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/clientCatalogue.js';
+declare const message_pt: {
+    'section.clientCatalogue.recordList.title': string;
+    'organism.clientCatalogue.qryListClient.title': string;
+    'intent.clientCatalogue.qryListClient.list.title': string;
+    'intent.clientCatalogue.qryListClient.list.empty': string;
+    'intent.clientCatalogue.qryListClient.list.column.clientId.label': string;
+    'intent.clientCatalogue.qryListClient.list.column.clientName.label': string;
+    'intent.clientCatalogue.qryListClient.list.column.contactEmail.label': string;
+    'intent.clientCatalogue.qryListClient.list.column.contactPhone.label': string;
+    'organism.clientCatalogue.cmdDeleteClient.title': string;
+    'intent.clientCatalogue.cmdDeleteClient.form.title': string;
+    'intent.clientCatalogue.cmdDeleteClient.form.action.cmdDeleteClient': string;
+    'section.clientCatalogue.recordForm.title': string;
+    'organism.clientCatalogue.cmdCreateClient.title': string;
+    'intent.clientCatalogue.cmdCreateClient.form.title': string;
+    'intent.clientCatalogue.cmdCreateClient.form.action.cmdCreateClient': string;
+    'intent.clientCatalogue.cmdCreateClient.form.field.clientName.label': string;
+    'intent.clientCatalogue.cmdCreateClient.form.field.contactEmail.label': string;
+    'intent.clientCatalogue.cmdCreateClient.form.field.contactPhone.label': string;
+    'organism.clientCatalogue.cmdUpdateClient.title': string;
+    'intent.clientCatalogue.cmdUpdateClient.form.title': string;
+    'intent.clientCatalogue.cmdUpdateClient.form.action.cmdUpdateClient': string;
+    'intent.clientCatalogue.cmdUpdateClient.form.field.clientName.label': string;
+    'intent.clientCatalogue.cmdUpdateClient.form.field.contactEmail.label': string;
+    'intent.clientCatalogue.cmdUpdateClient.form.field.contactPhone.label': string;
+    'action.cmdCreateClient.success': string;
+    'action.cmdCreateClient.error': string;
+    'action.cmdUpdateClient.success': string;
+    'action.cmdUpdateClient.error': string;
+    'action.cmdDeleteClient.success': string;
+    'action.cmdDeleteClient.error': string;
+    'section.clientCatalogue.clientWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmClientCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListClientState — actionStatus, values: idle|loading|success|error */
+    qryListClientState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListClientData — queryResult, outputShape: array */
+    qryListClientData: QryListClientOutput[];
+    /** state cmdCreateClientState — actionStatus, values: idle|loading|success|error */
+    cmdCreateClientState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateClientClientName — input */
+    cmdCreateClientClientName: string;
+    /** state cmdCreateClientContactEmail — input */
+    cmdCreateClientContactEmail: string;
+    /** state cmdCreateClientContactPhone — input */
+    cmdCreateClientContactPhone: string;
+    /** state cmdCreateClientOutput — commandOutput */
+    cmdCreateClientOutput: CmdCreateClientOutput | null;
+    /** state cmdCreateClientError — actionError */
+    cmdCreateClientError: string;
+    /** state cmdUpdateClientState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateClientState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateClientClientId — input */
+    cmdUpdateClientClientId: string;
+    /** state cmdUpdateClientClientName — input */
+    cmdUpdateClientClientName: string;
+    /** state cmdUpdateClientContactEmail — input */
+    cmdUpdateClientContactEmail: string;
+    /** state cmdUpdateClientContactPhone — input */
+    cmdUpdateClientContactPhone: string;
+    /** state cmdUpdateClientOutput — commandOutput */
+    cmdUpdateClientOutput: CmdUpdateClientOutput | null;
+    /** state cmdUpdateClientError — actionError */
+    cmdUpdateClientError: string;
+    /** state cmdDeleteClientState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteClientState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteClientClientId — input */
+    cmdDeleteClientClientId: string;
+    /** state cmdDeleteClientOutput — commandOutput */
+    cmdDeleteClientOutput: CmdDeleteClientOutput | null;
+    /** state cmdDeleteClientError — actionError */
+    cmdDeleteClientError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryListClient (query) — route buildFlowFsm.clientCatalogue.qryListClient; inputs: (none); writes ui.clientCatalogue.data.qryListClient; status ui.clientCatalogue.action.qryListClient.status */
+    loadQryListClient(): Promise<void>;
+    /** handler for action qryListClient — bind UI events here */
+    handleQryListClientClick(event?: Event): void;
+    /** action cmdCreateClient (command) — route buildFlowFsm.clientCatalogue.cmdCreateClient; inputs: clientName, contactEmail, contactPhone; writes ui.clientCatalogue.output.cmdCreateClient; status ui.clientCatalogue.action.cmdCreateClient.status; feedback keys action.cmdCreateClient.success / action.cmdCreateClient.error */
+    cmdCreateClient(): Promise<void>;
+    /** handler for action cmdCreateClient — bind UI events here */
+    handleCmdCreateClientClick(event?: Event): void;
+    /** action cmdUpdateClient (command) — route buildFlowFsm.clientCatalogue.cmdUpdateClient; inputs: clientId, clientName, contactEmail, contactPhone; writes ui.clientCatalogue.output.cmdUpdateClient; status ui.clientCatalogue.action.cmdUpdateClient.status; feedback keys action.cmdUpdateClient.success / action.cmdUpdateClient.error */
+    cmdUpdateClient(): Promise<void>;
+    /** handler for action cmdUpdateClient — bind UI events here */
+    handleCmdUpdateClientClick(event?: Event): void;
+    /** action cmdDeleteClient (command) — route buildFlowFsm.clientCatalogue.cmdDeleteClient; inputs: clientId; writes ui.clientCatalogue.output.cmdDeleteClient; status ui.clientCatalogue.action.cmdDeleteClient.status; feedback keys action.cmdDeleteClient.success / action.cmdDeleteClient.error */
+    cmdDeleteClient(): Promise<void>;
+    /** handler for action cmdDeleteClient — bind UI events here */
+    handleCmdDeleteClientClick(event?: Event): void;
+    /** setter for state ui.clientCatalogue.input.cmdCreateClient.clientName */
+    setCmdCreateClientClientName(value: string): void;
+    /** handler for action set.cmdCreateClientClientName — bind UI events here */
+    handleCmdCreateClientClientNameChange(event: Event): void;
+    /** setter for state ui.clientCatalogue.input.cmdCreateClient.contactEmail */
+    setCmdCreateClientContactEmail(value: string): void;
+    /** handler for action set.cmdCreateClientContactEmail — bind UI events here */
+    handleCmdCreateClientContactEmailChange(event: Event): void;
+    /** setter for state ui.clientCatalogue.input.cmdCreateClient.contactPhone */
+    setCmdCreateClientContactPhone(value: string): void;
+    /** handler for action set.cmdCreateClientContactPhone — bind UI events here */
+    handleCmdCreateClientContactPhoneChange(event: Event): void;
+    /** setter for state ui.clientCatalogue.input.cmdUpdateClient.clientId */
+    setCmdUpdateClientClientId(value: string): void;
+    /** handler for action set.cmdUpdateClientClientId — bind UI events here */
+    handleCmdUpdateClientClientIdChange(event: Event): void;
+    /** setter for state ui.clientCatalogue.input.cmdUpdateClient.clientName */
+    setCmdUpdateClientClientName(value: string): void;
+    /** handler for action set.cmdUpdateClientClientName — bind UI events here */
+    handleCmdUpdateClientClientNameChange(event: Event): void;
+    /** setter for state ui.clientCatalogue.input.cmdUpdateClient.contactEmail */
+    setCmdUpdateClientContactEmail(value: string): void;
+    /** handler for action set.cmdUpdateClientContactEmail — bind UI events here */
+    handleCmdUpdateClientContactEmailChange(event: Event): void;
+    /** setter for state ui.clientCatalogue.input.cmdUpdateClient.contactPhone */
+    setCmdUpdateClientContactPhone(value: string): void;
+    /** handler for action set.cmdUpdateClientContactPhone — bind UI events here */
+    handleCmdUpdateClientContactPhoneChange(event: Event): void;
+    /** setter for state ui.clientCatalogue.input.cmdDeleteClient.clientId */
+    setCmdDeleteClientClientId(value: string): void;
+    /** handler for action set.cmdDeleteClientClientId — bind UI events here */
+    handleCmdDeleteClientClientIdChange(event: Event): void;
+}

@@ -1,0 +1,25 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "FieldCoordinator",
+  "fields": [
+    {
+      "fieldId": "platformUserRef",
+      "title": "Usuário da plataforma",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência externa ao usuário organizacional qualificado como coordenador de campo.",
+      "constraints": [
+        {
+          "constraintId": "uniquePlatformUserRef",
+          "kind": "unique",
+          "value": "true",
+          "description": "Cada usuário da plataforma corresponde a no máximo um coordenador de campo.",
+          "source": "inferred"
+        }
+      ]
+    }
+  ],
+  "useRules": []
+}

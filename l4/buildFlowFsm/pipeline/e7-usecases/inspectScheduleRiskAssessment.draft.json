@@ -1,0 +1,28 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "inspectScheduleRiskAssessment",
+  "title": "Consultar tarefas em risco de atraso",
+  "kind": "query",
+  "compiledFrom": [
+    "generateAndPublishProjectStatusReport.inspectScheduleRiskAssessment"
+  ],
+  "description": "Consulta a avaliação de risco de atraso selecionada, identificando a tarefa de trabalho pendente associada e os indicadores que explicam seu risco.",
+  "contexts": {
+    "requires": [
+      "selectedScheduleRiskAssessment"
+    ],
+    "provides": [
+      "selectedScheduleRiskAssessment"
+    ]
+  },
+  "entityRefs": [
+    "ScheduleRiskAssessment",
+    "WorkTask"
+  ],
+  "useRules": [
+    "unfinishedWorkTask"
+  ],
+  "transitions": []
+}

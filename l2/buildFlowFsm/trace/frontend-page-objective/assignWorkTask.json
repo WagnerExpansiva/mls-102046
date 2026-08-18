@@ -1,0 +1,54 @@
+{
+  "savedAt": "2026-08-18T14:50:48.079Z",
+  "pageId": "assignWorkTask",
+  "genome": "page31",
+  "objective": {
+    "actor": "Coordenador de obras ou responsável pela operação de campo",
+    "jobToBeDone": "Planejar uma tarefa para uma obra ativa, escolher o trabalhador adequado e encaminhá-la para execução em campo.",
+    "primaryDecision": "Confirmar a tarefa e o responsável e executar o encaminhamento ao trabalhador.",
+    "decisiveInfo": [
+      "projectId e nome da obra",
+      "status, plannedStartDate e plannedEndDate da obra",
+      "workTasks e scheduleEntries do cronograma",
+      "platformUserId do trabalhador selecionado",
+      "description, dueDate e progressUpdate da tarefa",
+      "status e assignedFieldWorkerId da tarefa após criação"
+    ],
+    "usageFrequency": "Operacional e recorrente, especialmente quando novas necessidades de campo surgem durante o acompanhamento de obras.",
+    "informationHierarchy": [
+      "obra selecionada e seu estado/prazos",
+      "cronograma e tarefas existentes",
+      "dados mínimos da nova tarefa",
+      "trabalhadores disponíveis",
+      "tarefa criada e seu estado atual",
+      "ação contextual de encaminhamento e confirmação do resultado"
+    ],
+    "successCriteria": "O coordenador entende rapidamente qual obra está em foco, define um prazo coerente com o cronograma, seleciona um trabalhador reconhecível, cria a tarefa e a encaminha sem digitar identificadores ou editar estados diretamente.",
+    "antiPatterns": [
+      "formulário CRUD separado antes de mostrar a obra e o cronograma",
+      "digitação manual de projectId, workTaskId ou platformUserId",
+      "campo livre para status da tarefa",
+      "encaminhamento sem mostrar a tarefa selecionada e seu estado atual",
+      "duplicar a mesma entrada de descrição, prazo e atualização em etapas desconectadas",
+      "transformar cada consulta em uma tela ou seção isolada"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar a obra e revisar o cronograma",
+        "presentation": "master-detail"
+      },
+      {
+        "action": "Registrar a nova tarefa",
+        "presentation": "contextual-transition-actions"
+      },
+      {
+        "action": "Selecionar o trabalhador responsável",
+        "presentation": "master-detail"
+      },
+      {
+        "action": "Encaminhar a tarefa selecionada",
+        "presentation": "contextual-transition-actions"
+      }
+    ]
+  }
+}

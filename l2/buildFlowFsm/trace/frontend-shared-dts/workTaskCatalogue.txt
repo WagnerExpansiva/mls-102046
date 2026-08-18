@@ -1,0 +1,153 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListWorkTaskOutput, CmdCreateWorkTaskOutput, CmdUpdateWorkTaskOutput, CmdDeleteWorkTaskOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/workTaskCatalogue.js';
+export type { QryListWorkTaskInput, QryListWorkTaskOutput, CmdCreateWorkTaskInput, CmdCreateWorkTaskOutput, CmdUpdateWorkTaskInput, CmdUpdateWorkTaskOutput, CmdDeleteWorkTaskInput, CmdDeleteWorkTaskOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/workTaskCatalogue.js';
+declare const message_pt: {
+    'section.workTaskCatalogue.recordList.title': string;
+    'organism.workTaskCatalogue.qryListWorkTask.title': string;
+    'intent.workTaskCatalogue.qryListWorkTask.list.title': string;
+    'intent.workTaskCatalogue.qryListWorkTask.list.empty': string;
+    'intent.workTaskCatalogue.qryListWorkTask.list.column.workTaskId.label': string;
+    'intent.workTaskCatalogue.qryListWorkTask.list.column.projectId.label': string;
+    'intent.workTaskCatalogue.qryListWorkTask.list.column.assignedFieldWorkerId.label': string;
+    'intent.workTaskCatalogue.qryListWorkTask.list.column.description.label': string;
+    'intent.workTaskCatalogue.qryListWorkTask.list.column.dueDate.label': string;
+    'intent.workTaskCatalogue.qryListWorkTask.list.column.status.label': string;
+    'intent.workTaskCatalogue.qryListWorkTask.list.column.progressUpdate.label': string;
+    'organism.workTaskCatalogue.cmdDeleteWorkTask.title': string;
+    'intent.workTaskCatalogue.cmdDeleteWorkTask.form.title': string;
+    'intent.workTaskCatalogue.cmdDeleteWorkTask.form.action.cmdDeleteWorkTask': string;
+    'section.workTaskCatalogue.recordForm.title': string;
+    'organism.workTaskCatalogue.cmdCreateWorkTask.title': string;
+    'intent.workTaskCatalogue.cmdCreateWorkTask.form.title': string;
+    'intent.workTaskCatalogue.cmdCreateWorkTask.form.action.cmdCreateWorkTask': string;
+    'intent.workTaskCatalogue.cmdCreateWorkTask.form.field.description.label': string;
+    'intent.workTaskCatalogue.cmdCreateWorkTask.form.field.dueDate.label': string;
+    'intent.workTaskCatalogue.cmdCreateWorkTask.form.field.progressUpdate.label': string;
+    'organism.workTaskCatalogue.cmdUpdateWorkTask.title': string;
+    'intent.workTaskCatalogue.cmdUpdateWorkTask.form.title': string;
+    'intent.workTaskCatalogue.cmdUpdateWorkTask.form.action.cmdUpdateWorkTask': string;
+    'intent.workTaskCatalogue.cmdUpdateWorkTask.form.field.description.label': string;
+    'intent.workTaskCatalogue.cmdUpdateWorkTask.form.field.dueDate.label': string;
+    'intent.workTaskCatalogue.cmdUpdateWorkTask.form.field.progressUpdate.label': string;
+    'action.cmdCreateWorkTask.success': string;
+    'action.cmdCreateWorkTask.error': string;
+    'action.cmdUpdateWorkTask.success': string;
+    'action.cmdUpdateWorkTask.error': string;
+    'action.cmdDeleteWorkTask.success': string;
+    'action.cmdDeleteWorkTask.error': string;
+    'section.workTaskCatalogue.taskWorkbench.title': string;
+    'section.workTaskCatalogue.workTaskWorkbench.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmWorkTaskCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListWorkTaskState — actionStatus, values: idle|loading|success|error */
+    qryListWorkTaskState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListWorkTaskData — queryResult, outputShape: array */
+    qryListWorkTaskData: QryListWorkTaskOutput[];
+    /** state cmdCreateWorkTaskState — actionStatus, values: idle|loading|success|error */
+    cmdCreateWorkTaskState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateWorkTaskProjectProjectId — input */
+    cmdCreateWorkTaskProjectProjectId: string;
+    /** state cmdCreateWorkTaskDescription — input */
+    cmdCreateWorkTaskDescription: string;
+    /** state cmdCreateWorkTaskDueDate — input */
+    cmdCreateWorkTaskDueDate: string;
+    /** state cmdCreateWorkTaskProgressUpdate — input */
+    cmdCreateWorkTaskProgressUpdate: string;
+    /** state cmdCreateWorkTaskOutput — commandOutput */
+    cmdCreateWorkTaskOutput: CmdCreateWorkTaskOutput | null;
+    /** state cmdCreateWorkTaskError — actionError */
+    cmdCreateWorkTaskError: string;
+    /** state cmdUpdateWorkTaskState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateWorkTaskState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateWorkTaskProjectProjectId — input */
+    cmdUpdateWorkTaskProjectProjectId: string;
+    /** state cmdUpdateWorkTaskWorkTaskWorkTaskId — input */
+    cmdUpdateWorkTaskWorkTaskWorkTaskId: string;
+    /** state cmdUpdateWorkTaskDescription — input */
+    cmdUpdateWorkTaskDescription: string;
+    /** state cmdUpdateWorkTaskDueDate — input */
+    cmdUpdateWorkTaskDueDate: string;
+    /** state cmdUpdateWorkTaskProgressUpdate — input */
+    cmdUpdateWorkTaskProgressUpdate: string;
+    /** state cmdUpdateWorkTaskOutput — commandOutput */
+    cmdUpdateWorkTaskOutput: CmdUpdateWorkTaskOutput | null;
+    /** state cmdUpdateWorkTaskError — actionError */
+    cmdUpdateWorkTaskError: string;
+    /** state cmdDeleteWorkTaskState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteWorkTaskState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteWorkTaskWorkTaskId — input */
+    cmdDeleteWorkTaskWorkTaskId: string;
+    /** state cmdDeleteWorkTaskOutput — commandOutput */
+    cmdDeleteWorkTaskOutput: CmdDeleteWorkTaskOutput | null;
+    /** state cmdDeleteWorkTaskError — actionError */
+    cmdDeleteWorkTaskError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryListWorkTask (query) — route buildFlowFsm.workTaskCatalogue.qryListWorkTask; inputs: (none); writes ui.workTaskCatalogue.data.qryListWorkTask; status ui.workTaskCatalogue.action.qryListWorkTask.status */
+    loadQryListWorkTask(): Promise<void>;
+    /** handler for action qryListWorkTask — bind UI events here */
+    handleQryListWorkTaskClick(event?: Event): void;
+    /** action cmdCreateWorkTask (command) — route buildFlowFsm.workTaskCatalogue.cmdCreateWorkTask; inputs: projectProjectId, description, dueDate, progressUpdate; writes ui.workTaskCatalogue.output.cmdCreateWorkTask; status ui.workTaskCatalogue.action.cmdCreateWorkTask.status; feedback keys action.cmdCreateWorkTask.success / action.cmdCreateWorkTask.error */
+    cmdCreateWorkTask(): Promise<void>;
+    /** handler for action cmdCreateWorkTask — bind UI events here */
+    handleCmdCreateWorkTaskClick(event?: Event): void;
+    /** action cmdUpdateWorkTask (command) — route buildFlowFsm.workTaskCatalogue.cmdUpdateWorkTask; inputs: projectProjectId, workTaskWorkTaskId, description, dueDate, progressUpdate; writes ui.workTaskCatalogue.output.cmdUpdateWorkTask; status ui.workTaskCatalogue.action.cmdUpdateWorkTask.status; feedback keys action.cmdUpdateWorkTask.success / action.cmdUpdateWorkTask.error */
+    cmdUpdateWorkTask(): Promise<void>;
+    /** handler for action cmdUpdateWorkTask — bind UI events here */
+    handleCmdUpdateWorkTaskClick(event?: Event): void;
+    /** action cmdDeleteWorkTask (command) — route buildFlowFsm.workTaskCatalogue.cmdDeleteWorkTask; inputs: workTaskId; writes ui.workTaskCatalogue.output.cmdDeleteWorkTask; status ui.workTaskCatalogue.action.cmdDeleteWorkTask.status; feedback keys action.cmdDeleteWorkTask.success / action.cmdDeleteWorkTask.error */
+    cmdDeleteWorkTask(): Promise<void>;
+    /** handler for action cmdDeleteWorkTask — bind UI events here */
+    handleCmdDeleteWorkTaskClick(event?: Event): void;
+    /** setter for state ui.workTaskCatalogue.input.cmdCreateWorkTask.projectProjectId */
+    setCmdCreateWorkTaskProjectProjectId(value: string): void;
+    /** handler for action set.cmdCreateWorkTaskProjectProjectId — bind UI events here */
+    handleCmdCreateWorkTaskProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.workTaskCatalogue.input.cmdCreateWorkTask.description */
+    setCmdCreateWorkTaskDescription(value: string): void;
+    /** handler for action set.cmdCreateWorkTaskDescription — bind UI events here */
+    handleCmdCreateWorkTaskDescriptionChange(event: Event): void;
+    /** setter for state ui.workTaskCatalogue.input.cmdCreateWorkTask.dueDate */
+    setCmdCreateWorkTaskDueDate(value: string): void;
+    /** handler for action set.cmdCreateWorkTaskDueDate — bind UI events here */
+    handleCmdCreateWorkTaskDueDateChange(event: Event): void;
+    /** setter for state ui.workTaskCatalogue.input.cmdCreateWorkTask.progressUpdate */
+    setCmdCreateWorkTaskProgressUpdate(value: string): void;
+    /** handler for action set.cmdCreateWorkTaskProgressUpdate — bind UI events here */
+    handleCmdCreateWorkTaskProgressUpdateChange(event: Event): void;
+    /** setter for state ui.workTaskCatalogue.input.cmdUpdateWorkTask.projectProjectId */
+    setCmdUpdateWorkTaskProjectProjectId(value: string): void;
+    /** handler for action set.cmdUpdateWorkTaskProjectProjectId — bind UI events here */
+    handleCmdUpdateWorkTaskProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.workTaskCatalogue.input.cmdUpdateWorkTask.workTaskWorkTaskId */
+    setCmdUpdateWorkTaskWorkTaskWorkTaskId(value: string): void;
+    /** handler for action set.cmdUpdateWorkTaskWorkTaskWorkTaskId — bind UI events here */
+    handleCmdUpdateWorkTaskWorkTaskWorkTaskIdChange(event: Event): void;
+    /** setter for state ui.workTaskCatalogue.input.cmdUpdateWorkTask.description */
+    setCmdUpdateWorkTaskDescription(value: string): void;
+    /** handler for action set.cmdUpdateWorkTaskDescription — bind UI events here */
+    handleCmdUpdateWorkTaskDescriptionChange(event: Event): void;
+    /** setter for state ui.workTaskCatalogue.input.cmdUpdateWorkTask.dueDate */
+    setCmdUpdateWorkTaskDueDate(value: string): void;
+    /** handler for action set.cmdUpdateWorkTaskDueDate — bind UI events here */
+    handleCmdUpdateWorkTaskDueDateChange(event: Event): void;
+    /** setter for state ui.workTaskCatalogue.input.cmdUpdateWorkTask.progressUpdate */
+    setCmdUpdateWorkTaskProgressUpdate(value: string): void;
+    /** handler for action set.cmdUpdateWorkTaskProgressUpdate — bind UI events here */
+    handleCmdUpdateWorkTaskProgressUpdateChange(event: Event): void;
+    /** setter for state ui.workTaskCatalogue.input.cmdDeleteWorkTask.workTaskId */
+    setCmdDeleteWorkTaskWorkTaskId(value: string): void;
+    /** handler for action set.cmdDeleteWorkTaskWorkTaskId — bind UI events here */
+    handleCmdDeleteWorkTaskWorkTaskIdChange(event: Event): void;
+}

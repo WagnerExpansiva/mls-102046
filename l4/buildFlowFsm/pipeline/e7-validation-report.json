@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "2026-08-12-ns4-e7-validation-report-v4",
+  "moduleName": "buildFlowFsm",
+  "attempts": [
+    {
+      "round": 0,
+      "checkedAt": "2026-08-17T19:33:13.801Z",
+      "valid": 36,
+      "invalid": 0,
+      "results": [
+        {
+          "useCaseId": "approveChangeOrderDecision",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "createChangeOrder",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "createInvoice",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "createMaterialUsage",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "createStatusReport",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "createTimeLog",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "createWorkTask",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "declineChangeOrderDecision",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffApprovedChangeOrderToBilling",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffChangeOrderToClient",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffChangeOrderToProjectManager",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffDeclinedChangeOrderToFieldCoordinator",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffInvoiceToClient",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffMaterialUsageToFieldCoordinator",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffProjectToFieldCoordinator",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffStatusReportToClient",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffTimeLogToFieldCoordinator",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffWorkTaskProgressToFieldCoordinator",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "handoffWorkTaskToFieldWorker",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "inspectApprovedChangeOrders",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "inspectClientBillingSummary",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "inspectProjectDashboard",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "inspectProjectExecutionOverview",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "inspectProjectMaterialUsages",
+          "status": "valid",
+          "issues": [
+            {
+              "code": "NS4_E7_INSPECTION_ELIGIBILITY_RULES",
+              "path": "useRules",
+              "message": "Inspection of MaterialUsage has lifecycle eligibility rules available but selects none.",
+              "severity": "warning"
+            }
+          ]
+        },
+        {
+          "useCaseId": "inspectProjectTimeline",
+          "status": "valid",
+          "issues": [
+            {
+              "code": "NS4_E7_INSPECTION_ELIGIBILITY_RULES",
+              "path": "useRules",
+              "message": "Inspection of Project has lifecycle eligibility rules available but selects none.",
+              "severity": "warning"
+            }
+          ]
+        },
+        {
+          "useCaseId": "inspectProjectTimeLogs",
+          "status": "valid",
+          "issues": [
+            {
+              "code": "NS4_E7_INSPECTION_ELIGIBILITY_RULES",
+              "path": "useRules",
+              "message": "Inspection of TimeLog has lifecycle eligibility rules available but selects none.",
+              "severity": "warning"
+            }
+          ]
+        },
+        {
+          "useCaseId": "inspectScheduleRiskAssessment",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "inspectStatusReport",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "locateChangeOrder",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "locateClient",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "locateFieldWorker",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "locateInventoryItem",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "locateProject",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "locateWorkTask",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "publishStatusReport",
+          "status": "valid",
+          "issues": []
+        },
+        {
+          "useCaseId": "updateWorkTask",
+          "status": "valid",
+          "issues": []
+        }
+      ],
+      "lifecycleIssues": []
+    }
+  ],
+  "finalStatus": "passed",
+  "updatedAt": "2026-08-17T19:33:13.801Z"
+}

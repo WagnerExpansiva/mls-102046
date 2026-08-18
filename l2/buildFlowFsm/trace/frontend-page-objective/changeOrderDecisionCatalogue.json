@@ -1,0 +1,58 @@
+{
+  "savedAt": "2026-08-18T14:51:10.081Z",
+  "pageId": "changeOrderDecisionCatalogue",
+  "genome": "page21",
+  "objective": {
+    "actor": "Responsável por analisar e registrar decisões de ordens de mudança na plataforma de construção.",
+    "jobToBeDone": "Encontrar uma ordem de mudança e registrar, corrigir ou remover sua decisão com contexto suficiente para evitar alterações no registro errado.",
+    "primaryDecision": "Decidir qual decisão de ordem de mudança revisar ou qual ordem ainda precisa de uma decisão, e então executar a ação correspondente.",
+    "decisiveInfo": [
+      "changeOrder",
+      "decision",
+      "madeByPlatformUser",
+      "decidedAt",
+      "description",
+      "clientRef",
+      "projectRef",
+      "scopeImpact",
+      "scheduleImpact",
+      "changeAmount",
+      "status"
+    ],
+    "usageFrequency": "Ocasional e operacional, quando ordens de mudança são analisadas ou quando uma decisão precisa ser corrigida.",
+    "informationHierarchy": [
+      "ordem de mudança e seu contexto operacional",
+      "decisão atual e seu estado",
+      "ação primária de registrar ou corrigir a decisão",
+      "autor e momento da decisão",
+      "remoção do registro como ação destrutiva secundária"
+    ],
+    "successCriteria": "O usuário identifica a ordem correta rapidamente, entende a decisão existente e consegue registrar ou corrigir a decisão sem digitar identificadores ou editar campos controlados pelo sistema.",
+    "antiPatterns": [
+      "expor ids técnicos como campos editáveis",
+      "exigir digitação manual da ordem de mudança",
+      "permitir editar autor ou timestamp controlados pela sessão/sistema",
+      "separar atualização e exclusão em formulários desconectados da seleção",
+      "usar um select livre para estados ou decisões sem mostrar o contexto da ordem",
+      "ocultar a decisão atual antes de solicitar uma alteração"
+    ],
+    "criticalActions": [
+      {
+        "action": "Localizar a decisão existente",
+        "presentation": "selectable-master-list-with-contextual-detail"
+      },
+      {
+        "action": "Registrar nova decisão",
+        "presentation": "primary-button-with-order-picker-and-minimal-decision-input"
+      },
+      {
+        "action": "Corrigir decisão selecionada",
+        "presentation": "contextual-detail-action"
+      },
+      {
+        "action": "Excluir decisão selecionada",
+        "presentation": "inline-row-command-with-destructive-confirmation"
+      }
+    ]
+  }
+}

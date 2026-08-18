@@ -1,0 +1,26 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "inspectProjectMaterialUsages",
+  "title": "Consultar os consumos de materiais",
+  "kind": "query",
+  "compiledFrom": [
+    "monitorDailyProjectRecords.inspectProjectMaterialUsages"
+  ],
+  "description": "Consulta os consumos de materiais associados à obra.",
+  "contexts": {
+    "requires": [
+      "selectedMaterialUsage"
+    ],
+    "provides": [
+      "selectedMaterialUsage"
+    ]
+  },
+  "entityRefs": [
+    "MaterialUsage",
+    "Project"
+  ],
+  "useRules": [],
+  "transitions": []
+}

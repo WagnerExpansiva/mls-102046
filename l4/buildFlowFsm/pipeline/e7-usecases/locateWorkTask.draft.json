@@ -1,0 +1,24 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "locateWorkTask",
+  "title": "Localizar a tarefa atribuída",
+  "kind": "query",
+  "compiledFrom": [
+    "recordWorkTime.locateWorkTask",
+    "updateWorkTaskProgress.locateWorkTask"
+  ],
+  "description": "Localiza uma tarefa de trabalho e disponibiliza a tarefa selecionada para o comportamento seguinte.",
+  "contexts": {
+    "requires": [],
+    "provides": [
+      "selectedWorkTask"
+    ]
+  },
+  "entityRefs": [
+    "WorkTask"
+  ],
+  "useRules": [],
+  "transitions": []
+}

@@ -1,0 +1,25 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "inspectProjectTimeLogs",
+  "title": "Consultar os registros diários de horas",
+  "kind": "query",
+  "compiledFrom": [
+    "monitorDailyProjectRecords.inspectProjectTimeLogs"
+  ],
+  "description": "Consulta o registro diário de horas selecionado para acompanhamento da execução da obra.",
+  "contexts": {
+    "requires": [
+      "selectedTimeLog"
+    ],
+    "provides": [
+      "selectedTimeLog"
+    ]
+  },
+  "entityRefs": [
+    "TimeLog"
+  ],
+  "useRules": [],
+  "transitions": []
+}

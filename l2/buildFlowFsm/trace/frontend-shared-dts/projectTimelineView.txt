@@ -1,0 +1,39 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryProjectTimelineViewOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/projectTimelineView.js';
+export type { QryProjectTimelineViewInput, QryProjectTimelineViewOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/projectTimelineView.js';
+declare const message_pt: {
+    'section.projectTimelineView.overview.title': string;
+    'organism.projectTimelineView.qryProjectTimelineView.title': string;
+    'intent.projectTimelineView.qryProjectTimelineView.list.title': string;
+    'intent.projectTimelineView.qryProjectTimelineView.list.empty': string;
+    'intent.projectTimelineView.qryProjectTimelineView.list.column.projectId.label': string;
+    'intent.projectTimelineView.qryProjectTimelineView.list.column.workTasks.label': string;
+    'intent.projectTimelineView.qryProjectTimelineView.list.column.scheduleEntries.label': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmProjectTimelineViewBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryProjectTimelineViewState — actionStatus, values: idle|loading|success|error */
+    qryProjectTimelineViewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectTimelineViewProjectTimelineProjectId — input */
+    qryProjectTimelineViewProjectTimelineProjectId: string;
+    /** state qryProjectTimelineViewData — queryResult, outputShape: object */
+    qryProjectTimelineViewData: QryProjectTimelineViewOutput | null;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    /** action qryProjectTimelineView (query) — route buildFlowFsm.projectTimelineView.qryProjectTimelineView; inputs: projectTimelineProjectId; writes ui.projectTimelineView.data.qryProjectTimelineView; status ui.projectTimelineView.action.qryProjectTimelineView.status */
+    loadQryProjectTimelineView(): Promise<void>;
+    /** handler for action qryProjectTimelineView — bind UI events here */
+    handleQryProjectTimelineViewClick(event?: Event): void;
+    /** setter for state ui.projectTimelineView.input.qryProjectTimelineView.projectTimelineProjectId */
+    setQryProjectTimelineViewProjectTimelineProjectId(value: string): void;
+    /** handler for action set.qryProjectTimelineViewProjectTimelineProjectId — bind UI events here */
+    handleQryProjectTimelineViewProjectTimelineProjectIdChange(event: Event): void;
+}

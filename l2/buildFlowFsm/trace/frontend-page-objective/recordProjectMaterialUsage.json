@@ -1,0 +1,60 @@
+{
+  "savedAt": "2026-08-18T14:53:54.300Z",
+  "pageId": "recordProjectMaterialUsage",
+  "genome": "page21",
+  "objective": {
+    "actor": "Responsável pela execução ou apontamento de custos da obra",
+    "jobToBeDone": "Registrar rapidamente o material consumido em uma obra e, quando necessário, encaminhar esse registro ao coordenador de campo.",
+    "primaryDecision": "Confirmar o registro do consumo com a obra, o material, o saldo disponível e a quantidade corretos.",
+    "decisiveInfo": [
+      "projectId",
+      "name",
+      "status",
+      "inventoryItemId",
+      "name",
+      "unitOfMeasure",
+      "referenceUnitCost",
+      "inventoryBalanceId",
+      "physicalQuantity",
+      "applicableUnitCost",
+      "status",
+      "quantity",
+      "consumedOn",
+      "usageDescription",
+      "unitCostBasis"
+    ],
+    "usageFrequency": "Recorrente durante a execução da obra, potencialmente em ambiente operacional e com necessidade de lançamentos rápidos.",
+    "informationHierarchy": [
+      "Obra ativa selecionada",
+      "Material selecionado e sua unidade/custo de referência",
+      "Saldo físico disponível e custo aplicável",
+      "Quantidade e data do consumo",
+      "Descrição e custo-base",
+      "Confirmação do registro",
+      "Encaminhamento contextual ao coordenador"
+    ],
+    "successCriteria": "O usuário identifica o contexto e o saldo sem digitar ids, lança somente os dados necessários, recebe confirmação clara e consegue encaminhar o registro ao coordenador sem repetir o lançamento.",
+    "antiPatterns": [
+      "Campos manuais para projectId, inventoryItemId, inventoryBalanceId ou materialUsageId",
+      "Status como select editável",
+      "Formulário separado para cada etapa de seleção",
+      "Ocultar saldo físico ou custo aplicável durante a decisão",
+      "Exigir redigitação dos dados do consumo para encaminhamento",
+      "Adicionar urgência artificial ou confirmação excessiva em lançamentos recorrentes"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar obra, material e saldo de estoque",
+        "presentation": "master-detail com seleções contextualizadas e dados de referência visíveis"
+      },
+      {
+        "action": "Registrar consumo",
+        "presentation": "primary-button em painel de resumo, com quantidade e demais decisões do consumo inline"
+      },
+      {
+        "action": "Encaminhar consumo ao coordenador",
+        "presentation": "contextual-transition-actions junto ao registro selecionado, após confirmação do registro"
+      }
+    ]
+  }
+}

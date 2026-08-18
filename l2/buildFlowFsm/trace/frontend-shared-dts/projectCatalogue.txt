@@ -1,0 +1,213 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListProjectOutput, CmdCreateProjectOutput, CmdUpdateProjectOutput, CmdDeleteProjectOutput, QryClientPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/projectCatalogue.js';
+export type { QryListProjectInput, QryListProjectOutput, CmdCreateProjectInput, CmdCreateProjectOutput, CmdUpdateProjectInput, CmdUpdateProjectOutput, CmdDeleteProjectInput, CmdDeleteProjectOutput, QryClientPickerInput, QryClientPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/projectCatalogue.js';
+declare const message_pt: {
+    'section.projectCatalogue.recordList.title': string;
+    'organism.projectCatalogue.qryListProject.title': string;
+    'intent.projectCatalogue.qryListProject.list.title': string;
+    'intent.projectCatalogue.qryListProject.list.empty': string;
+    'intent.projectCatalogue.qryListProject.list.column.projectId.label': string;
+    'intent.projectCatalogue.qryListProject.list.column.clientId.label': string;
+    'intent.projectCatalogue.qryListProject.list.column.name.label': string;
+    'intent.projectCatalogue.qryListProject.list.column.address.label': string;
+    'intent.projectCatalogue.qryListProject.list.column.status.label': string;
+    'intent.projectCatalogue.qryListProject.list.column.authorizedBudget.label': string;
+    'intent.projectCatalogue.qryListProject.list.column.plannedStartDate.label': string;
+    'intent.projectCatalogue.qryListProject.list.column.plannedEndDate.label': string;
+    'organism.projectCatalogue.cmdDeleteProject.title': string;
+    'intent.projectCatalogue.cmdDeleteProject.form.title': string;
+    'intent.projectCatalogue.cmdDeleteProject.form.action.cmdDeleteProject': string;
+    'section.projectCatalogue.recordForm.title': string;
+    'organism.projectCatalogue.cmdCreateProject.title': string;
+    'intent.projectCatalogue.cmdCreateProject.form.title': string;
+    'intent.projectCatalogue.cmdCreateProject.form.action.cmdCreateProject': string;
+    'intent.projectCatalogue.cmdCreateProject.form.field.clientId.label': string;
+    'intent.projectCatalogue.cmdCreateProject.form.field.name.label': string;
+    'intent.projectCatalogue.cmdCreateProject.form.field.address.label': string;
+    'intent.projectCatalogue.cmdCreateProject.form.field.status.label': string;
+    'intent.projectCatalogue.cmdCreateProject.form.field.authorizedBudget.label': string;
+    'intent.projectCatalogue.cmdCreateProject.form.field.plannedStartDate.label': string;
+    'intent.projectCatalogue.cmdCreateProject.form.field.plannedEndDate.label': string;
+    'organism.projectCatalogue.cmdUpdateProject.title': string;
+    'intent.projectCatalogue.cmdUpdateProject.form.title': string;
+    'intent.projectCatalogue.cmdUpdateProject.form.action.cmdUpdateProject': string;
+    'intent.projectCatalogue.cmdUpdateProject.form.field.clientId.label': string;
+    'intent.projectCatalogue.cmdUpdateProject.form.field.name.label': string;
+    'intent.projectCatalogue.cmdUpdateProject.form.field.address.label': string;
+    'intent.projectCatalogue.cmdUpdateProject.form.field.status.label': string;
+    'intent.projectCatalogue.cmdUpdateProject.form.field.authorizedBudget.label': string;
+    'intent.projectCatalogue.cmdUpdateProject.form.field.plannedStartDate.label': string;
+    'intent.projectCatalogue.cmdUpdateProject.form.field.plannedEndDate.label': string;
+    'organism.projectCatalogue.qryClientPicker.title': string;
+    'intent.projectCatalogue.qryClientPicker.list.title': string;
+    'intent.projectCatalogue.qryClientPicker.list.empty': string;
+    'intent.projectCatalogue.qryClientPicker.list.column.clientId.label': string;
+    'intent.projectCatalogue.qryClientPicker.list.column.clientName.label': string;
+    'intent.projectCatalogue.qryClientPicker.list.column.contactEmail.label': string;
+    'intent.projectCatalogue.qryClientPicker.list.column.contactPhone.label': string;
+    'action.cmdCreateProject.success': string;
+    'action.cmdCreateProject.error': string;
+    'action.cmdUpdateProject.success': string;
+    'action.cmdUpdateProject.error': string;
+    'action.cmdDeleteProject.success': string;
+    'action.cmdDeleteProject.error': string;
+    'section.projectCatalogue.projectWorkbench.title': string;
+    'section.projectCatalogue.projectCreation.title': string;
+    'section.projectCatalogue.projectWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmProjectCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListProjectState — actionStatus, values: idle|loading|success|error */
+    qryListProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListProjectData — queryResult, outputShape: array */
+    qryListProjectData: QryListProjectOutput[];
+    /** state cmdCreateProjectState — actionStatus, values: idle|loading|success|error */
+    cmdCreateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateProjectClientId — input */
+    cmdCreateProjectClientId: string;
+    /** state cmdCreateProjectName — input */
+    cmdCreateProjectName: string;
+    /** state cmdCreateProjectAddress — input */
+    cmdCreateProjectAddress: string;
+    /** state cmdCreateProjectStatus — input */
+    cmdCreateProjectStatus: string;
+    /** state cmdCreateProjectAuthorizedBudget — input */
+    cmdCreateProjectAuthorizedBudget: string;
+    /** state cmdCreateProjectPlannedStartDate — input */
+    cmdCreateProjectPlannedStartDate: string;
+    /** state cmdCreateProjectPlannedEndDate — input */
+    cmdCreateProjectPlannedEndDate: string;
+    /** state cmdCreateProjectOutput — commandOutput */
+    cmdCreateProjectOutput: CmdCreateProjectOutput | null;
+    /** state cmdCreateProjectError — actionError */
+    cmdCreateProjectError: string;
+    /** state cmdUpdateProjectState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateProjectProjectId — input */
+    cmdUpdateProjectProjectId: string;
+    /** state cmdUpdateProjectClientId — input */
+    cmdUpdateProjectClientId: string;
+    /** state cmdUpdateProjectName — input */
+    cmdUpdateProjectName: string;
+    /** state cmdUpdateProjectAddress — input */
+    cmdUpdateProjectAddress: string;
+    /** state cmdUpdateProjectStatus — input */
+    cmdUpdateProjectStatus: string;
+    /** state cmdUpdateProjectAuthorizedBudget — input */
+    cmdUpdateProjectAuthorizedBudget: string;
+    /** state cmdUpdateProjectPlannedStartDate — input */
+    cmdUpdateProjectPlannedStartDate: string;
+    /** state cmdUpdateProjectPlannedEndDate — input */
+    cmdUpdateProjectPlannedEndDate: string;
+    /** state cmdUpdateProjectOutput — commandOutput */
+    cmdUpdateProjectOutput: CmdUpdateProjectOutput | null;
+    /** state cmdUpdateProjectError — actionError */
+    cmdUpdateProjectError: string;
+    /** state cmdDeleteProjectState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteProjectProjectId — input */
+    cmdDeleteProjectProjectId: string;
+    /** state cmdDeleteProjectOutput — commandOutput */
+    cmdDeleteProjectOutput: CmdDeleteProjectOutput | null;
+    /** state cmdDeleteProjectError — actionError */
+    cmdDeleteProjectError: string;
+    /** state qryClientPickerState — actionStatus, values: idle|loading|success|error */
+    qryClientPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryClientPickerData — queryResult, outputShape: array */
+    qryClientPickerData: QryClientPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryListProject (query) — route buildFlowFsm.projectCatalogue.qryListProject; inputs: (none); writes ui.projectCatalogue.data.qryListProject; status ui.projectCatalogue.action.qryListProject.status */
+    loadQryListProject(): Promise<void>;
+    /** handler for action qryListProject — bind UI events here */
+    handleQryListProjectClick(event?: Event): void;
+    /** action cmdCreateProject (command) — route buildFlowFsm.projectCatalogue.cmdCreateProject; inputs: clientId, name, address, status, authorizedBudget, plannedStartDate, plannedEndDate; writes ui.projectCatalogue.output.cmdCreateProject; status ui.projectCatalogue.action.cmdCreateProject.status; feedback keys action.cmdCreateProject.success / action.cmdCreateProject.error */
+    cmdCreateProject(): Promise<void>;
+    /** handler for action cmdCreateProject — bind UI events here */
+    handleCmdCreateProjectClick(event?: Event): void;
+    /** action cmdUpdateProject (command) — route buildFlowFsm.projectCatalogue.cmdUpdateProject; inputs: projectId, clientId, name, address, status, authorizedBudget, plannedStartDate, plannedEndDate; writes ui.projectCatalogue.output.cmdUpdateProject; status ui.projectCatalogue.action.cmdUpdateProject.status; feedback keys action.cmdUpdateProject.success / action.cmdUpdateProject.error */
+    cmdUpdateProject(): Promise<void>;
+    /** handler for action cmdUpdateProject — bind UI events here */
+    handleCmdUpdateProjectClick(event?: Event): void;
+    /** action cmdDeleteProject (command) — route buildFlowFsm.projectCatalogue.cmdDeleteProject; inputs: projectId; writes ui.projectCatalogue.output.cmdDeleteProject; status ui.projectCatalogue.action.cmdDeleteProject.status; feedback keys action.cmdDeleteProject.success / action.cmdDeleteProject.error */
+    cmdDeleteProject(): Promise<void>;
+    /** handler for action cmdDeleteProject — bind UI events here */
+    handleCmdDeleteProjectClick(event?: Event): void;
+    /** action qryClientPicker (query) — route buildFlowFsm.projectCatalogue.qryClientPicker; inputs: (none); writes ui.projectCatalogue.data.qryClientPicker; status ui.projectCatalogue.action.qryClientPicker.status */
+    loadQryClientPicker(): Promise<void>;
+    /** handler for action qryClientPicker — bind UI events here */
+    handleQryClientPickerClick(event?: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdCreateProject.clientId */
+    setCmdCreateProjectClientId(value: string): void;
+    /** handler for action set.cmdCreateProjectClientId — bind UI events here */
+    handleCmdCreateProjectClientIdChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdCreateProject.name */
+    setCmdCreateProjectName(value: string): void;
+    /** handler for action set.cmdCreateProjectName — bind UI events here */
+    handleCmdCreateProjectNameChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdCreateProject.address */
+    setCmdCreateProjectAddress(value: string): void;
+    /** handler for action set.cmdCreateProjectAddress — bind UI events here */
+    handleCmdCreateProjectAddressChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdCreateProject.status */
+    setCmdCreateProjectStatus(value: string): void;
+    /** handler for action set.cmdCreateProjectStatus — bind UI events here */
+    handleCmdCreateProjectStatusChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdCreateProject.authorizedBudget */
+    setCmdCreateProjectAuthorizedBudget(value: string): void;
+    /** handler for action set.cmdCreateProjectAuthorizedBudget — bind UI events here */
+    handleCmdCreateProjectAuthorizedBudgetChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdCreateProject.plannedStartDate */
+    setCmdCreateProjectPlannedStartDate(value: string): void;
+    /** handler for action set.cmdCreateProjectPlannedStartDate — bind UI events here */
+    handleCmdCreateProjectPlannedStartDateChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdCreateProject.plannedEndDate */
+    setCmdCreateProjectPlannedEndDate(value: string): void;
+    /** handler for action set.cmdCreateProjectPlannedEndDate — bind UI events here */
+    handleCmdCreateProjectPlannedEndDateChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdUpdateProject.projectId */
+    setCmdUpdateProjectProjectId(value: string): void;
+    /** handler for action set.cmdUpdateProjectProjectId — bind UI events here */
+    handleCmdUpdateProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdUpdateProject.clientId */
+    setCmdUpdateProjectClientId(value: string): void;
+    /** handler for action set.cmdUpdateProjectClientId — bind UI events here */
+    handleCmdUpdateProjectClientIdChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdUpdateProject.name */
+    setCmdUpdateProjectName(value: string): void;
+    /** handler for action set.cmdUpdateProjectName — bind UI events here */
+    handleCmdUpdateProjectNameChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdUpdateProject.address */
+    setCmdUpdateProjectAddress(value: string): void;
+    /** handler for action set.cmdUpdateProjectAddress — bind UI events here */
+    handleCmdUpdateProjectAddressChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdUpdateProject.status */
+    setCmdUpdateProjectStatus(value: string): void;
+    /** handler for action set.cmdUpdateProjectStatus — bind UI events here */
+    handleCmdUpdateProjectStatusChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdUpdateProject.authorizedBudget */
+    setCmdUpdateProjectAuthorizedBudget(value: string): void;
+    /** handler for action set.cmdUpdateProjectAuthorizedBudget — bind UI events here */
+    handleCmdUpdateProjectAuthorizedBudgetChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdUpdateProject.plannedStartDate */
+    setCmdUpdateProjectPlannedStartDate(value: string): void;
+    /** handler for action set.cmdUpdateProjectPlannedStartDate — bind UI events here */
+    handleCmdUpdateProjectPlannedStartDateChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdUpdateProject.plannedEndDate */
+    setCmdUpdateProjectPlannedEndDate(value: string): void;
+    /** handler for action set.cmdUpdateProjectPlannedEndDate — bind UI events here */
+    handleCmdUpdateProjectPlannedEndDateChange(event: Event): void;
+    /** setter for state ui.projectCatalogue.input.cmdDeleteProject.projectId */
+    setCmdDeleteProjectProjectId(value: string): void;
+    /** handler for action set.cmdDeleteProjectProjectId — bind UI events here */
+    handleCmdDeleteProjectProjectIdChange(event: Event): void;
+}

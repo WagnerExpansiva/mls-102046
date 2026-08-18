@@ -1,0 +1,27 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "inspectApprovedChangeOrders",
+  "title": "Consultar as alterações aprovadas",
+  "kind": "query",
+  "compiledFrom": [
+    "consultApprovedProjectChangeOrders.inspectApprovedChangeOrders"
+  ],
+  "description": "Consulta uma ordem de mudança aprovada.",
+  "contexts": {
+    "requires": [
+      "selectedChangeOrder"
+    ],
+    "provides": [
+      "selectedChangeOrder"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder"
+  ],
+  "useRules": [
+    "clientVisibleApprovedChangeOrder"
+  ],
+  "transitions": []
+}

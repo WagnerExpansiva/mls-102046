@@ -1,0 +1,33 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "createInvoice",
+  "title": "Emitir a fatura",
+  "kind": "command",
+  "compiledFrom": [
+    "issueProjectInvoice.createInvoice"
+  ],
+  "description": "Emite uma fatura vinculada ao cliente e à obra selecionados, incluindo apenas ordens de mudança aprovadas.",
+  "contexts": {
+    "requires": [
+      "selectedClient",
+      "selectedProject"
+    ],
+    "provides": [
+      "selectedInvoice"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder",
+    "Client",
+    "Invoice",
+    "InvoiceChangeOrder",
+    "Project"
+  ],
+  "useRules": [
+    "invoiceIncludesApprovedChangeOrdersOnly",
+    "invoiceRequiresClientAndProject"
+  ],
+  "transitions": []
+}

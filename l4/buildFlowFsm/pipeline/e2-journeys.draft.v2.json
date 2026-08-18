@@ -1,0 +1,1172 @@
+{
+  "planId": "e2-review",
+  "moduleName": "buildFlowFsm",
+  "userLanguage": "pt-BR",
+  "title": "Revisar jornadas de negócio",
+  "reviewRound": 2,
+  "journeys": [
+    {
+      "journeyId": "reviewProjectPortfolio",
+      "policyDecisions": [
+        {
+          "decisionId": "portfolioAttentionRouting",
+          "question": "Como o gerente encaminha uma obra que exige atenção após revisar o portfólio?",
+          "chosen": "O gerente encaminha a obra selecionada ao coordenador de campo para acompanhamento da execução.",
+          "alternatives": [
+            "O gerente acompanha a obra sem encaminhamento",
+            "O sistema encaminha automaticamente toda obra com desvio"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "projectManager",
+        "title": "Monitorar portfólio e direcionar obra",
+        "goal": "Identificar obras ativas que exigem atenção de custo ou prazo e direcionar seu acompanhamento.",
+        "entry": {
+          "mode": "coldStart"
+        },
+        "steps": [
+          {
+            "stepId": "inspectProjectDashboard",
+            "kind": "inspect",
+            "entity": "ProjectDashboard",
+            "title": "Consultar o painel de obras",
+            "description": "Projetos ativos, orçamento versus realizado e tarefas próximas estão visíveis.",
+            "featureRefs": [
+              "projectPortfolioMonitoring"
+            ]
+          },
+          {
+            "stepId": "locateProject",
+            "kind": "locate",
+            "entity": "Project",
+            "title": "Selecionar a obra que exige atenção",
+            "description": "Uma obra do catálogo compartilhado de projetos está selecionada.",
+            "featureRefs": [
+              "projectPortfolioMonitoring"
+            ]
+          },
+          {
+            "stepId": "inspectProjectExecutionOverview",
+            "kind": "inspect",
+            "entity": "ProjectExecutionOverview",
+            "title": "Analisar a execução da obra",
+            "description": "Andamento, custos e próximos compromissos da obra estão consolidados.",
+            "featureRefs": [
+              "projectPortfolioMonitoring",
+              "projectScheduleVisibility"
+            ]
+          },
+          {
+            "stepId": "handoffProjectToFieldCoordinator",
+            "kind": "handoff",
+            "entity": "Project",
+            "title": "Encaminhar a obra para acompanhamento de campo",
+            "description": "O coordenador de campo recebe a obra para coordenar a execução.",
+            "featureRefs": [
+              "projectPortfolioMonitoring"
+            ],
+            "targetProfile": "fieldCoordinator"
+          }
+        ],
+        "outcome": {
+          "statement": "Uma obra que requer atenção é identificada e encaminhada para coordenação de campo.",
+          "evidence": [
+            "O painel apresenta projetos ativos, custos realizados e tarefas próximas.",
+            "O encaminhamento ao coordenador é observável."
+          ]
+        },
+        "useRules": [
+          "activeProjectCostVisibility"
+        ]
+      }
+    },
+    {
+      "journeyId": "assignWorkTask",
+      "policyDecisions": [
+        {
+          "decisionId": "taskAssignmentOwnership",
+          "question": "Quem define o responsável por uma nova tarefa da obra?",
+          "chosen": "O coordenador de campo seleciona o trabalhador responsável antes de encaminhar a tarefa.",
+          "alternatives": [
+            "O gerente de projeto define diretamente o responsável",
+            "A tarefa permanece sem responsável até ser assumida em campo"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "fieldCoordinator",
+        "title": "Planejar e atribuir tarefa de campo",
+        "goal": "Criar uma tarefa vinculada à obra e encaminhá-la ao trabalhador responsável.",
+        "entry": {
+          "mode": "contextOrLookup",
+          "preferredFromJourneyRef": "reviewProjectPortfolio"
+        },
+        "steps": [
+          {
+            "stepId": "locateProject",
+            "kind": "locate",
+            "entity": "Project",
+            "title": "Localizar a obra",
+            "description": "Uma obra ativa do catálogo compartilhado de projetos está selecionada.",
+            "featureRefs": [
+              "fieldTaskCoordination",
+              "projectScheduleVisibility"
+            ]
+          },
+          {
+            "stepId": "inspectProjectTimeline",
+            "kind": "inspect",
+            "entity": "ProjectTimeline",
+            "title": "Consultar o cronograma da obra",
+            "description": "A sequência de tarefas e prazos está visível para planejamento.",
+            "featureRefs": [
+              "fieldTaskCoordination",
+              "projectScheduleVisibility"
+            ]
+          },
+          {
+            "stepId": "locateFieldWorker",
+            "kind": "locate",
+            "entity": "FieldWorker",
+            "title": "Selecionar o trabalhador responsável",
+            "description": "Um trabalhador do diretório de usuários da organização está selecionado.",
+            "featureRefs": [
+              "fieldTaskCoordination"
+            ]
+          },
+          {
+            "stepId": "createWorkTask",
+            "kind": "act",
+            "entity": "WorkTask",
+            "title": "Registrar a tarefa atribuída",
+            "description": "Uma nova tarefa com descrição, prazo e responsável fica registrada para a obra.",
+            "featureRefs": [
+              "fieldTaskCoordination",
+              "projectScheduleVisibility"
+            ]
+          },
+          {
+            "stepId": "handoffWorkTaskToFieldWorker",
+            "kind": "handoff",
+            "entity": "WorkTask",
+            "title": "Encaminhar a tarefa ao trabalhador",
+            "description": "O trabalhador recebe a tarefa para execução em campo.",
+            "featureRefs": [
+              "fieldTaskCoordination"
+            ],
+            "targetProfile": "fieldWorker"
+          }
+        ],
+        "outcome": {
+          "statement": "Uma tarefa planejada fica vinculada à obra, atribuída e disponível para execução.",
+          "evidence": [
+            "A tarefa registra obra, responsável, descrição, status e prazo.",
+            "O trabalhador recebe a tarefa criada."
+          ]
+        },
+        "useRules": [
+          "workTaskRequiresActiveProject",
+          "workTaskRequiresAssigneeAndDueDate"
+        ]
+      }
+    },
+    {
+      "journeyId": "updateWorkTaskProgress",
+      "policyDecisions": [
+        {
+          "decisionId": "taskProgressReportingCadence",
+          "question": "Quando o trabalhador deve registrar o andamento da tarefa?",
+          "chosen": "O trabalhador atualiza o andamento ao concluir ou alterar significativamente o estado da tarefa.",
+          "alternatives": [
+            "O trabalhador atualiza o andamento somente ao fim do dia",
+            "Apenas o coordenador de campo atualiza o andamento"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "fieldWorker",
+        "title": "Atualizar andamento da tarefa",
+        "goal": "Manter o status da tarefa alinhado à execução observada.",
+        "entry": {
+          "mode": "contextOrLookup",
+          "preferredFromJourneyRef": "assignWorkTask"
+        },
+        "steps": [
+          {
+            "stepId": "locateWorkTask",
+            "kind": "locate",
+            "entity": "WorkTask",
+            "title": "Localizar a tarefa atribuída",
+            "description": "Uma tarefa atribuída ao trabalhador está selecionada.",
+            "featureRefs": [
+              "fieldTaskCoordination",
+              "projectScheduleVisibility"
+            ]
+          },
+          {
+            "stepId": "updateWorkTask",
+            "kind": "act",
+            "entity": "WorkTask",
+            "title": "Registrar o andamento da tarefa",
+            "description": "O status e o andamento atual ficam registrados.",
+            "featureRefs": [
+              "fieldTaskCoordination",
+              "projectScheduleVisibility"
+            ]
+          },
+          {
+            "stepId": "handoffWorkTaskProgressToFieldCoordinator",
+            "kind": "handoff",
+            "entity": "WorkTask",
+            "title": "Informar o andamento ao coordenador",
+            "description": "O coordenador recebe a tarefa com andamento atualizado.",
+            "featureRefs": [
+              "fieldTaskCoordination"
+            ],
+            "targetProfile": "fieldCoordinator"
+          }
+        ],
+        "outcome": {
+          "statement": "O planejamento da obra reflete o andamento informado em campo.",
+          "evidence": [
+            "A tarefa mantém status atualizado.",
+            "O coordenador recebe a atualização."
+          ]
+        },
+        "useRules": [
+          "onlyAssignedWorkerReportsTaskProgress"
+        ]
+      }
+    },
+    {
+      "journeyId": "recordWorkTime",
+      "policyDecisions": [
+        {
+          "decisionId": "timeLogAttribution",
+          "question": "Como as horas registradas são atribuídas à execução?",
+          "chosen": "Cada registro de horas é associado a um trabalhador e a uma tarefa específica.",
+          "alternatives": [
+            "As horas são registradas apenas no nível da obra",
+            "O coordenador consolida horas sem identificação do trabalhador"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "fieldWorker",
+        "title": "Registrar horas trabalhadas",
+        "goal": "Registrar horas de execução para apoiar o custo realizado da obra.",
+        "entry": {
+          "mode": "coldStart"
+        },
+        "steps": [
+          {
+            "stepId": "locateFieldWorker",
+            "kind": "locate",
+            "entity": "FieldWorker",
+            "title": "Confirmar o trabalhador",
+            "description": "O trabalhador que realizou o trabalho está selecionado no diretório da organização.",
+            "featureRefs": [
+              "dailyFieldLogging",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "locateWorkTask",
+            "kind": "locate",
+            "entity": "WorkTask",
+            "title": "Localizar a tarefa executada",
+            "description": "Uma tarefa da obra está selecionada para o registro.",
+            "featureRefs": [
+              "dailyFieldLogging",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "createTimeLog",
+            "kind": "act",
+            "entity": "TimeLog",
+            "title": "Registrar as horas trabalhadas",
+            "description": "Um registro diário vinculado ao trabalhador e à tarefa fica armazenado.",
+            "featureRefs": [
+              "dailyFieldLogging",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "handoffTimeLogToFieldCoordinator",
+            "kind": "handoff",
+            "entity": "TimeLog",
+            "title": "Encaminhar o registro diário",
+            "description": "O coordenador recebe o registro de horas para acompanhamento.",
+            "featureRefs": [
+              "dailyFieldLogging"
+            ],
+            "targetProfile": "fieldCoordinator"
+          }
+        ],
+        "outcome": {
+          "statement": "As horas de campo ficam disponíveis para compor o realizado da obra.",
+          "evidence": [
+            "O registro identifica trabalhador, tarefa e horas.",
+            "O coordenador recebe o registro criado."
+          ]
+        },
+        "useRules": [
+          "timeLogRequiresWorkerTaskAndPositiveHours"
+        ]
+      }
+    },
+    {
+      "journeyId": "recordProjectMaterialUsage",
+      "policyDecisions": [
+        {
+          "decisionId": "materialUsageCostingMethod",
+          "question": "Como o consumo de materiais contribui para o custo da obra?",
+          "chosen": "Cada consumo é registrado contra uma obra e um item de estoque específico.",
+          "alternatives": [
+            "O consumo é controlado apenas como ajuste global de estoque",
+            "O consumo é consolidado manualmente no encerramento da obra"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "fieldWorker",
+        "title": "Registrar consumo de material da obra",
+        "goal": "Rastrear materiais consumidos em uma obra para apoiar execução e custeio.",
+        "entry": {
+          "mode": "coldStart"
+        },
+        "steps": [
+          {
+            "stepId": "locateProject",
+            "kind": "locate",
+            "entity": "Project",
+            "title": "Localizar a obra",
+            "description": "Uma obra ativa do catálogo compartilhado está selecionada.",
+            "featureRefs": [
+              "projectMaterialTracking",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "locateInventoryItem",
+            "kind": "locate",
+            "entity": "InventoryItem",
+            "title": "Selecionar o material consumido",
+            "description": "Um item do catálogo compartilhado de materiais e estoque está selecionado.",
+            "featureRefs": [
+              "projectMaterialTracking"
+            ]
+          },
+          {
+            "stepId": "createMaterialUsage",
+            "kind": "act",
+            "entity": "MaterialUsage",
+            "title": "Registrar o consumo de material",
+            "description": "O consumo fica vinculado à obra e disponível para o custo realizado.",
+            "featureRefs": [
+              "projectMaterialTracking",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "handoffMaterialUsageToFieldCoordinator",
+            "kind": "handoff",
+            "entity": "MaterialUsage",
+            "title": "Informar o consumo ao coordenador",
+            "description": "O coordenador recebe o consumo para acompanhamento.",
+            "featureRefs": [
+              "projectMaterialTracking"
+            ],
+            "targetProfile": "fieldCoordinator"
+          }
+        ],
+        "outcome": {
+          "statement": "O material consumido compõe o rastreamento e o custo realizado da obra.",
+          "evidence": [
+            "O consumo mantém vínculo com obra e item de estoque.",
+            "O coordenador recebe o apontamento."
+          ]
+        },
+        "useRules": [
+          "materialUsageRequiresActiveProjectAndAvailableInventory"
+        ]
+      }
+    },
+    {
+      "journeyId": "submitChangeOrder",
+      "policyDecisions": [
+        {
+          "decisionId": "changeOrderSubmissionPath",
+          "question": "Como uma alteração identificada em campo segue para tratamento?",
+          "chosen": "O coordenador registra a alteração e a encaminha ao gerente de projeto para decisão.",
+          "alternatives": [
+            "O coordenador aprova a alteração diretamente",
+            "A equipe de faturamento decide toda alteração recebida"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "fieldCoordinator",
+        "title": "Registrar e submeter ordem de mudança",
+        "goal": "Formalizar uma alteração da obra para tratamento do gerente de projeto.",
+        "entry": {
+          "mode": "contextOrLookup",
+          "preferredFromJourneyRef": "reviewProjectPortfolio"
+        },
+        "steps": [
+          {
+            "stepId": "locateClient",
+            "kind": "locate",
+            "entity": "Client",
+            "title": "Localizar o cliente",
+            "description": "Um cliente do catálogo compartilhado está selecionado.",
+            "featureRefs": [
+              "changeOrderControl",
+              "clientCommunication"
+            ]
+          },
+          {
+            "stepId": "locateProject",
+            "kind": "locate",
+            "entity": "Project",
+            "title": "Localizar a obra",
+            "description": "Uma obra do cliente selecionado está selecionada.",
+            "featureRefs": [
+              "changeOrderControl",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "createChangeOrder",
+            "kind": "act",
+            "entity": "ChangeOrder",
+            "title": "Registrar a alteração proposta",
+            "description": "Uma ordem de mudança vinculada ao cliente e à obra fica registrada.",
+            "featureRefs": [
+              "changeOrderControl",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "handoffChangeOrderToProjectManager",
+            "kind": "handoff",
+            "entity": "ChangeOrder",
+            "title": "Submeter a alteração para tratamento",
+            "description": "O gerente recebe a ordem para recusá-la ou encaminhá-la ao cliente para aprovação.",
+            "featureRefs": [
+              "changeOrderControl"
+            ],
+            "targetProfile": "projectManager"
+          }
+        ],
+        "outcome": {
+          "statement": "Uma alteração fica formalizada e disponível para tratamento gerencial.",
+          "evidence": [
+            "A ordem mantém vínculo com cliente e obra.",
+            "O gerente recebe a ordem submetida."
+          ]
+        },
+        "useRules": [
+          "changeOrderRequiresClientAndProject"
+        ]
+      }
+    },
+    {
+      "journeyId": "forwardChangeOrderForClientApproval",
+      "policyDecisions": [],
+      "business": {
+        "actorRef": "projectManager",
+        "title": "Encaminhar ordem de mudança ao cliente",
+        "goal": "Enviar ao cliente uma ordem de mudança submetida para a decisão de aprovação.",
+        "entry": {
+          "mode": "contextOrLookup",
+          "preferredFromJourneyRef": "submitChangeOrder"
+        },
+        "steps": [
+          {
+            "stepId": "locateChangeOrder",
+            "kind": "locate",
+            "entity": "ChangeOrder",
+            "title": "Localizar a ordem de mudança submetida",
+            "description": "Uma ordem de mudança pendente de tratamento está selecionada.",
+            "featureRefs": [
+              "changeOrderControl"
+            ]
+          },
+          {
+            "stepId": "handoffChangeOrderToClient",
+            "kind": "handoff",
+            "entity": "ChangeOrder",
+            "title": "Solicitar aprovação do cliente",
+            "description": "O cliente recebe a ordem de mudança para decidir sua aprovação.",
+            "featureRefs": [
+              "changeOrderControl",
+              "clientCommunication"
+            ],
+            "targetProfile": "client"
+          }
+        ],
+        "outcome": {
+          "statement": "O cliente recebe uma ordem de mudança para aprovação.",
+          "evidence": [
+            "O encaminhamento para aprovação do cliente é observável."
+          ]
+        },
+        "useRules": [
+          "onlyProjectManagerForwardsChangeOrderForClientApproval"
+        ]
+      }
+    },
+    {
+      "journeyId": "approveChangeOrder",
+      "policyDecisions": [
+        {
+          "decisionId": "approvedChangeOrderBillingHandling",
+          "question": "Como uma ordem de mudança aprovada segue para faturamento?",
+          "chosen": "A aprovação encaminha a ordem de mudança à equipe de faturamento.",
+          "alternatives": [
+            "A aprovação apenas atualiza a obra sem encaminhamento",
+            "O gerente emite a fatura diretamente ao aprovar"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "client",
+        "title": "Aprovar ordem de mudança",
+        "goal": "Decidir favoravelmente uma ordem de mudança recebida e encaminhá-la ao faturamento.",
+        "entry": {
+          "mode": "contextOrLookup",
+          "preferredFromJourneyRef": "forwardChangeOrderForClientApproval"
+        },
+        "steps": [
+          {
+            "stepId": "locateChangeOrder",
+            "kind": "locate",
+            "entity": "ChangeOrder",
+            "title": "Localizar a ordem de mudança recebida",
+            "description": "Uma ordem de mudança pendente de aprovação do cliente está selecionada.",
+            "featureRefs": [
+              "changeOrderControl",
+              "clientCommunication"
+            ]
+          },
+          {
+            "stepId": "approveChangeOrderDecision",
+            "kind": "decide",
+            "entity": "ChangeOrder",
+            "title": "Aprovar a ordem de mudança",
+            "description": "A ordem fica registrada como aprovada pelo cliente.",
+            "featureRefs": [
+              "changeOrderControl",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "handoffApprovedChangeOrderToBilling",
+            "kind": "handoff",
+            "entity": "ChangeOrder",
+            "title": "Encaminhar a alteração aprovada ao faturamento",
+            "description": "A equipe de faturamento recebe a ordem aprovada.",
+            "featureRefs": [
+              "changeOrderControl",
+              "clientBilling"
+            ],
+            "targetProfile": "billingStaff"
+          }
+        ],
+        "outcome": {
+          "statement": "Uma ordem aprovada pelo cliente fica disponível para custo e faturamento.",
+          "evidence": [
+            "A aprovação e o cliente responsável são observáveis.",
+            "A equipe de faturamento recebe a ordem aprovada."
+          ]
+        },
+        "useRules": [
+          "onlyClientApprovesOwnChangeOrder"
+        ]
+      }
+    },
+    {
+      "journeyId": "declineChangeOrder",
+      "policyDecisions": [
+        {
+          "decisionId": "declinedChangeOrderNotification",
+          "question": "Como o resultado de uma ordem de mudança recusada é comunicado?",
+          "chosen": "A recusa é registrada e encaminhada ao coordenador de campo que submeteu a alteração.",
+          "alternatives": [
+            "A recusa é apenas registrada sem encaminhamento",
+            "A recusa é encaminhada diretamente ao cliente"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "projectManager",
+        "title": "Recusar ordem de mudança",
+        "goal": "Decidir desfavoravelmente uma ordem submetida e devolver o resultado ao campo.",
+        "entry": {
+          "mode": "contextOrLookup",
+          "preferredFromJourneyRef": "submitChangeOrder"
+        },
+        "steps": [
+          {
+            "stepId": "locateChangeOrder",
+            "kind": "locate",
+            "entity": "ChangeOrder",
+            "title": "Localizar a ordem de mudança submetida",
+            "description": "Uma ordem pendente de tratamento está selecionada.",
+            "featureRefs": [
+              "changeOrderControl"
+            ]
+          },
+          {
+            "stepId": "declineChangeOrderDecision",
+            "kind": "decide",
+            "entity": "ChangeOrder",
+            "title": "Recusar a ordem de mudança",
+            "description": "A ordem fica registrada como recusada pelo gerente.",
+            "featureRefs": [
+              "changeOrderControl"
+            ]
+          },
+          {
+            "stepId": "handoffDeclinedChangeOrderToFieldCoordinator",
+            "kind": "handoff",
+            "entity": "ChangeOrder",
+            "title": "Devolver a decisão ao campo",
+            "description": "O coordenador recebe a ordem recusada para tratar o resultado.",
+            "featureRefs": [
+              "changeOrderControl"
+            ],
+            "targetProfile": "fieldCoordinator"
+          }
+        ],
+        "outcome": {
+          "statement": "Uma ordem recusada tem decisão registrada e retorno observável ao campo.",
+          "evidence": [
+            "A recusa e seu responsável são observáveis.",
+            "O coordenador recebe o resultado."
+          ]
+        },
+        "useRules": [
+          "onlyProjectManagerDeclinesChangeOrder"
+        ]
+      }
+    },
+    {
+      "journeyId": "issueProjectInvoice",
+      "policyDecisions": [
+        {
+          "decisionId": "invoiceCompositionPolicy",
+          "question": "Quais valores compõem uma fatura da obra?",
+          "chosen": "A equipe de faturamento emite a fatura a partir do resumo de faturamento da obra, que incorpora as ordens de mudança aprovadas.",
+          "alternatives": [
+            "A equipe informa valores sem consultar o resumo da obra",
+            "Cada ordem de mudança aprovada gera automaticamente uma fatura separada"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "billingStaff",
+        "title": "Emitir fatura da obra",
+        "goal": "Emitir uma fatura para o cliente com base no resumo de faturamento da obra.",
+        "entry": {
+          "mode": "contextOrLookup",
+          "preferredFromJourneyRef": "approveChangeOrder"
+        },
+        "steps": [
+          {
+            "stepId": "locateClient",
+            "kind": "locate",
+            "entity": "Client",
+            "title": "Localizar o cliente",
+            "description": "Um cliente do catálogo compartilhado está selecionado.",
+            "featureRefs": [
+              "clientBilling"
+            ]
+          },
+          {
+            "stepId": "locateProject",
+            "kind": "locate",
+            "entity": "Project",
+            "title": "Localizar a obra faturável",
+            "description": "Uma obra do cliente selecionado está selecionada.",
+            "featureRefs": [
+              "clientBilling",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "inspectClientBillingSummary",
+            "kind": "inspect",
+            "entity": "ClientBillingSummary",
+            "title": "Consultar o resumo de faturamento",
+            "description": "Faturas, ordens aprovadas e valores estão consolidados.",
+            "featureRefs": [
+              "clientBilling",
+              "changeOrderControl"
+            ]
+          },
+          {
+            "stepId": "createInvoice",
+            "kind": "act",
+            "entity": "Invoice",
+            "title": "Emitir a fatura",
+            "description": "Uma fatura vinculada ao cliente e à obra fica registrada.",
+            "featureRefs": [
+              "clientBilling"
+            ]
+          },
+          {
+            "stepId": "handoffInvoiceToClient",
+            "kind": "handoff",
+            "entity": "Invoice",
+            "title": "Disponibilizar a fatura ao cliente",
+            "description": "O cliente recebe a fatura para consulta.",
+            "featureRefs": [
+              "clientBilling",
+              "clientCommunication"
+            ],
+            "targetProfile": "client"
+          }
+        ],
+        "outcome": {
+          "statement": "O cliente tem uma fatura da obra emitida com base no resumo de faturamento.",
+          "evidence": [
+            "A fatura mantém vínculo com cliente e obra.",
+            "O cliente recebe a fatura emitida."
+          ]
+        },
+        "useRules": [
+          "invoiceRequiresClientAndProject",
+          "invoiceIncludesApprovedChangeOrdersOnly"
+        ]
+      }
+    },
+    {
+      "journeyId": "generateAndPublishProjectStatusReport",
+      "policyDecisions": [
+        {
+          "decisionId": "statusReportPublicationControl",
+          "question": "Como o relatório gerado por IA é comunicado ao cliente?",
+          "chosen": "O gerente revisa e publica o relatório antes de encaminhá-lo ao cliente.",
+          "alternatives": [
+            "O relatório é publicado automaticamente após a geração",
+            "O relatório permanece apenas para uso interno"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "projectManager",
+        "title": "Gerar e publicar relatório de status",
+        "goal": "Produzir comunicação profissional sobre a obra, incluindo riscos de atraso, e disponibilizá-la ao cliente.",
+        "entry": {
+          "mode": "contextOrLookup",
+          "preferredFromJourneyRef": "reviewProjectPortfolio"
+        },
+        "steps": [
+          {
+            "stepId": "locateProject",
+            "kind": "locate",
+            "entity": "Project",
+            "title": "Localizar a obra",
+            "description": "Uma obra está selecionada para comunicação de status.",
+            "featureRefs": [
+              "aiStatusReporting",
+              "clientCommunication"
+            ]
+          },
+          {
+            "stepId": "inspectProjectExecutionOverview",
+            "kind": "inspect",
+            "entity": "ProjectExecutionOverview",
+            "title": "Consultar os dados da execução",
+            "description": "Tarefas, horas e materiais da obra estão consolidados.",
+            "featureRefs": [
+              "aiStatusReporting",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "inspectScheduleRiskAssessment",
+            "kind": "inspect",
+            "entity": "ScheduleRiskAssessment",
+            "title": "Consultar tarefas em risco de atraso",
+            "description": "Tarefas em risco e seus indicadores estão identificados.",
+            "featureRefs": [
+              "aiStatusReporting",
+              "projectScheduleVisibility"
+            ]
+          },
+          {
+            "stepId": "createStatusReport",
+            "kind": "act",
+            "entity": "StatusReport",
+            "title": "Gerar relatório profissional de status",
+            "description": "Um relatório baseado nos dados da obra fica gerado para revisão.",
+            "featureRefs": [
+              "aiStatusReporting",
+              "clientCommunication"
+            ]
+          },
+          {
+            "stepId": "publishStatusReport",
+            "kind": "decide",
+            "entity": "StatusReport",
+            "title": "Publicar o relatório de status",
+            "description": "O relatório fica aprovado para comunicação ao cliente.",
+            "featureRefs": [
+              "aiStatusReporting",
+              "clientCommunication"
+            ]
+          },
+          {
+            "stepId": "handoffStatusReportToClient",
+            "kind": "handoff",
+            "entity": "StatusReport",
+            "title": "Encaminhar o relatório ao cliente",
+            "description": "O cliente recebe o relatório publicado.",
+            "featureRefs": [
+              "aiStatusReporting",
+              "clientCommunication"
+            ],
+            "targetProfile": "client"
+          }
+        ],
+        "outcome": {
+          "statement": "O cliente recebe relatório de status com visibilidade sobre riscos de atraso.",
+          "evidence": [
+            "O relatório consolida tarefas, horas, materiais e riscos.",
+            "A publicação e seu responsável são observáveis.",
+            "O cliente recebe o relatório publicado."
+          ]
+        },
+        "useRules": [
+          "statusReportUsesProjectExecutionData",
+          "onlyProjectManagerPublishesStatusReport"
+        ]
+      }
+    },
+    {
+      "journeyId": "consultClientProjectUpdates",
+      "policyDecisions": [
+        {
+          "decisionId": "clientInformationAccessScope",
+          "question": "Quais informações o cliente consulta sobre sua obra?",
+          "chosen": "O cliente consulta relatórios de status publicados e o resumo de faturamento de suas obras.",
+          "alternatives": [
+            "O cliente consulta também registros internos detalhados de horas e materiais",
+            "O cliente recebe somente faturas sem status da obra"
+          ]
+        }
+      ],
+      "business": {
+        "actorRef": "client",
+        "title": "Consultar status e faturamento da obra",
+        "goal": "Acompanhar informações publicadas sobre a execução e os valores da própria obra.",
+        "entry": {
+          "mode": "coldStart"
+        },
+        "steps": [
+          {
+            "stepId": "locateProject",
+            "kind": "locate",
+            "entity": "Project",
+            "title": "Localizar a própria obra",
+            "description": "Uma obra associada ao cliente está selecionada.",
+            "featureRefs": [
+              "clientCommunication",
+              "clientBilling"
+            ]
+          },
+          {
+            "stepId": "inspectStatusReport",
+            "kind": "inspect",
+            "entity": "StatusReport",
+            "title": "Consultar o relatório de status publicado",
+            "description": "O relatório publicado, incluindo riscos comunicados, está visível.",
+            "featureRefs": [
+              "clientCommunication",
+              "aiStatusReporting"
+            ]
+          },
+          {
+            "stepId": "inspectClientBillingSummary",
+            "kind": "inspect",
+            "entity": "ClientBillingSummary",
+            "title": "Consultar o resumo de faturamento",
+            "description": "Faturas e valores relacionados à obra estão visíveis.",
+            "featureRefs": [
+              "clientBilling"
+            ]
+          }
+        ],
+        "outcome": {
+          "statement": "O cliente acompanha o status comunicado e os valores de faturamento da obra.",
+          "evidence": [
+            "O cliente visualiza o relatório publicado.",
+            "O cliente visualiza resumo e faturas da obra."
+          ]
+        },
+        "useRules": [
+          "clientSeesOnlyOwnProjectInformation"
+        ]
+      }
+    },
+    {
+      "journeyId": "monitorDailyProjectRecords",
+      "policyDecisions": [],
+      "business": {
+        "actorRef": "fieldCoordinator",
+        "title": "Acompanhar registros diários da obra",
+        "goal": "Consultar horas e materiais recebidos para acompanhar execução e cronograma.",
+        "entry": {
+          "mode": "contextOrLookup",
+          "preferredFromJourneyRef": "recordProjectMaterialUsage"
+        },
+        "steps": [
+          {
+            "stepId": "locateProject",
+            "kind": "locate",
+            "entity": "Project",
+            "title": "Localizar a obra acompanhada",
+            "description": "Uma obra ativa está selecionada para acompanhamento.",
+            "featureRefs": [
+              "dailyFieldLogging",
+              "projectMaterialTracking"
+            ]
+          },
+          {
+            "stepId": "inspectProjectTimeLogs",
+            "kind": "inspect",
+            "entity": "TimeLog",
+            "title": "Consultar os registros diários de horas",
+            "description": "Registros de horas da obra estão visíveis.",
+            "featureRefs": [
+              "dailyFieldLogging",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "inspectProjectMaterialUsages",
+            "kind": "inspect",
+            "entity": "MaterialUsage",
+            "title": "Consultar os consumos de materiais",
+            "description": "Consumos associados à obra estão visíveis.",
+            "featureRefs": [
+              "projectMaterialTracking",
+              "jobCostTracking"
+            ]
+          },
+          {
+            "stepId": "inspectProjectExecutionOverview",
+            "kind": "inspect",
+            "entity": "ProjectExecutionOverview",
+            "title": "Acompanhar a execução com os registros diários",
+            "description": "Andamento, registros e próximos prazos estão consolidados.",
+            "featureRefs": [
+              "dailyFieldLogging",
+              "projectMaterialTracking"
+            ]
+          }
+        ],
+        "outcome": {
+          "statement": "O coordenador acompanha registros diários para alinhar execução ao cronograma.",
+          "evidence": [
+            "TimeLogs e consumos da obra estão visíveis.",
+            "A execução considera apontamentos e próximos prazos."
+          ]
+        },
+        "useRules": [
+          "fieldCoordinatorSeesProjectDailyRecords"
+        ]
+      }
+    },
+    {
+      "journeyId": "consultApprovedProjectChangeOrders",
+      "policyDecisions": [],
+      "business": {
+        "actorRef": "client",
+        "title": "Consultar alterações aprovadas da obra",
+        "goal": "Consultar ordens aprovadas da própria obra e seus valores no faturamento.",
+        "entry": {
+          "mode": "contextOrLookup",
+          "preferredFromJourneyRef": "consultClientProjectUpdates"
+        },
+        "steps": [
+          {
+            "stepId": "locateProject",
+            "kind": "locate",
+            "entity": "Project",
+            "title": "Localizar a própria obra",
+            "description": "Uma obra associada ao cliente está selecionada.",
+            "featureRefs": [
+              "clientCommunication",
+              "clientBilling"
+            ]
+          },
+          {
+            "stepId": "inspectApprovedChangeOrders",
+            "kind": "inspect",
+            "entity": "ChangeOrder",
+            "title": "Consultar as alterações aprovadas",
+            "description": "Ordens aprovadas da obra, descrições e valores estão visíveis.",
+            "featureRefs": [
+              "changeOrderControl",
+              "clientCommunication"
+            ]
+          },
+          {
+            "stepId": "inspectClientBillingSummary",
+            "kind": "inspect",
+            "entity": "ClientBillingSummary",
+            "title": "Consultar o reflexo no faturamento",
+            "description": "O resumo apresenta alterações aprovadas, faturas e valores.",
+            "featureRefs": [
+              "clientBilling",
+              "changeOrderControl"
+            ]
+          }
+        ],
+        "outcome": {
+          "statement": "O cliente consulta alterações aprovadas e entende seus valores no faturamento.",
+          "evidence": [
+            "Somente ordens aprovadas da obra do cliente são exibidas.",
+            "Apontamentos internos não são expostos."
+          ]
+        },
+        "useRules": [
+          "clientSeesOnlyOwnProjectInformation",
+          "clientSeesApprovedChangeOrdersOnly"
+        ]
+      }
+    }
+  ],
+  "features": [
+    {
+      "featureId": "projectPortfolioMonitoring",
+      "title": "Monitoramento do portfólio de obras",
+      "priority": "now",
+      "journeyStepRefs": [
+        "reviewProjectPortfolio.inspectProjectDashboard",
+        "reviewProjectPortfolio.locateProject",
+        "reviewProjectPortfolio.inspectProjectExecutionOverview",
+        "reviewProjectPortfolio.handoffProjectToFieldCoordinator"
+      ]
+    },
+    {
+      "featureId": "projectScheduleVisibility",
+      "title": "Visibilidade de cronograma e tarefas",
+      "priority": "now",
+      "journeyStepRefs": [
+        "assignWorkTask.inspectProjectTimeline",
+        "assignWorkTask.createWorkTask",
+        "generateAndPublishProjectStatusReport.inspectScheduleRiskAssessment"
+      ]
+    },
+    {
+      "featureId": "fieldTaskCoordination",
+      "title": "Coordenação de tarefas de campo",
+      "priority": "now",
+      "journeyStepRefs": [
+        "assignWorkTask.createWorkTask",
+        "assignWorkTask.handoffWorkTaskToFieldWorker"
+      ]
+    },
+    {
+      "featureId": "dailyFieldLogging",
+      "title": "Registro diário de campo",
+      "priority": "now",
+      "journeyStepRefs": [
+        "recordWorkTime.createTimeLog",
+        "recordWorkTime.handoffTimeLogToFieldCoordinator",
+        "monitorDailyProjectRecords.inspectProjectTimeLogs"
+      ]
+    },
+    {
+      "featureId": "projectMaterialTracking",
+      "title": "Rastreamento de materiais por obra",
+      "priority": "now",
+      "journeyStepRefs": [
+        "recordProjectMaterialUsage.createMaterialUsage",
+        "recordProjectMaterialUsage.handoffMaterialUsageToFieldCoordinator",
+        "monitorDailyProjectRecords.inspectProjectMaterialUsages"
+      ]
+    },
+    {
+      "featureId": "jobCostTracking",
+      "title": "Custeio e realizado da obra",
+      "priority": "now",
+      "journeyStepRefs": [
+        "recordWorkTime.createTimeLog",
+        "recordProjectMaterialUsage.createMaterialUsage",
+        "submitChangeOrder.createChangeOrder",
+        "approveChangeOrder.approveChangeOrderDecision",
+        "issueProjectInvoice.inspectClientBillingSummary"
+      ]
+    },
+    {
+      "featureId": "changeOrderControl",
+      "title": "Controle de ordens de mudança",
+      "priority": "now",
+      "journeyStepRefs": [
+        "submitChangeOrder.createChangeOrder",
+        "forwardChangeOrderForClientApproval.handoffChangeOrderToClient",
+        "approveChangeOrder.approveChangeOrderDecision",
+        "declineChangeOrder.declineChangeOrderDecision",
+        "issueProjectInvoice.inspectClientBillingSummary",
+        "consultApprovedProjectChangeOrders.inspectApprovedChangeOrders"
+      ]
+    },
+    {
+      "featureId": "clientBilling",
+      "title": "Resumo de faturamento do cliente",
+      "priority": "now",
+      "journeyStepRefs": [
+        "approveChangeOrder.handoffApprovedChangeOrderToBilling",
+        "issueProjectInvoice.createInvoice",
+        "issueProjectInvoice.handoffInvoiceToClient",
+        "consultClientProjectUpdates.inspectClientBillingSummary"
+      ]
+    },
+    {
+      "featureId": "aiStatusReporting",
+      "title": "Relatórios de status com IA",
+      "priority": "now",
+      "journeyStepRefs": [
+        "generateAndPublishProjectStatusReport.createStatusReport",
+        "generateAndPublishProjectStatusReport.inspectScheduleRiskAssessment",
+        "generateAndPublishProjectStatusReport.publishStatusReport",
+        "consultClientProjectUpdates.inspectStatusReport"
+      ]
+    },
+    {
+      "featureId": "clientCommunication",
+      "title": "Comunicação com o cliente",
+      "priority": "now",
+      "journeyStepRefs": [
+        "forwardChangeOrderForClientApproval.handoffChangeOrderToClient",
+        "approveChangeOrder.locateChangeOrder",
+        "issueProjectInvoice.handoffInvoiceToClient",
+        "generateAndPublishProjectStatusReport.handoffStatusReportToClient",
+        "consultClientProjectUpdates.inspectStatusReport"
+      ]
+    }
+  ],
+  "systemDecisions": [
+    {
+      "decisionId": "moduleWithoutDecide.judgeUnavailable",
+      "stage": "e2",
+      "question": "A necessidade de decisões ou aprovações nas jornadas do módulo foi avaliada nesta versão?",
+      "chosen": "Não avaliada; as jornadas atuais foram preservadas.",
+      "alternatives": [
+        "Não avaliada; as jornadas atuais foram preservadas.",
+        "Reavaliar a cobertura de decisões em uma nova revisão."
+      ],
+      "decidedBy": "system",
+      "findingRef": "moduleWithoutDecide.judgeUnavailable",
+      "changeHint": "Peça uma nova revisão do E2 para avaliar decisões e aprovações."
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListMaterialUsageOutput, CmdCreateMaterialUsageOutput, CmdUpdateMaterialUsageOutput, CmdDeleteMaterialUsageOutput, QryInventoryBalancePickerOutput, QryInventoryItemPickerOutput, QryProjectPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/materialUsageCatalogue.js';
+export type { QryListMaterialUsageInput, QryListMaterialUsageOutput, CmdCreateMaterialUsageInput, CmdCreateMaterialUsageOutput, CmdUpdateMaterialUsageInput, CmdUpdateMaterialUsageOutput, CmdDeleteMaterialUsageInput, CmdDeleteMaterialUsageOutput, QryInventoryBalancePickerInput, QryInventoryBalancePickerOutput, QryInventoryItemPickerInput, QryInventoryItemPickerOutput, QryProjectPickerInput, QryProjectPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/materialUsageCatalogue.js';
+declare const message_pt: {
+    'section.materialUsageCatalogue.recordList.title': string;
+    'organism.materialUsageCatalogue.qryListMaterialUsage.title': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.title': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.empty': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.column.materialUsageId.label': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.column.status.label': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.column.projectId.label': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.column.inventoryItemId.label': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.column.inventoryBalanceId.label': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.column.quantity.label': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.column.usageDescription.label': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.column.consumedOn.label': string;
+    'intent.materialUsageCatalogue.qryListMaterialUsage.list.column.unitCostBasis.label': string;
+    'organism.materialUsageCatalogue.cmdDeleteMaterialUsage.title': string;
+    'intent.materialUsageCatalogue.cmdDeleteMaterialUsage.form.title': string;
+    'intent.materialUsageCatalogue.cmdDeleteMaterialUsage.form.action.cmdDeleteMaterialUsage': string;
+    'section.materialUsageCatalogue.recordForm.title': string;
+    'organism.materialUsageCatalogue.cmdCreateMaterialUsage.title': string;
+    'intent.materialUsageCatalogue.cmdCreateMaterialUsage.form.title': string;
+    'intent.materialUsageCatalogue.cmdCreateMaterialUsage.form.action.cmdCreateMaterialUsage': string;
+    'intent.materialUsageCatalogue.cmdCreateMaterialUsage.form.field.quantity.label': string;
+    'intent.materialUsageCatalogue.cmdCreateMaterialUsage.form.field.usageDescription.label': string;
+    'intent.materialUsageCatalogue.cmdCreateMaterialUsage.form.field.consumedOn.label': string;
+    'intent.materialUsageCatalogue.cmdCreateMaterialUsage.form.field.unitCostBasis.label': string;
+    'organism.materialUsageCatalogue.qryInventoryBalancePicker.title': string;
+    'intent.materialUsageCatalogue.qryInventoryBalancePicker.list.title': string;
+    'intent.materialUsageCatalogue.qryInventoryBalancePicker.list.empty': string;
+    'intent.materialUsageCatalogue.qryInventoryBalancePicker.list.column.inventoryBalanceId.label': string;
+    'intent.materialUsageCatalogue.qryInventoryBalancePicker.list.column.inventoryItemId.label': string;
+    'intent.materialUsageCatalogue.qryInventoryBalancePicker.list.column.physicalQuantity.label': string;
+    'intent.materialUsageCatalogue.qryInventoryBalancePicker.list.column.applicableUnitCost.label': string;
+    'intent.materialUsageCatalogue.qryInventoryBalancePicker.list.column.status.label': string;
+    'organism.materialUsageCatalogue.qryInventoryItemPicker.title': string;
+    'intent.materialUsageCatalogue.qryInventoryItemPicker.list.title': string;
+    'intent.materialUsageCatalogue.qryInventoryItemPicker.list.empty': string;
+    'intent.materialUsageCatalogue.qryInventoryItemPicker.list.column.inventoryItemId.label': string;
+    'intent.materialUsageCatalogue.qryInventoryItemPicker.list.column.name.label': string;
+    'intent.materialUsageCatalogue.qryInventoryItemPicker.list.column.description.label': string;
+    'intent.materialUsageCatalogue.qryInventoryItemPicker.list.column.unitOfMeasure.label': string;
+    'intent.materialUsageCatalogue.qryInventoryItemPicker.list.column.referenceUnitCost.label': string;
+    'intent.materialUsageCatalogue.qryInventoryItemPicker.list.column.status.label': string;
+    'organism.materialUsageCatalogue.qryProjectPicker.title': string;
+    'intent.materialUsageCatalogue.qryProjectPicker.list.title': string;
+    'intent.materialUsageCatalogue.qryProjectPicker.list.empty': string;
+    'intent.materialUsageCatalogue.qryProjectPicker.list.column.projectId.label': string;
+    'intent.materialUsageCatalogue.qryProjectPicker.list.column.clientId.label': string;
+    'intent.materialUsageCatalogue.qryProjectPicker.list.column.name.label': string;
+    'intent.materialUsageCatalogue.qryProjectPicker.list.column.address.label': string;
+    'intent.materialUsageCatalogue.qryProjectPicker.list.column.status.label': string;
+    'intent.materialUsageCatalogue.qryProjectPicker.list.column.authorizedBudget.label': string;
+    'intent.materialUsageCatalogue.qryProjectPicker.list.column.plannedStartDate.label': string;
+    'intent.materialUsageCatalogue.qryProjectPicker.list.column.plannedEndDate.label': string;
+    'organism.materialUsageCatalogue.cmdUpdateMaterialUsage.title': string;
+    'intent.materialUsageCatalogue.cmdUpdateMaterialUsage.form.title': string;
+    'intent.materialUsageCatalogue.cmdUpdateMaterialUsage.form.action.cmdUpdateMaterialUsage': string;
+    'intent.materialUsageCatalogue.cmdUpdateMaterialUsage.form.field.status.label': string;
+    'intent.materialUsageCatalogue.cmdUpdateMaterialUsage.form.field.quantity.label': string;
+    'intent.materialUsageCatalogue.cmdUpdateMaterialUsage.form.field.usageDescription.label': string;
+    'intent.materialUsageCatalogue.cmdUpdateMaterialUsage.form.field.consumedOn.label': string;
+    'intent.materialUsageCatalogue.cmdUpdateMaterialUsage.form.field.unitCostBasis.label': string;
+    'action.cmdCreateMaterialUsage.success': string;
+    'action.cmdCreateMaterialUsage.error': string;
+    'action.cmdUpdateMaterialUsage.success': string;
+    'action.cmdUpdateMaterialUsage.error': string;
+    'action.cmdDeleteMaterialUsage.success': string;
+    'action.cmdDeleteMaterialUsage.error': string;
+    'section.materialUsageCatalogue.usageWorkbench.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmMaterialUsageCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListMaterialUsageState — actionStatus, values: idle|loading|success|error */
+    qryListMaterialUsageState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListMaterialUsageData — queryResult, outputShape: array */
+    qryListMaterialUsageData: QryListMaterialUsageOutput[];
+    /** state cmdCreateMaterialUsageState — actionStatus, values: idle|loading|success|error */
+    cmdCreateMaterialUsageState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateMaterialUsageInventoryBalanceInventoryBalanceId — input */
+    cmdCreateMaterialUsageInventoryBalanceInventoryBalanceId: string;
+    /** state cmdCreateMaterialUsageInventoryItemInventoryItemId — input */
+    cmdCreateMaterialUsageInventoryItemInventoryItemId: string;
+    /** state cmdCreateMaterialUsageProjectProjectId — input */
+    cmdCreateMaterialUsageProjectProjectId: string;
+    /** state cmdCreateMaterialUsageQuantity — input */
+    cmdCreateMaterialUsageQuantity: string;
+    /** state cmdCreateMaterialUsageUsageDescription — input */
+    cmdCreateMaterialUsageUsageDescription: string;
+    /** state cmdCreateMaterialUsageConsumedOn — input */
+    cmdCreateMaterialUsageConsumedOn: string;
+    /** state cmdCreateMaterialUsageUnitCostBasis — input */
+    cmdCreateMaterialUsageUnitCostBasis: string;
+    /** state cmdCreateMaterialUsageOutput — commandOutput */
+    cmdCreateMaterialUsageOutput: CmdCreateMaterialUsageOutput | null;
+    /** state cmdCreateMaterialUsageError — actionError */
+    cmdCreateMaterialUsageError: string;
+    /** state cmdUpdateMaterialUsageState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateMaterialUsageState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateMaterialUsageMaterialUsageId — input */
+    cmdUpdateMaterialUsageMaterialUsageId: string;
+    /** state cmdUpdateMaterialUsageStatus — input */
+    cmdUpdateMaterialUsageStatus: string;
+    /** state cmdUpdateMaterialUsageProjectId — input */
+    cmdUpdateMaterialUsageProjectId: string;
+    /** state cmdUpdateMaterialUsageInventoryItemId — input */
+    cmdUpdateMaterialUsageInventoryItemId: string;
+    /** state cmdUpdateMaterialUsageInventoryBalanceId — input */
+    cmdUpdateMaterialUsageInventoryBalanceId: string;
+    /** state cmdUpdateMaterialUsageQuantity — input */
+    cmdUpdateMaterialUsageQuantity: string;
+    /** state cmdUpdateMaterialUsageUsageDescription — input */
+    cmdUpdateMaterialUsageUsageDescription: string;
+    /** state cmdUpdateMaterialUsageConsumedOn — input */
+    cmdUpdateMaterialUsageConsumedOn: string;
+    /** state cmdUpdateMaterialUsageUnitCostBasis — input */
+    cmdUpdateMaterialUsageUnitCostBasis: string;
+    /** state cmdUpdateMaterialUsageOutput — commandOutput */
+    cmdUpdateMaterialUsageOutput: CmdUpdateMaterialUsageOutput | null;
+    /** state cmdUpdateMaterialUsageError — actionError */
+    cmdUpdateMaterialUsageError: string;
+    /** state cmdDeleteMaterialUsageState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteMaterialUsageState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteMaterialUsageMaterialUsageId — input */
+    cmdDeleteMaterialUsageMaterialUsageId: string;
+    /** state cmdDeleteMaterialUsageOutput — commandOutput */
+    cmdDeleteMaterialUsageOutput: CmdDeleteMaterialUsageOutput | null;
+    /** state cmdDeleteMaterialUsageError — actionError */
+    cmdDeleteMaterialUsageError: string;
+    /** state qryInventoryBalancePickerState — actionStatus, values: idle|loading|success|error */
+    qryInventoryBalancePickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInventoryBalancePickerData — queryResult, outputShape: array */
+    qryInventoryBalancePickerData: QryInventoryBalancePickerOutput[];
+    /** state qryInventoryItemPickerState — actionStatus, values: idle|loading|success|error */
+    qryInventoryItemPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInventoryItemPickerData — queryResult, outputShape: array */
+    qryInventoryItemPickerData: QryInventoryItemPickerOutput[];
+    /** state qryProjectPickerState — actionStatus, values: idle|loading|success|error */
+    qryProjectPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectPickerData — queryResult, outputShape: array */
+    qryProjectPickerData: QryProjectPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryListMaterialUsage (query) — route buildFlowFsm.materialUsageCatalogue.qryListMaterialUsage; inputs: (none); writes ui.materialUsageCatalogue.data.qryListMaterialUsage; status ui.materialUsageCatalogue.action.qryListMaterialUsage.status */
+    loadQryListMaterialUsage(): Promise<void>;
+    /** handler for action qryListMaterialUsage — bind UI events here */
+    handleQryListMaterialUsageClick(event?: Event): void;
+    /** action cmdCreateMaterialUsage (command) — route buildFlowFsm.materialUsageCatalogue.cmdCreateMaterialUsage; inputs: inventoryBalanceInventoryBalanceId, inventoryItemInventoryItemId, projectProjectId, quantity, usageDescription, consumedOn, unitCostBasis; writes ui.materialUsageCatalogue.output.cmdCreateMaterialUsage; status ui.materialUsageCatalogue.action.cmdCreateMaterialUsage.status; feedback keys action.cmdCreateMaterialUsage.success / action.cmdCreateMaterialUsage.error */
+    cmdCreateMaterialUsage(): Promise<void>;
+    /** handler for action cmdCreateMaterialUsage — bind UI events here */
+    handleCmdCreateMaterialUsageClick(event?: Event): void;
+    /** action cmdUpdateMaterialUsage (command) — route buildFlowFsm.materialUsageCatalogue.cmdUpdateMaterialUsage; inputs: materialUsageId, status, projectId, inventoryItemId, inventoryBalanceId, quantity, usageDescription, consumedOn, unitCostBasis; writes ui.materialUsageCatalogue.output.cmdUpdateMaterialUsage; status ui.materialUsageCatalogue.action.cmdUpdateMaterialUsage.status; feedback keys action.cmdUpdateMaterialUsage.success / action.cmdUpdateMaterialUsage.error */
+    cmdUpdateMaterialUsage(): Promise<void>;
+    /** handler for action cmdUpdateMaterialUsage — bind UI events here */
+    handleCmdUpdateMaterialUsageClick(event?: Event): void;
+    /** action cmdDeleteMaterialUsage (command) — route buildFlowFsm.materialUsageCatalogue.cmdDeleteMaterialUsage; inputs: materialUsageId; writes ui.materialUsageCatalogue.output.cmdDeleteMaterialUsage; status ui.materialUsageCatalogue.action.cmdDeleteMaterialUsage.status; feedback keys action.cmdDeleteMaterialUsage.success / action.cmdDeleteMaterialUsage.error */
+    cmdDeleteMaterialUsage(): Promise<void>;
+    /** handler for action cmdDeleteMaterialUsage — bind UI events here */
+    handleCmdDeleteMaterialUsageClick(event?: Event): void;
+    /** action qryInventoryBalancePicker (query) — route buildFlowFsm.materialUsageCatalogue.qryInventoryBalancePicker; inputs: (none); writes ui.materialUsageCatalogue.data.qryInventoryBalancePicker; status ui.materialUsageCatalogue.action.qryInventoryBalancePicker.status */
+    loadQryInventoryBalancePicker(): Promise<void>;
+    /** handler for action qryInventoryBalancePicker — bind UI events here */
+    handleQryInventoryBalancePickerClick(event?: Event): void;
+    /** action qryInventoryItemPicker (query) — route buildFlowFsm.materialUsageCatalogue.qryInventoryItemPicker; inputs: (none); writes ui.materialUsageCatalogue.data.qryInventoryItemPicker; status ui.materialUsageCatalogue.action.qryInventoryItemPicker.status */
+    loadQryInventoryItemPicker(): Promise<void>;
+    /** handler for action qryInventoryItemPicker — bind UI events here */
+    handleQryInventoryItemPickerClick(event?: Event): void;
+    /** action qryProjectPicker (query) — route buildFlowFsm.materialUsageCatalogue.qryProjectPicker; inputs: (none); writes ui.materialUsageCatalogue.data.qryProjectPicker; status ui.materialUsageCatalogue.action.qryProjectPicker.status */
+    loadQryProjectPicker(): Promise<void>;
+    /** handler for action qryProjectPicker — bind UI events here */
+    handleQryProjectPickerClick(event?: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdCreateMaterialUsage.inventoryBalanceInventoryBalanceId */
+    setCmdCreateMaterialUsageInventoryBalanceInventoryBalanceId(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageInventoryBalanceInventoryBalanceId — bind UI events here */
+    handleCmdCreateMaterialUsageInventoryBalanceInventoryBalanceIdChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdCreateMaterialUsage.inventoryItemInventoryItemId */
+    setCmdCreateMaterialUsageInventoryItemInventoryItemId(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageInventoryItemInventoryItemId — bind UI events here */
+    handleCmdCreateMaterialUsageInventoryItemInventoryItemIdChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdCreateMaterialUsage.projectProjectId */
+    setCmdCreateMaterialUsageProjectProjectId(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageProjectProjectId — bind UI events here */
+    handleCmdCreateMaterialUsageProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdCreateMaterialUsage.quantity */
+    setCmdCreateMaterialUsageQuantity(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageQuantity — bind UI events here */
+    handleCmdCreateMaterialUsageQuantityChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdCreateMaterialUsage.usageDescription */
+    setCmdCreateMaterialUsageUsageDescription(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageUsageDescription — bind UI events here */
+    handleCmdCreateMaterialUsageUsageDescriptionChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdCreateMaterialUsage.consumedOn */
+    setCmdCreateMaterialUsageConsumedOn(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageConsumedOn — bind UI events here */
+    handleCmdCreateMaterialUsageConsumedOnChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdCreateMaterialUsage.unitCostBasis */
+    setCmdCreateMaterialUsageUnitCostBasis(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageUnitCostBasis — bind UI events here */
+    handleCmdCreateMaterialUsageUnitCostBasisChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdUpdateMaterialUsage.materialUsageId */
+    setCmdUpdateMaterialUsageMaterialUsageId(value: string): void;
+    /** handler for action set.cmdUpdateMaterialUsageMaterialUsageId — bind UI events here */
+    handleCmdUpdateMaterialUsageMaterialUsageIdChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdUpdateMaterialUsage.status */
+    setCmdUpdateMaterialUsageStatus(value: string): void;
+    /** handler for action set.cmdUpdateMaterialUsageStatus — bind UI events here */
+    handleCmdUpdateMaterialUsageStatusChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdUpdateMaterialUsage.projectId */
+    setCmdUpdateMaterialUsageProjectId(value: string): void;
+    /** handler for action set.cmdUpdateMaterialUsageProjectId — bind UI events here */
+    handleCmdUpdateMaterialUsageProjectIdChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdUpdateMaterialUsage.inventoryItemId */
+    setCmdUpdateMaterialUsageInventoryItemId(value: string): void;
+    /** handler for action set.cmdUpdateMaterialUsageInventoryItemId — bind UI events here */
+    handleCmdUpdateMaterialUsageInventoryItemIdChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdUpdateMaterialUsage.inventoryBalanceId */
+    setCmdUpdateMaterialUsageInventoryBalanceId(value: string): void;
+    /** handler for action set.cmdUpdateMaterialUsageInventoryBalanceId — bind UI events here */
+    handleCmdUpdateMaterialUsageInventoryBalanceIdChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdUpdateMaterialUsage.quantity */
+    setCmdUpdateMaterialUsageQuantity(value: string): void;
+    /** handler for action set.cmdUpdateMaterialUsageQuantity — bind UI events here */
+    handleCmdUpdateMaterialUsageQuantityChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdUpdateMaterialUsage.usageDescription */
+    setCmdUpdateMaterialUsageUsageDescription(value: string): void;
+    /** handler for action set.cmdUpdateMaterialUsageUsageDescription — bind UI events here */
+    handleCmdUpdateMaterialUsageUsageDescriptionChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdUpdateMaterialUsage.consumedOn */
+    setCmdUpdateMaterialUsageConsumedOn(value: string): void;
+    /** handler for action set.cmdUpdateMaterialUsageConsumedOn — bind UI events here */
+    handleCmdUpdateMaterialUsageConsumedOnChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdUpdateMaterialUsage.unitCostBasis */
+    setCmdUpdateMaterialUsageUnitCostBasis(value: string): void;
+    /** handler for action set.cmdUpdateMaterialUsageUnitCostBasis — bind UI events here */
+    handleCmdUpdateMaterialUsageUnitCostBasisChange(event: Event): void;
+    /** setter for state ui.materialUsageCatalogue.input.cmdDeleteMaterialUsage.materialUsageId */
+    setCmdDeleteMaterialUsageMaterialUsageId(value: string): void;
+    /** handler for action set.cmdDeleteMaterialUsageMaterialUsageId — bind UI events here */
+    handleCmdDeleteMaterialUsageMaterialUsageIdChange(event: Event): void;
+}

@@ -1,0 +1,37 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryProjectDashboardViewOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/projectDashboardView.js';
+export type { QryProjectDashboardViewInput, QryProjectDashboardViewOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/projectDashboardView.js';
+declare const message_pt: {
+    'section.projectDashboardView.overview.title': string;
+    'organism.projectDashboardView.qryProjectDashboardView.title': string;
+    'intent.projectDashboardView.qryProjectDashboardView.list.title': string;
+    'intent.projectDashboardView.qryProjectDashboardView.list.empty': string;
+    'intent.projectDashboardView.qryProjectDashboardView.list.column.activeProjects.label': string;
+    'intent.projectDashboardView.qryProjectDashboardView.list.column.activeProjectCount.label': string;
+    'intent.projectDashboardView.qryProjectDashboardView.list.column.totalBudget.label': string;
+    'intent.projectDashboardView.qryProjectDashboardView.list.column.totalActualCost.label': string;
+    'intent.projectDashboardView.qryProjectDashboardView.list.column.budgetVariance.label': string;
+    'intent.projectDashboardView.qryProjectDashboardView.list.column.costAttentionProjects.label': string;
+    'intent.projectDashboardView.qryProjectDashboardView.list.column.upcomingTasks.label': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmProjectDashboardViewBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryProjectDashboardViewState — actionStatus, values: idle|loading|success|error */
+    qryProjectDashboardViewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectDashboardViewData — queryResult, outputShape: object */
+    qryProjectDashboardViewData: QryProjectDashboardViewOutput | null;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    /** action qryProjectDashboardView (query) — route buildFlowFsm.projectDashboardView.qryProjectDashboardView; inputs: (none); writes ui.projectDashboardView.data.qryProjectDashboardView; status ui.projectDashboardView.action.qryProjectDashboardView.status */
+    loadQryProjectDashboardView(): Promise<void>;
+    /** handler for action qryProjectDashboardView — bind UI events here */
+    handleQryProjectDashboardViewClick(event?: Event): void;
+}

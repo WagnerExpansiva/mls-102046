@@ -1,0 +1,49 @@
+{
+  "savedAt": "2026-08-18T14:54:42.085Z",
+  "pageId": "timeLogCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Trabalhador de campo ou responsável operacional pelo apontamento de horas",
+    "jobToBeDone": "Registrar rapidamente as horas trabalhadas em uma tarefa e corrigir ou remover um apontamento existente quando necessário.",
+    "primaryDecision": "Escolher a tarefa e o registro de horas a lançar ou corrigir, então salvar a alteração apropriada.",
+    "decisiveInfo": [
+      "workTaskId",
+      "description",
+      "workDate",
+      "hoursWorked",
+      "hourlyLaborCost",
+      "status",
+      "fieldWorkerId"
+    ],
+    "usageFrequency": "Frequente durante ou ao final de cada jornada/tarefa, com revisões ocasionais pelo responsável operacional.",
+    "informationHierarchy": [
+      "tarefa e contexto do apontamento selecionado",
+      "data do trabalho e horas trabalhadas",
+      "custo labor-hora e trabalhador associado",
+      "status atual do registro",
+      "ações de salvar correção ou remover registro"
+    ],
+    "successCriteria": "O usuário identifica a tarefa sem digitar IDs, registra ou corrige um apontamento em poucos passos, vê o estado atual antes de editar e consegue remover somente o registro correto.",
+    "antiPatterns": [
+      "expor timeLogId, workTaskId ou fieldWorkerId como campos digitáveis",
+      "permitir edição manual livre do status",
+      "separar a atualização em um formulário desconectado da linha selecionada",
+      "exigir navegação para outra tela para consultar tarefas",
+      "oferecer exclusão sem confirmação"
+    ],
+    "criticalActions": [
+      {
+        "action": "Registrar horas trabalhadas",
+        "presentation": "primary-button no painel contextual de criação, com seletor de tarefa e defaults seguros"
+      },
+      {
+        "action": "Corrigir registro selecionado",
+        "presentation": "contextual-transition-actions no painel master-detail, preenchido a partir da linha selecionada"
+      },
+      {
+        "action": "Excluir registro escolhido",
+        "presentation": "inline-row-command contextual à linha, com confirmação destrutiva"
+      }
+    ]
+  }
+}

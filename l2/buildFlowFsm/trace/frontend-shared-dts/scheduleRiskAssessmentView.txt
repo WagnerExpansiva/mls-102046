@@ -1,0 +1,44 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryScheduleRiskAssessmentViewOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/scheduleRiskAssessmentView.js';
+export type { QryScheduleRiskAssessmentViewInput, QryScheduleRiskAssessmentViewOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/scheduleRiskAssessmentView.js';
+declare const message_pt: {
+    'section.scheduleRiskAssessmentView.overview.title': string;
+    'organism.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.title': string;
+    'intent.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.list.title': string;
+    'intent.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.list.empty': string;
+    'intent.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.list.column.projectId.label': string;
+    'intent.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.list.column.workTaskId.label': string;
+    'intent.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.list.column.taskStatus.label': string;
+    'intent.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.list.column.dueDate.label': string;
+    'intent.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.list.column.progressPercent.label': string;
+    'intent.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.list.column.riskIndicators.label': string;
+    'intent.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.list.column.riskExplanation.label': string;
+    'intent.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView.list.column.assessedAt.label': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmScheduleRiskAssessmentViewBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryScheduleRiskAssessmentViewState — actionStatus, values: idle|loading|success|error */
+    qryScheduleRiskAssessmentViewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryScheduleRiskAssessmentViewScheduleRiskAssessmentProjectId — input */
+    qryScheduleRiskAssessmentViewScheduleRiskAssessmentProjectId: string;
+    /** state qryScheduleRiskAssessmentViewData — queryResult, outputShape: object */
+    qryScheduleRiskAssessmentViewData: QryScheduleRiskAssessmentViewOutput | null;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    /** action qryScheduleRiskAssessmentView (query) — route buildFlowFsm.scheduleRiskAssessmentView.qryScheduleRiskAssessmentView; inputs: scheduleRiskAssessmentProjectId; writes ui.scheduleRiskAssessmentView.data.qryScheduleRiskAssessmentView; status ui.scheduleRiskAssessmentView.action.qryScheduleRiskAssessmentView.status */
+    loadQryScheduleRiskAssessmentView(): Promise<void>;
+    /** handler for action qryScheduleRiskAssessmentView — bind UI events here */
+    handleQryScheduleRiskAssessmentViewClick(event?: Event): void;
+    /** setter for state ui.scheduleRiskAssessmentView.input.qryScheduleRiskAssessmentView.scheduleRiskAssessmentProjectId */
+    setQryScheduleRiskAssessmentViewScheduleRiskAssessmentProjectId(value: string): void;
+    /** handler for action set.qryScheduleRiskAssessmentViewScheduleRiskAssessmentProjectId — bind UI events here */
+    handleQryScheduleRiskAssessmentViewScheduleRiskAssessmentProjectIdChange(event: Event): void;
+}

@@ -1,0 +1,25 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "FieldWorker",
+  "fields": [
+    {
+      "fieldId": "platformUserId",
+      "title": "Usuário da plataforma",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência ao usuário da plataforma qualificado como trabalhador de campo, selecionada no diretório organizacional.",
+      "constraints": [
+        {
+          "constraintId": "uniquePlatformUserId",
+          "kind": "unique",
+          "value": "true",
+          "description": "Um usuário da plataforma corresponde a, no máximo, uma referência de trabalhador de campo.",
+          "source": "inferred"
+        }
+      ]
+    }
+  ],
+  "useRules": []
+}

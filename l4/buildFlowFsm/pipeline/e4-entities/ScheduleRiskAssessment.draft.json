@@ -1,0 +1,75 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "ScheduleRiskAssessment",
+  "fields": [
+    {
+      "fieldId": "projectId",
+      "title": "Obra",
+      "type": "uuid",
+      "required": true,
+      "description": "Identidade da obra cujo contexto de execução fundamenta a avaliação derivada de risco.",
+      "constraints": []
+    },
+    {
+      "fieldId": "workTaskId",
+      "title": "Tarefa",
+      "type": "uuid",
+      "required": true,
+      "description": "Identidade da tarefa não concluída avaliada quanto ao risco de atraso.",
+      "constraints": []
+    },
+    {
+      "fieldId": "taskStatus",
+      "title": "Status da tarefa",
+      "type": "string",
+      "required": true,
+      "description": "Estado da tarefa considerado na identificação do risco de atraso.",
+      "constraints": []
+    },
+    {
+      "fieldId": "dueDate",
+      "title": "Prazo da tarefa",
+      "type": "date",
+      "required": true,
+      "description": "Data de prazo da tarefa usada na projeção do risco de atraso.",
+      "constraints": []
+    },
+    {
+      "fieldId": "progressPercent",
+      "title": "Andamento da tarefa",
+      "type": "number",
+      "required": false,
+      "description": "Percentual de andamento disponível da tarefa no momento da avaliação.",
+      "constraints": []
+    },
+    {
+      "fieldId": "riskIndicators",
+      "title": "Indicadores de risco",
+      "type": "json",
+      "required": true,
+      "description": "Indicadores derivados de prazo, estado, andamento e contexto de execução que explicam o risco identificado.",
+      "constraints": []
+    },
+    {
+      "fieldId": "riskExplanation",
+      "title": "Explicação do risco",
+      "type": "text",
+      "required": true,
+      "description": "Síntese profissional dos fatores que tornam a tarefa suscetível a atraso, para consulta na obra e no relatório de status.",
+      "constraints": []
+    },
+    {
+      "fieldId": "assessedAt",
+      "title": "Data e hora da avaliação",
+      "type": "datetime",
+      "required": true,
+      "description": "Momento em que os dados de execução foram consolidados para gerar esta avaliação derivada.",
+      "constraints": []
+    }
+  ],
+  "useRules": [
+    "statusReportUsesProjectExecutionData"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "savedAt": "2026-08-18T14:54:15.071Z",
+  "pageId": "reviewProjectPortfolio",
+  "genome": "page31",
+  "objective": {
+    "actor": "Gestor de portfólio ou responsável pela coordenação de obras",
+    "jobToBeDone": "Identificar rapidamente obras ativas com risco de custo ou prazo, analisar a execução da obra escolhida e encaminhá-la ao acompanhamento de campo quando necessário.",
+    "primaryDecision": "Decidir qual obra exige intervenção e executar seu encaminhamento ao coordenador de campo.",
+    "decisiveInfo": [
+      "activeProjectCount",
+      "costAttentionProjects",
+      "upcomingTasks",
+      "name",
+      "status",
+      "authorizedBudget",
+      "plannedStartDate",
+      "plannedEndDate",
+      "taskSummary",
+      "upcomingCommitments",
+      "actualCost",
+      "budgetAmount",
+      "costVariance",
+      "changeOrderImpactSummary"
+    ],
+    "usageFrequency": "Contínua ou frequente durante a gestão operacional do portfólio, com consultas rápidas e ações contextuais.",
+    "informationHierarchy": [
+      "Indicadores agregados de obras ativas e desvios de custo",
+      "Lista de obras que exigem atenção, com status, orçamento e prazo",
+      "Detalhe da execução da obra selecionada",
+      "Próximos compromissos, tarefas, registros e impactos de alterações",
+      "Ação contextual de encaminhamento ao acompanhamento de campo",
+      "Confirmação do resultado e atualização do portfólio"
+    ],
+    "successCriteria": "O gestor identifica a obra prioritária sem navegar entre telas, entende seu estado atual e sua exposição de custo e prazo, e consegue encaminhá-la ao campo com uma ação contextual segura e confirmação clara.",
+    "antiPatterns": [
+      "Formulário separado para encaminhamento sem a obra selecionada visível",
+      "Campo manual para projectId, clientId ou outros identificadores derivados do contexto",
+      "Edição manual de status do projeto ou da atribuição",
+      "Exibir custos calculados como campos editáveis",
+      "Forçar o usuário a revisar cada consulta em uma seção isolada antes de agir",
+      "Esconder a relação entre desvio, prazo e ação recomendada"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar a obra que exige atenção",
+        "presentation": "master-detail com seleção direta na superfície de obras"
+      },
+      {
+        "action": "Analisar a execução da obra selecionada",
+        "presentation": "detail-panel contextual no mesmo master-detail, com summary-first"
+      },
+      {
+        "action": "Encaminhar a obra para acompanhamento de campo",
+        "presentation": "contextual-transition-actions junto ao detalhe selecionado, usando confirmação apenas se a ação tiver impacto alto"
+      },
+      {
+        "action": "Atualizar o portfólio após o encaminhamento",
+        "presentation": "feedback textual dismissível e refresh das superfícies relacionadas"
+      }
+    ]
+  }
+}

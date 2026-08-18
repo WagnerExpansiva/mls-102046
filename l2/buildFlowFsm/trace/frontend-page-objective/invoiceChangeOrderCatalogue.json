@@ -1,0 +1,58 @@
+{
+  "savedAt": "2026-08-18T14:52:41.753Z",
+  "pageId": "invoiceChangeOrderCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Profissional financeiro ou administrativo responsável por manter aplicações de ordens de mudança nas faturas.",
+    "jobToBeDone": "Localizar uma aplicação de ordem de mudança na fatura e criar, corrigir ou remover o vínculo com segurança.",
+    "primaryDecision": "Decidir qual vínculo invoice–change order deve ser criado ou alterado e qual valor faturado deve ser registrado.",
+    "decisiveInfo": [
+      "invoiceId",
+      "commercialReference",
+      "amount",
+      "status",
+      "changeOrderId",
+      "description",
+      "changeAmount",
+      "scopeImpact",
+      "scheduleImpact",
+      "billedAmount",
+      "invoiceChangeOrderId"
+    ],
+    "usageFrequency": "Ocassional/back-office, durante o fechamento e a manutenção de faturamento de projetos.",
+    "informationHierarchy": [
+      "Aplicações existentes e vínculo selecionado",
+      "Identidade e contexto da fatura",
+      "Identidade, descrição, impactos e valor da ordem de mudança",
+      "Valor faturado",
+      "Ações de salvar alteração ou remover vínculo",
+      "Seleção de fatura e ordem de mudança para nova aplicação"
+    ],
+    "successCriteria": "O usuário encontra rapidamente o vínculo correto, entende os dois registros relacionados antes de alterar o valor e conclui criação, correção ou remoção sem digitar identificadores técnicos.",
+    "antiPatterns": [
+      "Expor ids como campos de texto",
+      "Formulário separado para exclusão",
+      "Status editável manualmente",
+      "Duplicar uma seção independente para cada picker",
+      "Permitir alteração sem mostrar o contexto atual da fatura e da ordem de mudança"
+    ],
+    "criticalActions": [
+      {
+        "action": "Criar nova aplicação",
+        "presentation": "primary-button"
+      },
+      {
+        "action": "Corrigir aplicação selecionada",
+        "presentation": "contextual-detail-action"
+      },
+      {
+        "action": "Excluir aplicação selecionada",
+        "presentation": "inline-row-command com confirmação destrutiva"
+      },
+      {
+        "action": "Escolher fatura e ordem de mudança",
+        "presentation": "rich-selection-picker"
+      }
+    ]
+  }
+}

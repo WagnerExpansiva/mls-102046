@@ -1,0 +1,51 @@
+{
+  "savedAt": "2026-08-18T14:53:31.254Z",
+  "pageId": "projectCoordinationAssignmentCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Gestor ou administrador responsável pela coordenação das obras",
+    "jobToBeDone": "Localizar uma obra e manter a atribuição do coordenador de campo correta, criando, corrigindo ou removendo o registro quando necessário.",
+    "primaryDecision": "Qual atribuição de coordenação deve ser criada ou alterada para a obra selecionada?",
+    "decisiveInfo": [
+      "projectId",
+      "name",
+      "address",
+      "fieldCoordinatorId",
+      "status"
+    ],
+    "usageFrequency": "Ocassional, em rotinas administrativas de cadastro e correção de responsáveis por obra",
+    "informationHierarchy": [
+      "obra identificada por nome e contexto do projeto",
+      "coordenador de campo atualmente atribuído",
+      "status atual da atribuição",
+      "ações de criar ou corrigir",
+      "remoção da atribuição selecionada"
+    ],
+    "successCriteria": "O gestor encontra a obra sem digitar identificadores, entende imediatamente o responsável e o status atuais, consegue criar ou corrigir uma atribuição no contexto selecionado e remove registros apenas com confirmação.",
+    "antiPatterns": [
+      "campo manual para projectCoordinationAssignmentId ou projectId",
+      "status como select livre com todos os valores",
+      "formulários separados e desconectados para cada operação",
+      "exclusão sem confirmação",
+      "ocultar a atribuição atual antes de pedir uma correção"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar uma obra e criar a atribuição",
+        "presentation": "contextual-detail-primary-action com project picker"
+      },
+      {
+        "action": "Corrigir a atribuição selecionada",
+        "presentation": "master-detail contextual-action com dados pre preenchidos"
+      },
+      {
+        "action": "Excluir a atribuição selecionada",
+        "presentation": "inline-row-command com confirmação destrutiva"
+      },
+      {
+        "action": "Recarregar a lista após mutações",
+        "presentation": "automatic-refresh-and-dismissible-feedback"
+      }
+    ]
+  }
+}

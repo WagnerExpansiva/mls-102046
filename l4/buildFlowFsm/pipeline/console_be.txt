@@ -1,0 +1,142 @@
+stor.server.ts:313 project 100554 with 1 files updated, lastModified:2026-08-17T22:48:16.266Z
+stor.server.ts:313 project 102020 with 1 files updated, lastModified:2026-08-17T22:46:20.930Z
+stor.server.ts:313 project 102021 with 12 files updated, lastModified:2026-08-17T22:44:57.222Z
+(index):64 cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
+(anonymous) @ (index):64
+(anonymous) @ (index):64
+(index):52 [aa4] potential listener LEAK detected, having 200 listeners already. MOST frequent listener (1):
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:111
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:105
+(anonymous) @ editor.ts:177
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:173
+compileGeneratedTs @ cbMaterializeIo.js:307
+await in compileGeneratedTs
+compileSavedTsAndGetErrors @ cbMaterializeIo.js:429
+await in compileSavedTsAndGetErrors
+beforePromptStep @ agentCbValidateAll?t=53e029b1bd07061f34618640bc6b8aecd1b3895f:350
+(index):52 Error
+    at I_.create (monaco.js:8:10103)
+    at DP._onDidChangeLanguages (monaco.js:10:1669)
+    at get onDidChange (monaco.js:238:9292)
+    at aH.setLanguage (monaco.js:607:29060)
+    at FL.setMode (monaco.js:611:3618)
+    at FL.createModel (monaco.js:611:3459)
+    at pce (monaco.js:638:161)
+    at UU (monaco.js:638:103)
+    at Object.Vke [as createModel] (monaco.js:638:7108)
+    at editor.ts:111:26
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:111
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:105
+(anonymous) @ editor.ts:177
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:173
+compileGeneratedTs @ cbMaterializeIo.js:307
+await in compileGeneratedTs
+compileSavedTsAndGetErrors @ cbMaterializeIo.js:429
+await in compileSavedTsAndGetErrors
+beforePromptStep @ agentCbValidateAll?t=53e029b1bd07061f34618640bc6b8aecd1b3895f:350
+(index):52 [aa4] potential listener LEAK detected, having 237 listeners already. MOST frequent listener (22):
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:175
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:173
+loadImportModel @ cbMaterializeIo.js:215
+ensureImportModels @ cbMaterializeIo.js:181
+compileGeneratedTs @ cbMaterializeIo.js:303
+compileSavedTsAndGetErrors @ cbMaterializeIo.js:429
+await in compileSavedTsAndGetErrors
+beforePromptStep @ agentCbValidateAll?t=53e029b1bd07061f34618640bc6b8aecd1b3895f:350
+(index):52 Error
+    at I_.create (monaco.js:8:10103)
+    at DP._onDidChangeLanguages (monaco.js:10:1669)
+    at get onDidChange (monaco.js:238:9292)
+    at aH.setLanguage (monaco.js:607:29060)
+    at FL.setMode (monaco.js:611:3618)
+    at FL.createModel (monaco.js:611:3459)
+    at pce (monaco.js:638:161)
+    at UU (monaco.js:638:103)
+    at Object.Vke [as createModel] (monaco.js:638:7108)
+    at editor.ts:111:26
+console.warn @ (index):52
+check @ monaco.js:8
+(anonymous) @ monaco.js:10
+get onDidChange @ monaco.js:238
+setLanguage @ monaco.js:607
+setMode @ monaco.js:611
+createModel @ monaco.js:611
+pce @ monaco.js:638
+UU @ monaco.js:638
+Vke @ monaco.js:638
+(anonymous) @ editor.ts:81
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:75
+(anonymous) @ editor.ts:175
+fulfilled @ mls.js:65
+Promise.then
+step @ mls.js:77
+(anonymous) @ mls.js:78
+__async @ mls.js:62
+(anonymous) @ editor.ts:173
+loadImportModel @ cbMaterializeIo.js:215
+ensureImportModels @ cbMaterializeIo.js:181
+compileGeneratedTs @ cbMaterializeIo.js:303
+compileSavedTsAndGetErrors @ cbMaterializeIo.js:429
+await in compileSavedTsAndGetErrors
+beforePromptStep @ agentCbValidateAll?t=53e029b1bd07061f34618640bc6b8aecd1b3895f:350

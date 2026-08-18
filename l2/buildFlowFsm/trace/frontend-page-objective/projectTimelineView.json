@@ -1,0 +1,36 @@
+{
+  "savedAt": "2026-08-18T14:53:41.296Z",
+  "pageId": "projectTimelineView",
+  "genome": "page21",
+  "objective": {
+    "actor": "Gestor da obra ou responsável pelo planejamento e acompanhamento de campo.",
+    "jobToBeDone": "Consultar rapidamente a sequência de tarefas e prazos de um projeto para planejar e acompanhar a execução da obra.",
+    "primaryDecision": "Identificar a próxima sequência de tarefas e os prazos que exigem atenção no projeto selecionado.",
+    "decisiveInfo": [
+      "projectId",
+      "workTasks",
+      "scheduleEntries"
+    ],
+    "usageFrequency": "Recorrente durante o planejamento e o acompanhamento da obra, especialmente em revisões de cronograma e rotinas de campo.",
+    "informationHierarchy": [
+      "Projeto em contexto e estado da consulta",
+      "Sequência temporal das tarefas",
+      "Prazos e entradas do cronograma",
+      "Detalhes de cada tarefa, incluindo responsável, status e progresso"
+    ],
+    "successCriteria": "O usuário reconhece imediatamente o projeto consultado, entende a sequência e os prazos das tarefas e consegue localizar rapidamente itens em andamento ou que exigem atenção.",
+    "antiPatterns": [
+      "Exigir digitação manual do projectId",
+      "Expor status como campo editável ou select",
+      "Transformar a consulta em formulário CRUD",
+      "Ocultar a sequência temporal em uma lista sem ordenação por prazo",
+      "Adicionar ações de alteração que não existem no contrato"
+    ],
+    "criticalActions": [
+      {
+        "action": "qryProjectTimelineView",
+        "presentation": "contextual-query-action"
+      }
+    ]
+  }
+}

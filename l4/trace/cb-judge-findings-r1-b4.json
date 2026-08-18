@@ -1,0 +1,219 @@
+{
+  "judgeRun": 1,
+  "batchIndex": 4,
+  "owners": [
+    "createStatusReport",
+    "updateStatusReport",
+    "deleteStatusReport",
+    "listTimeLog",
+    "createTimeLog",
+    "updateTimeLog",
+    "deleteTimeLog",
+    "listWorkTask",
+    "createWorkTask",
+    "updateWorkTask",
+    "deleteWorkTask",
+    "inspectProjectDashboard",
+    "locateProject",
+    "inspectProjectExecutionOverview",
+    "handoffProjectToFieldCoordinator"
+  ],
+  "findings": [
+    {
+      "ownerId": "createStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createStatusReport (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateStatusReport (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteStatusReport (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listTimeLog",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listTimeLog (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createTimeLog",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createTimeLog (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateTimeLog",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateTimeLog (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteTimeLog",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteTimeLog (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listWorkTask (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createWorkTask (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateWorkTask (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteWorkTask (worker failed or never saved)"
+    },
+    {
+      "ownerId": "inspectProjectDashboard",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation inspectProjectDashboard (worker failed or never saved)"
+    },
+    {
+      "ownerId": "locateProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation locateProject (worker failed or never saved)"
+    },
+    {
+      "ownerId": "inspectProjectExecutionOverview",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation inspectProjectExecutionOverview (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffProjectToFieldCoordinator",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffProjectToFieldCoordinator (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; ports, rulesApplied, inputs, and acceptanceAssertions cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for createStatusReport."
+    },
+    {
+      "ownerId": "updateStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; ports, rulesApplied, inputs, and acceptanceAssertions cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for updateStatusReport."
+    },
+    {
+      "ownerId": "deleteStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; ports, inputs, and acceptanceAssertions cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for deleteStatusReport."
+    },
+    {
+      "ownerId": "listTimeLog",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; the TimeLog port and list filters cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for listTimeLog."
+    },
+    {
+      "ownerId": "createTimeLog",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; ports, rulesApplied, inputs, and acceptanceAssertions cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for createTimeLog."
+    },
+    {
+      "ownerId": "updateTimeLog",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; ports, rulesApplied, inputs, and acceptanceAssertions cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for updateTimeLog."
+    },
+    {
+      "ownerId": "deleteTimeLog",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; ports, inputs, and acceptanceAssertions cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for deleteTimeLog."
+    },
+    {
+      "ownerId": "listWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; the WorkTask port and list filters cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for listWorkTask."
+    },
+    {
+      "ownerId": "createWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; ports, rulesApplied, inputs, and acceptanceAssertions cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for createWorkTask."
+    },
+    {
+      "ownerId": "updateWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; ports, rulesApplied, inputs, and acceptanceAssertions cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for updateWorkTask."
+    },
+    {
+      "ownerId": "deleteWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; ports, inputs, and acceptanceAssertions cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for deleteWorkTask."
+    },
+    {
+      "ownerId": "inspectProjectDashboard",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; the ProjectDashboard port, activeProjectCostVisibility rule, and input shape cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for inspectProjectDashboard."
+    },
+    {
+      "ownerId": "locateProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; the Project port and list filters cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for locateProject."
+    },
+    {
+      "ownerId": "inspectProjectExecutionOverview",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; the ProjectExecutionOverview port, activeProjectCostVisibility rule, and projectId input cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for inspectProjectExecutionOverview."
+    },
+    {
+      "ownerId": "handoffProjectToFieldCoordinator",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs is null; ports, rulesApplied, inputs, and acceptanceAssertions cannot be compared against the L4 contract.",
+      "suggestion": "Provide the generated usecase definition for handoffProjectToFieldCoordinator."
+    }
+  ],
+  "savedAt": "2026-08-17T20:29:55.109Z"
+}

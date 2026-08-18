@@ -1,0 +1,58 @@
+{
+  "savedAt": "2026-08-18T14:52:54.863Z",
+  "pageId": "issueProjectInvoice",
+  "genome": "page31",
+  "objective": {
+    "actor": "Responsável financeiro ou gestor de obras que emite e disponibiliza faturas de projetos.",
+    "jobToBeDone": "Selecionar o cliente e a obra corretos, conferir o saldo de faturamento e emitir a fatura, disponibilizando-a ao cliente em seguida.",
+    "primaryDecision": "Confirmar a emissão de uma fatura com valor e referência comercial adequados ao saldo faturável da obra.",
+    "decisiveInfo": [
+      "clientName",
+      "name",
+      "status",
+      "approvedChangeOrderAmount",
+      "billableAmount",
+      "invoicedAmount",
+      "clientAvailableAmount",
+      "commercialReference",
+      "amount"
+    ],
+    "usageFrequency": "Ocasional, durante o fechamento ou faturamento de uma obra; exige precisão mais do que processamento contínuo.",
+    "informationHierarchy": [
+      "cliente e obra selecionados",
+      "status da obra",
+      "valor faturável disponível e valor já faturado",
+      "ordens de alteração aprovadas e referências de faturas",
+      "referência comercial e valor a emitir",
+      "confirmação da emissão",
+      "próxima ação para disponibilizar a fatura ao cliente"
+    ],
+    "successCriteria": "O operador identifica sem ambiguidade o cliente e a obra, usa o resumo como referência para informar um valor válido, emite a fatura sem redigitar identificadores e encontra imediatamente a ação de disponibilizá-la ao cliente.",
+    "antiPatterns": [
+      "formulário CRUD expondo ids de cliente, projeto ou fatura",
+      "status como campo select livre",
+      "seção de consulta sem contexto da seleção",
+      "pedir novamente referência ou valor já disponíveis na fatura criada",
+      "emitir sem mostrar o saldo faturável e o valor já faturado",
+      "separar a ação de disponibilização de seu contexto da fatura emitida"
+    ],
+    "criticalActions": [
+      {
+        "action": "Emitir a fatura",
+        "presentation": "primary-button contextual ao resumo e à obra selecionada"
+      },
+      {
+        "action": "Selecionar cliente e obra",
+        "presentation": "master-detail com seleção reconhecível, nunca ids digitados"
+      },
+      {
+        "action": "Consultar o resumo de faturamento",
+        "presentation": "summary-first atualizado após a seleção do cliente"
+      },
+      {
+        "action": "Disponibilizar a fatura ao cliente",
+        "presentation": "contextual-transition-actions na fatura selecionada, após emissão"
+      }
+    ]
+  }
+}

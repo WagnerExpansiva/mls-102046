@@ -1,0 +1,65 @@
+{
+  "runId": "20260818121907.1001",
+  "judgeRun": 1,
+  "batchIndex": 4,
+  "owners": [
+    "inspectProjectMaterialUsages",
+    "inspectProjectTimeLogs",
+    "inspectProjectTimeline",
+    "inspectScheduleRiskAssessment",
+    "inspectStatusReport",
+    "listChangeOrderDecision",
+    "listChangeOrder",
+    "listClientPortalAccess",
+    "listClient",
+    "listInventoryBalance",
+    "listInventoryItem",
+    "listInvoiceChangeOrder",
+    "listInvoice",
+    "listMaterialUsage",
+    "listProjectCoordinationAssignment"
+  ],
+  "findings": [
+    {
+      "ownerId": "listClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase listClient: principal aggregate 'Client' has a local port but is missing from data.ports (materialize never sees IClientRepository nor the Client shape; see T12)"
+    },
+    {
+      "ownerId": "listInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase listInventoryItem: principal aggregate 'InventoryItem' has a local port but is missing from data.ports (materialize never sees IInventoryItemRepository nor the InventoryItem shape; see T12)"
+    },
+    {
+      "ownerId": "inspectProjectMaterialUsages",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A porta obrigatória `Project` está ausente em `ports`, embora o contrato L4 declare `Project` em `reads`.",
+      "suggestion": "Adicionar `Project` a `ports`; `Project` é uma porta válida do repositório, não tratá-la apenas como `mdmRefs`."
+    },
+    {
+      "ownerId": "inspectProjectTimeline",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A porta obrigatória `Project` está ausente em `ports`, embora o contrato L4 declare `Project` em `reads`.",
+      "suggestion": "Adicionar `Project` a `ports`; `Project` é uma porta válida do repositório, não tratá-la apenas como `mdmRefs`."
+    },
+    {
+      "ownerId": "listClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A porta obrigatória `Client` está ausente em `ports`, embora o contrato L4 declare leitura de `Client`.",
+      "suggestion": "Adicionar `Client` a `ports` e modelar a consulta pela porta do agregado, em vez de omitir a porta."
+    },
+    {
+      "ownerId": "listInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A porta obrigatória `InventoryItem` está ausente em `ports`, embora o contrato L4 declare leitura de `InventoryItem`.",
+      "suggestion": "Adicionar `InventoryItem` a `ports` e modelar a consulta pela porta do agregado, em vez de omitir a porta."
+    }
+  ],
+  "savedAt": "2026-08-18T12:24:41.480Z"
+}

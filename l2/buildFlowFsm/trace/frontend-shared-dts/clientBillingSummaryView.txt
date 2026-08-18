@@ -1,0 +1,44 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryClientBillingSummaryViewOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/clientBillingSummaryView.js';
+export type { QryClientBillingSummaryViewInput, QryClientBillingSummaryViewOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/clientBillingSummaryView.js';
+declare const message_pt: {
+    'section.clientBillingSummaryView.overview.title': string;
+    'organism.clientBillingSummaryView.qryClientBillingSummaryView.title': string;
+    'intent.clientBillingSummaryView.qryClientBillingSummaryView.list.title': string;
+    'intent.clientBillingSummaryView.qryClientBillingSummaryView.list.empty': string;
+    'intent.clientBillingSummaryView.qryClientBillingSummaryView.list.column.clientId.label': string;
+    'intent.clientBillingSummaryView.qryClientBillingSummaryView.list.column.projectId.label': string;
+    'intent.clientBillingSummaryView.qryClientBillingSummaryView.list.column.approvedChangeOrderReferences.label': string;
+    'intent.clientBillingSummaryView.qryClientBillingSummaryView.list.column.invoiceReferences.label': string;
+    'intent.clientBillingSummaryView.qryClientBillingSummaryView.list.column.approvedChangeOrderAmount.label': string;
+    'intent.clientBillingSummaryView.qryClientBillingSummaryView.list.column.billableAmount.label': string;
+    'intent.clientBillingSummaryView.qryClientBillingSummaryView.list.column.invoicedAmount.label': string;
+    'intent.clientBillingSummaryView.qryClientBillingSummaryView.list.column.clientAvailableAmount.label': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmClientBillingSummaryViewBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryClientBillingSummaryViewState — actionStatus, values: idle|loading|success|error */
+    qryClientBillingSummaryViewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryClientBillingSummaryViewClientBillingSummaryClientId — input */
+    qryClientBillingSummaryViewClientBillingSummaryClientId: string;
+    /** state qryClientBillingSummaryViewData — queryResult, outputShape: object */
+    qryClientBillingSummaryViewData: QryClientBillingSummaryViewOutput | null;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    /** action qryClientBillingSummaryView (query) — route buildFlowFsm.clientBillingSummaryView.qryClientBillingSummaryView; inputs: clientBillingSummaryClientId; writes ui.clientBillingSummaryView.data.qryClientBillingSummaryView; status ui.clientBillingSummaryView.action.qryClientBillingSummaryView.status */
+    loadQryClientBillingSummaryView(): Promise<void>;
+    /** handler for action qryClientBillingSummaryView — bind UI events here */
+    handleQryClientBillingSummaryViewClick(event?: Event): void;
+    /** setter for state ui.clientBillingSummaryView.input.qryClientBillingSummaryView.clientBillingSummaryClientId */
+    setQryClientBillingSummaryViewClientBillingSummaryClientId(value: string): void;
+    /** handler for action set.qryClientBillingSummaryViewClientBillingSummaryClientId — bind UI events here */
+    handleQryClientBillingSummaryViewClientBillingSummaryClientIdChange(event: Event): void;
+}

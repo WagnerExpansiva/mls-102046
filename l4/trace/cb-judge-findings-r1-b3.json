@@ -1,0 +1,114 @@
+{
+  "judgeRun": 1,
+  "batchIndex": 3,
+  "owners": [
+    "updateInvoiceChangeOrder",
+    "deleteInvoiceChangeOrder",
+    "listMaterialUsage",
+    "createMaterialUsage",
+    "updateMaterialUsage",
+    "deleteMaterialUsage",
+    "listProject",
+    "createProject",
+    "updateProject",
+    "deleteProject",
+    "listProjectCoordinationAssignment",
+    "createProjectCoordinationAssignment",
+    "updateProjectCoordinationAssignment",
+    "deleteProjectCoordinationAssignment",
+    "listStatusReport"
+  ],
+  "findings": [
+    {
+      "ownerId": "updateInvoiceChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateInvoiceChangeOrder (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteInvoiceChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteInvoiceChangeOrder (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listMaterialUsage",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listMaterialUsage (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createMaterialUsage",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createMaterialUsage (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateMaterialUsage",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateMaterialUsage (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteMaterialUsage",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteMaterialUsage (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listProject (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createProject (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateProject (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteProject (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listProjectCoordinationAssignment",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listProjectCoordinationAssignment (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createProjectCoordinationAssignment",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createProjectCoordinationAssignment (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateProjectCoordinationAssignment",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateProjectCoordinationAssignment (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteProjectCoordinationAssignment",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteProjectCoordinationAssignment (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listStatusReport (worker failed or never saved)"
+    }
+  ],
+  "savedAt": "2026-08-17T20:29:54.920Z"
+}

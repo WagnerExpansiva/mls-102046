@@ -1,0 +1,46 @@
+{
+  "runId": "20260818121907.1001",
+  "judgeRun": 2,
+  "batchIndex": 1,
+  "owners": [
+    "createChangeOrder",
+    "createClientPortalAccess",
+    "createClient",
+    "createInventoryBalance",
+    "createInventoryItem",
+    "createInvoice",
+    "createMaterialUsage",
+    "createProjectCoordinationAssignment",
+    "createProject",
+    "createStatusReport",
+    "createWorkTask",
+    "deleteClient",
+    "deleteInventoryItem",
+    "deleteProject",
+    "handoffProjectToFieldCoordinator"
+  ],
+  "findings": [
+    {
+      "ownerId": "createInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A função createInvoice não preserva os inputIds obrigatórios clientClientId e projectProjectId do contrato: declarou clientId e projectId como nomes de entrada diferentes.",
+      "suggestion": "Regenerar a entrada da função usando exatamente os campos clientClientId e projectProjectId, mantendo os fieldRefs Client.clientId e Project.projectId."
+    },
+    {
+      "ownerId": "createMaterialUsage",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A função createMaterialUsage renomeou três entradas do contrato: declarou inventoryBalanceId em vez de inventoryBalanceInventoryBalanceId, inventoryItemId em vez de inventoryItemInventoryItemId e projectId em vez de projectProjectId.",
+      "suggestion": "Regenerar a função com exatamente os inputIds inventoryBalanceInventoryBalanceId, inventoryItemInventoryItemId e projectProjectId, preservando os respectivos fieldRefs."
+    },
+    {
+      "ownerId": "createWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A função createWorkTask adicionou a entrada assignedFieldWorkerId, que não existe em l4Contract.inputs; assim, o use case pede uma entrada manual não declarada pelo contrato.",
+      "suggestion": "Remover assignedFieldWorkerId da entrada da função e alinhar a modelagem ao contrato; se a atribuição for indispensável para a regra, o contrato L4 deve declará-la antes de regenerar."
+    }
+  ],
+  "savedAt": "2026-08-18T12:30:45.265Z"
+}

@@ -1,0 +1,45 @@
+{
+  "judgeRun": 2,
+  "batchIndex": 2,
+  "owners": [
+    "deleteClientPortalAccess",
+    "listInventoryBalance",
+    "createInventoryBalance",
+    "updateInventoryBalance",
+    "deleteInventoryBalance",
+    "listInventoryItem",
+    "createInventoryItem",
+    "updateInventoryItem",
+    "deleteInventoryItem",
+    "listInvoice",
+    "createInvoice",
+    "updateInvoice",
+    "deleteInvoice",
+    "listInvoiceChangeOrder",
+    "createInvoiceChangeOrder"
+  ],
+  "findings": [
+    {
+      "ownerId": "createInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A entrada gerada `clientId` não corresponde ao `inputId` obrigatório `clientClientId` do contrato L4 (`Client.clientId`).",
+      "suggestion": "Renomear o campo de entrada para `clientClientId`, preservando o fieldRef `Client.clientId`."
+    },
+    {
+      "ownerId": "createInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A entrada gerada `projectId` não corresponde ao `inputId` obrigatório `projectProjectId` do contrato L4 (`Project.projectId`).",
+      "suggestion": "Renomear o campo de entrada para `projectProjectId`, preservando o fieldRef `Project.projectId`."
+    },
+    {
+      "ownerId": "updateInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A regra `invoiceIncludesApprovedChangeOrdersOnly` foi declarada em `rulesApplied`, mas o contrato L4 não declara `ChangeOrder` nem `InvoiceChangeOrder` nos dados lidos; a própria implementação admite que os dados estão indisponíveis e não aplica a regra.",
+      "suggestion": "Modelar os dados necessários para avaliar ordens de mudança aprovadas (incluindo as entidades/portas previstas no contrato) e aplicar a regra, ou corrigir o contrato L4 para remover essa regra se ela não for aplicável."
+    }
+  ],
+  "savedAt": "2026-08-17T20:35:50.823Z"
+}

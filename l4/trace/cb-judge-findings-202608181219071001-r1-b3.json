@@ -1,0 +1,59 @@
+{
+  "runId": "20260818121907.1001",
+  "judgeRun": 1,
+  "batchIndex": 3,
+  "owners": [
+    "handoffApprovedChangeOrderToBilling",
+    "handoffChangeOrderToClient",
+    "handoffChangeOrderToProjectManager",
+    "handoffDeclinedChangeOrderToFieldCoordinator",
+    "handoffInvoiceToClient",
+    "handoffMaterialUsageToFieldCoordinator",
+    "handoffProjectToFieldCoordinator",
+    "handoffStatusReportToClient",
+    "handoffTimeLogToFieldCoordinator",
+    "handoffWorkTaskProgressToFieldCoordinator",
+    "handoffWorkTaskToFieldWorker",
+    "inspectApprovedChangeOrders",
+    "inspectClientBillingSummary",
+    "inspectProjectDashboard",
+    "inspectProjectExecutionOverview"
+  ],
+  "findings": [
+    {
+      "ownerId": "handoffProjectToFieldCoordinator",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase handoffProjectToFieldCoordinator: principal aggregate 'Project' has a local port but is missing from data.ports (materialize never sees IProjectRepository nor the Project shape; see T12)"
+    },
+    {
+      "ownerId": "handoffProjectToFieldCoordinator",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports omite o port obrigatório Project, embora o contrato declare reads e writes para Project; além disso, mdmRefs contém Project apesar de a lista de entidades MDM ser vazia.",
+      "suggestion": "Regenerar o usecase com Project e ProjectCoordinationAssignment em ports e remover Project de mdmRefs."
+    },
+    {
+      "ownerId": "handoffProjectToFieldCoordinator",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A regra ongoingProject não pode ser executada com os dados modelados: o usecase não declara o port Project necessário para carregar e validar o Project.",
+      "suggestion": "Declarar o port Project e modelar a leitura do Project antes de aplicar ongoingProject."
+    },
+    {
+      "ownerId": "inspectClientBillingSummary",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports omite os ports obrigatórios Client e Project, embora o contrato declare ambos em reads; o usecase também os classifica incorretamente em mdmRefs, mas a lista de entidades MDM é vazia.",
+      "suggestion": "Regenerar o usecase incluindo Client, Project, ClientBillingSummary, ChangeOrder e Invoice em ports e remover Client e Project de mdmRefs."
+    },
+    {
+      "ownerId": "inspectProjectDashboard",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports omite o port obrigatório Project, embora o contrato declare Project em reads; mdmRefs contém Project apesar de a lista de entidades MDM ser vazia.",
+      "suggestion": "Regenerar o usecase incluindo Project e ProjectDashboard em ports e remover Project de mdmRefs."
+    }
+  ],
+  "savedAt": "2026-08-18T12:24:47.430Z"
+}

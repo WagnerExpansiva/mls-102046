@@ -1,0 +1,109 @@
+{
+  "runId": "20260818121907.1001",
+  "judgeRun": 1,
+  "batchIndex": 6,
+  "owners": [
+    "updateInventoryBalance",
+    "updateInventoryItem",
+    "updateInvoiceChangeOrder",
+    "updateInvoice",
+    "updateMaterialUsage",
+    "updateProjectCoordinationAssignment",
+    "updateProject",
+    "updateStatusReport",
+    "updateTimeLog",
+    "updateWorkTask"
+  ],
+  "findings": [
+    {
+      "ownerId": "updateInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase updateInventoryItem: principal aggregate 'InventoryItem' has a local port but is missing from data.ports (materialize never sees IInventoryItemRepository nor the InventoryItem shape; see T12)"
+    },
+    {
+      "ownerId": "updateProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase updateProject: principal aggregate 'Project' has a local port but is missing from data.ports (materialize never sees IProjectRepository nor the Project shape; see T12)"
+    },
+    {
+      "ownerId": "updateInventoryBalance",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports da definição top-level e da função contém apenas InventoryBalance, mas o contrato também lê InventoryItem, que é uma porta válida do repositório.",
+      "suggestion": "Adicionar InventoryItem a ports no usecase e na função, e usá-la para resolver o item referenciado."
+    },
+    {
+      "ownerId": "updateInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports está vazio, embora o contrato escreva e leia InventoryItem, que é uma porta válida do repositório.",
+      "suggestion": "Adicionar InventoryItem a ports no usecase e na função e executar a atualização por essa porta."
+    },
+    {
+      "ownerId": "updateInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports contém apenas Invoice, mas o contrato também lê Client e Project; ambas são portas válidas do repositório e estão ausentes na definição e na função.",
+      "suggestion": "Adicionar Client e Project a ports no usecase e na função para validar as referências relacionadas."
+    },
+    {
+      "ownerId": "updateInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A regra invoiceIncludesApprovedChangeOrdersOnly não é satisfazível com as entidades declaradas no contrato e na definição: não há ChangeOrder nem dados de ordens aprovadas disponíveis, e os passos registram um modeling gap sem aplicar a regra.",
+      "suggestion": "Modelar/acessar os dados necessários das ordens de mudança aprovadas e aplicar efetivamente invoiceIncludesApprovedChangeOrdersOnly; não prosseguir apenas com um gap registrado."
+    },
+    {
+      "ownerId": "updateMaterialUsage",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports omite Project e InventoryItem, embora ambos sejam lidos pelo contrato e ambos sejam portas válidas do repositório.",
+      "suggestion": "Adicionar Project e InventoryItem a ports no usecase e na função, além de InventoryBalance e MaterialUsage."
+    },
+    {
+      "ownerId": "updateProjectCoordinationAssignment",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports omite Project, embora o contrato leia Project e Project seja uma porta válida do repositório.",
+      "suggestion": "Adicionar Project a ports no usecase e na função para carregar e validar a obra."
+    },
+    {
+      "ownerId": "updateProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "A definição generatedUsecaseDefs.functions está vazia, portanto não existe função que modele os inputs, a atualização de Project ou o output exigido pelo contrato.",
+      "suggestion": "Gerar uma função updateProject com os inputs e output do contrato e aplicar as regras declaradas."
+    },
+    {
+      "ownerId": "updateProject",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports está vazio, embora o contrato escreva/leia Project e leia Client; Project e Client são portas válidas do repositório.",
+      "suggestion": "Adicionar Project e Client a ports no usecase e na função."
+    },
+    {
+      "ownerId": "updateStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports omite Project, embora o contrato leia Project e Project seja uma porta válida do repositório.",
+      "suggestion": "Adicionar Project a ports no usecase e na função para resolver a obra associada ao relatório."
+    },
+    {
+      "ownerId": "updateWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "O campo ports omite Project, embora o contrato leia Project e Project seja uma porta válida do repositório.",
+      "suggestion": "Adicionar Project a ports no usecase e na função para validar o projectProjectId da rota."
+    },
+    {
+      "ownerId": "updateWorkTask",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "Os nomes dos campos de entrada não correspondem aos inputId do contrato: a definição usa projectId e workTaskId, enquanto o contrato exige projectProjectId e workTaskWorkTaskId.",
+      "suggestion": "Renomear os campos de input da função para projectProjectId e workTaskWorkTaskId, preservando os respectivos fieldRefs e obrigatoriedade."
+    }
+  ],
+  "savedAt": "2026-08-18T12:25:42.863Z"
+}

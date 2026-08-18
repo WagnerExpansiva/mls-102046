@@ -1,0 +1,150 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateChangeOrderOutput, CmdApproveChangeOrderDecisionOutput, CmdHandoffApprovedChangeOrderToBillingOutput, QryClientPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/approveChangeOrder.js';
+export type { QryLocateChangeOrderInput, QryLocateChangeOrderOutput, CmdApproveChangeOrderDecisionInput, CmdApproveChangeOrderDecisionOutput, CmdHandoffApprovedChangeOrderToBillingInput, CmdHandoffApprovedChangeOrderToBillingOutput, QryClientPickerInput, QryClientPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/approveChangeOrder.js';
+declare const message_pt: {
+    'section.approveChangeOrder.locateChangeOrder.title': string;
+    'organism.approveChangeOrder.qryLocateChangeOrder.title': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.title': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.empty': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.column.changeOrderId.label': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.column.clientRef.label': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.column.projectRef.label': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.column.description.label': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.column.scopeImpact.label': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.column.scheduleImpact.label': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.column.changeAmount.label': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.column.submittedAt.label': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.column.forwardedForClientApprovalAt.label': string;
+    'intent.approveChangeOrder.qryLocateChangeOrder.list.column.status.label': string;
+    'section.approveChangeOrder.approveChangeOrderDecision.title': string;
+    'organism.approveChangeOrder.cmdApproveChangeOrderDecision.title': string;
+    'intent.approveChangeOrder.cmdApproveChangeOrderDecision.form.title': string;
+    'intent.approveChangeOrder.cmdApproveChangeOrderDecision.form.action.cmdApproveChangeOrderDecision': string;
+    'intent.approveChangeOrder.cmdApproveChangeOrderDecision.form.field.status.label': string;
+    'organism.approveChangeOrder.qryClientPicker.title': string;
+    'intent.approveChangeOrder.qryClientPicker.list.title': string;
+    'intent.approveChangeOrder.qryClientPicker.list.empty': string;
+    'intent.approveChangeOrder.qryClientPicker.list.column.clientId.label': string;
+    'intent.approveChangeOrder.qryClientPicker.list.column.clientName.label': string;
+    'intent.approveChangeOrder.qryClientPicker.list.column.contactEmail.label': string;
+    'intent.approveChangeOrder.qryClientPicker.list.column.contactPhone.label': string;
+    'section.approveChangeOrder.handoffApprovedChangeOrderToBilling.title': string;
+    'organism.approveChangeOrder.cmdHandoffApprovedChangeOrderToBilling.title': string;
+    'intent.approveChangeOrder.cmdHandoffApprovedChangeOrderToBilling.form.title': string;
+    'intent.approveChangeOrder.cmdHandoffApprovedChangeOrderToBilling.form.action.cmdHandoffApprovedChangeOrderToBilling': string;
+    'intent.approveChangeOrder.cmdHandoffApprovedChangeOrderToBilling.form.field.description.label': string;
+    'intent.approveChangeOrder.cmdHandoffApprovedChangeOrderToBilling.form.field.scopeImpact.label': string;
+    'intent.approveChangeOrder.cmdHandoffApprovedChangeOrderToBilling.form.field.scheduleImpact.label': string;
+    'intent.approveChangeOrder.cmdHandoffApprovedChangeOrderToBilling.form.field.changeAmount.label': string;
+    'action.cmdApproveChangeOrderDecision.success': string;
+    'action.cmdApproveChangeOrderDecision.error': string;
+    'action.cmdHandoffApprovedChangeOrderToBilling.success': string;
+    'action.cmdHandoffApprovedChangeOrderToBilling.error': string;
+    'section.approveChangeOrder.change-order-workspace.title': string;
+    'section.approveChangeOrder.billing-handoff.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmApproveChangeOrderBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateChangeOrderState — actionStatus, values: idle|loading|success|error */
+    qryLocateChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateChangeOrderData — queryResult, outputShape: array */
+    qryLocateChangeOrderData: QryLocateChangeOrderOutput[];
+    /** state cmdApproveChangeOrderDecisionState — actionStatus, values: idle|loading|success|error */
+    cmdApproveChangeOrderDecisionState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdApproveChangeOrderDecisionChangeOrderChangeOrderId — input */
+    cmdApproveChangeOrderDecisionChangeOrderChangeOrderId: string;
+    /** state cmdApproveChangeOrderDecisionClientClientId — input */
+    cmdApproveChangeOrderDecisionClientClientId: string;
+    /** state cmdApproveChangeOrderDecisionProjectProjectId — input */
+    cmdApproveChangeOrderDecisionProjectProjectId: string;
+    /** state cmdApproveChangeOrderDecisionStatus — input */
+    cmdApproveChangeOrderDecisionStatus: string;
+    /** state cmdApproveChangeOrderDecisionOutput — commandOutput */
+    cmdApproveChangeOrderDecisionOutput: CmdApproveChangeOrderDecisionOutput | null;
+    /** state cmdApproveChangeOrderDecisionError — actionError */
+    cmdApproveChangeOrderDecisionError: string;
+    /** state cmdHandoffApprovedChangeOrderToBillingState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffApprovedChangeOrderToBillingState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffApprovedChangeOrderToBillingChangeOrderChangeOrderId — input */
+    cmdHandoffApprovedChangeOrderToBillingChangeOrderChangeOrderId: string;
+    /** state cmdHandoffApprovedChangeOrderToBillingDescription — input */
+    cmdHandoffApprovedChangeOrderToBillingDescription: string;
+    /** state cmdHandoffApprovedChangeOrderToBillingScopeImpact — input */
+    cmdHandoffApprovedChangeOrderToBillingScopeImpact: string;
+    /** state cmdHandoffApprovedChangeOrderToBillingScheduleImpact — input */
+    cmdHandoffApprovedChangeOrderToBillingScheduleImpact: string;
+    /** state cmdHandoffApprovedChangeOrderToBillingChangeAmount — input */
+    cmdHandoffApprovedChangeOrderToBillingChangeAmount: string;
+    /** state cmdHandoffApprovedChangeOrderToBillingOutput — commandOutput */
+    cmdHandoffApprovedChangeOrderToBillingOutput: CmdHandoffApprovedChangeOrderToBillingOutput | null;
+    /** state cmdHandoffApprovedChangeOrderToBillingError — actionError */
+    cmdHandoffApprovedChangeOrderToBillingError: string;
+    /** state qryClientPickerState — actionStatus, values: idle|loading|success|error */
+    qryClientPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryClientPickerData — queryResult, outputShape: array */
+    qryClientPickerData: QryClientPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryLocateChangeOrder (query) — route buildFlowFsm.approveChangeOrder.qryLocateChangeOrder; inputs: (none); writes ui.approveChangeOrder.data.qryLocateChangeOrder; status ui.approveChangeOrder.action.qryLocateChangeOrder.status */
+    loadQryLocateChangeOrder(): Promise<void>;
+    /** handler for action qryLocateChangeOrder — bind UI events here */
+    handleQryLocateChangeOrderClick(event?: Event): void;
+    /** action cmdApproveChangeOrderDecision (command) — route buildFlowFsm.approveChangeOrder.cmdApproveChangeOrderDecision; inputs: changeOrderChangeOrderId, clientClientId, projectProjectId, status; writes ui.approveChangeOrder.output.cmdApproveChangeOrderDecision; status ui.approveChangeOrder.action.cmdApproveChangeOrderDecision.status; feedback keys action.cmdApproveChangeOrderDecision.success / action.cmdApproveChangeOrderDecision.error */
+    cmdApproveChangeOrderDecision(): Promise<void>;
+    /** handler for action cmdApproveChangeOrderDecision — bind UI events here */
+    handleCmdApproveChangeOrderDecisionClick(event?: Event): void;
+    /** action cmdHandoffApprovedChangeOrderToBilling (command) — route buildFlowFsm.approveChangeOrder.cmdHandoffApprovedChangeOrderToBilling; inputs: changeOrderChangeOrderId, description, scopeImpact, scheduleImpact, changeAmount; writes ui.approveChangeOrder.output.cmdHandoffApprovedChangeOrderToBilling; status ui.approveChangeOrder.action.cmdHandoffApprovedChangeOrderToBilling.status; feedback keys action.cmdHandoffApprovedChangeOrderToBilling.success / action.cmdHandoffApprovedChangeOrderToBilling.error */
+    cmdHandoffApprovedChangeOrderToBilling(): Promise<void>;
+    /** handler for action cmdHandoffApprovedChangeOrderToBilling — bind UI events here */
+    handleCmdHandoffApprovedChangeOrderToBillingClick(event?: Event): void;
+    /** action qryClientPicker (query) — route buildFlowFsm.approveChangeOrder.qryClientPicker; inputs: (none); writes ui.approveChangeOrder.data.qryClientPicker; status ui.approveChangeOrder.action.qryClientPicker.status */
+    loadQryClientPicker(): Promise<void>;
+    /** handler for action qryClientPicker — bind UI events here */
+    handleQryClientPickerClick(event?: Event): void;
+    /** setter for state ui.approveChangeOrder.input.cmdApproveChangeOrderDecision.changeOrderChangeOrderId */
+    setCmdApproveChangeOrderDecisionChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.cmdApproveChangeOrderDecisionChangeOrderChangeOrderId — bind UI events here */
+    handleCmdApproveChangeOrderDecisionChangeOrderChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.approveChangeOrder.input.cmdApproveChangeOrderDecision.clientClientId */
+    setCmdApproveChangeOrderDecisionClientClientId(value: string): void;
+    /** handler for action set.cmdApproveChangeOrderDecisionClientClientId — bind UI events here */
+    handleCmdApproveChangeOrderDecisionClientClientIdChange(event: Event): void;
+    /** setter for state ui.approveChangeOrder.input.cmdApproveChangeOrderDecision.projectProjectId */
+    setCmdApproveChangeOrderDecisionProjectProjectId(value: string): void;
+    /** handler for action set.cmdApproveChangeOrderDecisionProjectProjectId — bind UI events here */
+    handleCmdApproveChangeOrderDecisionProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.approveChangeOrder.input.cmdApproveChangeOrderDecision.status */
+    setCmdApproveChangeOrderDecisionStatus(value: string): void;
+    /** handler for action set.cmdApproveChangeOrderDecisionStatus — bind UI events here */
+    handleCmdApproveChangeOrderDecisionStatusChange(event: Event): void;
+    /** setter for state ui.approveChangeOrder.input.cmdHandoffApprovedChangeOrderToBilling.changeOrderChangeOrderId */
+    setCmdHandoffApprovedChangeOrderToBillingChangeOrderChangeOrderId(value: string): void;
+    /** handler for action set.cmdHandoffApprovedChangeOrderToBillingChangeOrderChangeOrderId — bind UI events here */
+    handleCmdHandoffApprovedChangeOrderToBillingChangeOrderChangeOrderIdChange(event: Event): void;
+    /** setter for state ui.approveChangeOrder.input.cmdHandoffApprovedChangeOrderToBilling.description */
+    setCmdHandoffApprovedChangeOrderToBillingDescription(value: string): void;
+    /** handler for action set.cmdHandoffApprovedChangeOrderToBillingDescription — bind UI events here */
+    handleCmdHandoffApprovedChangeOrderToBillingDescriptionChange(event: Event): void;
+    /** setter for state ui.approveChangeOrder.input.cmdHandoffApprovedChangeOrderToBilling.scopeImpact */
+    setCmdHandoffApprovedChangeOrderToBillingScopeImpact(value: string): void;
+    /** handler for action set.cmdHandoffApprovedChangeOrderToBillingScopeImpact — bind UI events here */
+    handleCmdHandoffApprovedChangeOrderToBillingScopeImpactChange(event: Event): void;
+    /** setter for state ui.approveChangeOrder.input.cmdHandoffApprovedChangeOrderToBilling.scheduleImpact */
+    setCmdHandoffApprovedChangeOrderToBillingScheduleImpact(value: string): void;
+    /** handler for action set.cmdHandoffApprovedChangeOrderToBillingScheduleImpact — bind UI events here */
+    handleCmdHandoffApprovedChangeOrderToBillingScheduleImpactChange(event: Event): void;
+    /** setter for state ui.approveChangeOrder.input.cmdHandoffApprovedChangeOrderToBilling.changeAmount */
+    setCmdHandoffApprovedChangeOrderToBillingChangeAmount(value: string): void;
+    /** handler for action set.cmdHandoffApprovedChangeOrderToBillingChangeAmount — bind UI events here */
+    handleCmdHandoffApprovedChangeOrderToBillingChangeAmountChange(event: Event): void;
+}

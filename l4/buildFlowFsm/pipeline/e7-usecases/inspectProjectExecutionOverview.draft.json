@@ -1,0 +1,29 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "inspectProjectExecutionOverview",
+  "title": "Analisar a execução da obra",
+  "kind": "query",
+  "compiledFrom": [
+    "generateAndPublishProjectStatusReport.inspectProjectExecutionOverview",
+    "monitorDailyProjectRecords.inspectProjectExecutionOverview",
+    "reviewProjectPortfolio.inspectProjectExecutionOverview"
+  ],
+  "description": "Consulta a visão consolidada da execução de uma obra, reunindo seu andamento, compromissos, registros de execução, custos realizados e impactos de alterações para acompanhamento e comunicação.",
+  "contexts": {
+    "requires": [
+      "selectedProjectExecutionOverview"
+    ],
+    "provides": [
+      "selectedProjectExecutionOverview"
+    ]
+  },
+  "entityRefs": [
+    "ProjectExecutionOverview"
+  ],
+  "useRules": [
+    "activeProjectCostVisibility"
+  ],
+  "transitions": []
+}

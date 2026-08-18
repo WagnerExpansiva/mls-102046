@@ -1,0 +1,92 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "TimeLog",
+  "fields": [
+    {
+      "fieldId": "timeLogId",
+      "title": "ID do registro de horas",
+      "type": "uuid",
+      "required": true,
+      "description": "Identificador estável do apontamento de horas, transportado entre as etapas conectadas.",
+      "constraints": [
+        {
+          "constraintId": "uniqueTimeLogId",
+          "kind": "unique",
+          "value": "true",
+          "description": "Cada registro de horas possui um identificador estável e exclusivo.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "status",
+      "title": "Status",
+      "type": "string",
+      "required": true,
+      "description": "Estado do apontamento para determinar se suas horas participam do custo e dos indicadores de execução.",
+      "constraints": [
+        {
+          "constraintId": "timeLogStatusEnum",
+          "kind": "enum",
+          "value": "[\"recorded\",\"voided\"]",
+          "description": "O status deve corresponder a um estado previsto para o registro de horas.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "workTaskId",
+      "title": "Tarefa",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência à tarefa selecionada à qual as horas executadas são atribuídas.",
+      "constraints": []
+    },
+    {
+      "fieldId": "fieldWorkerId",
+      "title": "Trabalhador de campo",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência ao trabalhador selecionado que realizou as horas registradas.",
+      "constraints": []
+    },
+    {
+      "fieldId": "workDate",
+      "title": "Data de trabalho",
+      "type": "date",
+      "required": true,
+      "description": "Data diária em que as horas foram efetivamente realizadas.",
+      "constraints": []
+    },
+    {
+      "fieldId": "hoursWorked",
+      "title": "Horas trabalhadas",
+      "type": "number",
+      "required": true,
+      "description": "Quantidade de horas de execução apontadas pelo trabalhador para a tarefa.",
+      "constraints": [
+        {
+          "constraintId": "positiveHoursWorked",
+          "kind": "custom",
+          "value": "greaterThanZero",
+          "description": "As horas trabalhadas devem ser maiores que zero.",
+          "source": "journey"
+        }
+      ]
+    },
+    {
+      "fieldId": "hourlyLaborCost",
+      "title": "Custo horário de mão de obra aplicado",
+      "type": "money",
+      "required": true,
+      "description": "Base histórica de custo por hora aplicada ao apontamento para compor o custo realizado da obra.",
+      "constraints": []
+    }
+  ],
+  "useRules": [
+    "timeLogRequiresWorkerTaskAndPositiveHours",
+    "costEligibleTimeLog"
+  ]
+}

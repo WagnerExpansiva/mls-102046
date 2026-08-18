@@ -1,0 +1,281 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListProjectOutput, QryClientBillingSummaryViewOutput, QryProjectDashboardViewOutput, QryProjectExecutionOverviewViewOutput, QryProjectTimelineViewOutput, QryScheduleRiskAssessmentViewOutput, QryListChangeOrderOutput, QryListInvoiceOutput, QryListMaterialUsageOutput, QryListProjectCoordinationAssignmentOutput, QryListStatusReportOutput, QryListWorkTaskOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/projectHub.js';
+export type { QryListProjectInput, QryListProjectOutput, QryClientBillingSummaryViewInput, QryClientBillingSummaryViewOutput, QryProjectDashboardViewInput, QryProjectDashboardViewOutput, QryProjectExecutionOverviewViewInput, QryProjectExecutionOverviewViewOutput, QryProjectTimelineViewInput, QryProjectTimelineViewOutput, QryScheduleRiskAssessmentViewInput, QryScheduleRiskAssessmentViewOutput, QryListChangeOrderInput, QryListChangeOrderOutput, QryListInvoiceInput, QryListInvoiceOutput, QryListMaterialUsageInput, QryListMaterialUsageOutput, QryListProjectCoordinationAssignmentInput, QryListProjectCoordinationAssignmentOutput, QryListStatusReportInput, QryListStatusReportOutput, QryListWorkTaskInput, QryListWorkTaskOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/projectHub.js';
+declare const message_pt: {
+    'section.projectHub.collection.title': string;
+    'organism.projectHub.qryListProject.title': string;
+    'intent.projectHub.qryListProject.list.title': string;
+    'intent.projectHub.qryListProject.list.empty': string;
+    'intent.projectHub.qryListProject.list.column.projectId.label': string;
+    'intent.projectHub.qryListProject.list.column.clientId.label': string;
+    'intent.projectHub.qryListProject.list.column.name.label': string;
+    'intent.projectHub.qryListProject.list.column.address.label': string;
+    'intent.projectHub.qryListProject.list.column.status.label': string;
+    'intent.projectHub.qryListProject.list.column.authorizedBudget.label': string;
+    'intent.projectHub.qryListProject.list.column.plannedStartDate.label': string;
+    'intent.projectHub.qryListProject.list.column.plannedEndDate.label': string;
+    'section.projectHub.record.title': string;
+    'organism.projectHub.qryClientBillingSummaryView.title': string;
+    'intent.projectHub.qryClientBillingSummaryView.list.title': string;
+    'intent.projectHub.qryClientBillingSummaryView.list.empty': string;
+    'intent.projectHub.qryClientBillingSummaryView.list.column.clientId.label': string;
+    'intent.projectHub.qryClientBillingSummaryView.list.column.projectId.label': string;
+    'intent.projectHub.qryClientBillingSummaryView.list.column.approvedChangeOrderReferences.label': string;
+    'intent.projectHub.qryClientBillingSummaryView.list.column.invoiceReferences.label': string;
+    'intent.projectHub.qryClientBillingSummaryView.list.column.approvedChangeOrderAmount.label': string;
+    'intent.projectHub.qryClientBillingSummaryView.list.column.billableAmount.label': string;
+    'intent.projectHub.qryClientBillingSummaryView.list.column.invoicedAmount.label': string;
+    'intent.projectHub.qryClientBillingSummaryView.list.column.clientAvailableAmount.label': string;
+    'organism.projectHub.qryProjectDashboardView.title': string;
+    'intent.projectHub.qryProjectDashboardView.list.title': string;
+    'intent.projectHub.qryProjectDashboardView.list.empty': string;
+    'intent.projectHub.qryProjectDashboardView.list.column.activeProjects.label': string;
+    'intent.projectHub.qryProjectDashboardView.list.column.activeProjectCount.label': string;
+    'intent.projectHub.qryProjectDashboardView.list.column.totalBudget.label': string;
+    'intent.projectHub.qryProjectDashboardView.list.column.totalActualCost.label': string;
+    'intent.projectHub.qryProjectDashboardView.list.column.budgetVariance.label': string;
+    'intent.projectHub.qryProjectDashboardView.list.column.costAttentionProjects.label': string;
+    'intent.projectHub.qryProjectDashboardView.list.column.upcomingTasks.label': string;
+    'organism.projectHub.qryProjectExecutionOverviewView.title': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.title': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.empty': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.projectId.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.projectName.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.projectStatus.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.workTaskIds.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.taskSummary.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.upcomingCommitments.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.timeLogIds.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.totalLoggedHours.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.materialUsageIds.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.materialUsageSummary.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.actualLaborCost.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.actualMaterialCost.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.actualCost.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.budgetAmount.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.costVariance.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.changeOrderIds.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.changeOrderImpactSummary.label': string;
+    'intent.projectHub.qryProjectExecutionOverviewView.list.column.calculatedAt.label': string;
+    'organism.projectHub.qryProjectTimelineView.title': string;
+    'intent.projectHub.qryProjectTimelineView.list.title': string;
+    'intent.projectHub.qryProjectTimelineView.list.empty': string;
+    'intent.projectHub.qryProjectTimelineView.list.column.projectId.label': string;
+    'intent.projectHub.qryProjectTimelineView.list.column.workTasks.label': string;
+    'intent.projectHub.qryProjectTimelineView.list.column.scheduleEntries.label': string;
+    'organism.projectHub.qryScheduleRiskAssessmentView.title': string;
+    'intent.projectHub.qryScheduleRiskAssessmentView.list.title': string;
+    'intent.projectHub.qryScheduleRiskAssessmentView.list.empty': string;
+    'intent.projectHub.qryScheduleRiskAssessmentView.list.column.projectId.label': string;
+    'intent.projectHub.qryScheduleRiskAssessmentView.list.column.workTaskId.label': string;
+    'intent.projectHub.qryScheduleRiskAssessmentView.list.column.taskStatus.label': string;
+    'intent.projectHub.qryScheduleRiskAssessmentView.list.column.dueDate.label': string;
+    'intent.projectHub.qryScheduleRiskAssessmentView.list.column.progressPercent.label': string;
+    'intent.projectHub.qryScheduleRiskAssessmentView.list.column.riskIndicators.label': string;
+    'intent.projectHub.qryScheduleRiskAssessmentView.list.column.riskExplanation.label': string;
+    'intent.projectHub.qryScheduleRiskAssessmentView.list.column.assessedAt.label': string;
+    'organism.projectHub.qryListChangeOrder.title': string;
+    'intent.projectHub.qryListChangeOrder.list.title': string;
+    'intent.projectHub.qryListChangeOrder.list.empty': string;
+    'intent.projectHub.qryListChangeOrder.list.column.changeOrderId.label': string;
+    'intent.projectHub.qryListChangeOrder.list.column.clientRef.label': string;
+    'intent.projectHub.qryListChangeOrder.list.column.projectRef.label': string;
+    'intent.projectHub.qryListChangeOrder.list.column.description.label': string;
+    'intent.projectHub.qryListChangeOrder.list.column.scopeImpact.label': string;
+    'intent.projectHub.qryListChangeOrder.list.column.scheduleImpact.label': string;
+    'intent.projectHub.qryListChangeOrder.list.column.changeAmount.label': string;
+    'intent.projectHub.qryListChangeOrder.list.column.submittedAt.label': string;
+    'intent.projectHub.qryListChangeOrder.list.column.forwardedForClientApprovalAt.label': string;
+    'intent.projectHub.qryListChangeOrder.list.column.status.label': string;
+    'organism.projectHub.qryListInvoice.title': string;
+    'intent.projectHub.qryListInvoice.list.title': string;
+    'intent.projectHub.qryListInvoice.list.empty': string;
+    'intent.projectHub.qryListInvoice.list.column.invoiceId.label': string;
+    'intent.projectHub.qryListInvoice.list.column.clientId.label': string;
+    'intent.projectHub.qryListInvoice.list.column.projectId.label': string;
+    'intent.projectHub.qryListInvoice.list.column.commercialReference.label': string;
+    'intent.projectHub.qryListInvoice.list.column.amount.label': string;
+    'intent.projectHub.qryListInvoice.list.column.status.label': string;
+    'organism.projectHub.qryListMaterialUsage.title': string;
+    'intent.projectHub.qryListMaterialUsage.list.title': string;
+    'intent.projectHub.qryListMaterialUsage.list.empty': string;
+    'intent.projectHub.qryListMaterialUsage.list.column.materialUsageId.label': string;
+    'intent.projectHub.qryListMaterialUsage.list.column.status.label': string;
+    'intent.projectHub.qryListMaterialUsage.list.column.projectId.label': string;
+    'intent.projectHub.qryListMaterialUsage.list.column.inventoryItemId.label': string;
+    'intent.projectHub.qryListMaterialUsage.list.column.inventoryBalanceId.label': string;
+    'intent.projectHub.qryListMaterialUsage.list.column.quantity.label': string;
+    'intent.projectHub.qryListMaterialUsage.list.column.usageDescription.label': string;
+    'intent.projectHub.qryListMaterialUsage.list.column.consumedOn.label': string;
+    'intent.projectHub.qryListMaterialUsage.list.column.unitCostBasis.label': string;
+    'organism.projectHub.qryListProjectCoordinationAssignment.title': string;
+    'intent.projectHub.qryListProjectCoordinationAssignment.list.title': string;
+    'intent.projectHub.qryListProjectCoordinationAssignment.list.empty': string;
+    'intent.projectHub.qryListProjectCoordinationAssignment.list.column.projectCoordinationAssignmentId.label': string;
+    'intent.projectHub.qryListProjectCoordinationAssignment.list.column.projectId.label': string;
+    'intent.projectHub.qryListProjectCoordinationAssignment.list.column.fieldCoordinatorId.label': string;
+    'intent.projectHub.qryListProjectCoordinationAssignment.list.column.status.label': string;
+    'organism.projectHub.qryListStatusReport.title': string;
+    'intent.projectHub.qryListStatusReport.list.title': string;
+    'intent.projectHub.qryListStatusReport.list.empty': string;
+    'intent.projectHub.qryListStatusReport.list.column.statusReportId.label': string;
+    'intent.projectHub.qryListStatusReport.list.column.projectId.label': string;
+    'intent.projectHub.qryListStatusReport.list.column.status.label': string;
+    'intent.projectHub.qryListStatusReport.list.column.title.label': string;
+    'intent.projectHub.qryListStatusReport.list.column.content.label': string;
+    'intent.projectHub.qryListStatusReport.list.column.communicatedRisks.label': string;
+    'intent.projectHub.qryListStatusReport.list.column.generatedAt.label': string;
+    'intent.projectHub.qryListStatusReport.list.column.generatedByUserId.label': string;
+    'intent.projectHub.qryListStatusReport.list.column.publishedAt.label': string;
+    'intent.projectHub.qryListStatusReport.list.column.publishedByUserId.label': string;
+    'intent.projectHub.qryListStatusReport.list.column.withdrawnAt.label': string;
+    'organism.projectHub.qryListWorkTask.title': string;
+    'intent.projectHub.qryListWorkTask.list.title': string;
+    'intent.projectHub.qryListWorkTask.list.empty': string;
+    'intent.projectHub.qryListWorkTask.list.column.workTaskId.label': string;
+    'intent.projectHub.qryListWorkTask.list.column.projectId.label': string;
+    'intent.projectHub.qryListWorkTask.list.column.assignedFieldWorkerId.label': string;
+    'intent.projectHub.qryListWorkTask.list.column.description.label': string;
+    'intent.projectHub.qryListWorkTask.list.column.dueDate.label': string;
+    'intent.projectHub.qryListWorkTask.list.column.status.label': string;
+    'intent.projectHub.qryListWorkTask.list.column.progressUpdate.label': string;
+    'section.projectHub.supportingActions.title': string;
+    'organism.projectHub.contextual-transition-actions10.title': string;
+    'intent.projectHub.contextual-transition-actions10.content.title': string;
+    'section.projectHub.portfolio.title': string;
+    'section.projectHub.selected-project.title': string;
+    'section.projectHub.operational-records.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmProjectHubBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListProjectState — actionStatus, values: idle|loading|success|error */
+    qryListProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListProjectData — queryResult, outputShape: array */
+    qryListProjectData: QryListProjectOutput[];
+    /** state qryClientBillingSummaryViewState — actionStatus, values: idle|loading|success|error */
+    qryClientBillingSummaryViewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryClientBillingSummaryViewClientBillingSummaryClientId — input */
+    qryClientBillingSummaryViewClientBillingSummaryClientId: string;
+    /** state qryClientBillingSummaryViewData — queryResult, outputShape: object */
+    qryClientBillingSummaryViewData: QryClientBillingSummaryViewOutput | null;
+    /** state qryProjectDashboardViewState — actionStatus, values: idle|loading|success|error */
+    qryProjectDashboardViewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectDashboardViewData — queryResult, outputShape: object */
+    qryProjectDashboardViewData: QryProjectDashboardViewOutput | null;
+    /** state qryProjectExecutionOverviewViewState — actionStatus, values: idle|loading|success|error */
+    qryProjectExecutionOverviewViewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectExecutionOverviewViewProjectExecutionOverviewProjectId — input */
+    qryProjectExecutionOverviewViewProjectExecutionOverviewProjectId: string;
+    /** state qryProjectExecutionOverviewViewData — queryResult, outputShape: object */
+    qryProjectExecutionOverviewViewData: QryProjectExecutionOverviewViewOutput | null;
+    /** state qryProjectTimelineViewState — actionStatus, values: idle|loading|success|error */
+    qryProjectTimelineViewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryProjectTimelineViewProjectTimelineProjectId — input */
+    qryProjectTimelineViewProjectTimelineProjectId: string;
+    /** state qryProjectTimelineViewData — queryResult, outputShape: object */
+    qryProjectTimelineViewData: QryProjectTimelineViewOutput | null;
+    /** state qryScheduleRiskAssessmentViewState — actionStatus, values: idle|loading|success|error */
+    qryScheduleRiskAssessmentViewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryScheduleRiskAssessmentViewScheduleRiskAssessmentProjectId — input */
+    qryScheduleRiskAssessmentViewScheduleRiskAssessmentProjectId: string;
+    /** state qryScheduleRiskAssessmentViewData — queryResult, outputShape: object */
+    qryScheduleRiskAssessmentViewData: QryScheduleRiskAssessmentViewOutput | null;
+    /** state qryListChangeOrderState — actionStatus, values: idle|loading|success|error */
+    qryListChangeOrderState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListChangeOrderData — queryResult, outputShape: array */
+    qryListChangeOrderData: QryListChangeOrderOutput[];
+    /** state qryListInvoiceState — actionStatus, values: idle|loading|success|error */
+    qryListInvoiceState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListInvoiceData — queryResult, outputShape: array */
+    qryListInvoiceData: QryListInvoiceOutput[];
+    /** state qryListMaterialUsageState — actionStatus, values: idle|loading|success|error */
+    qryListMaterialUsageState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListMaterialUsageData — queryResult, outputShape: array */
+    qryListMaterialUsageData: QryListMaterialUsageOutput[];
+    /** state qryListProjectCoordinationAssignmentState — actionStatus, values: idle|loading|success|error */
+    qryListProjectCoordinationAssignmentState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListProjectCoordinationAssignmentData — queryResult, outputShape: array */
+    qryListProjectCoordinationAssignmentData: QryListProjectCoordinationAssignmentOutput[];
+    /** state qryListStatusReportState — actionStatus, values: idle|loading|success|error */
+    qryListStatusReportState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListStatusReportData — queryResult, outputShape: array */
+    qryListStatusReportData: QryListStatusReportOutput[];
+    /** state qryListWorkTaskState — actionStatus, values: idle|loading|success|error */
+    qryListWorkTaskState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListWorkTaskData — queryResult, outputShape: array */
+    qryListWorkTaskData: QryListWorkTaskOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    /** action qryListProject (query) — route buildFlowFsm.projectHub.qryListProject; inputs: (none); writes ui.projectHub.data.qryListProject; status ui.projectHub.action.qryListProject.status */
+    loadQryListProject(): Promise<void>;
+    /** handler for action qryListProject — bind UI events here */
+    handleQryListProjectClick(event?: Event): void;
+    /** action qryClientBillingSummaryView (query) — route buildFlowFsm.projectHub.qryClientBillingSummaryView; inputs: clientBillingSummaryClientId; writes ui.projectHub.data.qryClientBillingSummaryView; status ui.projectHub.action.qryClientBillingSummaryView.status */
+    loadQryClientBillingSummaryView(): Promise<void>;
+    /** handler for action qryClientBillingSummaryView — bind UI events here */
+    handleQryClientBillingSummaryViewClick(event?: Event): void;
+    /** action qryProjectDashboardView (query) — route buildFlowFsm.projectHub.qryProjectDashboardView; inputs: (none); writes ui.projectHub.data.qryProjectDashboardView; status ui.projectHub.action.qryProjectDashboardView.status */
+    loadQryProjectDashboardView(): Promise<void>;
+    /** handler for action qryProjectDashboardView — bind UI events here */
+    handleQryProjectDashboardViewClick(event?: Event): void;
+    /** action qryProjectExecutionOverviewView (query) — route buildFlowFsm.projectHub.qryProjectExecutionOverviewView; inputs: projectExecutionOverviewProjectId; writes ui.projectHub.data.qryProjectExecutionOverviewView; status ui.projectHub.action.qryProjectExecutionOverviewView.status */
+    loadQryProjectExecutionOverviewView(): Promise<void>;
+    /** handler for action qryProjectExecutionOverviewView — bind UI events here */
+    handleQryProjectExecutionOverviewViewClick(event?: Event): void;
+    /** action qryProjectTimelineView (query) — route buildFlowFsm.projectHub.qryProjectTimelineView; inputs: projectTimelineProjectId; writes ui.projectHub.data.qryProjectTimelineView; status ui.projectHub.action.qryProjectTimelineView.status */
+    loadQryProjectTimelineView(): Promise<void>;
+    /** handler for action qryProjectTimelineView — bind UI events here */
+    handleQryProjectTimelineViewClick(event?: Event): void;
+    /** action qryScheduleRiskAssessmentView (query) — route buildFlowFsm.projectHub.qryScheduleRiskAssessmentView; inputs: scheduleRiskAssessmentProjectId; writes ui.projectHub.data.qryScheduleRiskAssessmentView; status ui.projectHub.action.qryScheduleRiskAssessmentView.status */
+    loadQryScheduleRiskAssessmentView(): Promise<void>;
+    /** handler for action qryScheduleRiskAssessmentView — bind UI events here */
+    handleQryScheduleRiskAssessmentViewClick(event?: Event): void;
+    /** action qryListChangeOrder (query) — route buildFlowFsm.projectHub.qryListChangeOrder; inputs: (none); writes ui.projectHub.data.qryListChangeOrder; status ui.projectHub.action.qryListChangeOrder.status */
+    loadQryListChangeOrder(): Promise<void>;
+    /** handler for action qryListChangeOrder — bind UI events here */
+    handleQryListChangeOrderClick(event?: Event): void;
+    /** action qryListInvoice (query) — route buildFlowFsm.projectHub.qryListInvoice; inputs: (none); writes ui.projectHub.data.qryListInvoice; status ui.projectHub.action.qryListInvoice.status */
+    loadQryListInvoice(): Promise<void>;
+    /** handler for action qryListInvoice — bind UI events here */
+    handleQryListInvoiceClick(event?: Event): void;
+    /** action qryListMaterialUsage (query) — route buildFlowFsm.projectHub.qryListMaterialUsage; inputs: (none); writes ui.projectHub.data.qryListMaterialUsage; status ui.projectHub.action.qryListMaterialUsage.status */
+    loadQryListMaterialUsage(): Promise<void>;
+    /** handler for action qryListMaterialUsage — bind UI events here */
+    handleQryListMaterialUsageClick(event?: Event): void;
+    /** action qryListProjectCoordinationAssignment (query) — route buildFlowFsm.projectHub.qryListProjectCoordinationAssignment; inputs: (none); writes ui.projectHub.data.qryListProjectCoordinationAssignment; status ui.projectHub.action.qryListProjectCoordinationAssignment.status */
+    loadQryListProjectCoordinationAssignment(): Promise<void>;
+    /** handler for action qryListProjectCoordinationAssignment — bind UI events here */
+    handleQryListProjectCoordinationAssignmentClick(event?: Event): void;
+    /** action qryListStatusReport (query) — route buildFlowFsm.projectHub.qryListStatusReport; inputs: (none); writes ui.projectHub.data.qryListStatusReport; status ui.projectHub.action.qryListStatusReport.status */
+    loadQryListStatusReport(): Promise<void>;
+    /** handler for action qryListStatusReport — bind UI events here */
+    handleQryListStatusReportClick(event?: Event): void;
+    /** action qryListWorkTask (query) — route buildFlowFsm.projectHub.qryListWorkTask; inputs: (none); writes ui.projectHub.data.qryListWorkTask; status ui.projectHub.action.qryListWorkTask.status */
+    loadQryListWorkTask(): Promise<void>;
+    /** handler for action qryListWorkTask — bind UI events here */
+    handleQryListWorkTaskClick(event?: Event): void;
+    /** setter for state ui.projectHub.input.qryClientBillingSummaryView.clientBillingSummaryClientId */
+    setQryClientBillingSummaryViewClientBillingSummaryClientId(value: string): void;
+    /** handler for action set.qryClientBillingSummaryViewClientBillingSummaryClientId — bind UI events here */
+    handleQryClientBillingSummaryViewClientBillingSummaryClientIdChange(event: Event): void;
+    /** setter for state ui.projectHub.input.qryProjectExecutionOverviewView.projectExecutionOverviewProjectId */
+    setQryProjectExecutionOverviewViewProjectExecutionOverviewProjectId(value: string): void;
+    /** handler for action set.qryProjectExecutionOverviewViewProjectExecutionOverviewProjectId — bind UI events here */
+    handleQryProjectExecutionOverviewViewProjectExecutionOverviewProjectIdChange(event: Event): void;
+    /** setter for state ui.projectHub.input.qryProjectTimelineView.projectTimelineProjectId */
+    setQryProjectTimelineViewProjectTimelineProjectId(value: string): void;
+    /** handler for action set.qryProjectTimelineViewProjectTimelineProjectId — bind UI events here */
+    handleQryProjectTimelineViewProjectTimelineProjectIdChange(event: Event): void;
+    /** setter for state ui.projectHub.input.qryScheduleRiskAssessmentView.scheduleRiskAssessmentProjectId */
+    setQryScheduleRiskAssessmentViewScheduleRiskAssessmentProjectId(value: string): void;
+    /** handler for action set.qryScheduleRiskAssessmentViewScheduleRiskAssessmentProjectId — bind UI events here */
+    handleQryScheduleRiskAssessmentViewScheduleRiskAssessmentProjectIdChange(event: Event): void;
+}

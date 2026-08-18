@@ -1,0 +1,139 @@
+{
+  "PK": "20260817225832.1001",
+  "SK": "metadata",
+  "title": "buildFlowFsm - backend",
+  "owner": "20250828124716.1000",
+  "team": "unassigned",
+  "status": "in progress",
+  "last_updated": 1787007513087,
+  "last_update_log": "",
+  "source": "",
+  "iaCompressed": {
+    "queueBackEnd": [],
+    "queueFrontEnd": [
+      {
+        "type": "pooling",
+        "stepId": 1,
+        "executionCount": 4,
+        "hookSequential": 1787007512118,
+        "afterMs": 5000
+      },
+      {
+        "type": "beforePromptStep",
+        "stepId": 5,
+        "hookSequential": 1787007513083,
+        "parentStepId": 2,
+        "args": "{\"planId\":\"cb-validate-before-seeds\",\"preSeeds\":true}"
+      }
+    ],
+    "longMemory": {
+      "actualDate": "2026-08-17",
+      "userName": "Wagner",
+      "taskName": "agentChangeBackend",
+      "flowName": "agentChangeBackend",
+      "version": "1",
+      "cliCommand": "run",
+      "targetModule": "buildFlowFsm"
+    },
+    "nextSteps": [
+      {
+        "stepId": 1,
+        "type": "agent",
+        "agentName": "agentChangeBackend",
+        "nextSteps": [
+          {
+            "type": "agent",
+            "stepId": 2,
+            "status": "in_progress",
+            "stepTitle": "Preparação",
+            "planning": {
+              "planId": "cb-phase-preparation",
+              "dependsOn": [],
+              "executionMode": "sequential",
+              "executionHost": "client"
+            },
+            "agentName": "agentCbPhase",
+            "prompt": "{\"planId\":\"cb-phase-preparation\",\"first\":{\"planId\":\"cb-scan\",\"agentName\":\"agentCbScanCreateOwners\",\"stepTitle\":\"Scan todoBackend (status = toCreate)\",\"args\":{\"planId\":\"cb-scan\"}}}",
+            "rags": [],
+            "interaction": null,
+            "nextSteps": [
+              {
+                "type": "agent",
+                "stepId": 3,
+                "status": "completed",
+                "stepTitle": "Scan todoBackend (status = toCreate)",
+                "planning": {
+                  "planId": "cb-scan",
+                  "dependsOn": [],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbScanCreateOwners",
+                "prompt": "{\"planId\":\"cb-scan\"}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              },
+              {
+                "type": "agent",
+                "stepId": 4,
+                "status": "completed",
+                "stepTitle": "Materializar .ts desatualizados",
+                "planning": {
+                  "planId": "cb-materialize",
+                  "dependsOn": [
+                    "cb-scan"
+                  ],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbMaterialize",
+                "prompt": "{\"planId\":\"cb-materialize\"}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              },
+              {
+                "type": "agent",
+                "stepId": 5,
+                "status": "waiting_human_input",
+                "stepTitle": "Validar integridade l1 antes dos seeds",
+                "planning": {
+                  "planId": "cb-validate-before-seeds",
+                  "dependsOn": [],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbValidateAll",
+                "prompt": "{\"planId\":\"cb-validate-before-seeds\",\"preSeeds\":true}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              }
+            ]
+          }
+        ],
+        "status": "in_progress",
+        "rags": [],
+        "interaction": {
+          "input": [
+            {
+              "type": "system",
+              "content": "agentChangeBackend deterministic bootstrap. The root LLM is skipped by AgentIntentAddMessageAI.skipRootLLM."
+            },
+            {
+              "type": "human",
+              "content": "agentChangeBackend"
+            }
+          ],
+          "cost": 0,
+          "trace": [
+            "Root LLM skipped by AgentIntentAddMessageAI.skipRootLLM"
+          ],
+          "payload": null
+        }
+      }
+    ]
+  },
+  "messageid_created": "20260611235058.1000/20260817225832.1000"
+}

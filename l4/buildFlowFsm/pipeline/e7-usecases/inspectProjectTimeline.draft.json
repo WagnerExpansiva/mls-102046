@@ -1,0 +1,27 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "inspectProjectTimeline",
+  "title": "Consultar o cronograma da obra",
+  "kind": "query",
+  "compiledFrom": [
+    "assignWorkTask.inspectProjectTimeline"
+  ],
+  "description": "Consulta o cronograma da obra selecionada, apresentando o sequenciamento das tarefas e seus prazos para planejamento.",
+  "contexts": {
+    "requires": [
+      "selectedProjectTimeline"
+    ],
+    "provides": [
+      "selectedProjectTimeline"
+    ]
+  },
+  "entityRefs": [
+    "Project",
+    "ProjectTimeline",
+    "WorkTask"
+  ],
+  "useRules": [],
+  "transitions": []
+}

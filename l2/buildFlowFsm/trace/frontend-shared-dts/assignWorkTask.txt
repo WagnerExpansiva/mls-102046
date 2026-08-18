@@ -1,0 +1,160 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateProjectOutput, QryInspectProjectTimelineOutput, QryLocateFieldWorkerOutput, CmdCreateWorkTaskOutput, CmdHandoffWorkTaskToFieldWorkerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/assignWorkTask.js';
+export type { QryLocateProjectInput, QryLocateProjectOutput, QryInspectProjectTimelineInput, QryInspectProjectTimelineOutput, QryLocateFieldWorkerInput, QryLocateFieldWorkerOutput, CmdCreateWorkTaskInput, CmdCreateWorkTaskOutput, CmdHandoffWorkTaskToFieldWorkerInput, CmdHandoffWorkTaskToFieldWorkerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/assignWorkTask.js';
+declare const message_pt: {
+    'section.assignWorkTask.planningContext.title': string;
+    'organism.assignWorkTask.qryLocateProject.title': string;
+    'intent.assignWorkTask.qryLocateProject.list.title': string;
+    'intent.assignWorkTask.qryLocateProject.list.empty': string;
+    'intent.assignWorkTask.qryLocateProject.list.column.projectId.label': string;
+    'intent.assignWorkTask.qryLocateProject.list.column.clientId.label': string;
+    'intent.assignWorkTask.qryLocateProject.list.column.name.label': string;
+    'intent.assignWorkTask.qryLocateProject.list.column.address.label': string;
+    'intent.assignWorkTask.qryLocateProject.list.column.status.label': string;
+    'intent.assignWorkTask.qryLocateProject.list.column.authorizedBudget.label': string;
+    'intent.assignWorkTask.qryLocateProject.list.column.plannedStartDate.label': string;
+    'intent.assignWorkTask.qryLocateProject.list.column.plannedEndDate.label': string;
+    'organism.assignWorkTask.qryInspectProjectTimeline.title': string;
+    'intent.assignWorkTask.qryInspectProjectTimeline.list.title': string;
+    'intent.assignWorkTask.qryInspectProjectTimeline.list.empty': string;
+    'intent.assignWorkTask.qryInspectProjectTimeline.list.column.projectId.label': string;
+    'intent.assignWorkTask.qryInspectProjectTimeline.list.column.workTasks.label': string;
+    'intent.assignWorkTask.qryInspectProjectTimeline.list.column.scheduleEntries.label': string;
+    'organism.assignWorkTask.qryLocateFieldWorker.title': string;
+    'intent.assignWorkTask.qryLocateFieldWorker.list.title': string;
+    'intent.assignWorkTask.qryLocateFieldWorker.list.empty': string;
+    'intent.assignWorkTask.qryLocateFieldWorker.list.column.platformUserId.label': string;
+    'section.assignWorkTask.taskExecution.title': string;
+    'organism.assignWorkTask.cmdCreateWorkTask.title': string;
+    'intent.assignWorkTask.cmdCreateWorkTask.form.title': string;
+    'intent.assignWorkTask.cmdCreateWorkTask.form.action.cmdCreateWorkTask': string;
+    'intent.assignWorkTask.cmdCreateWorkTask.form.field.description.label': string;
+    'intent.assignWorkTask.cmdCreateWorkTask.form.field.dueDate.label': string;
+    'intent.assignWorkTask.cmdCreateWorkTask.form.field.progressUpdate.label': string;
+    'organism.assignWorkTask.cmdHandoffWorkTaskToFieldWorker.title': string;
+    'intent.assignWorkTask.cmdHandoffWorkTaskToFieldWorker.form.title': string;
+    'intent.assignWorkTask.cmdHandoffWorkTaskToFieldWorker.form.action.cmdHandoffWorkTaskToFieldWorker': string;
+    'intent.assignWorkTask.cmdHandoffWorkTaskToFieldWorker.form.field.description.label': string;
+    'intent.assignWorkTask.cmdHandoffWorkTaskToFieldWorker.form.field.dueDate.label': string;
+    'intent.assignWorkTask.cmdHandoffWorkTaskToFieldWorker.form.field.progressUpdate.label': string;
+    'action.cmdCreateWorkTask.success': string;
+    'action.cmdCreateWorkTask.error': string;
+    'action.cmdHandoffWorkTaskToFieldWorker.success': string;
+    'action.cmdHandoffWorkTaskToFieldWorker.error': string;
+    'section.assignWorkTask.workPlanningWorkspace.title': string;
+    'section.assignWorkTask.taskPlanningWorkspace.title': string;
+    'section.assignWorkTask.fieldAssignmentWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmAssignWorkTaskBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateProjectState — actionStatus, values: idle|loading|success|error */
+    qryLocateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateProjectData — queryResult, outputShape: array */
+    qryLocateProjectData: QryLocateProjectOutput[];
+    /** state qryInspectProjectTimelineState — actionStatus, values: idle|loading|success|error */
+    qryInspectProjectTimelineState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectProjectTimelineProjectTimelineProjectId — input */
+    qryInspectProjectTimelineProjectTimelineProjectId: string;
+    /** state qryInspectProjectTimelineData — queryResult, outputShape: object */
+    qryInspectProjectTimelineData: QryInspectProjectTimelineOutput | null;
+    /** state qryLocateFieldWorkerState — actionStatus, values: idle|loading|success|error */
+    qryLocateFieldWorkerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateFieldWorkerData — queryResult, outputShape: array */
+    qryLocateFieldWorkerData: QryLocateFieldWorkerOutput[];
+    /** state cmdCreateWorkTaskState — actionStatus, values: idle|loading|success|error */
+    cmdCreateWorkTaskState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateWorkTaskProjectProjectId — input */
+    cmdCreateWorkTaskProjectProjectId: string;
+    /** state cmdCreateWorkTaskDescription — input */
+    cmdCreateWorkTaskDescription: string;
+    /** state cmdCreateWorkTaskDueDate — input */
+    cmdCreateWorkTaskDueDate: string;
+    /** state cmdCreateWorkTaskProgressUpdate — input */
+    cmdCreateWorkTaskProgressUpdate: string;
+    /** state cmdCreateWorkTaskOutput — commandOutput */
+    cmdCreateWorkTaskOutput: CmdCreateWorkTaskOutput | null;
+    /** state cmdCreateWorkTaskError — actionError */
+    cmdCreateWorkTaskError: string;
+    /** state cmdHandoffWorkTaskToFieldWorkerState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffWorkTaskToFieldWorkerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffWorkTaskToFieldWorkerWorkTaskWorkTaskId — input */
+    cmdHandoffWorkTaskToFieldWorkerWorkTaskWorkTaskId: string;
+    /** state cmdHandoffWorkTaskToFieldWorkerDescription — input */
+    cmdHandoffWorkTaskToFieldWorkerDescription: string;
+    /** state cmdHandoffWorkTaskToFieldWorkerDueDate — input */
+    cmdHandoffWorkTaskToFieldWorkerDueDate: string;
+    /** state cmdHandoffWorkTaskToFieldWorkerProgressUpdate — input */
+    cmdHandoffWorkTaskToFieldWorkerProgressUpdate: string;
+    /** state cmdHandoffWorkTaskToFieldWorkerOutput — commandOutput */
+    cmdHandoffWorkTaskToFieldWorkerOutput: CmdHandoffWorkTaskToFieldWorkerOutput | null;
+    /** state cmdHandoffWorkTaskToFieldWorkerError — actionError */
+    cmdHandoffWorkTaskToFieldWorkerError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryLocateProject (query) — route buildFlowFsm.assignWorkTask.qryLocateProject; inputs: (none); writes ui.assignWorkTask.data.qryLocateProject; status ui.assignWorkTask.action.qryLocateProject.status */
+    loadQryLocateProject(): Promise<void>;
+    /** handler for action qryLocateProject — bind UI events here */
+    handleQryLocateProjectClick(event?: Event): void;
+    /** action qryInspectProjectTimeline (query) — route buildFlowFsm.assignWorkTask.qryInspectProjectTimeline; inputs: projectTimelineProjectId; writes ui.assignWorkTask.data.qryInspectProjectTimeline; status ui.assignWorkTask.action.qryInspectProjectTimeline.status */
+    loadQryInspectProjectTimeline(): Promise<void>;
+    /** handler for action qryInspectProjectTimeline — bind UI events here */
+    handleQryInspectProjectTimelineClick(event?: Event): void;
+    /** action qryLocateFieldWorker (query) — route buildFlowFsm.assignWorkTask.qryLocateFieldWorker; inputs: (none); writes ui.assignWorkTask.data.qryLocateFieldWorker; status ui.assignWorkTask.action.qryLocateFieldWorker.status */
+    loadQryLocateFieldWorker(): Promise<void>;
+    /** handler for action qryLocateFieldWorker — bind UI events here */
+    handleQryLocateFieldWorkerClick(event?: Event): void;
+    /** action cmdCreateWorkTask (command) — route buildFlowFsm.assignWorkTask.cmdCreateWorkTask; inputs: projectProjectId, description, dueDate, progressUpdate; writes ui.assignWorkTask.output.cmdCreateWorkTask; status ui.assignWorkTask.action.cmdCreateWorkTask.status; feedback keys action.cmdCreateWorkTask.success / action.cmdCreateWorkTask.error */
+    cmdCreateWorkTask(): Promise<void>;
+    /** handler for action cmdCreateWorkTask — bind UI events here */
+    handleCmdCreateWorkTaskClick(event?: Event): void;
+    /** action cmdHandoffWorkTaskToFieldWorker (command) — route buildFlowFsm.assignWorkTask.cmdHandoffWorkTaskToFieldWorker; inputs: workTaskWorkTaskId, description, dueDate, progressUpdate; writes ui.assignWorkTask.output.cmdHandoffWorkTaskToFieldWorker; status ui.assignWorkTask.action.cmdHandoffWorkTaskToFieldWorker.status; feedback keys action.cmdHandoffWorkTaskToFieldWorker.success / action.cmdHandoffWorkTaskToFieldWorker.error */
+    cmdHandoffWorkTaskToFieldWorker(): Promise<void>;
+    /** handler for action cmdHandoffWorkTaskToFieldWorker — bind UI events here */
+    handleCmdHandoffWorkTaskToFieldWorkerClick(event?: Event): void;
+    /** setter for state ui.assignWorkTask.input.qryInspectProjectTimeline.projectTimelineProjectId */
+    setQryInspectProjectTimelineProjectTimelineProjectId(value: string): void;
+    /** handler for action set.qryInspectProjectTimelineProjectTimelineProjectId — bind UI events here */
+    handleQryInspectProjectTimelineProjectTimelineProjectIdChange(event: Event): void;
+    /** setter for state ui.assignWorkTask.input.cmdCreateWorkTask.projectProjectId */
+    setCmdCreateWorkTaskProjectProjectId(value: string): void;
+    /** handler for action set.cmdCreateWorkTaskProjectProjectId — bind UI events here */
+    handleCmdCreateWorkTaskProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.assignWorkTask.input.cmdCreateWorkTask.description */
+    setCmdCreateWorkTaskDescription(value: string): void;
+    /** handler for action set.cmdCreateWorkTaskDescription — bind UI events here */
+    handleCmdCreateWorkTaskDescriptionChange(event: Event): void;
+    /** setter for state ui.assignWorkTask.input.cmdCreateWorkTask.dueDate */
+    setCmdCreateWorkTaskDueDate(value: string): void;
+    /** handler for action set.cmdCreateWorkTaskDueDate — bind UI events here */
+    handleCmdCreateWorkTaskDueDateChange(event: Event): void;
+    /** setter for state ui.assignWorkTask.input.cmdCreateWorkTask.progressUpdate */
+    setCmdCreateWorkTaskProgressUpdate(value: string): void;
+    /** handler for action set.cmdCreateWorkTaskProgressUpdate — bind UI events here */
+    handleCmdCreateWorkTaskProgressUpdateChange(event: Event): void;
+    /** setter for state ui.assignWorkTask.input.cmdHandoffWorkTaskToFieldWorker.workTaskWorkTaskId */
+    setCmdHandoffWorkTaskToFieldWorkerWorkTaskWorkTaskId(value: string): void;
+    /** handler for action set.cmdHandoffWorkTaskToFieldWorkerWorkTaskWorkTaskId — bind UI events here */
+    handleCmdHandoffWorkTaskToFieldWorkerWorkTaskWorkTaskIdChange(event: Event): void;
+    /** setter for state ui.assignWorkTask.input.cmdHandoffWorkTaskToFieldWorker.description */
+    setCmdHandoffWorkTaskToFieldWorkerDescription(value: string): void;
+    /** handler for action set.cmdHandoffWorkTaskToFieldWorkerDescription — bind UI events here */
+    handleCmdHandoffWorkTaskToFieldWorkerDescriptionChange(event: Event): void;
+    /** setter for state ui.assignWorkTask.input.cmdHandoffWorkTaskToFieldWorker.dueDate */
+    setCmdHandoffWorkTaskToFieldWorkerDueDate(value: string): void;
+    /** handler for action set.cmdHandoffWorkTaskToFieldWorkerDueDate — bind UI events here */
+    handleCmdHandoffWorkTaskToFieldWorkerDueDateChange(event: Event): void;
+    /** setter for state ui.assignWorkTask.input.cmdHandoffWorkTaskToFieldWorker.progressUpdate */
+    setCmdHandoffWorkTaskToFieldWorkerProgressUpdate(value: string): void;
+    /** handler for action set.cmdHandoffWorkTaskToFieldWorkerProgressUpdate — bind UI events here */
+    handleCmdHandoffWorkTaskToFieldWorkerProgressUpdateChange(event: Event): void;
+}

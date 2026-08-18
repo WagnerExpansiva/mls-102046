@@ -1,0 +1,33 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "ProjectTimeline",
+  "fields": [
+    {
+      "fieldId": "projectId",
+      "title": "Identificador da obra",
+      "type": "uuid",
+      "required": true,
+      "description": "Identidade da obra que delimita a projeção derivada do cronograma.",
+      "constraints": []
+    },
+    {
+      "fieldId": "workTasks",
+      "title": "Tarefas da obra",
+      "type": "json",
+      "required": false,
+      "description": "Lista derivada das tarefas da obra, organizada para exibir sua sequência e seus prazos no cronograma.",
+      "constraints": []
+    },
+    {
+      "fieldId": "scheduleEntries",
+      "title": "Entradas do cronograma",
+      "type": "json",
+      "required": false,
+      "description": "Entradas derivadas para a visualização sequenciada ou tipo Gantt, incluindo a ordem planejada e as datas disponíveis das tarefas.",
+      "constraints": []
+    }
+  ],
+  "useRules": []
+}

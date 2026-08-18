@@ -1,0 +1,25 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "handoffWorkTaskProgressToFieldCoordinator",
+  "title": "Informar o andamento ao coordenador",
+  "kind": "command",
+  "compiledFrom": [
+    "updateWorkTaskProgress.handoffWorkTaskProgressToFieldCoordinator"
+  ],
+  "description": "Disponibiliza a tarefa de trabalho com seu andamento atualizado para acompanhamento.",
+  "contexts": {
+    "requires": [
+      "selectedWorkTask"
+    ],
+    "provides": [
+      "selectedWorkTask"
+    ]
+  },
+  "entityRefs": [
+    "WorkTask"
+  ],
+  "useRules": [],
+  "transitions": []
+}

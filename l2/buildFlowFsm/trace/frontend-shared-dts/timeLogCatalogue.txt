@@ -1,0 +1,183 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListTimeLogOutput, CmdCreateTimeLogOutput, CmdUpdateTimeLogOutput, CmdDeleteTimeLogOutput, QryWorkTaskPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/timeLogCatalogue.js';
+export type { QryListTimeLogInput, QryListTimeLogOutput, CmdCreateTimeLogInput, CmdCreateTimeLogOutput, CmdUpdateTimeLogInput, CmdUpdateTimeLogOutput, CmdDeleteTimeLogInput, CmdDeleteTimeLogOutput, QryWorkTaskPickerInput, QryWorkTaskPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/timeLogCatalogue.js';
+declare const message_pt: {
+    'section.timeLogCatalogue.recordList.title': string;
+    'organism.timeLogCatalogue.qryListTimeLog.title': string;
+    'intent.timeLogCatalogue.qryListTimeLog.list.title': string;
+    'intent.timeLogCatalogue.qryListTimeLog.list.empty': string;
+    'intent.timeLogCatalogue.qryListTimeLog.list.column.timeLogId.label': string;
+    'intent.timeLogCatalogue.qryListTimeLog.list.column.status.label': string;
+    'intent.timeLogCatalogue.qryListTimeLog.list.column.workTaskId.label': string;
+    'intent.timeLogCatalogue.qryListTimeLog.list.column.fieldWorkerId.label': string;
+    'intent.timeLogCatalogue.qryListTimeLog.list.column.workDate.label': string;
+    'intent.timeLogCatalogue.qryListTimeLog.list.column.hoursWorked.label': string;
+    'intent.timeLogCatalogue.qryListTimeLog.list.column.hourlyLaborCost.label': string;
+    'organism.timeLogCatalogue.cmdDeleteTimeLog.title': string;
+    'intent.timeLogCatalogue.cmdDeleteTimeLog.form.title': string;
+    'intent.timeLogCatalogue.cmdDeleteTimeLog.form.action.cmdDeleteTimeLog': string;
+    'section.timeLogCatalogue.recordForm.title': string;
+    'organism.timeLogCatalogue.qryWorkTaskPicker.title': string;
+    'intent.timeLogCatalogue.qryWorkTaskPicker.list.title': string;
+    'intent.timeLogCatalogue.qryWorkTaskPicker.list.empty': string;
+    'intent.timeLogCatalogue.qryWorkTaskPicker.list.column.workTaskId.label': string;
+    'intent.timeLogCatalogue.qryWorkTaskPicker.list.column.projectId.label': string;
+    'intent.timeLogCatalogue.qryWorkTaskPicker.list.column.assignedFieldWorkerId.label': string;
+    'intent.timeLogCatalogue.qryWorkTaskPicker.list.column.description.label': string;
+    'intent.timeLogCatalogue.qryWorkTaskPicker.list.column.dueDate.label': string;
+    'intent.timeLogCatalogue.qryWorkTaskPicker.list.column.status.label': string;
+    'intent.timeLogCatalogue.qryWorkTaskPicker.list.column.progressUpdate.label': string;
+    'organism.timeLogCatalogue.cmdCreateTimeLog.title': string;
+    'intent.timeLogCatalogue.cmdCreateTimeLog.form.title': string;
+    'intent.timeLogCatalogue.cmdCreateTimeLog.form.action.cmdCreateTimeLog': string;
+    'intent.timeLogCatalogue.cmdCreateTimeLog.form.field.workDate.label': string;
+    'intent.timeLogCatalogue.cmdCreateTimeLog.form.field.hoursWorked.label': string;
+    'intent.timeLogCatalogue.cmdCreateTimeLog.form.field.hourlyLaborCost.label': string;
+    'organism.timeLogCatalogue.cmdUpdateTimeLog.title': string;
+    'intent.timeLogCatalogue.cmdUpdateTimeLog.form.title': string;
+    'intent.timeLogCatalogue.cmdUpdateTimeLog.form.action.cmdUpdateTimeLog': string;
+    'intent.timeLogCatalogue.cmdUpdateTimeLog.form.field.status.label': string;
+    'intent.timeLogCatalogue.cmdUpdateTimeLog.form.field.fieldWorkerId.label': string;
+    'intent.timeLogCatalogue.cmdUpdateTimeLog.form.field.workDate.label': string;
+    'intent.timeLogCatalogue.cmdUpdateTimeLog.form.field.hoursWorked.label': string;
+    'intent.timeLogCatalogue.cmdUpdateTimeLog.form.field.hourlyLaborCost.label': string;
+    'action.cmdCreateTimeLog.success': string;
+    'action.cmdCreateTimeLog.error': string;
+    'action.cmdUpdateTimeLog.success': string;
+    'action.cmdUpdateTimeLog.error': string;
+    'action.cmdDeleteTimeLog.success': string;
+    'action.cmdDeleteTimeLog.error': string;
+    'section.timeLogCatalogue.recordWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmTimeLogCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListTimeLogState — actionStatus, values: idle|loading|success|error */
+    qryListTimeLogState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListTimeLogData — queryResult, outputShape: array */
+    qryListTimeLogData: QryListTimeLogOutput[];
+    /** state cmdCreateTimeLogState — actionStatus, values: idle|loading|success|error */
+    cmdCreateTimeLogState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateTimeLogWorkTaskWorkTaskId — input */
+    cmdCreateTimeLogWorkTaskWorkTaskId: string;
+    /** state cmdCreateTimeLogWorkDate — input */
+    cmdCreateTimeLogWorkDate: string;
+    /** state cmdCreateTimeLogHoursWorked — input */
+    cmdCreateTimeLogHoursWorked: string;
+    /** state cmdCreateTimeLogHourlyLaborCost — input */
+    cmdCreateTimeLogHourlyLaborCost: string;
+    /** state cmdCreateTimeLogOutput — commandOutput */
+    cmdCreateTimeLogOutput: CmdCreateTimeLogOutput | null;
+    /** state cmdCreateTimeLogError — actionError */
+    cmdCreateTimeLogError: string;
+    /** state cmdUpdateTimeLogState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateTimeLogState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateTimeLogTimeLogId — input */
+    cmdUpdateTimeLogTimeLogId: string;
+    /** state cmdUpdateTimeLogStatus — input */
+    cmdUpdateTimeLogStatus: string;
+    /** state cmdUpdateTimeLogWorkTaskId — input */
+    cmdUpdateTimeLogWorkTaskId: string;
+    /** state cmdUpdateTimeLogFieldWorkerId — input */
+    cmdUpdateTimeLogFieldWorkerId: string;
+    /** state cmdUpdateTimeLogWorkDate — input */
+    cmdUpdateTimeLogWorkDate: string;
+    /** state cmdUpdateTimeLogHoursWorked — input */
+    cmdUpdateTimeLogHoursWorked: string;
+    /** state cmdUpdateTimeLogHourlyLaborCost — input */
+    cmdUpdateTimeLogHourlyLaborCost: string;
+    /** state cmdUpdateTimeLogOutput — commandOutput */
+    cmdUpdateTimeLogOutput: CmdUpdateTimeLogOutput | null;
+    /** state cmdUpdateTimeLogError — actionError */
+    cmdUpdateTimeLogError: string;
+    /** state cmdDeleteTimeLogState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteTimeLogState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteTimeLogTimeLogId — input */
+    cmdDeleteTimeLogTimeLogId: string;
+    /** state cmdDeleteTimeLogOutput — commandOutput */
+    cmdDeleteTimeLogOutput: CmdDeleteTimeLogOutput | null;
+    /** state cmdDeleteTimeLogError — actionError */
+    cmdDeleteTimeLogError: string;
+    /** state qryWorkTaskPickerState — actionStatus, values: idle|loading|success|error */
+    qryWorkTaskPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryWorkTaskPickerData — queryResult, outputShape: array */
+    qryWorkTaskPickerData: QryWorkTaskPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryListTimeLog (query) — route buildFlowFsm.timeLogCatalogue.qryListTimeLog; inputs: (none); writes ui.timeLogCatalogue.data.qryListTimeLog; status ui.timeLogCatalogue.action.qryListTimeLog.status */
+    loadQryListTimeLog(): Promise<void>;
+    /** handler for action qryListTimeLog — bind UI events here */
+    handleQryListTimeLogClick(event?: Event): void;
+    /** action cmdCreateTimeLog (command) — route buildFlowFsm.timeLogCatalogue.cmdCreateTimeLog; inputs: workTaskWorkTaskId, workDate, hoursWorked, hourlyLaborCost; writes ui.timeLogCatalogue.output.cmdCreateTimeLog; status ui.timeLogCatalogue.action.cmdCreateTimeLog.status; feedback keys action.cmdCreateTimeLog.success / action.cmdCreateTimeLog.error */
+    cmdCreateTimeLog(): Promise<void>;
+    /** handler for action cmdCreateTimeLog — bind UI events here */
+    handleCmdCreateTimeLogClick(event?: Event): void;
+    /** action cmdUpdateTimeLog (command) — route buildFlowFsm.timeLogCatalogue.cmdUpdateTimeLog; inputs: timeLogId, status, workTaskId, fieldWorkerId, workDate, hoursWorked, hourlyLaborCost; writes ui.timeLogCatalogue.output.cmdUpdateTimeLog; status ui.timeLogCatalogue.action.cmdUpdateTimeLog.status; feedback keys action.cmdUpdateTimeLog.success / action.cmdUpdateTimeLog.error */
+    cmdUpdateTimeLog(): Promise<void>;
+    /** handler for action cmdUpdateTimeLog — bind UI events here */
+    handleCmdUpdateTimeLogClick(event?: Event): void;
+    /** action cmdDeleteTimeLog (command) — route buildFlowFsm.timeLogCatalogue.cmdDeleteTimeLog; inputs: timeLogId; writes ui.timeLogCatalogue.output.cmdDeleteTimeLog; status ui.timeLogCatalogue.action.cmdDeleteTimeLog.status; feedback keys action.cmdDeleteTimeLog.success / action.cmdDeleteTimeLog.error */
+    cmdDeleteTimeLog(): Promise<void>;
+    /** handler for action cmdDeleteTimeLog — bind UI events here */
+    handleCmdDeleteTimeLogClick(event?: Event): void;
+    /** action qryWorkTaskPicker (query) — route buildFlowFsm.timeLogCatalogue.qryWorkTaskPicker; inputs: (none); writes ui.timeLogCatalogue.data.qryWorkTaskPicker; status ui.timeLogCatalogue.action.qryWorkTaskPicker.status */
+    loadQryWorkTaskPicker(): Promise<void>;
+    /** handler for action qryWorkTaskPicker — bind UI events here */
+    handleQryWorkTaskPickerClick(event?: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdCreateTimeLog.workTaskWorkTaskId */
+    setCmdCreateTimeLogWorkTaskWorkTaskId(value: string): void;
+    /** handler for action set.cmdCreateTimeLogWorkTaskWorkTaskId — bind UI events here */
+    handleCmdCreateTimeLogWorkTaskWorkTaskIdChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdCreateTimeLog.workDate */
+    setCmdCreateTimeLogWorkDate(value: string): void;
+    /** handler for action set.cmdCreateTimeLogWorkDate — bind UI events here */
+    handleCmdCreateTimeLogWorkDateChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdCreateTimeLog.hoursWorked */
+    setCmdCreateTimeLogHoursWorked(value: string): void;
+    /** handler for action set.cmdCreateTimeLogHoursWorked — bind UI events here */
+    handleCmdCreateTimeLogHoursWorkedChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdCreateTimeLog.hourlyLaborCost */
+    setCmdCreateTimeLogHourlyLaborCost(value: string): void;
+    /** handler for action set.cmdCreateTimeLogHourlyLaborCost — bind UI events here */
+    handleCmdCreateTimeLogHourlyLaborCostChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdUpdateTimeLog.timeLogId */
+    setCmdUpdateTimeLogTimeLogId(value: string): void;
+    /** handler for action set.cmdUpdateTimeLogTimeLogId — bind UI events here */
+    handleCmdUpdateTimeLogTimeLogIdChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdUpdateTimeLog.status */
+    setCmdUpdateTimeLogStatus(value: string): void;
+    /** handler for action set.cmdUpdateTimeLogStatus — bind UI events here */
+    handleCmdUpdateTimeLogStatusChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdUpdateTimeLog.workTaskId */
+    setCmdUpdateTimeLogWorkTaskId(value: string): void;
+    /** handler for action set.cmdUpdateTimeLogWorkTaskId — bind UI events here */
+    handleCmdUpdateTimeLogWorkTaskIdChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdUpdateTimeLog.fieldWorkerId */
+    setCmdUpdateTimeLogFieldWorkerId(value: string): void;
+    /** handler for action set.cmdUpdateTimeLogFieldWorkerId — bind UI events here */
+    handleCmdUpdateTimeLogFieldWorkerIdChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdUpdateTimeLog.workDate */
+    setCmdUpdateTimeLogWorkDate(value: string): void;
+    /** handler for action set.cmdUpdateTimeLogWorkDate — bind UI events here */
+    handleCmdUpdateTimeLogWorkDateChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdUpdateTimeLog.hoursWorked */
+    setCmdUpdateTimeLogHoursWorked(value: string): void;
+    /** handler for action set.cmdUpdateTimeLogHoursWorked — bind UI events here */
+    handleCmdUpdateTimeLogHoursWorkedChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdUpdateTimeLog.hourlyLaborCost */
+    setCmdUpdateTimeLogHourlyLaborCost(value: string): void;
+    /** handler for action set.cmdUpdateTimeLogHourlyLaborCost — bind UI events here */
+    handleCmdUpdateTimeLogHourlyLaborCostChange(event: Event): void;
+    /** setter for state ui.timeLogCatalogue.input.cmdDeleteTimeLog.timeLogId */
+    setCmdDeleteTimeLogTimeLogId(value: string): void;
+    /** handler for action set.cmdDeleteTimeLogTimeLogId — bind UI events here */
+    handleCmdDeleteTimeLogTimeLogIdChange(event: Event): void;
+}

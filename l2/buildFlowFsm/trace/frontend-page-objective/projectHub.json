@@ -1,0 +1,78 @@
+{
+  "savedAt": "2026-08-18T14:53:54.289Z",
+  "pageId": "projectHub",
+  "genome": "page21",
+  "objective": {
+    "actor": "Coordenador ou gestor de obras",
+    "jobToBeDone": "Selecionar uma obra e obter rapidamente uma visão confiável de sua execução, riscos, cronograma e reflexos financeiros para decidir onde agir primeiro.",
+    "primaryDecision": "Qual obra exige atenção imediata e qual aspecto operacional ou financeiro deve ser investigado?",
+    "decisiveInfo": [
+      "projectId",
+      "name",
+      "status",
+      "authorizedBudget",
+      "plannedStartDate",
+      "plannedEndDate",
+      "activeProjectCount",
+      "budgetVariance",
+      "costAttentionProjects",
+      "upcomingTasks",
+      "projectStatus",
+      "taskSummary",
+      "upcomingCommitments",
+      "actualCost",
+      "budgetAmount",
+      "costVariance",
+      "workTasks",
+      "scheduleEntries",
+      "riskIndicators",
+      "riskExplanation",
+      "approvedChangeOrderAmount",
+      "billableAmount",
+      "invoicedAmount",
+      "clientAvailableAmount"
+    ],
+    "usageFrequency": "Contínua durante o acompanhamento diário e semanal da carteira, com consultas ocasionais a registros de apoio.",
+    "informationHierarchy": [
+      "Obras e contexto selecionado",
+      "Métricas agregadas da carteira",
+      "Execução e variação de custo da obra",
+      "Riscos e próximos prazos",
+      "Cronograma",
+      "Reflexo no faturamento",
+      "Registros de apoio: tarefas, mudanças, faturas, materiais, coordenação e relatórios"
+    ],
+    "successCriteria": "O usuário identifica a obra crítica sem procurar em múltiplas telas, entende imediatamente o motivo da atenção e abre o detalhe contextual correto sem digitar identificadores ou editar estados indevidamente.",
+    "antiPatterns": [
+      "pilha de formulários CRUD por consulta",
+      "ids técnicos digitáveis",
+      "status como select livre",
+      "seção separada para cada filtro ou setter",
+      "mostrar registros de apoio antes das métricas e exceções",
+      "ações sem vínculo com a obra selecionada",
+      "inventar comandos de exportação ou edição"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar uma obra para aprofundamento",
+        "presentation": "master-detail-selection"
+      },
+      {
+        "action": "Investigar execução, custos e compromissos da obra selecionada",
+        "presentation": "summary-first-contextual-panel"
+      },
+      {
+        "action": "Identificar tarefas em risco e próximos prazos",
+        "presentation": "highlighted-exception-cards"
+      },
+      {
+        "action": "Consultar cronograma e reflexo no faturamento",
+        "presentation": "contextual-detail-panels"
+      },
+      {
+        "action": "Localizar registros de apoio",
+        "presentation": "compact-inline-row-command"
+      }
+    ]
+  }
+}

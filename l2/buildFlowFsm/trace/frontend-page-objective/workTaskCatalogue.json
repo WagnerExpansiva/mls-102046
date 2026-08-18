@@ -1,0 +1,52 @@
+{
+  "savedAt": "2026-08-18T14:55:02.868Z",
+  "pageId": "workTaskCatalogue",
+  "genome": "page21",
+  "objective": {
+    "actor": "Responsável pelo acompanhamento de tarefas de uma obra, como gestor de projeto ou trabalhador de campo autorizado.",
+    "jobToBeDone": "Encontrar tarefas da obra, registrar novas atribuições e atualizar rapidamente o andamento da tarefa selecionada.",
+    "primaryDecision": "Qual tarefa selecionar para registrar ou corrigir seu andamento, ou criar uma nova atribuição quando ela ainda não existir.",
+    "decisiveInfo": [
+      "description",
+      "dueDate",
+      "assignedFieldWorkerId",
+      "status",
+      "progressUpdate",
+      "projectId"
+    ],
+    "usageFrequency": "Recorrente durante o acompanhamento da obra, com consultas frequentes e atualizações ocasionais conforme o trabalho avança.",
+    "informationHierarchy": [
+      "Tarefas existentes e sua situação atual",
+      "Descrição, prazo, responsável, status e andamento da tarefa selecionada",
+      "Ações de registrar andamento ou excluir a tarefa selecionada",
+      "Criação de uma nova tarefa com descrição, prazo e andamento inicial"
+    ],
+    "successCriteria": "O usuário localiza uma tarefa sem esforço, entende seu estado atual antes de editar, registra o andamento com poucos campos e recebe confirmação após criar, atualizar ou excluir.",
+    "antiPatterns": [
+      "formulário CRUD separado e duplicado para cada operação",
+      "campo manual para projectId ou workTaskId",
+      "status como select livre ou campo editável",
+      "exclusão sem confirmação",
+      "ocultar a tarefa selecionada durante a edição",
+      "transformar a consulta e cada comando em seções independentes"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar tarefa e revisar seu estado atual",
+        "presentation": "master-detail"
+      },
+      {
+        "action": "Registrar o andamento da tarefa selecionada",
+        "presentation": "contextual-transition-actions"
+      },
+      {
+        "action": "Criar uma nova tarefa atribuída",
+        "presentation": "primary-button"
+      },
+      {
+        "action": "Excluir a tarefa selecionada",
+        "presentation": "inline-row-command com confirmação"
+      }
+    ]
+  }
+}

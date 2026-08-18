@@ -1,0 +1,25 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "handoffDeclinedChangeOrderToFieldCoordinator",
+  "title": "Devolver a decisão ao campo",
+  "kind": "command",
+  "compiledFrom": [
+    "declineChangeOrder.handoffDeclinedChangeOrderToFieldCoordinator"
+  ],
+  "description": "Encaminha a ordem de mudança recusada para o tratamento do resultado no campo.",
+  "contexts": {
+    "requires": [
+      "selectedChangeOrder"
+    ],
+    "provides": [
+      "selectedChangeOrder"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder"
+  ],
+  "useRules": [],
+  "transitions": []
+}

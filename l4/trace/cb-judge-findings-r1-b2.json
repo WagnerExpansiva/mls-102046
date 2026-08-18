@@ -1,0 +1,114 @@
+{
+  "judgeRun": 1,
+  "batchIndex": 2,
+  "owners": [
+    "deleteClientPortalAccess",
+    "listInventoryBalance",
+    "createInventoryBalance",
+    "updateInventoryBalance",
+    "deleteInventoryBalance",
+    "listInventoryItem",
+    "createInventoryItem",
+    "updateInventoryItem",
+    "deleteInventoryItem",
+    "listInvoice",
+    "createInvoice",
+    "updateInvoice",
+    "deleteInvoice",
+    "listInvoiceChangeOrder",
+    "createInvoiceChangeOrder"
+  ],
+  "findings": [
+    {
+      "ownerId": "deleteClientPortalAccess",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteClientPortalAccess (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listInventoryBalance",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listInventoryBalance (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createInventoryBalance",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createInventoryBalance (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateInventoryBalance",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateInventoryBalance (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteInventoryBalance",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteInventoryBalance (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listInventoryItem (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createInventoryItem (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateInventoryItem (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteInventoryItem",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteInventoryItem (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listInvoice (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createInvoice (worker failed or never saved)"
+    },
+    {
+      "ownerId": "updateInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation updateInvoice (worker failed or never saved)"
+    },
+    {
+      "ownerId": "deleteInvoice",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation deleteInvoice (worker failed or never saved)"
+    },
+    {
+      "ownerId": "listInvoiceChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation listInvoiceChangeOrder (worker failed or never saved)"
+    },
+    {
+      "ownerId": "createInvoiceChangeOrder",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation createInvoiceChangeOrder (worker failed or never saved)"
+    }
+  ],
+  "savedAt": "2026-08-17T20:29:34.113Z"
+}

@@ -1,0 +1,58 @@
+{
+  "savedAt": "2026-08-18T14:54:32.231Z",
+  "pageId": "statusReportCatalogue",
+  "genome": "page31",
+  "objective": {
+    "actor": "Gestor de projetos ou responsável por comunicação da obra",
+    "jobToBeDone": "Localizar um relatório de status e gerar ou corrigir uma versão profissional para revisão e publicação, preservando o contexto correto da obra.",
+    "primaryDecision": "Decidir se deve gerar um novo relatório para a obra selecionada ou corrigir o relatório existente selecionado.",
+    "decisiveInfo": [
+      "statusReportId",
+      "projectId",
+      "title",
+      "content",
+      "communicatedRisks",
+      "status",
+      "generatedAt",
+      "publishedAt",
+      "projectProjectId",
+      "projectExecutionOverviewProjectId"
+    ],
+    "usageFrequency": "Ocasional, durante marcos de acompanhamento e comunicação do andamento da obra.",
+    "informationHierarchy": [
+      "relatório selecionado e seu estado atual",
+      "obra e contexto de execução associados",
+      "título e conteúdo do relatório",
+      "riscos comunicados",
+      "ações de gerar ou corrigir",
+      "metadados de geração/publicação e exclusão"
+    ],
+    "successCriteria": "O usuário identifica rapidamente a obra e o relatório corretos, entende o estado atual antes de editar, consegue gerar ou corrigir o conteúdo com poucos campos e recebe confirmação clara após atualizar ou excluir.",
+    "antiPatterns": [
+      "formulário CRUD separado e sempre visível para cada operação",
+      "status como select livre com todos os estados",
+      "digitação manual de ids de relatório, projeto ou contexto",
+      "edição manual de timestamps e metadados de ciclo de vida sem necessidade",
+      "exclusão sem confirmação",
+      "duplicar a consulta de projetos em uma seção independente"
+    ],
+    "criticalActions": [
+      {
+        "action": "Gerar relatório profissional de status",
+        "presentation": "primary-button no painel contextual de criação, precedido pela seleção da obra e do contexto de execução"
+      },
+      {
+        "action": "Corrigir dados do relatório escolhido",
+        "presentation": "contextual-transition-actions no detalhe do relatório selecionado, com estado atual visível"
+      },
+      {
+        "action": "Excluir relatório escolhido",
+        "presentation": "inline-row-command contextual à linha selecionada, com confirmação destrutiva"
+      },
+      {
+        "action": "Selecionar obra e contexto de execução",
+        "presentation": "lookup/picker integrado ao painel de criação, usando reconhecimento em vez de id digitado"
+      }
+    ]
+  }
+}

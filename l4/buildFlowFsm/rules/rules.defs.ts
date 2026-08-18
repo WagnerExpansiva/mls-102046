@@ -1,0 +1,154 @@
+/// <mls fileReference="_102046_/l4/buildFlowFsm/rules/rules.defs.ts" enhancement="_blank"/>
+
+import type { Ns4RulesArtifact } from '/_102020_/l2/agentNewSolution4/types.js';
+
+export const buildFlowFsmRules = {
+  "schemaVersion": "2026-08-09-ns4-rules-v2",
+  "moduleName": "buildFlowFsm",
+  "userLanguage": "pt-BR",
+  "rules": [
+    {
+      "id": "activeClientPortalAccess",
+      "description": "O vínculo entre um usuário externo e um cliente concede acesso às informações desse cliente somente enquanto estiver ativo."
+    },
+    {
+      "id": "activeProject",
+      "description": "Somente obras ativas podem receber novas tarefas e registros de consumo de materiais."
+    },
+    {
+      "id": "activeProjectCoordination",
+      "description": "Um coordenador de campo pode acompanhar e coordenar uma obra somente enquanto sua atribuição de coordenação estiver ativa."
+    },
+    {
+      "id": "activeProjectCostVisibility",
+      "description": "O acompanhamento gerencial deve apresentar as obras ativas com seus custos realizados, orçamento, variação de custo e próximas tarefas."
+    },
+    {
+      "id": "activeWorkTask",
+      "description": "Somente tarefas planejadas ou em execução podem receber registros de horas trabalhadas."
+    },
+    {
+      "id": "approvedBillableChangeOrder",
+      "description": "Uma ordem de mudança integra o valor autorizado da obra e pode ser faturada somente após a aprovação do cliente."
+    },
+    {
+      "id": "availableInventoryBalance",
+      "description": "Um saldo de estoque pode atender consumo de material somente quando estiver disponível e tiver quantidade física suficiente."
+    },
+    {
+      "id": "changeOrderRequiresClientAndProject",
+      "description": "Toda ordem de mudança deve estar vinculada a um cliente e a uma obra desse cliente."
+    },
+    {
+      "id": "clientApprovableChangeOrder",
+      "description": "O cliente pode decidir uma ordem de mudança somente quando ela estiver pendente de sua aprovação."
+    },
+    {
+      "id": "clientSeesApprovedChangeOrdersOnly",
+      "description": "O cliente pode consultar somente as ordens de mudança aprovadas de suas próprias obras."
+    },
+    {
+      "id": "clientSeesOnlyOwnProjectInformation",
+      "description": "O cliente pode acessar somente informações publicadas e valores comerciais relacionados às obras às quais está associado."
+    },
+    {
+      "id": "clientVisibleApprovedChangeOrder",
+      "description": "Uma ordem de mudança é visível ao cliente somente depois de aprovada."
+    },
+    {
+      "id": "clientVisibleInvoice",
+      "description": "Uma fatura é visível ao cliente somente quando tiver sido disponibilizada para ele."
+    },
+    {
+      "id": "clientVisibleStatusReport",
+      "description": "Um relatório de status é comunicável e consultável pelo cliente somente quando estiver publicado."
+    },
+    {
+      "id": "costEligibleMaterialUsage",
+      "description": "Somente consumos de material registrados compõem o custo realizado e a execução consolidada da obra."
+    },
+    {
+      "id": "costEligibleTimeLog",
+      "description": "Somente registros de horas registrados compõem o custo realizado e os indicadores de execução da obra."
+    },
+    {
+      "id": "fieldCoordinatorSeesProjectDailyRecords",
+      "description": "O coordenador de campo pode consultar os registros de horas e os consumos de materiais das obras sob sua coordenação."
+    },
+    {
+      "id": "invoiceIncludesApprovedChangeOrdersOnly",
+      "description": "Uma fatura pode incluir somente ordens de mudança aprovadas."
+    },
+    {
+      "id": "invoiceRequiresClientAndProject",
+      "description": "Toda fatura deve estar vinculada a um cliente e a uma obra desse cliente."
+    },
+    {
+      "id": "managerActionableChangeOrder",
+      "description": "Uma ordem de mudança submetida pode ser encaminhada ao cliente para aprovação ou recusada pelo gerente de projeto."
+    },
+    {
+      "id": "materialUsageRequiresActiveProjectAndAvailableInventory",
+      "description": "Um consumo de material deve ser registrado para uma obra ativa, com item de estoque selecionável e saldo disponível em quantidade suficiente."
+    },
+    {
+      "id": "ongoingProject",
+      "description": "Uma obra integra o acompanhamento operacional enquanto estiver planejada ou ativa."
+    },
+    {
+      "id": "onlyAssignedWorkerReportsTaskProgress",
+      "description": "Somente o trabalhador de campo responsável pela tarefa pode registrar seu andamento."
+    },
+    {
+      "id": "onlyClientApprovesOwnChangeOrder",
+      "description": "Somente o cliente associado à obra pode aprovar uma ordem de mudança pendente encaminhada para sua aprovação."
+    },
+    {
+      "id": "onlyProjectManagerDeclinesChangeOrder",
+      "description": "Somente o gerente de projeto pode recusar uma ordem de mudança submetida."
+    },
+    {
+      "id": "onlyProjectManagerForwardsChangeOrderForClientApproval",
+      "description": "Somente o gerente de projeto pode encaminhar uma ordem de mudança submetida ao cliente para aprovação."
+    },
+    {
+      "id": "onlyProjectManagerPublishesStatusReport",
+      "description": "Somente o gerente de projeto pode publicar um relatório de status da obra."
+    },
+    {
+      "id": "selectableInventoryItem",
+      "description": "Somente itens de estoque ativos podem ser selecionados para registrar consumo de material."
+    },
+    {
+      "id": "statusReportUsesProjectExecutionData",
+      "description": "O relatório de status deve consolidar os dados de execução da obra, incluindo tarefas, horas trabalhadas, materiais consumidos e riscos de atraso identificados."
+    },
+    {
+      "id": "timeLogRequiresWorkerTaskAndPositiveHours",
+      "description": "Todo registro de horas deve identificar o trabalhador e a tarefa executada, com uma quantidade de horas maior que zero."
+    },
+    {
+      "id": "unfinishedWorkTask",
+      "description": "Uma tarefa é considerada pendente para acompanhamento de cronograma e risco de atraso enquanto estiver planejada ou em execução."
+    },
+    {
+      "id": "workTaskRequiresActiveProject",
+      "description": "Toda tarefa deve ser vinculada a uma obra ativa."
+    },
+    {
+      "id": "workTaskRequiresAssigneeAndDueDate",
+      "description": "Toda tarefa deve ter um trabalhador responsável e um prazo de conclusão."
+    }
+  ],
+  "rulesHash": "sha256:bca2794185272cf67b9c4fc198aa6cb88cd6ffa37c4c55d52b07702e5acadd99",
+  "approvedBy": "human",
+  "approvedAt": "2026-08-17T19:31:13.196Z",
+  "realization": {
+    "status": "pending",
+    "compiledFromRulesHash": "sha256:bca2794185272cf67b9c4fc198aa6cb88cd6ffa37c4c55d52b07702e5acadd99"
+  }
+} as const satisfies Ns4RulesArtifact;
+
+export type BuildFlowFsmRulesType = typeof buildFlowFsmRules;
+
+export default buildFlowFsmRules;

@@ -1,0 +1,127 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateProjectOutput, QryInspectProjectTimeLogsOutput, QryInspectProjectMaterialUsagesOutput, QryInspectProjectExecutionOverviewOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/monitorDailyProjectRecords.js';
+export type { QryLocateProjectInput, QryLocateProjectOutput, QryInspectProjectTimeLogsInput, QryInspectProjectTimeLogsOutput, QryInspectProjectMaterialUsagesInput, QryInspectProjectMaterialUsagesOutput, QryInspectProjectExecutionOverviewInput, QryInspectProjectExecutionOverviewOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/monitorDailyProjectRecords.js';
+declare const message_pt: {
+    'section.monitorDailyProjectRecords.project-selection.title': string;
+    'organism.monitorDailyProjectRecords.qryLocateProject.title': string;
+    'intent.monitorDailyProjectRecords.qryLocateProject.list.title': string;
+    'intent.monitorDailyProjectRecords.qryLocateProject.list.empty': string;
+    'intent.monitorDailyProjectRecords.qryLocateProject.list.column.projectId.label': string;
+    'intent.monitorDailyProjectRecords.qryLocateProject.list.column.clientId.label': string;
+    'intent.monitorDailyProjectRecords.qryLocateProject.list.column.name.label': string;
+    'intent.monitorDailyProjectRecords.qryLocateProject.list.column.address.label': string;
+    'intent.monitorDailyProjectRecords.qryLocateProject.list.column.status.label': string;
+    'intent.monitorDailyProjectRecords.qryLocateProject.list.column.authorizedBudget.label': string;
+    'intent.monitorDailyProjectRecords.qryLocateProject.list.column.plannedStartDate.label': string;
+    'intent.monitorDailyProjectRecords.qryLocateProject.list.column.plannedEndDate.label': string;
+    'section.monitorDailyProjectRecords.execution-monitoring.title': string;
+    'organism.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.title': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.title': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.empty': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.projectId.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.projectName.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.projectStatus.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.workTaskIds.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.taskSummary.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.upcomingCommitments.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.timeLogIds.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.totalLoggedHours.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.materialUsageIds.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.materialUsageSummary.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.actualLaborCost.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.actualMaterialCost.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.actualCost.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.budgetAmount.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.costVariance.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.changeOrderIds.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.changeOrderImpactSummary.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectExecutionOverview.list.column.calculatedAt.label': string;
+    'organism.monitorDailyProjectRecords.qryInspectProjectTimeLogs.title': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.title': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.empty': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.timeLogId.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.status.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.workTaskId.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.fieldWorkerId.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.workDate.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.hoursWorked.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectTimeLogs.list.column.hourlyLaborCost.label': string;
+    'organism.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.title': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.title': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.empty': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.materialUsageId.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.status.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.projectId.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.inventoryItemId.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.inventoryBalanceId.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.quantity.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.usageDescription.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.consumedOn.label': string;
+    'intent.monitorDailyProjectRecords.qryInspectProjectMaterialUsages.list.column.unitCostBasis.label': string;
+    'section.monitorDailyProjectRecords.project-monitoring.title': string;
+    'section.monitorDailyProjectRecords.project-selection-and-overview.title': string;
+    'section.monitorDailyProjectRecords.daily-records-inspection.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmMonitorDailyProjectRecordsBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateProjectState — actionStatus, values: idle|loading|success|error */
+    qryLocateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateProjectData — queryResult, outputShape: array */
+    qryLocateProjectData: QryLocateProjectOutput[];
+    /** state qryInspectProjectTimeLogsState — actionStatus, values: idle|loading|success|error */
+    qryInspectProjectTimeLogsState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectProjectTimeLogsTimeLogTimeLogId — input */
+    qryInspectProjectTimeLogsTimeLogTimeLogId: string;
+    /** state qryInspectProjectTimeLogsData — queryResult, outputShape: object */
+    qryInspectProjectTimeLogsData: QryInspectProjectTimeLogsOutput | null;
+    /** state qryInspectProjectMaterialUsagesState — actionStatus, values: idle|loading|success|error */
+    qryInspectProjectMaterialUsagesState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectProjectMaterialUsagesMaterialUsageMaterialUsageId — input */
+    qryInspectProjectMaterialUsagesMaterialUsageMaterialUsageId: string;
+    /** state qryInspectProjectMaterialUsagesData — queryResult, outputShape: object */
+    qryInspectProjectMaterialUsagesData: QryInspectProjectMaterialUsagesOutput | null;
+    /** state qryInspectProjectExecutionOverviewState — actionStatus, values: idle|loading|success|error */
+    qryInspectProjectExecutionOverviewState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId — input */
+    qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId: string;
+    /** state qryInspectProjectExecutionOverviewData — queryResult, outputShape: object */
+    qryInspectProjectExecutionOverviewData: QryInspectProjectExecutionOverviewOutput | null;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    /** action qryLocateProject (query) — route buildFlowFsm.monitorDailyProjectRecords.qryLocateProject; inputs: (none); writes ui.monitorDailyProjectRecords.data.qryLocateProject; status ui.monitorDailyProjectRecords.action.qryLocateProject.status */
+    loadQryLocateProject(): Promise<void>;
+    /** handler for action qryLocateProject — bind UI events here */
+    handleQryLocateProjectClick(event?: Event): void;
+    /** action qryInspectProjectTimeLogs (query) — route buildFlowFsm.monitorDailyProjectRecords.qryInspectProjectTimeLogs; inputs: timeLogTimeLogId; writes ui.monitorDailyProjectRecords.data.qryInspectProjectTimeLogs; status ui.monitorDailyProjectRecords.action.qryInspectProjectTimeLogs.status */
+    loadQryInspectProjectTimeLogs(): Promise<void>;
+    /** handler for action qryInspectProjectTimeLogs — bind UI events here */
+    handleQryInspectProjectTimeLogsClick(event?: Event): void;
+    /** action qryInspectProjectMaterialUsages (query) — route buildFlowFsm.monitorDailyProjectRecords.qryInspectProjectMaterialUsages; inputs: materialUsageMaterialUsageId; writes ui.monitorDailyProjectRecords.data.qryInspectProjectMaterialUsages; status ui.monitorDailyProjectRecords.action.qryInspectProjectMaterialUsages.status */
+    loadQryInspectProjectMaterialUsages(): Promise<void>;
+    /** handler for action qryInspectProjectMaterialUsages — bind UI events here */
+    handleQryInspectProjectMaterialUsagesClick(event?: Event): void;
+    /** action qryInspectProjectExecutionOverview (query) — route buildFlowFsm.monitorDailyProjectRecords.qryInspectProjectExecutionOverview; inputs: projectExecutionOverviewProjectId; writes ui.monitorDailyProjectRecords.data.qryInspectProjectExecutionOverview; status ui.monitorDailyProjectRecords.action.qryInspectProjectExecutionOverview.status */
+    loadQryInspectProjectExecutionOverview(): Promise<void>;
+    /** handler for action qryInspectProjectExecutionOverview — bind UI events here */
+    handleQryInspectProjectExecutionOverviewClick(event?: Event): void;
+    /** setter for state ui.monitorDailyProjectRecords.input.qryInspectProjectTimeLogs.timeLogTimeLogId */
+    setQryInspectProjectTimeLogsTimeLogTimeLogId(value: string): void;
+    /** handler for action set.qryInspectProjectTimeLogsTimeLogTimeLogId — bind UI events here */
+    handleQryInspectProjectTimeLogsTimeLogTimeLogIdChange(event: Event): void;
+    /** setter for state ui.monitorDailyProjectRecords.input.qryInspectProjectMaterialUsages.materialUsageMaterialUsageId */
+    setQryInspectProjectMaterialUsagesMaterialUsageMaterialUsageId(value: string): void;
+    /** handler for action set.qryInspectProjectMaterialUsagesMaterialUsageMaterialUsageId — bind UI events here */
+    handleQryInspectProjectMaterialUsagesMaterialUsageMaterialUsageIdChange(event: Event): void;
+    /** setter for state ui.monitorDailyProjectRecords.input.qryInspectProjectExecutionOverview.projectExecutionOverviewProjectId */
+    setQryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId(value: string): void;
+    /** handler for action set.qryInspectProjectExecutionOverviewProjectExecutionOverviewProjectId — bind UI events here */
+    handleQryInspectProjectExecutionOverviewProjectExecutionOverviewProjectIdChange(event: Event): void;
+}

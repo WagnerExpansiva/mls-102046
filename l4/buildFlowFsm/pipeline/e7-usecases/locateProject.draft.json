@@ -1,0 +1,31 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "locateProject",
+  "title": "Selecionar a obra que exige atenção",
+  "kind": "query",
+  "compiledFrom": [
+    "assignWorkTask.locateProject",
+    "consultApprovedProjectChangeOrders.locateProject",
+    "consultClientProjectUpdates.locateProject",
+    "generateAndPublishProjectStatusReport.locateProject",
+    "issueProjectInvoice.locateProject",
+    "monitorDailyProjectRecords.locateProject",
+    "recordProjectMaterialUsage.locateProject",
+    "reviewProjectPortfolio.locateProject",
+    "submitChangeOrder.locateProject"
+  ],
+  "description": "Seleciona uma obra e a estabelece como contexto para comportamentos subsequentes relacionados à sua execução, acompanhamento, alterações, faturamento ou comunicação.",
+  "contexts": {
+    "requires": [],
+    "provides": [
+      "selectedProject"
+    ]
+  },
+  "entityRefs": [
+    "Project"
+  ],
+  "useRules": [],
+  "transitions": []
+}

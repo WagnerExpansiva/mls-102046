@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "2026-08-14-ns4-e8-validation-report-v2",
+  "moduleName": "buildFlowFsm",
+  "attempts": [
+    {
+      "round": 1,
+      "checkedAt": "2026-08-17T19:33:53.444Z",
+      "workspaces": 34,
+      "blocking": 0,
+      "issues": [],
+      "systemDecisions": [
+        {
+          "decisionId": "catalogueAudienceChangeOrderDecision",
+          "stage": "e8-workspaces",
+          "question": "Nenhuma jornada opera Decisão sobre ordem de mudança: quem mantém esse cadastro?",
+          "chosen": "internalProfiles",
+          "alternatives": [
+            "internalProfiles",
+            "restrictToNamedProfile"
+          ],
+          "decidedBy": "system",
+          "findingRef": "NS4_E8_CATALOGUE_AUDIENCE:changeOrderDecisionCatalogue",
+          "changeHint": "Adicione no E3 uma autoridade sobre Decisão sobre ordem de mudança para restringir esse cadastro a um perfil específico."
+        },
+        {
+          "decisionId": "catalogueAudienceClientPortalAccess",
+          "stage": "e8-workspaces",
+          "question": "Nenhuma jornada opera Vínculo de acesso do cliente: quem mantém esse cadastro?",
+          "chosen": "internalProfiles",
+          "alternatives": [
+            "internalProfiles",
+            "restrictToNamedProfile"
+          ],
+          "decidedBy": "system",
+          "findingRef": "NS4_E8_CATALOGUE_AUDIENCE:clientPortalAccessCatalogue",
+          "changeHint": "Adicione no E3 uma autoridade sobre Vínculo de acesso do cliente para restringir esse cadastro a um perfil específico."
+        },
+        {
+          "decisionId": "catalogueAudienceInventoryBalance",
+          "stage": "e8-workspaces",
+          "question": "Nenhuma jornada opera Saldo de estoque: quem mantém esse cadastro?",
+          "chosen": "internalProfiles",
+          "alternatives": [
+            "internalProfiles",
+            "restrictToNamedProfile"
+          ],
+          "decidedBy": "system",
+          "findingRef": "NS4_E8_CATALOGUE_AUDIENCE:inventoryBalanceCatalogue",
+          "changeHint": "Adicione no E3 uma autoridade sobre Saldo de estoque para restringir esse cadastro a um perfil específico."
+        },
+        {
+          "decisionId": "catalogueAudienceInvoiceChangeOrder",
+          "stage": "e8-workspaces",
+          "question": "Nenhuma jornada opera Aplicação de ordem de mudança na fatura: quem mantém esse cadastro?",
+          "chosen": "internalProfiles",
+          "alternatives": [
+            "internalProfiles",
+            "restrictToNamedProfile"
+          ],
+          "decidedBy": "system",
+          "findingRef": "NS4_E8_CATALOGUE_AUDIENCE:invoiceChangeOrderCatalogue",
+          "changeHint": "Adicione no E3 uma autoridade sobre Aplicação de ordem de mudança na fatura para restringir esse cadastro a um perfil específico."
+        },
+        {
+          "decisionId": "catalogueAudienceProjectCoordinationAssignment",
+          "stage": "e8-workspaces",
+          "question": "Nenhuma jornada opera Atribuição de coordenação da obra: quem mantém esse cadastro?",
+          "chosen": "internalProfiles",
+          "alternatives": [
+            "internalProfiles",
+            "restrictToNamedProfile"
+          ],
+          "decidedBy": "system",
+          "findingRef": "NS4_E8_CATALOGUE_AUDIENCE:projectCoordinationAssignmentCatalogue",
+          "changeHint": "Adicione no E3 uma autoridade sobre Atribuição de coordenação da obra para restringir esse cadastro a um perfil específico."
+        },
+        {
+          "decisionId": "hubCompositionProjectHub",
+          "stage": "e8-workspaces",
+          "question": "A composição proposta para o painel de Obra não respeitou o catálogo; usar a ordem padrão?",
+          "chosen": "keepDerivedComposition",
+          "alternatives": [
+            "keepDerivedComposition",
+            "reviewDashboardComposition"
+          ],
+          "decidedBy": "system",
+          "findingRef": "NS4_E8_HUB_COMPOSITION:projectHub",
+          "changeHint": "Revisar a ordem e os destaques do painel de Obra no próximo round."
+        }
+      ]
+    }
+  ],
+  "finalStatus": "passed",
+  "updatedAt": "2026-08-17T19:33:53.444Z"
+}

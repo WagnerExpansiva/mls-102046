@@ -1,0 +1,238 @@
+{
+  "last_updated": 1787013566197,
+  "last_update_log": "Task failed at 2026-08-18T00:39:26.121Z | reason: INTEGRITY FAILED (12 finding(s) are defs-level (not repairable by re-materialization)): 52 finding(s): controller assignworktask -> usecase export 'locateProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller consultapprovedprojectchangeorders -> usecase export 'locateProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller consultclientprojectupdates -> usecase export 'locateProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller generateandpublishprojectstatusreport -> usecase export 'locateProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller issueprojectinvoice -> usecase export 'locateProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller monitordailyprojectrecords -> usecase export 'locateProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller projectcatalogue -> usecase export 'createProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller projectcatalogue -> usecase export 'updateProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller recordprojectmaterialusage -> usecase export 'locateProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller recordprojectmaterialusage -> usecase export 'locateInventoryItem' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller reviewprojectportfolio -> usecase export 'locateProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); controller submitchangeorder -> usecase export 'locateProject' not found (has: approveChangeOrderDecision, createChangeOrderDecision, createChangeOrder, createClientPortalAccess, createClient, createInventoryBalance, createInventoryItem, createInvoiceChangeOrder, createInvoice, createMaterialUsage, createProjectCoordinationAssignment, createStatusReport, createTimeLog, createWorkTask, declineChangeOrderDecision, deleteChangeOrderDecision, deleteChangeOrder, deleteClientPortalAccess, deleteClient, deleteInventoryBalance); compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/consultApprovedProjectChangeOrders.ts: TS2306: File 'file://server/_102046_/l1/buildFlowFsm/layer_2_application/usecases/locateProject.ts' is not a module.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/consultApprovedProjectChangeOrders.ts: TS7006: Parameter 'row' implicitly has an 'any' type.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/consultClientProjectUpdates.ts: TS2306: File 'file://server/_102046_/l1/buildFlowFsm/layer_2_application/usecases/locateProject.ts' is not a module.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/consultClientProjectUpdates.ts: TS7006: Parameter 'row' implicitly has an 'any' type.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/generateAndPublishProjectStatusReport.ts: TS2306: File 'file://server/_102046_/l1/buildFlowFsm/layer_2_application/usecases/locateProject.ts' is not a module.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/generateAndPublishProjectStatusReport.ts: TS7006: Parameter 'row' implicitly has an 'any' type.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/monitorDailyProjectRecords.ts: TS2306: File 'file://server/_102046_/l1/buildFlowFsm/layer_2_application/usecases/locateProject.ts' is not a module.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/monitorDailyProjectRecords.ts: TS7006: Parameter 'row' implicitly has an 'any' type.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/recordProjectMaterialUsage.ts: TS2306: File 'file://server/_102046_/l1/buildFlowFsm/layer_2_application/usecases/locateProject.ts' is not a module.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/recordProjectMaterialUsage.ts: TS2306: File 'file://server/_102046_/l1/buildFlowFsm/layer_2_application/usecases/locateInventoryItem.ts' is not a module.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/reviewProjectPortfolio.ts: TS2306: File 'file://server/_102046_/l1/buildFlowFsm/layer_2_application/usecases/locateProject.ts' is not a module.; compiler -> buildFlowFsm/layer_1_external/adapters/http/controllers/reviewProjectPortfolio.ts: TS7006: Parameter 'row' implicitly has an 'any' type.; compiler -> buildFlowFsm/layer_1_external/adapters/persistence/changeOrderDecisionRepositoryAdapter.ts: TS7006: Parameter 'decision' implicitly has an 'any' type.; compiler -> buildFlowFsm/layer_1_external/adapters/persistence/changeOrderRepositoryAdapter.ts: TS7006: Parameter 'order' implicitly has an 'any' type.; compiler -> buildFlowFsm/layer_1_external/adapters/persistence/clientBillingSummaryRepositoryAdapter.ts: TS7006: Parameter 'candidate' implicitly has an 'any' type.; compiler -> buildFlowFsm/layer_1_external/adapters/persistence/clientBillingSummaryRepositoryAdapter.ts: TS7006: Parameter 'row' implicitly has an 'any' type.; compiler -> buildFlowFsm/layer_1_external/adapters/persistence/fieldCoordinatorRepositoryAdapter.ts: TS7006: Parameter 'candidate' implicitly has an 'any' type.; compiler -> buildFlowFsm/layer_1_external/adapters/persistence/fieldCoordinatorRepositoryAdapter.ts: TS7006: Parameter 'fieldCoordinator' implicitly has an 'any' type.",
+  "status": "failed",
+  "team": "unassigned",
+  "source": "",
+  "owner": "20250828124716.1000",
+  "PK": "20260817235347.1001",
+  "messageid_created": "20260611235058.1000/20260817235347.1000",
+  "iaCompressed": {
+    "queueBackEnd": [],
+    "queueFrontEnd": [],
+    "longMemory": {
+      "actualDate": "2026-08-17",
+      "userName": "Wagner",
+      "taskName": "agentChangeBackend",
+      "flowName": "agentChangeBackend",
+      "version": "1",
+      "cliCommand": "run",
+      "targetModule": "buildFlowFsm"
+    },
+    "nextSteps": [
+      {
+        "stepId": 1,
+        "type": "agent",
+        "agentName": "agentChangeBackend",
+        "nextSteps": [
+          {
+            "type": "agent",
+            "stepId": 2,
+            "status": "completed",
+            "stepTitle": "Preparação",
+            "planning": {
+              "planId": "cb-phase-preparation",
+              "dependsOn": [],
+              "executionMode": "sequential",
+              "executionHost": "client"
+            },
+            "agentName": "agentCbPhase",
+            "prompt": "{\"planId\":\"cb-phase-preparation\",\"first\":{\"planId\":\"cb-scan\",\"agentName\":\"agentCbScanCreateOwners\",\"stepTitle\":\"Scan todoBackend (status = toCreate)\",\"args\":{\"planId\":\"cb-scan\"}}}",
+            "rags": [],
+            "interaction": null,
+            "nextSteps": [
+              {
+                "type": "agent",
+                "stepId": 3,
+                "status": "completed",
+                "stepTitle": "Scan todoBackend (status = toCreate)",
+                "planning": {
+                  "planId": "cb-scan",
+                  "dependsOn": [],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbScanCreateOwners",
+                "prompt": "{\"planId\":\"cb-scan\"}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              },
+              {
+                "type": "agent",
+                "stepId": 4,
+                "status": "completed",
+                "stepTitle": "Materializar .ts desatualizados",
+                "planning": {
+                  "planId": "cb-materialize",
+                  "dependsOn": [
+                    "cb-scan"
+                  ],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbMaterialize",
+                "prompt": "{\"planId\":\"cb-materialize\"}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              },
+              {
+                "type": "agent",
+                "stepId": 5,
+                "status": "completed",
+                "stepTitle": "Validar integridade l1 antes dos seeds",
+                "planning": {
+                  "planId": "cb-validate-before-seeds",
+                  "dependsOn": [],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbValidateAll",
+                "prompt": "{\"planId\":\"cb-validate-before-seeds\",\"preSeeds\":true}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              }
+            ]
+          },
+          {
+            "type": "agent",
+            "stepId": 6,
+            "status": "completed",
+            "stepTitle": "Seeds",
+            "planning": {
+              "planId": "cb-phase-seeds",
+              "dependsOn": [
+                "cb-validate-before-seeds"
+              ],
+              "executionMode": "sequential",
+              "executionHost": "client"
+            },
+            "agentName": "agentCbPhase",
+            "prompt": "{\"planId\":\"cb-phase-seeds\",\"first\":{\"planId\":\"cb-gen-seeds\",\"agentName\":\"agentCbSeeds\",\"stepTitle\":\"Gerar seeds\",\"args\":{\"planId\":\"cb-gen-seeds\"}}}",
+            "rags": [],
+            "interaction": null,
+            "nextSteps": [
+              {
+                "type": "agent",
+                "stepId": 7,
+                "status": "completed",
+                "stepTitle": "Gerar seeds",
+                "planning": {
+                  "planId": "cb-gen-seeds",
+                  "dependsOn": [],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbSeeds",
+                "prompt": "{\"planId\":\"cb-gen-seeds\"}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              },
+              {
+                "type": "agent",
+                "stepId": 8,
+                "status": "completed",
+                "stepTitle": "Gerar assets de seeds",
+                "planning": {
+                  "planId": "cb-seed-assets",
+                  "dependsOn": [
+                    "cb-gen-seeds"
+                  ],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbSeedAssets",
+                "prompt": "{\"planId\":\"cb-seed-assets\"}",
+                "rags": [],
+                "onFailure": "continue",
+                "interaction": null,
+                "nextSteps": []
+              }
+            ]
+          },
+          {
+            "type": "agent",
+            "stepId": 9,
+            "status": "in_progress",
+            "stepTitle": "Finalização",
+            "planning": {
+              "planId": "cb-phase-finalization",
+              "dependsOn": [
+                "cb-seed-assets"
+              ],
+              "executionMode": "sequential",
+              "executionHost": "client"
+            },
+            "agentName": "agentCbPhase",
+            "prompt": "{\"planId\":\"cb-phase-finalization\",\"first\":{\"planId\":\"cb-register\",\"agentName\":\"agentCbRegister\",\"stepTitle\":\"Registrar backend\",\"args\":{\"planId\":\"cb-register\"}}}",
+            "rags": [],
+            "interaction": null,
+            "nextSteps": [
+              {
+                "type": "agent",
+                "stepId": 10,
+                "status": "completed",
+                "stepTitle": "Registrar backend",
+                "planning": {
+                  "planId": "cb-register",
+                  "dependsOn": [],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbRegister",
+                "prompt": "{\"planId\":\"cb-register\"}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              },
+              {
+                "type": "agent",
+                "stepId": 11,
+                "status": "failed",
+                "stepTitle": "Validar artefatos l1",
+                "planning": {
+                  "planId": "cb-validate-all",
+                  "dependsOn": [
+                    "cb-register"
+                  ],
+                  "executionMode": "sequential",
+                  "executionHost": "client"
+                },
+                "agentName": "agentCbValidateAll",
+                "prompt": "{\"planId\":\"cb-validate-all\"}",
+                "rags": [],
+                "interaction": null,
+                "nextSteps": []
+              }
+            ]
+          }
+        ],
+        "status": "in_progress",
+        "rags": [],
+        "interaction": {
+          "input": [
+            {
+              "type": "system",
+              "content": "agentChangeBackend deterministic bootstrap. The root LLM is skipped by AgentIntentAddMessageAI.skipRootLLM."
+            },
+            {
+              "type": "human",
+              "content": "agentChangeBackend"
+            }
+          ],
+          "cost": 0,
+          "trace": [
+            "Root LLM skipped by AgentIntentAddMessageAI.skipRootLLM",
+            "Removing pooling hook after 11 executions, task status: failed"
+          ],
+          "payload": null
+        }
+      }
+    ]
+  },
+  "title": "buildFlowFsm - backend",
+  "SK": "metadata"
+}

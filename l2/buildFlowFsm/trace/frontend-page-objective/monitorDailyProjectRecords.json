@@ -1,0 +1,70 @@
+{
+  "savedAt": "2026-08-18T14:53:13.178Z",
+  "pageId": "monitorDailyProjectRecords",
+  "genome": "page21",
+  "objective": {
+    "actor": "Responsável pela execução ou acompanhamento de uma obra",
+    "jobToBeDone": "Selecionar a obra relevante e rapidamente entender seu andamento diário, horas registradas, consumo de materiais e desvios de custo ou prazo.",
+    "primaryDecision": "Decidir se a obra selecionada exige atenção imediata e em qual aspecto operacional investigar primeiro.",
+    "decisiveInfo": [
+      "projectId",
+      "name",
+      "address",
+      "status",
+      "plannedStartDate",
+      "plannedEndDate",
+      "taskSummary",
+      "upcomingCommitments",
+      "totalLoggedHours",
+      "materialUsageSummary",
+      "actualLaborCost",
+      "actualMaterialCost",
+      "actualCost",
+      "budgetAmount",
+      "costVariance",
+      "workDate",
+      "hoursWorked",
+      "hourlyLaborCost",
+      "quantity",
+      "usageDescription",
+      "consumedOn",
+      "unitCostBasis"
+    ],
+    "usageFrequency": "Recorrente durante o acompanhamento operacional diário, com consultas rápidas e leitura comparativa da execução.",
+    "informationHierarchy": [
+      "Obra selecionada e seu status",
+      "Resumo de andamento, registros, próximos compromissos e custos",
+      "Desvio entre custo real e orçamento",
+      "Registros diários de horas e custo de mão de obra",
+      "Consumos de materiais, quantidades e custos",
+      "Metadados técnicos e identificadores somente quando necessários para contexto"
+    ],
+    "successCriteria": "O usuário identifica a obra correta sem digitar IDs, compreende sua situação em poucos segundos e consegue aprofundar horas ou materiais sem navegar por formulários CRUD ou perder o contexto.",
+    "antiPatterns": [
+      "Empilhar uma seção independente para cada consulta sem um contexto de obra compartilhado",
+      "Exigir digitação manual de projectId, timeLogId ou materialUsageId",
+      "Expor status ou datas calculadas como campos editáveis",
+      "Usar um seletor livre de status em uma página somente de consulta",
+      "Priorizar detalhes técnicos antes do resumo de execução",
+      "Adicionar ações de criação, edição ou exclusão inexistentes no contrato"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar a obra que exige acompanhamento",
+        "presentation": "surface-selection with contextual master-detail"
+      },
+      {
+        "action": "Analisar a execução consolidada",
+        "presentation": "summary-first overview panel"
+      },
+      {
+        "action": "Consultar registros diários de horas",
+        "presentation": "contextual-detail drill-in"
+      },
+      {
+        "action": "Consultar consumos de materiais",
+        "presentation": "contextual-detail drill-in"
+      }
+    ]
+  }
+}

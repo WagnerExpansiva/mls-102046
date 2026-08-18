@@ -1,0 +1,188 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateProjectOutput, QryLocateInventoryItemOutput, CmdCreateMaterialUsageOutput, CmdHandoffMaterialUsageToFieldCoordinatorOutput, QryInventoryBalancePickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/recordProjectMaterialUsage.js';
+export type { QryLocateProjectInput, QryLocateProjectOutput, QryLocateInventoryItemInput, QryLocateInventoryItemOutput, CmdCreateMaterialUsageInput, CmdCreateMaterialUsageOutput, CmdHandoffMaterialUsageToFieldCoordinatorInput, CmdHandoffMaterialUsageToFieldCoordinatorOutput, QryInventoryBalancePickerInput, QryInventoryBalancePickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/recordProjectMaterialUsage.js';
+declare const message_pt: {
+    'section.recordProjectMaterialUsage.locateProject.title': string;
+    'organism.recordProjectMaterialUsage.qryLocateProject.title': string;
+    'intent.recordProjectMaterialUsage.qryLocateProject.list.title': string;
+    'intent.recordProjectMaterialUsage.qryLocateProject.list.empty': string;
+    'intent.recordProjectMaterialUsage.qryLocateProject.list.column.projectId.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateProject.list.column.clientId.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateProject.list.column.name.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateProject.list.column.address.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateProject.list.column.status.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateProject.list.column.authorizedBudget.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateProject.list.column.plannedStartDate.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateProject.list.column.plannedEndDate.label': string;
+    'section.recordProjectMaterialUsage.locateInventoryItem.title': string;
+    'organism.recordProjectMaterialUsage.qryLocateInventoryItem.title': string;
+    'intent.recordProjectMaterialUsage.qryLocateInventoryItem.list.title': string;
+    'intent.recordProjectMaterialUsage.qryLocateInventoryItem.list.empty': string;
+    'intent.recordProjectMaterialUsage.qryLocateInventoryItem.list.column.inventoryItemId.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateInventoryItem.list.column.name.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateInventoryItem.list.column.description.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateInventoryItem.list.column.unitOfMeasure.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateInventoryItem.list.column.referenceUnitCost.label': string;
+    'intent.recordProjectMaterialUsage.qryLocateInventoryItem.list.column.status.label': string;
+    'section.recordProjectMaterialUsage.createMaterialUsage.title': string;
+    'organism.recordProjectMaterialUsage.qryInventoryBalancePicker.title': string;
+    'intent.recordProjectMaterialUsage.qryInventoryBalancePicker.list.title': string;
+    'intent.recordProjectMaterialUsage.qryInventoryBalancePicker.list.empty': string;
+    'intent.recordProjectMaterialUsage.qryInventoryBalancePicker.list.column.inventoryBalanceId.label': string;
+    'intent.recordProjectMaterialUsage.qryInventoryBalancePicker.list.column.inventoryItemId.label': string;
+    'intent.recordProjectMaterialUsage.qryInventoryBalancePicker.list.column.physicalQuantity.label': string;
+    'intent.recordProjectMaterialUsage.qryInventoryBalancePicker.list.column.applicableUnitCost.label': string;
+    'intent.recordProjectMaterialUsage.qryInventoryBalancePicker.list.column.status.label': string;
+    'organism.recordProjectMaterialUsage.cmdCreateMaterialUsage.title': string;
+    'intent.recordProjectMaterialUsage.cmdCreateMaterialUsage.form.title': string;
+    'intent.recordProjectMaterialUsage.cmdCreateMaterialUsage.form.action.cmdCreateMaterialUsage': string;
+    'intent.recordProjectMaterialUsage.cmdCreateMaterialUsage.form.field.quantity.label': string;
+    'intent.recordProjectMaterialUsage.cmdCreateMaterialUsage.form.field.usageDescription.label': string;
+    'intent.recordProjectMaterialUsage.cmdCreateMaterialUsage.form.field.consumedOn.label': string;
+    'intent.recordProjectMaterialUsage.cmdCreateMaterialUsage.form.field.unitCostBasis.label': string;
+    'section.recordProjectMaterialUsage.handoffMaterialUsageToFieldCoordinator.title': string;
+    'organism.recordProjectMaterialUsage.cmdHandoffMaterialUsageToFieldCoordinator.title': string;
+    'intent.recordProjectMaterialUsage.cmdHandoffMaterialUsageToFieldCoordinator.form.title': string;
+    'intent.recordProjectMaterialUsage.cmdHandoffMaterialUsageToFieldCoordinator.form.action.cmdHandoffMaterialUsageToFieldCoordinator': string;
+    'intent.recordProjectMaterialUsage.cmdHandoffMaterialUsageToFieldCoordinator.form.field.quantity.label': string;
+    'intent.recordProjectMaterialUsage.cmdHandoffMaterialUsageToFieldCoordinator.form.field.usageDescription.label': string;
+    'intent.recordProjectMaterialUsage.cmdHandoffMaterialUsageToFieldCoordinator.form.field.consumedOn.label': string;
+    'intent.recordProjectMaterialUsage.cmdHandoffMaterialUsageToFieldCoordinator.form.field.unitCostBasis.label': string;
+    'action.cmdCreateMaterialUsage.success': string;
+    'action.cmdCreateMaterialUsage.error': string;
+    'action.cmdHandoffMaterialUsageToFieldCoordinator.success': string;
+    'action.cmdHandoffMaterialUsageToFieldCoordinator.error': string;
+    'section.recordProjectMaterialUsage.usageWorkspace.title': string;
+    'section.recordProjectMaterialUsage.materialUsageWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmRecordProjectMaterialUsageBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateProjectState — actionStatus, values: idle|loading|success|error */
+    qryLocateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateProjectData — queryResult, outputShape: array */
+    qryLocateProjectData: QryLocateProjectOutput[];
+    /** state qryLocateInventoryItemState — actionStatus, values: idle|loading|success|error */
+    qryLocateInventoryItemState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateInventoryItemData — queryResult, outputShape: array */
+    qryLocateInventoryItemData: QryLocateInventoryItemOutput[];
+    /** state cmdCreateMaterialUsageState — actionStatus, values: idle|loading|success|error */
+    cmdCreateMaterialUsageState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateMaterialUsageInventoryBalanceInventoryBalanceId — input */
+    cmdCreateMaterialUsageInventoryBalanceInventoryBalanceId: string;
+    /** state cmdCreateMaterialUsageInventoryItemInventoryItemId — input */
+    cmdCreateMaterialUsageInventoryItemInventoryItemId: string;
+    /** state cmdCreateMaterialUsageProjectProjectId — input */
+    cmdCreateMaterialUsageProjectProjectId: string;
+    /** state cmdCreateMaterialUsageQuantity — input */
+    cmdCreateMaterialUsageQuantity: string;
+    /** state cmdCreateMaterialUsageUsageDescription — input */
+    cmdCreateMaterialUsageUsageDescription: string;
+    /** state cmdCreateMaterialUsageConsumedOn — input */
+    cmdCreateMaterialUsageConsumedOn: string;
+    /** state cmdCreateMaterialUsageUnitCostBasis — input */
+    cmdCreateMaterialUsageUnitCostBasis: string;
+    /** state cmdCreateMaterialUsageOutput — commandOutput */
+    cmdCreateMaterialUsageOutput: CmdCreateMaterialUsageOutput | null;
+    /** state cmdCreateMaterialUsageError — actionError */
+    cmdCreateMaterialUsageError: string;
+    /** state cmdHandoffMaterialUsageToFieldCoordinatorState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffMaterialUsageToFieldCoordinatorState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageMaterialUsageId — input */
+    cmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageMaterialUsageId: string;
+    /** state cmdHandoffMaterialUsageToFieldCoordinatorQuantity — input */
+    cmdHandoffMaterialUsageToFieldCoordinatorQuantity: string;
+    /** state cmdHandoffMaterialUsageToFieldCoordinatorUsageDescription — input */
+    cmdHandoffMaterialUsageToFieldCoordinatorUsageDescription: string;
+    /** state cmdHandoffMaterialUsageToFieldCoordinatorConsumedOn — input */
+    cmdHandoffMaterialUsageToFieldCoordinatorConsumedOn: string;
+    /** state cmdHandoffMaterialUsageToFieldCoordinatorUnitCostBasis — input */
+    cmdHandoffMaterialUsageToFieldCoordinatorUnitCostBasis: string;
+    /** state cmdHandoffMaterialUsageToFieldCoordinatorOutput — commandOutput */
+    cmdHandoffMaterialUsageToFieldCoordinatorOutput: CmdHandoffMaterialUsageToFieldCoordinatorOutput | null;
+    /** state cmdHandoffMaterialUsageToFieldCoordinatorError — actionError */
+    cmdHandoffMaterialUsageToFieldCoordinatorError: string;
+    /** state qryInventoryBalancePickerState — actionStatus, values: idle|loading|success|error */
+    qryInventoryBalancePickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInventoryBalancePickerData — queryResult, outputShape: array */
+    qryInventoryBalancePickerData: QryInventoryBalancePickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryLocateProject (query) — route buildFlowFsm.recordProjectMaterialUsage.qryLocateProject; inputs: (none); writes ui.recordProjectMaterialUsage.data.qryLocateProject; status ui.recordProjectMaterialUsage.action.qryLocateProject.status */
+    loadQryLocateProject(): Promise<void>;
+    /** handler for action qryLocateProject — bind UI events here */
+    handleQryLocateProjectClick(event?: Event): void;
+    /** action qryLocateInventoryItem (query) — route buildFlowFsm.recordProjectMaterialUsage.qryLocateInventoryItem; inputs: (none); writes ui.recordProjectMaterialUsage.data.qryLocateInventoryItem; status ui.recordProjectMaterialUsage.action.qryLocateInventoryItem.status */
+    loadQryLocateInventoryItem(): Promise<void>;
+    /** handler for action qryLocateInventoryItem — bind UI events here */
+    handleQryLocateInventoryItemClick(event?: Event): void;
+    /** action cmdCreateMaterialUsage (command) — route buildFlowFsm.recordProjectMaterialUsage.cmdCreateMaterialUsage; inputs: inventoryBalanceInventoryBalanceId, inventoryItemInventoryItemId, projectProjectId, quantity, usageDescription, consumedOn, unitCostBasis; writes ui.recordProjectMaterialUsage.output.cmdCreateMaterialUsage; status ui.recordProjectMaterialUsage.action.cmdCreateMaterialUsage.status; feedback keys action.cmdCreateMaterialUsage.success / action.cmdCreateMaterialUsage.error */
+    cmdCreateMaterialUsage(): Promise<void>;
+    /** handler for action cmdCreateMaterialUsage — bind UI events here */
+    handleCmdCreateMaterialUsageClick(event?: Event): void;
+    /** action cmdHandoffMaterialUsageToFieldCoordinator (command) — route buildFlowFsm.recordProjectMaterialUsage.cmdHandoffMaterialUsageToFieldCoordinator; inputs: materialUsageMaterialUsageId, quantity, usageDescription, consumedOn, unitCostBasis; writes ui.recordProjectMaterialUsage.output.cmdHandoffMaterialUsageToFieldCoordinator; status ui.recordProjectMaterialUsage.action.cmdHandoffMaterialUsageToFieldCoordinator.status; feedback keys action.cmdHandoffMaterialUsageToFieldCoordinator.success / action.cmdHandoffMaterialUsageToFieldCoordinator.error */
+    cmdHandoffMaterialUsageToFieldCoordinator(): Promise<void>;
+    /** handler for action cmdHandoffMaterialUsageToFieldCoordinator — bind UI events here */
+    handleCmdHandoffMaterialUsageToFieldCoordinatorClick(event?: Event): void;
+    /** action qryInventoryBalancePicker (query) — route buildFlowFsm.recordProjectMaterialUsage.qryInventoryBalancePicker; inputs: (none); writes ui.recordProjectMaterialUsage.data.qryInventoryBalancePicker; status ui.recordProjectMaterialUsage.action.qryInventoryBalancePicker.status */
+    loadQryInventoryBalancePicker(): Promise<void>;
+    /** handler for action qryInventoryBalancePicker — bind UI events here */
+    handleQryInventoryBalancePickerClick(event?: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdCreateMaterialUsage.inventoryBalanceInventoryBalanceId */
+    setCmdCreateMaterialUsageInventoryBalanceInventoryBalanceId(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageInventoryBalanceInventoryBalanceId — bind UI events here */
+    handleCmdCreateMaterialUsageInventoryBalanceInventoryBalanceIdChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdCreateMaterialUsage.inventoryItemInventoryItemId */
+    setCmdCreateMaterialUsageInventoryItemInventoryItemId(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageInventoryItemInventoryItemId — bind UI events here */
+    handleCmdCreateMaterialUsageInventoryItemInventoryItemIdChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdCreateMaterialUsage.projectProjectId */
+    setCmdCreateMaterialUsageProjectProjectId(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageProjectProjectId — bind UI events here */
+    handleCmdCreateMaterialUsageProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdCreateMaterialUsage.quantity */
+    setCmdCreateMaterialUsageQuantity(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageQuantity — bind UI events here */
+    handleCmdCreateMaterialUsageQuantityChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdCreateMaterialUsage.usageDescription */
+    setCmdCreateMaterialUsageUsageDescription(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageUsageDescription — bind UI events here */
+    handleCmdCreateMaterialUsageUsageDescriptionChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdCreateMaterialUsage.consumedOn */
+    setCmdCreateMaterialUsageConsumedOn(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageConsumedOn — bind UI events here */
+    handleCmdCreateMaterialUsageConsumedOnChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdCreateMaterialUsage.unitCostBasis */
+    setCmdCreateMaterialUsageUnitCostBasis(value: string): void;
+    /** handler for action set.cmdCreateMaterialUsageUnitCostBasis — bind UI events here */
+    handleCmdCreateMaterialUsageUnitCostBasisChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdHandoffMaterialUsageToFieldCoordinator.materialUsageMaterialUsageId */
+    setCmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageMaterialUsageId(value: string): void;
+    /** handler for action set.cmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageMaterialUsageId — bind UI events here */
+    handleCmdHandoffMaterialUsageToFieldCoordinatorMaterialUsageMaterialUsageIdChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdHandoffMaterialUsageToFieldCoordinator.quantity */
+    setCmdHandoffMaterialUsageToFieldCoordinatorQuantity(value: string): void;
+    /** handler for action set.cmdHandoffMaterialUsageToFieldCoordinatorQuantity — bind UI events here */
+    handleCmdHandoffMaterialUsageToFieldCoordinatorQuantityChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdHandoffMaterialUsageToFieldCoordinator.usageDescription */
+    setCmdHandoffMaterialUsageToFieldCoordinatorUsageDescription(value: string): void;
+    /** handler for action set.cmdHandoffMaterialUsageToFieldCoordinatorUsageDescription — bind UI events here */
+    handleCmdHandoffMaterialUsageToFieldCoordinatorUsageDescriptionChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdHandoffMaterialUsageToFieldCoordinator.consumedOn */
+    setCmdHandoffMaterialUsageToFieldCoordinatorConsumedOn(value: string): void;
+    /** handler for action set.cmdHandoffMaterialUsageToFieldCoordinatorConsumedOn — bind UI events here */
+    handleCmdHandoffMaterialUsageToFieldCoordinatorConsumedOnChange(event: Event): void;
+    /** setter for state ui.recordProjectMaterialUsage.input.cmdHandoffMaterialUsageToFieldCoordinator.unitCostBasis */
+    setCmdHandoffMaterialUsageToFieldCoordinatorUnitCostBasis(value: string): void;
+    /** handler for action set.cmdHandoffMaterialUsageToFieldCoordinatorUnitCostBasis — bind UI events here */
+    handleCmdHandoffMaterialUsageToFieldCoordinatorUnitCostBasisChange(event: Event): void;
+}

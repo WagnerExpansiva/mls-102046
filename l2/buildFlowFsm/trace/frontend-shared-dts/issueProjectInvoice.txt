@@ -1,0 +1,165 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateClientOutput, QryLocateProjectOutput, QryInspectClientBillingSummaryOutput, CmdCreateInvoiceOutput, CmdHandoffInvoiceToClientOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/issueProjectInvoice.js';
+export type { QryLocateClientInput, QryLocateClientOutput, QryLocateProjectInput, QryLocateProjectOutput, QryInspectClientBillingSummaryInput, QryInspectClientBillingSummaryOutput, CmdCreateInvoiceInput, CmdCreateInvoiceOutput, CmdHandoffInvoiceToClientInput, CmdHandoffInvoiceToClientOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/issueProjectInvoice.js';
+declare const message_pt: {
+    'section.issueProjectInvoice.locateClient.title': string;
+    'organism.issueProjectInvoice.qryLocateClient.title': string;
+    'intent.issueProjectInvoice.qryLocateClient.list.title': string;
+    'intent.issueProjectInvoice.qryLocateClient.list.empty': string;
+    'intent.issueProjectInvoice.qryLocateClient.list.column.clientId.label': string;
+    'intent.issueProjectInvoice.qryLocateClient.list.column.clientName.label': string;
+    'intent.issueProjectInvoice.qryLocateClient.list.column.contactEmail.label': string;
+    'intent.issueProjectInvoice.qryLocateClient.list.column.contactPhone.label': string;
+    'section.issueProjectInvoice.locateProject.title': string;
+    'organism.issueProjectInvoice.qryLocateProject.title': string;
+    'intent.issueProjectInvoice.qryLocateProject.list.title': string;
+    'intent.issueProjectInvoice.qryLocateProject.list.empty': string;
+    'intent.issueProjectInvoice.qryLocateProject.list.column.projectId.label': string;
+    'intent.issueProjectInvoice.qryLocateProject.list.column.clientId.label': string;
+    'intent.issueProjectInvoice.qryLocateProject.list.column.name.label': string;
+    'intent.issueProjectInvoice.qryLocateProject.list.column.address.label': string;
+    'intent.issueProjectInvoice.qryLocateProject.list.column.status.label': string;
+    'intent.issueProjectInvoice.qryLocateProject.list.column.authorizedBudget.label': string;
+    'intent.issueProjectInvoice.qryLocateProject.list.column.plannedStartDate.label': string;
+    'intent.issueProjectInvoice.qryLocateProject.list.column.plannedEndDate.label': string;
+    'section.issueProjectInvoice.inspectClientBillingSummary.title': string;
+    'organism.issueProjectInvoice.qryInspectClientBillingSummary.title': string;
+    'intent.issueProjectInvoice.qryInspectClientBillingSummary.list.title': string;
+    'intent.issueProjectInvoice.qryInspectClientBillingSummary.list.empty': string;
+    'intent.issueProjectInvoice.qryInspectClientBillingSummary.list.column.clientId.label': string;
+    'intent.issueProjectInvoice.qryInspectClientBillingSummary.list.column.projectId.label': string;
+    'intent.issueProjectInvoice.qryInspectClientBillingSummary.list.column.approvedChangeOrderReferences.label': string;
+    'intent.issueProjectInvoice.qryInspectClientBillingSummary.list.column.invoiceReferences.label': string;
+    'intent.issueProjectInvoice.qryInspectClientBillingSummary.list.column.approvedChangeOrderAmount.label': string;
+    'intent.issueProjectInvoice.qryInspectClientBillingSummary.list.column.billableAmount.label': string;
+    'intent.issueProjectInvoice.qryInspectClientBillingSummary.list.column.invoicedAmount.label': string;
+    'intent.issueProjectInvoice.qryInspectClientBillingSummary.list.column.clientAvailableAmount.label': string;
+    'section.issueProjectInvoice.createInvoice.title': string;
+    'organism.issueProjectInvoice.cmdCreateInvoice.title': string;
+    'intent.issueProjectInvoice.cmdCreateInvoice.form.title': string;
+    'intent.issueProjectInvoice.cmdCreateInvoice.form.action.cmdCreateInvoice': string;
+    'intent.issueProjectInvoice.cmdCreateInvoice.form.field.commercialReference.label': string;
+    'intent.issueProjectInvoice.cmdCreateInvoice.form.field.amount.label': string;
+    'section.issueProjectInvoice.handoffInvoiceToClient.title': string;
+    'organism.issueProjectInvoice.cmdHandoffInvoiceToClient.title': string;
+    'intent.issueProjectInvoice.cmdHandoffInvoiceToClient.form.title': string;
+    'intent.issueProjectInvoice.cmdHandoffInvoiceToClient.form.action.cmdHandoffInvoiceToClient': string;
+    'intent.issueProjectInvoice.cmdHandoffInvoiceToClient.form.field.commercialReference.label': string;
+    'intent.issueProjectInvoice.cmdHandoffInvoiceToClient.form.field.amount.label': string;
+    'action.cmdCreateInvoice.success': string;
+    'action.cmdCreateInvoice.error': string;
+    'action.cmdHandoffInvoiceToClient.success': string;
+    'action.cmdHandoffInvoiceToClient.error': string;
+    'section.issueProjectInvoice.billing-context.title': string;
+    'section.issueProjectInvoice.invoice-issuance.title': string;
+    'section.issueProjectInvoice.invoice-handoff.title': string;
+    'section.issueProjectInvoice.invoicePreparation.title': string;
+    'section.issueProjectInvoice.invoiceHandoff.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmIssueProjectInvoiceBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateClientState — actionStatus, values: idle|loading|success|error */
+    qryLocateClientState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateClientData — queryResult, outputShape: array */
+    qryLocateClientData: QryLocateClientOutput[];
+    /** state qryLocateProjectState — actionStatus, values: idle|loading|success|error */
+    qryLocateProjectState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateProjectData — queryResult, outputShape: array */
+    qryLocateProjectData: QryLocateProjectOutput[];
+    /** state qryInspectClientBillingSummaryState — actionStatus, values: idle|loading|success|error */
+    qryInspectClientBillingSummaryState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryInspectClientBillingSummaryClientBillingSummaryClientId — input */
+    qryInspectClientBillingSummaryClientBillingSummaryClientId: string;
+    /** state qryInspectClientBillingSummaryData — queryResult, outputShape: object */
+    qryInspectClientBillingSummaryData: QryInspectClientBillingSummaryOutput | null;
+    /** state cmdCreateInvoiceState — actionStatus, values: idle|loading|success|error */
+    cmdCreateInvoiceState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateInvoiceClientClientId — input */
+    cmdCreateInvoiceClientClientId: string;
+    /** state cmdCreateInvoiceProjectProjectId — input */
+    cmdCreateInvoiceProjectProjectId: string;
+    /** state cmdCreateInvoiceCommercialReference — input */
+    cmdCreateInvoiceCommercialReference: string;
+    /** state cmdCreateInvoiceAmount — input */
+    cmdCreateInvoiceAmount: string;
+    /** state cmdCreateInvoiceOutput — commandOutput */
+    cmdCreateInvoiceOutput: CmdCreateInvoiceOutput | null;
+    /** state cmdCreateInvoiceError — actionError */
+    cmdCreateInvoiceError: string;
+    /** state cmdHandoffInvoiceToClientState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffInvoiceToClientState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffInvoiceToClientInvoiceInvoiceId — input */
+    cmdHandoffInvoiceToClientInvoiceInvoiceId: string;
+    /** state cmdHandoffInvoiceToClientCommercialReference — input */
+    cmdHandoffInvoiceToClientCommercialReference: string;
+    /** state cmdHandoffInvoiceToClientAmount — input */
+    cmdHandoffInvoiceToClientAmount: string;
+    /** state cmdHandoffInvoiceToClientOutput — commandOutput */
+    cmdHandoffInvoiceToClientOutput: CmdHandoffInvoiceToClientOutput | null;
+    /** state cmdHandoffInvoiceToClientError — actionError */
+    cmdHandoffInvoiceToClientError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private syncRouteParams;
+    private readErrorMessage;
+    /** action qryLocateClient (query) — route buildFlowFsm.issueProjectInvoice.qryLocateClient; inputs: (none); writes ui.issueProjectInvoice.data.qryLocateClient; status ui.issueProjectInvoice.action.qryLocateClient.status */
+    loadQryLocateClient(): Promise<void>;
+    /** handler for action qryLocateClient — bind UI events here */
+    handleQryLocateClientClick(event?: Event): void;
+    /** action qryLocateProject (query) — route buildFlowFsm.issueProjectInvoice.qryLocateProject; inputs: (none); writes ui.issueProjectInvoice.data.qryLocateProject; status ui.issueProjectInvoice.action.qryLocateProject.status */
+    loadQryLocateProject(): Promise<void>;
+    /** handler for action qryLocateProject — bind UI events here */
+    handleQryLocateProjectClick(event?: Event): void;
+    /** action qryInspectClientBillingSummary (query) — route buildFlowFsm.issueProjectInvoice.qryInspectClientBillingSummary; inputs: clientBillingSummaryClientId; writes ui.issueProjectInvoice.data.qryInspectClientBillingSummary; status ui.issueProjectInvoice.action.qryInspectClientBillingSummary.status */
+    loadQryInspectClientBillingSummary(): Promise<void>;
+    /** handler for action qryInspectClientBillingSummary — bind UI events here */
+    handleQryInspectClientBillingSummaryClick(event?: Event): void;
+    /** action cmdCreateInvoice (command) — route buildFlowFsm.issueProjectInvoice.cmdCreateInvoice; inputs: clientClientId, projectProjectId, commercialReference, amount; writes ui.issueProjectInvoice.output.cmdCreateInvoice; status ui.issueProjectInvoice.action.cmdCreateInvoice.status; feedback keys action.cmdCreateInvoice.success / action.cmdCreateInvoice.error */
+    cmdCreateInvoice(): Promise<void>;
+    /** handler for action cmdCreateInvoice — bind UI events here */
+    handleCmdCreateInvoiceClick(event?: Event): void;
+    /** action cmdHandoffInvoiceToClient (command) — route buildFlowFsm.issueProjectInvoice.cmdHandoffInvoiceToClient; inputs: invoiceInvoiceId, commercialReference, amount; writes ui.issueProjectInvoice.output.cmdHandoffInvoiceToClient; status ui.issueProjectInvoice.action.cmdHandoffInvoiceToClient.status; feedback keys action.cmdHandoffInvoiceToClient.success / action.cmdHandoffInvoiceToClient.error */
+    cmdHandoffInvoiceToClient(): Promise<void>;
+    /** handler for action cmdHandoffInvoiceToClient — bind UI events here */
+    handleCmdHandoffInvoiceToClientClick(event?: Event): void;
+    /** setter for state ui.issueProjectInvoice.input.qryInspectClientBillingSummary.clientBillingSummaryClientId */
+    setQryInspectClientBillingSummaryClientBillingSummaryClientId(value: string): void;
+    /** handler for action set.qryInspectClientBillingSummaryClientBillingSummaryClientId — bind UI events here */
+    handleQryInspectClientBillingSummaryClientBillingSummaryClientIdChange(event: Event): void;
+    /** setter for state ui.issueProjectInvoice.input.cmdCreateInvoice.clientClientId */
+    setCmdCreateInvoiceClientClientId(value: string): void;
+    /** handler for action set.cmdCreateInvoiceClientClientId — bind UI events here */
+    handleCmdCreateInvoiceClientClientIdChange(event: Event): void;
+    /** setter for state ui.issueProjectInvoice.input.cmdCreateInvoice.projectProjectId */
+    setCmdCreateInvoiceProjectProjectId(value: string): void;
+    /** handler for action set.cmdCreateInvoiceProjectProjectId — bind UI events here */
+    handleCmdCreateInvoiceProjectProjectIdChange(event: Event): void;
+    /** setter for state ui.issueProjectInvoice.input.cmdCreateInvoice.commercialReference */
+    setCmdCreateInvoiceCommercialReference(value: string): void;
+    /** handler for action set.cmdCreateInvoiceCommercialReference — bind UI events here */
+    handleCmdCreateInvoiceCommercialReferenceChange(event: Event): void;
+    /** setter for state ui.issueProjectInvoice.input.cmdCreateInvoice.amount */
+    setCmdCreateInvoiceAmount(value: string): void;
+    /** handler for action set.cmdCreateInvoiceAmount — bind UI events here */
+    handleCmdCreateInvoiceAmountChange(event: Event): void;
+    /** setter for state ui.issueProjectInvoice.input.cmdHandoffInvoiceToClient.invoiceInvoiceId */
+    setCmdHandoffInvoiceToClientInvoiceInvoiceId(value: string): void;
+    /** handler for action set.cmdHandoffInvoiceToClientInvoiceInvoiceId — bind UI events here */
+    handleCmdHandoffInvoiceToClientInvoiceInvoiceIdChange(event: Event): void;
+    /** setter for state ui.issueProjectInvoice.input.cmdHandoffInvoiceToClient.commercialReference */
+    setCmdHandoffInvoiceToClientCommercialReference(value: string): void;
+    /** handler for action set.cmdHandoffInvoiceToClientCommercialReference — bind UI events here */
+    handleCmdHandoffInvoiceToClientCommercialReferenceChange(event: Event): void;
+    /** setter for state ui.issueProjectInvoice.input.cmdHandoffInvoiceToClient.amount */
+    setCmdHandoffInvoiceToClientAmount(value: string): void;
+    /** handler for action set.cmdHandoffInvoiceToClientAmount — bind UI events here */
+    handleCmdHandoffInvoiceToClientAmountChange(event: Event): void;
+}

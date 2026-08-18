@@ -1,0 +1,149 @@
+{
+  "judgeRun": 1,
+  "batchIndex": 6,
+  "owners": [
+    "handoffDeclinedChangeOrderToFieldCoordinator",
+    "inspectClientBillingSummary",
+    "handoffInvoiceToClient",
+    "inspectScheduleRiskAssessment",
+    "publishStatusReport",
+    "handoffStatusReportToClient",
+    "inspectStatusReport",
+    "inspectProjectTimeLogs",
+    "inspectProjectMaterialUsages",
+    "inspectApprovedChangeOrders"
+  ],
+  "findings": [
+    {
+      "ownerId": "handoffDeclinedChangeOrderToFieldCoordinator",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffDeclinedChangeOrderToFieldCoordinator (worker failed or never saved)"
+    },
+    {
+      "ownerId": "inspectClientBillingSummary",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation inspectClientBillingSummary (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffInvoiceToClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffInvoiceToClient (worker failed or never saved)"
+    },
+    {
+      "ownerId": "inspectScheduleRiskAssessment",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation inspectScheduleRiskAssessment (worker failed or never saved)"
+    },
+    {
+      "ownerId": "publishStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation publishStatusReport (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffStatusReportToClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation handoffStatusReportToClient (worker failed or never saved)"
+    },
+    {
+      "ownerId": "inspectStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation inspectStatusReport (worker failed or never saved)"
+    },
+    {
+      "ownerId": "inspectProjectTimeLogs",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation inspectProjectTimeLogs (worker failed or never saved)"
+    },
+    {
+      "ownerId": "inspectProjectMaterialUsages",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation inspectProjectMaterialUsages (worker failed or never saved)"
+    },
+    {
+      "ownerId": "inspectApprovedChangeOrders",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "usecase .defs.ts missing for operation inspectApprovedChangeOrders (worker failed or never saved)"
+    },
+    {
+      "ownerId": "handoffDeclinedChangeOrderToFieldCoordinator",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há portas, regrasApplied, funções, entradas ou assertions para comparar com o contrato L4.",
+      "suggestion": "Regenerar a definição do use case para este ownerId conforme o contrato L4."
+    },
+    {
+      "ownerId": "inspectClientBillingSummary",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há portas, regrasApplied, funções, entradas ou assertions para comparar com o contrato L4.",
+      "suggestion": "Regenerar a definição do use case para este ownerId conforme o contrato L4."
+    },
+    {
+      "ownerId": "handoffInvoiceToClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há portas, regrasApplied, funções, entradas ou assertions para comparar com o contrato L4.",
+      "suggestion": "Regenerar a definição do use case para este ownerId conforme o contrato L4."
+    },
+    {
+      "ownerId": "inspectScheduleRiskAssessment",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há portas, regrasApplied, funções, entradas ou assertions para comparar com o contrato L4.",
+      "suggestion": "Regenerar a definição do use case para este ownerId conforme o contrato L4."
+    },
+    {
+      "ownerId": "publishStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há portas, regrasApplied, funções, entradas ou assertions para comparar com o contrato L4.",
+      "suggestion": "Regenerar a definição do use case para este ownerId conforme o contrato L4."
+    },
+    {
+      "ownerId": "handoffStatusReportToClient",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há portas, regrasApplied, funções, entradas ou assertions para comparar com o contrato L4.",
+      "suggestion": "Regenerar a definição do use case para este ownerId conforme o contrato L4."
+    },
+    {
+      "ownerId": "inspectStatusReport",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há portas, regrasApplied, funções, entradas ou assertions para comparar com o contrato L4.",
+      "suggestion": "Regenerar a definição do use case para este ownerId conforme o contrato L4."
+    },
+    {
+      "ownerId": "inspectProjectTimeLogs",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há portas, regrasApplied, funções, entradas ou assertions para comparar com o contrato L4.",
+      "suggestion": "Regenerar a definição do use case para este ownerId conforme o contrato L4."
+    },
+    {
+      "ownerId": "inspectProjectMaterialUsages",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há portas, regrasApplied, funções, entradas ou assertions para comparar com o contrato L4.",
+      "suggestion": "Regenerar a definição do use case para este ownerId conforme o contrato L4."
+    },
+    {
+      "ownerId": "inspectApprovedChangeOrders",
+      "type": "estrutural",
+      "severity": "error",
+      "message": "generatedUsecaseDefs está ausente (null); não há portas, regrasApplied, funções, entradas ou assertions para comparar com o contrato L4.",
+      "suggestion": "Regenerar a definição do use case para este ownerId conforme o contrato L4."
+    }
+  ],
+  "savedAt": "2026-08-17T20:30:22.084Z"
+}

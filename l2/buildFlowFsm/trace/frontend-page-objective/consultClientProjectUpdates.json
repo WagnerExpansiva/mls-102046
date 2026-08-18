@@ -1,0 +1,56 @@
+{
+  "savedAt": "2026-08-18T14:51:34.124Z",
+  "pageId": "consultClientProjectUpdates",
+  "genome": "page21",
+  "objective": {
+    "actor": "Cliente que acompanha a própria obra.",
+    "jobToBeDone": "Selecionar a própria obra e compreender rapidamente seu andamento publicado, riscos comunicados e situação de faturamento.",
+    "primaryDecision": "Decidir se a obra está evoluindo conforme esperado e se os valores faturados e disponíveis estão coerentes.",
+    "decisiveInfo": [
+      "name",
+      "status",
+      "plannedStartDate",
+      "plannedEndDate",
+      "title",
+      "content",
+      "communicatedRisks",
+      "publishedAt",
+      "approvedChangeOrderAmount",
+      "billableAmount",
+      "invoicedAmount",
+      "clientAvailableAmount",
+      "approvedChangeOrderReferences",
+      "invoiceReferences"
+    ],
+    "usageFrequency": "Ocasionalmente, quando o cliente recebe uma atualização ou precisa conferir o andamento e os valores da obra.",
+    "informationHierarchy": [
+      "Obra selecionada e seu status geral",
+      "Relatório publicado e riscos comunicados",
+      "Valores aprovados, faturáveis, faturados e disponíveis",
+      "Referências de alterações aprovadas e faturas",
+      "Endereço e datas planejadas da obra"
+    ],
+    "successCriteria": "O cliente identifica a obra correta sem digitar identificadores, entende o status e os riscos publicados e compara os principais valores financeiros em uma única leitura contextual.",
+    "antiPatterns": [
+      "Expor ids técnicos como campos digitáveis",
+      "Separar cada consulta em um formulário independente",
+      "Permitir edição manual de status ou datas",
+      "Apresentar valores financeiros sem contexto da obra selecionada",
+      "Adicionar ações de alteração ou faturamento que não existem no contrato"
+    ],
+    "criticalActions": [
+      {
+        "action": "Selecionar a obra associada ao cliente",
+        "presentation": "master-detail-selection"
+      },
+      {
+        "action": "Consultar o relatório de status da obra selecionada",
+        "presentation": "contextual-detail-load"
+      },
+      {
+        "action": "Consultar o resumo de faturamento da obra selecionada",
+        "presentation": "contextual-detail-load"
+      }
+    ]
+  }
+}

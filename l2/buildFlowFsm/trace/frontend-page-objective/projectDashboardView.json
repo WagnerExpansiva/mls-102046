@@ -1,0 +1,41 @@
+{
+  "savedAt": "2026-08-18T14:53:22.133Z",
+  "pageId": "projectDashboardView",
+  "genome": "page31",
+  "objective": {
+    "actor": "Gestor de portfólio de obras",
+    "jobToBeDone": "Monitorar rapidamente o desempenho financeiro e a carga próxima das obras ativas para decidir onde concentrar atenção gerencial.",
+    "primaryDecision": "Identificar quais obras precisam de atenção imediata com base na variação entre orçamento e custo realizado e nas tarefas próximas.",
+    "decisiveInfo": [
+      "activeProjectCount",
+      "activeProjects",
+      "totalBudget",
+      "totalActualCost",
+      "budgetVariance",
+      "costAttentionProjects",
+      "upcomingTasks"
+    ],
+    "usageFrequency": "Frequente, em consultas gerenciais recorrentes; leitura rápida de monitoramento, não operação transacional.",
+    "informationHierarchy": [
+      "Variação entre orçamento e custo realizado",
+      "Obras com atenção de custo",
+      "Quantidade e lista de obras ativas",
+      "Orçamento total e custo realizado total",
+      "Tarefas próximas"
+    ],
+    "successCriteria": "Em uma única leitura, o gestor entende a saúde financeira consolidada, localiza as obras com maior atenção e reconhece os próximos compromissos sem precisar navegar ou preencher formulários.",
+    "antiPatterns": [
+      "Não criar formulário separado de consulta",
+      "Não expor status ou identificadores como campos editáveis",
+      "Não inventar filtros, comandos, mapa ou dados espaciais",
+      "Não dividir cada indicador em uma seção independente",
+      "Não tratar tarefas próximas como comandos quando o contrato fornece apenas consulta"
+    ],
+    "criticalActions": [
+      {
+        "action": "Consultar o painel de obras",
+        "presentation": "initial-load-summary-first"
+      }
+    ]
+  }
+}

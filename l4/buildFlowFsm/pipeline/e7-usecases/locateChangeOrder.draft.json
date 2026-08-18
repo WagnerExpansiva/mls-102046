@@ -1,0 +1,25 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "locateChangeOrder",
+  "title": "Localizar a ordem de mudança submetida",
+  "kind": "query",
+  "compiledFrom": [
+    "approveChangeOrder.locateChangeOrder",
+    "declineChangeOrder.locateChangeOrder",
+    "forwardChangeOrderForClientApproval.locateChangeOrder"
+  ],
+  "description": "Localiza uma ordem de mudança para que seja selecionada para tratamento subsequente.",
+  "contexts": {
+    "requires": [],
+    "provides": [
+      "selectedChangeOrder"
+    ]
+  },
+  "entityRefs": [
+    "ChangeOrder"
+  ],
+  "useRules": [],
+  "transitions": []
+}

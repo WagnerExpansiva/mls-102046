@@ -1,0 +1,27 @@
+{
+  "draftVersion": "2026-08-10-ns4-usecase-draft-minimal-v3",
+  "planId": "e7-usecase",
+  "moduleName": "buildFlowFsm",
+  "useCaseId": "handoffStatusReportToClient",
+  "title": "Encaminhar o relatório ao cliente",
+  "kind": "command",
+  "compiledFrom": [
+    "generateAndPublishProjectStatusReport.handoffStatusReportToClient"
+  ],
+  "description": "Disponibiliza um relatório de status publicado para comunicação externa.",
+  "contexts": {
+    "requires": [
+      "selectedStatusReport"
+    ],
+    "provides": [
+      "selectedStatusReport"
+    ]
+  },
+  "entityRefs": [
+    "StatusReport"
+  ],
+  "useRules": [
+    "clientVisibleStatusReport"
+  ],
+  "transitions": []
+}

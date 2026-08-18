@@ -1,0 +1,172 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryListChangeOrderDecisionOutput, CmdCreateChangeOrderDecisionOutput, CmdUpdateChangeOrderDecisionOutput, CmdDeleteChangeOrderDecisionOutput, QryChangeOrderPickerOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/changeOrderDecisionCatalogue.js';
+export type { QryListChangeOrderDecisionInput, QryListChangeOrderDecisionOutput, CmdCreateChangeOrderDecisionInput, CmdCreateChangeOrderDecisionOutput, CmdUpdateChangeOrderDecisionInput, CmdUpdateChangeOrderDecisionOutput, CmdDeleteChangeOrderDecisionInput, CmdDeleteChangeOrderDecisionOutput, QryChangeOrderPickerInput, QryChangeOrderPickerOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/changeOrderDecisionCatalogue.js';
+declare const message_pt: {
+    'section.changeOrderDecisionCatalogue.recordList.title': string;
+    'organism.changeOrderDecisionCatalogue.qryListChangeOrderDecision.title': string;
+    'intent.changeOrderDecisionCatalogue.qryListChangeOrderDecision.list.title': string;
+    'intent.changeOrderDecisionCatalogue.qryListChangeOrderDecision.list.empty': string;
+    'intent.changeOrderDecisionCatalogue.qryListChangeOrderDecision.list.column.changeOrderDecisionId.label': string;
+    'intent.changeOrderDecisionCatalogue.qryListChangeOrderDecision.list.column.changeOrder.label': string;
+    'intent.changeOrderDecisionCatalogue.qryListChangeOrderDecision.list.column.madeByPlatformUser.label': string;
+    'intent.changeOrderDecisionCatalogue.qryListChangeOrderDecision.list.column.decision.label': string;
+    'intent.changeOrderDecisionCatalogue.qryListChangeOrderDecision.list.column.decidedAt.label': string;
+    'organism.changeOrderDecisionCatalogue.cmdUpdateChangeOrderDecision.title': string;
+    'intent.changeOrderDecisionCatalogue.cmdUpdateChangeOrderDecision.form.title': string;
+    'intent.changeOrderDecisionCatalogue.cmdUpdateChangeOrderDecision.form.action.cmdUpdateChangeOrderDecision': string;
+    'intent.changeOrderDecisionCatalogue.cmdUpdateChangeOrderDecision.form.field.madeByPlatformUser.label': string;
+    'intent.changeOrderDecisionCatalogue.cmdUpdateChangeOrderDecision.form.field.decision.label': string;
+    'intent.changeOrderDecisionCatalogue.cmdUpdateChangeOrderDecision.form.field.decidedAt.label': string;
+    'organism.changeOrderDecisionCatalogue.cmdDeleteChangeOrderDecision.title': string;
+    'intent.changeOrderDecisionCatalogue.cmdDeleteChangeOrderDecision.form.title': string;
+    'intent.changeOrderDecisionCatalogue.cmdDeleteChangeOrderDecision.form.action.cmdDeleteChangeOrderDecision': string;
+    'section.changeOrderDecisionCatalogue.recordForm.title': string;
+    'organism.changeOrderDecisionCatalogue.cmdCreateChangeOrderDecision.title': string;
+    'intent.changeOrderDecisionCatalogue.cmdCreateChangeOrderDecision.form.title': string;
+    'intent.changeOrderDecisionCatalogue.cmdCreateChangeOrderDecision.form.action.cmdCreateChangeOrderDecision': string;
+    'intent.changeOrderDecisionCatalogue.cmdCreateChangeOrderDecision.form.field.madeByPlatformUser.label': string;
+    'intent.changeOrderDecisionCatalogue.cmdCreateChangeOrderDecision.form.field.decision.label': string;
+    'intent.changeOrderDecisionCatalogue.cmdCreateChangeOrderDecision.form.field.decidedAt.label': string;
+    'organism.changeOrderDecisionCatalogue.qryChangeOrderPicker.title': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.title': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.empty': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.column.changeOrderId.label': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.column.clientRef.label': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.column.projectRef.label': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.column.description.label': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.column.scopeImpact.label': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.column.scheduleImpact.label': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.column.changeAmount.label': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.column.submittedAt.label': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.column.forwardedForClientApprovalAt.label': string;
+    'intent.changeOrderDecisionCatalogue.qryChangeOrderPicker.list.column.status.label': string;
+    'action.cmdCreateChangeOrderDecision.success': string;
+    'action.cmdCreateChangeOrderDecision.error': string;
+    'action.cmdUpdateChangeOrderDecision.success': string;
+    'action.cmdUpdateChangeOrderDecision.error': string;
+    'action.cmdDeleteChangeOrderDecision.success': string;
+    'action.cmdDeleteChangeOrderDecision.error': string;
+    'section.changeOrderDecisionCatalogue.decisionWorkbench.title': string;
+    'section.changeOrderDecisionCatalogue.decisionCreation.title': string;
+    'section.changeOrderDecisionCatalogue.newDecision.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmChangeOrderDecisionCatalogueBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryListChangeOrderDecisionState — actionStatus, values: idle|loading|success|error */
+    qryListChangeOrderDecisionState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryListChangeOrderDecisionData — queryResult, outputShape: array */
+    qryListChangeOrderDecisionData: QryListChangeOrderDecisionOutput[];
+    /** state cmdCreateChangeOrderDecisionState — actionStatus, values: idle|loading|success|error */
+    cmdCreateChangeOrderDecisionState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateChangeOrderDecisionChangeOrder — input */
+    cmdCreateChangeOrderDecisionChangeOrder: string;
+    /** state cmdCreateChangeOrderDecisionMadeByPlatformUser — input */
+    cmdCreateChangeOrderDecisionMadeByPlatformUser: string;
+    /** state cmdCreateChangeOrderDecisionDecision — input */
+    cmdCreateChangeOrderDecisionDecision: string;
+    /** state cmdCreateChangeOrderDecisionDecidedAt — input */
+    cmdCreateChangeOrderDecisionDecidedAt: string;
+    /** state cmdCreateChangeOrderDecisionOutput — commandOutput */
+    cmdCreateChangeOrderDecisionOutput: CmdCreateChangeOrderDecisionOutput | null;
+    /** state cmdCreateChangeOrderDecisionError — actionError */
+    cmdCreateChangeOrderDecisionError: string;
+    /** state cmdUpdateChangeOrderDecisionState — actionStatus, values: idle|loading|success|error */
+    cmdUpdateChangeOrderDecisionState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdUpdateChangeOrderDecisionChangeOrderDecisionId — input */
+    cmdUpdateChangeOrderDecisionChangeOrderDecisionId: string;
+    /** state cmdUpdateChangeOrderDecisionChangeOrder — input */
+    cmdUpdateChangeOrderDecisionChangeOrder: string;
+    /** state cmdUpdateChangeOrderDecisionMadeByPlatformUser — input */
+    cmdUpdateChangeOrderDecisionMadeByPlatformUser: string;
+    /** state cmdUpdateChangeOrderDecisionDecision — input */
+    cmdUpdateChangeOrderDecisionDecision: string;
+    /** state cmdUpdateChangeOrderDecisionDecidedAt — input */
+    cmdUpdateChangeOrderDecisionDecidedAt: string;
+    /** state cmdUpdateChangeOrderDecisionOutput — commandOutput */
+    cmdUpdateChangeOrderDecisionOutput: CmdUpdateChangeOrderDecisionOutput | null;
+    /** state cmdUpdateChangeOrderDecisionError — actionError */
+    cmdUpdateChangeOrderDecisionError: string;
+    /** state cmdDeleteChangeOrderDecisionState — actionStatus, values: idle|loading|success|error */
+    cmdDeleteChangeOrderDecisionState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdDeleteChangeOrderDecisionChangeOrderDecisionId — input */
+    cmdDeleteChangeOrderDecisionChangeOrderDecisionId: string;
+    /** state cmdDeleteChangeOrderDecisionOutput — commandOutput */
+    cmdDeleteChangeOrderDecisionOutput: CmdDeleteChangeOrderDecisionOutput | null;
+    /** state cmdDeleteChangeOrderDecisionError — actionError */
+    cmdDeleteChangeOrderDecisionError: string;
+    /** state qryChangeOrderPickerState — actionStatus, values: idle|loading|success|error */
+    qryChangeOrderPickerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryChangeOrderPickerData — queryResult, outputShape: array */
+    qryChangeOrderPickerData: QryChangeOrderPickerOutput[];
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryListChangeOrderDecision (query) — route buildFlowFsm.changeOrderDecisionCatalogue.qryListChangeOrderDecision; inputs: (none); writes ui.changeOrderDecisionCatalogue.data.qryListChangeOrderDecision; status ui.changeOrderDecisionCatalogue.action.qryListChangeOrderDecision.status */
+    loadQryListChangeOrderDecision(): Promise<void>;
+    /** handler for action qryListChangeOrderDecision — bind UI events here */
+    handleQryListChangeOrderDecisionClick(event?: Event): void;
+    /** action cmdCreateChangeOrderDecision (command) — route buildFlowFsm.changeOrderDecisionCatalogue.cmdCreateChangeOrderDecision; inputs: changeOrder, madeByPlatformUser, decision, decidedAt; writes ui.changeOrderDecisionCatalogue.output.cmdCreateChangeOrderDecision; status ui.changeOrderDecisionCatalogue.action.cmdCreateChangeOrderDecision.status; feedback keys action.cmdCreateChangeOrderDecision.success / action.cmdCreateChangeOrderDecision.error */
+    cmdCreateChangeOrderDecision(): Promise<void>;
+    /** handler for action cmdCreateChangeOrderDecision — bind UI events here */
+    handleCmdCreateChangeOrderDecisionClick(event?: Event): void;
+    /** action cmdUpdateChangeOrderDecision (command) — route buildFlowFsm.changeOrderDecisionCatalogue.cmdUpdateChangeOrderDecision; inputs: changeOrderDecisionId, changeOrder, madeByPlatformUser, decision, decidedAt; writes ui.changeOrderDecisionCatalogue.output.cmdUpdateChangeOrderDecision; status ui.changeOrderDecisionCatalogue.action.cmdUpdateChangeOrderDecision.status; feedback keys action.cmdUpdateChangeOrderDecision.success / action.cmdUpdateChangeOrderDecision.error */
+    cmdUpdateChangeOrderDecision(): Promise<void>;
+    /** handler for action cmdUpdateChangeOrderDecision — bind UI events here */
+    handleCmdUpdateChangeOrderDecisionClick(event?: Event): void;
+    /** action cmdDeleteChangeOrderDecision (command) — route buildFlowFsm.changeOrderDecisionCatalogue.cmdDeleteChangeOrderDecision; inputs: changeOrderDecisionId; writes ui.changeOrderDecisionCatalogue.output.cmdDeleteChangeOrderDecision; status ui.changeOrderDecisionCatalogue.action.cmdDeleteChangeOrderDecision.status; feedback keys action.cmdDeleteChangeOrderDecision.success / action.cmdDeleteChangeOrderDecision.error */
+    cmdDeleteChangeOrderDecision(): Promise<void>;
+    /** handler for action cmdDeleteChangeOrderDecision — bind UI events here */
+    handleCmdDeleteChangeOrderDecisionClick(event?: Event): void;
+    /** action qryChangeOrderPicker (query) — route buildFlowFsm.changeOrderDecisionCatalogue.qryChangeOrderPicker; inputs: (none); writes ui.changeOrderDecisionCatalogue.data.qryChangeOrderPicker; status ui.changeOrderDecisionCatalogue.action.qryChangeOrderPicker.status */
+    loadQryChangeOrderPicker(): Promise<void>;
+    /** handler for action qryChangeOrderPicker — bind UI events here */
+    handleQryChangeOrderPickerClick(event?: Event): void;
+    /** setter for state ui.changeOrderDecisionCatalogue.input.cmdCreateChangeOrderDecision.changeOrder */
+    setCmdCreateChangeOrderDecisionChangeOrder(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderDecisionChangeOrder — bind UI events here */
+    handleCmdCreateChangeOrderDecisionChangeOrderChange(event: Event): void;
+    /** setter for state ui.changeOrderDecisionCatalogue.input.cmdCreateChangeOrderDecision.madeByPlatformUser */
+    setCmdCreateChangeOrderDecisionMadeByPlatformUser(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderDecisionMadeByPlatformUser — bind UI events here */
+    handleCmdCreateChangeOrderDecisionMadeByPlatformUserChange(event: Event): void;
+    /** setter for state ui.changeOrderDecisionCatalogue.input.cmdCreateChangeOrderDecision.decision */
+    setCmdCreateChangeOrderDecisionDecision(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderDecisionDecision — bind UI events here */
+    handleCmdCreateChangeOrderDecisionDecisionChange(event: Event): void;
+    /** setter for state ui.changeOrderDecisionCatalogue.input.cmdCreateChangeOrderDecision.decidedAt */
+    setCmdCreateChangeOrderDecisionDecidedAt(value: string): void;
+    /** handler for action set.cmdCreateChangeOrderDecisionDecidedAt — bind UI events here */
+    handleCmdCreateChangeOrderDecisionDecidedAtChange(event: Event): void;
+    /** setter for state ui.changeOrderDecisionCatalogue.input.cmdUpdateChangeOrderDecision.changeOrderDecisionId */
+    setCmdUpdateChangeOrderDecisionChangeOrderDecisionId(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderDecisionChangeOrderDecisionId — bind UI events here */
+    handleCmdUpdateChangeOrderDecisionChangeOrderDecisionIdChange(event: Event): void;
+    /** setter for state ui.changeOrderDecisionCatalogue.input.cmdUpdateChangeOrderDecision.changeOrder */
+    setCmdUpdateChangeOrderDecisionChangeOrder(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderDecisionChangeOrder — bind UI events here */
+    handleCmdUpdateChangeOrderDecisionChangeOrderChange(event: Event): void;
+    /** setter for state ui.changeOrderDecisionCatalogue.input.cmdUpdateChangeOrderDecision.madeByPlatformUser */
+    setCmdUpdateChangeOrderDecisionMadeByPlatformUser(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderDecisionMadeByPlatformUser — bind UI events here */
+    handleCmdUpdateChangeOrderDecisionMadeByPlatformUserChange(event: Event): void;
+    /** setter for state ui.changeOrderDecisionCatalogue.input.cmdUpdateChangeOrderDecision.decision */
+    setCmdUpdateChangeOrderDecisionDecision(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderDecisionDecision — bind UI events here */
+    handleCmdUpdateChangeOrderDecisionDecisionChange(event: Event): void;
+    /** setter for state ui.changeOrderDecisionCatalogue.input.cmdUpdateChangeOrderDecision.decidedAt */
+    setCmdUpdateChangeOrderDecisionDecidedAt(value: string): void;
+    /** handler for action set.cmdUpdateChangeOrderDecisionDecidedAt — bind UI events here */
+    handleCmdUpdateChangeOrderDecisionDecidedAtChange(event: Event): void;
+    /** setter for state ui.changeOrderDecisionCatalogue.input.cmdDeleteChangeOrderDecision.changeOrderDecisionId */
+    setCmdDeleteChangeOrderDecisionChangeOrderDecisionId(value: string): void;
+    /** handler for action set.cmdDeleteChangeOrderDecisionChangeOrderDecisionId — bind UI events here */
+    handleCmdDeleteChangeOrderDecisionChangeOrderDecisionIdChange(event: Event): void;
+}

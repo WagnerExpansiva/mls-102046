@@ -1,0 +1,140 @@
+import { CollabLitElement } from '/_102029_/l2/collabLitElement.js';
+import type { QryLocateFieldWorkerOutput, QryLocateWorkTaskOutput, CmdCreateTimeLogOutput, CmdHandoffTimeLogToFieldCoordinatorOutput } from '/_102046_/l2/buildFlowFsm/web/contracts/recordWorkTime.js';
+export type { QryLocateFieldWorkerInput, QryLocateFieldWorkerOutput, QryLocateWorkTaskInput, QryLocateWorkTaskOutput, CmdCreateTimeLogInput, CmdCreateTimeLogOutput, CmdHandoffTimeLogToFieldCoordinatorInput, CmdHandoffTimeLogToFieldCoordinatorOutput, } from '/_102046_/l2/buildFlowFsm/web/contracts/recordWorkTime.js';
+declare const message_pt: {
+    'section.recordWorkTime.locateFieldWorker.title': string;
+    'organism.recordWorkTime.qryLocateFieldWorker.title': string;
+    'intent.recordWorkTime.qryLocateFieldWorker.list.title': string;
+    'intent.recordWorkTime.qryLocateFieldWorker.list.empty': string;
+    'intent.recordWorkTime.qryLocateFieldWorker.list.column.platformUserId.label': string;
+    'section.recordWorkTime.locateWorkTask.title': string;
+    'organism.recordWorkTime.qryLocateWorkTask.title': string;
+    'intent.recordWorkTime.qryLocateWorkTask.list.title': string;
+    'intent.recordWorkTime.qryLocateWorkTask.list.empty': string;
+    'intent.recordWorkTime.qryLocateWorkTask.list.column.workTaskId.label': string;
+    'intent.recordWorkTime.qryLocateWorkTask.list.column.projectId.label': string;
+    'intent.recordWorkTime.qryLocateWorkTask.list.column.assignedFieldWorkerId.label': string;
+    'intent.recordWorkTime.qryLocateWorkTask.list.column.description.label': string;
+    'intent.recordWorkTime.qryLocateWorkTask.list.column.dueDate.label': string;
+    'intent.recordWorkTime.qryLocateWorkTask.list.column.status.label': string;
+    'intent.recordWorkTime.qryLocateWorkTask.list.column.progressUpdate.label': string;
+    'section.recordWorkTime.createTimeLog.title': string;
+    'organism.recordWorkTime.cmdCreateTimeLog.title': string;
+    'intent.recordWorkTime.cmdCreateTimeLog.form.title': string;
+    'intent.recordWorkTime.cmdCreateTimeLog.form.action.cmdCreateTimeLog': string;
+    'intent.recordWorkTime.cmdCreateTimeLog.form.field.workDate.label': string;
+    'intent.recordWorkTime.cmdCreateTimeLog.form.field.hoursWorked.label': string;
+    'intent.recordWorkTime.cmdCreateTimeLog.form.field.hourlyLaborCost.label': string;
+    'section.recordWorkTime.handoffTimeLogToFieldCoordinator.title': string;
+    'organism.recordWorkTime.cmdHandoffTimeLogToFieldCoordinator.title': string;
+    'intent.recordWorkTime.cmdHandoffTimeLogToFieldCoordinator.form.title': string;
+    'intent.recordWorkTime.cmdHandoffTimeLogToFieldCoordinator.form.action.cmdHandoffTimeLogToFieldCoordinator': string;
+    'intent.recordWorkTime.cmdHandoffTimeLogToFieldCoordinator.form.field.workDate.label': string;
+    'intent.recordWorkTime.cmdHandoffTimeLogToFieldCoordinator.form.field.hoursWorked.label': string;
+    'intent.recordWorkTime.cmdHandoffTimeLogToFieldCoordinator.form.field.hourlyLaborCost.label': string;
+    'action.cmdCreateTimeLog.success': string;
+    'action.cmdCreateTimeLog.error': string;
+    'action.cmdHandoffTimeLogToFieldCoordinator.success': string;
+    'action.cmdHandoffTimeLogToFieldCoordinator.error': string;
+    'section.recordWorkTime.workLogWorkspace.title': string;
+    'section.recordWorkTime.workContext.title': string;
+    'section.recordWorkTime.timeLogWorkspace.title': string;
+};
+export type MessageType = typeof message_pt;
+export declare const messages: {
+    [key: string]: MessageType;
+};
+export declare class BuildFlowFsmRecordWorkTimeBase extends CollabLitElement {
+    /** state status — pageStatus */
+    status: string;
+    /** state qryLocateFieldWorkerState — actionStatus, values: idle|loading|success|error */
+    qryLocateFieldWorkerState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateFieldWorkerData — queryResult, outputShape: array */
+    qryLocateFieldWorkerData: QryLocateFieldWorkerOutput[];
+    /** state qryLocateWorkTaskState — actionStatus, values: idle|loading|success|error */
+    qryLocateWorkTaskState: 'idle' | 'loading' | 'success' | 'error';
+    /** state qryLocateWorkTaskData — queryResult, outputShape: array */
+    qryLocateWorkTaskData: QryLocateWorkTaskOutput[];
+    /** state cmdCreateTimeLogState — actionStatus, values: idle|loading|success|error */
+    cmdCreateTimeLogState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdCreateTimeLogWorkTaskWorkTaskId — input */
+    cmdCreateTimeLogWorkTaskWorkTaskId: string;
+    /** state cmdCreateTimeLogWorkDate — input */
+    cmdCreateTimeLogWorkDate: string;
+    /** state cmdCreateTimeLogHoursWorked — input */
+    cmdCreateTimeLogHoursWorked: string;
+    /** state cmdCreateTimeLogHourlyLaborCost — input */
+    cmdCreateTimeLogHourlyLaborCost: string;
+    /** state cmdCreateTimeLogOutput — commandOutput */
+    cmdCreateTimeLogOutput: CmdCreateTimeLogOutput | null;
+    /** state cmdCreateTimeLogError — actionError */
+    cmdCreateTimeLogError: string;
+    /** state cmdHandoffTimeLogToFieldCoordinatorState — actionStatus, values: idle|loading|success|error */
+    cmdHandoffTimeLogToFieldCoordinatorState: 'idle' | 'loading' | 'success' | 'error';
+    /** state cmdHandoffTimeLogToFieldCoordinatorTimeLogTimeLogId — input */
+    cmdHandoffTimeLogToFieldCoordinatorTimeLogTimeLogId: string;
+    /** state cmdHandoffTimeLogToFieldCoordinatorWorkDate — input */
+    cmdHandoffTimeLogToFieldCoordinatorWorkDate: string;
+    /** state cmdHandoffTimeLogToFieldCoordinatorHoursWorked — input */
+    cmdHandoffTimeLogToFieldCoordinatorHoursWorked: string;
+    /** state cmdHandoffTimeLogToFieldCoordinatorHourlyLaborCost — input */
+    cmdHandoffTimeLogToFieldCoordinatorHourlyLaborCost: string;
+    /** state cmdHandoffTimeLogToFieldCoordinatorOutput — commandOutput */
+    cmdHandoffTimeLogToFieldCoordinatorOutput: CmdHandoffTimeLogToFieldCoordinatorOutput | null;
+    /** state cmdHandoffTimeLogToFieldCoordinatorError — actionError */
+    cmdHandoffTimeLogToFieldCoordinatorError: string;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    /** handleIcaStateChange — collabState notify contract; maps state keys onto class fields */
+    handleIcaStateChange(key: string, value: unknown): void;
+    private initStateValue;
+    private readErrorMessage;
+    /** action qryLocateFieldWorker (query) — route buildFlowFsm.recordWorkTime.qryLocateFieldWorker; inputs: (none); writes ui.recordWorkTime.data.qryLocateFieldWorker; status ui.recordWorkTime.action.qryLocateFieldWorker.status */
+    loadQryLocateFieldWorker(): Promise<void>;
+    /** handler for action qryLocateFieldWorker — bind UI events here */
+    handleQryLocateFieldWorkerClick(event?: Event): void;
+    /** action qryLocateWorkTask (query) — route buildFlowFsm.recordWorkTime.qryLocateWorkTask; inputs: (none); writes ui.recordWorkTime.data.qryLocateWorkTask; status ui.recordWorkTime.action.qryLocateWorkTask.status */
+    loadQryLocateWorkTask(): Promise<void>;
+    /** handler for action qryLocateWorkTask — bind UI events here */
+    handleQryLocateWorkTaskClick(event?: Event): void;
+    /** action cmdCreateTimeLog (command) — route buildFlowFsm.recordWorkTime.cmdCreateTimeLog; inputs: workTaskWorkTaskId, workDate, hoursWorked, hourlyLaborCost; writes ui.recordWorkTime.output.cmdCreateTimeLog; status ui.recordWorkTime.action.cmdCreateTimeLog.status; feedback keys action.cmdCreateTimeLog.success / action.cmdCreateTimeLog.error */
+    cmdCreateTimeLog(): Promise<void>;
+    /** handler for action cmdCreateTimeLog — bind UI events here */
+    handleCmdCreateTimeLogClick(event?: Event): void;
+    /** action cmdHandoffTimeLogToFieldCoordinator (command) — route buildFlowFsm.recordWorkTime.cmdHandoffTimeLogToFieldCoordinator; inputs: timeLogTimeLogId, workDate, hoursWorked, hourlyLaborCost; writes ui.recordWorkTime.output.cmdHandoffTimeLogToFieldCoordinator; status ui.recordWorkTime.action.cmdHandoffTimeLogToFieldCoordinator.status; feedback keys action.cmdHandoffTimeLogToFieldCoordinator.success / action.cmdHandoffTimeLogToFieldCoordinator.error */
+    cmdHandoffTimeLogToFieldCoordinator(): Promise<void>;
+    /** handler for action cmdHandoffTimeLogToFieldCoordinator — bind UI events here */
+    handleCmdHandoffTimeLogToFieldCoordinatorClick(event?: Event): void;
+    /** setter for state ui.recordWorkTime.input.cmdCreateTimeLog.workTaskWorkTaskId */
+    setCmdCreateTimeLogWorkTaskWorkTaskId(value: string): void;
+    /** handler for action set.cmdCreateTimeLogWorkTaskWorkTaskId — bind UI events here */
+    handleCmdCreateTimeLogWorkTaskWorkTaskIdChange(event: Event): void;
+    /** setter for state ui.recordWorkTime.input.cmdCreateTimeLog.workDate */
+    setCmdCreateTimeLogWorkDate(value: string): void;
+    /** handler for action set.cmdCreateTimeLogWorkDate — bind UI events here */
+    handleCmdCreateTimeLogWorkDateChange(event: Event): void;
+    /** setter for state ui.recordWorkTime.input.cmdCreateTimeLog.hoursWorked */
+    setCmdCreateTimeLogHoursWorked(value: string): void;
+    /** handler for action set.cmdCreateTimeLogHoursWorked — bind UI events here */
+    handleCmdCreateTimeLogHoursWorkedChange(event: Event): void;
+    /** setter for state ui.recordWorkTime.input.cmdCreateTimeLog.hourlyLaborCost */
+    setCmdCreateTimeLogHourlyLaborCost(value: string): void;
+    /** handler for action set.cmdCreateTimeLogHourlyLaborCost — bind UI events here */
+    handleCmdCreateTimeLogHourlyLaborCostChange(event: Event): void;
+    /** setter for state ui.recordWorkTime.input.cmdHandoffTimeLogToFieldCoordinator.timeLogTimeLogId */
+    setCmdHandoffTimeLogToFieldCoordinatorTimeLogTimeLogId(value: string): void;
+    /** handler for action set.cmdHandoffTimeLogToFieldCoordinatorTimeLogTimeLogId — bind UI events here */
+    handleCmdHandoffTimeLogToFieldCoordinatorTimeLogTimeLogIdChange(event: Event): void;
+    /** setter for state ui.recordWorkTime.input.cmdHandoffTimeLogToFieldCoordinator.workDate */
+    setCmdHandoffTimeLogToFieldCoordinatorWorkDate(value: string): void;
+    /** handler for action set.cmdHandoffTimeLogToFieldCoordinatorWorkDate — bind UI events here */
+    handleCmdHandoffTimeLogToFieldCoordinatorWorkDateChange(event: Event): void;
+    /** setter for state ui.recordWorkTime.input.cmdHandoffTimeLogToFieldCoordinator.hoursWorked */
+    setCmdHandoffTimeLogToFieldCoordinatorHoursWorked(value: string): void;
+    /** handler for action set.cmdHandoffTimeLogToFieldCoordinatorHoursWorked — bind UI events here */
+    handleCmdHandoffTimeLogToFieldCoordinatorHoursWorkedChange(event: Event): void;
+    /** setter for state ui.recordWorkTime.input.cmdHandoffTimeLogToFieldCoordinator.hourlyLaborCost */
+    setCmdHandoffTimeLogToFieldCoordinatorHourlyLaborCost(value: string): void;
+    /** handler for action set.cmdHandoffTimeLogToFieldCoordinatorHourlyLaborCost — bind UI events here */
+    handleCmdHandoffTimeLogToFieldCoordinatorHourlyLaborCostChange(event: Event): void;
+}

@@ -1,0 +1,111 @@
+{
+  "planId": "e4-ontology-entity",
+  "moduleName": "buildFlowFsm",
+  "reviewRound": 1,
+  "entityId": "ChangeOrder",
+  "fields": [
+    {
+      "fieldId": "changeOrderId",
+      "title": "ID da ordem de mudança",
+      "type": "uuid",
+      "required": true,
+      "description": "Identificador estável da ordem de mudança, transportado entre as etapas conectadas.",
+      "constraints": [
+        {
+          "constraintId": "uniqueChangeOrderId",
+          "kind": "unique",
+          "value": "true",
+          "description": "Cada ordem de mudança possui um identificador estável exclusivo.",
+          "source": "inferred"
+        }
+      ]
+    },
+    {
+      "fieldId": "clientRef",
+      "title": "Cliente",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência de contexto ao cliente para o qual a alteração é proposta, selecionada no catálogo compartilhado.",
+      "constraints": []
+    },
+    {
+      "fieldId": "projectRef",
+      "title": "Obra",
+      "type": "uuid",
+      "required": true,
+      "description": "Referência de contexto à obra do cliente à qual a alteração está vinculada.",
+      "constraints": []
+    },
+    {
+      "fieldId": "description",
+      "title": "Descrição da alteração",
+      "type": "text",
+      "required": true,
+      "description": "Descrição da alteração proposta na obra para avaliação gerencial e comunicação ao cliente.",
+      "constraints": []
+    },
+    {
+      "fieldId": "scopeImpact",
+      "title": "Impacto de escopo",
+      "type": "text",
+      "required": true,
+      "description": "Impacto proposto da alteração no escopo da obra.",
+      "constraints": []
+    },
+    {
+      "fieldId": "scheduleImpact",
+      "title": "Impacto de prazo",
+      "type": "text",
+      "required": true,
+      "description": "Impacto proposto da alteração no prazo de execução da obra.",
+      "constraints": []
+    },
+    {
+      "fieldId": "changeAmount",
+      "title": "Valor da alteração",
+      "type": "money",
+      "required": true,
+      "description": "Valor comercial da alteração proposto para aprovação do cliente, custeio e faturamento.",
+      "constraints": []
+    },
+    {
+      "fieldId": "submittedAt",
+      "title": "Data de submissão",
+      "type": "datetime",
+      "required": true,
+      "description": "Data e hora em que a alteração foi formalizada e submetida para tratamento gerencial.",
+      "constraints": []
+    },
+    {
+      "fieldId": "forwardedForClientApprovalAt",
+      "title": "Data de encaminhamento ao cliente",
+      "type": "datetime",
+      "required": false,
+      "description": "Data e hora em que a ordem foi encaminhada ao cliente para decisão.",
+      "constraints": []
+    },
+    {
+      "fieldId": "status",
+      "title": "Status",
+      "type": "string",
+      "required": true,
+      "description": "Estado atual da ordem de mudança no ciclo de tratamento, aprovação do cliente e faturamento.",
+      "constraints": [
+        {
+          "constraintId": "changeOrderStatusEnum",
+          "kind": "enum",
+          "value": "[\"submitted\",\"pendingClientApproval\",\"approved\",\"declined\"]",
+          "description": "O status deve corresponder a um estado definido do ciclo de vida da ordem de mudança.",
+          "source": "journey"
+        }
+      ]
+    }
+  ],
+  "useRules": [
+    "changeOrderRequiresClientAndProject",
+    "managerActionableChangeOrder",
+    "clientApprovableChangeOrder",
+    "approvedBillableChangeOrder",
+    "clientVisibleApprovedChangeOrder"
+  ]
+}
